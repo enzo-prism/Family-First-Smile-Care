@@ -1,0 +1,262 @@
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { FileText, Shield, Clock, Download, ChevronDown } from "lucide-react";
+import type { FAQItem } from "@/lib/types";
+
+const faqs: FAQItem[] = [
+  {
+    id: "insurance",
+    question: "Do you accept insurance?",
+    answer: "Yes, we accept most major insurance plans including Delta Dental, Cigna, MetLife, Aetna, and Blue Cross Blue Shield. We also accept most PPO plans. Our team will help verify your benefits and maximize your coverage."
+  },
+  {
+    id: "frequency",
+    question: "How often should I visit the dentist?",
+    answer: "We recommend visiting every six months for routine cleanings and check-ups. However, some patients may need more frequent visits based on their individual oral health needs. Dr. Chuang will recommend the best schedule for you."
+  },
+  {
+    id: "children",
+    question: "Do you see children?",
+    answer: "Absolutely! We specialize in family dentistry and love working with children of all ages. We use gentle techniques and child-friendly approaches to make dental visits fun and stress-free for your little ones."
+  },
+  {
+    id: "first-visit",
+    question: "What should I expect during my first visit?",
+    answer: "Your first visit will include a comprehensive examination, digital X-rays if needed, and a discussion of your oral health goals. We'll create a personalized treatment plan and answer any questions you have about your dental health."
+  },
+  {
+    id: "emergency",
+    question: "Do you offer emergency dental services?",
+    answer: "Yes, we provide emergency dental care for urgent situations. If you have a dental emergency, please call our office immediately and we'll do our best to see you the same day."
+  }
+];
+
+export default function PatientInfo() {
+  const [expandedFAQ, setExpandedFAQ] = useState<string | null>(null);
+  const [expandedEducation, setExpandedEducation] = useState<string | null>(null);
+
+  const toggleFAQ = (id: string) => {
+    setExpandedFAQ(expandedFAQ === id ? null : id);
+  };
+
+  const downloadForm = (formType: string) => {
+    alert(`Downloading ${formType} form. This would link to a PDF file in a real implementation.`);
+  };
+
+  const showEducationModal = (topic: string) => {
+    alert(`This would show detailed information about ${topic} in a modal or new page.`);
+  };
+
+  return (
+    <div className="pt-16 pb-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Patient Information</h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">Everything you need to know for a smooth and comfortable dental experience</p>
+        </div>
+        
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* New Patient Forms */}
+          <div className="bg-white rounded-2xl shadow-lg p-8">
+            <div className="text-center mb-6">
+              <div className="bg-primary text-white feature-icon mx-auto mb-4">
+                <FileText />
+              </div>
+              <h2 className="text-2xl font-bold text-gray-800">New Patient Forms</h2>
+            </div>
+            <p className="text-gray-600 mb-6">Save time during your visit by completing these forms in advance. Download and print them out, or complete them digitally.</p>
+            <div className="space-y-3">
+              <Button
+                variant="ghost" 
+                className="flex items-center text-primary hover:text-blue-700 transition-colors w-full justify-start p-0"
+                onClick={() => downloadForm('patient-history')}
+              >
+                <Download className="mr-3 h-4 w-4" />
+                <span>Patient Medical History Form</span>
+              </Button>
+              <Button
+                variant="ghost"
+                className="flex items-center text-primary hover:text-blue-700 transition-colors w-full justify-start p-0"
+                onClick={() => downloadForm('registration')}
+              >
+                <Download className="mr-3 h-4 w-4" />
+                <span>Patient Registration Form</span>
+              </Button>
+              <Button
+                variant="ghost"
+                className="flex items-center text-primary hover:text-blue-700 transition-colors w-full justify-start p-0"
+                onClick={() => downloadForm('insurance')}
+              >
+                <Download className="mr-3 h-4 w-4" />
+                <span>Insurance Information Form</span>
+              </Button>
+              <Button
+                variant="ghost"
+                className="flex items-center text-primary hover:text-blue-700 transition-colors w-full justify-start p-0"
+                onClick={() => downloadForm('hipaa')}
+              >
+                <Download className="mr-3 h-4 w-4" />
+                <span>HIPAA Privacy Notice</span>
+              </Button>
+            </div>
+          </div>
+          
+          {/* Insurance Information */}
+          <div className="bg-white rounded-2xl shadow-lg p-8">
+            <div className="text-center mb-6">
+              <div className="bg-secondary text-white feature-icon mx-auto mb-4">
+                <Shield />
+              </div>
+              <h2 className="text-2xl font-bold text-gray-800">Insurance & Payment</h2>
+            </div>
+            <p className="text-gray-600 mb-6">We accept most major insurance plans and offer flexible payment options to make dental care accessible for your family.</p>
+            <div className="space-y-4">
+              <div>
+                <h3 className="font-semibold text-gray-800 mb-2">Accepted Insurance</h3>
+                <ul className="text-gray-600 space-y-1">
+                  <li>• Delta Dental</li>
+                  <li>• Cigna</li>
+                  <li>• MetLife</li>
+                  <li>• Aetna</li>
+                  <li>• Blue Cross Blue Shield</li>
+                  <li>• Most PPO plans</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-800 mb-2">Payment Options</h3>
+                <ul className="text-gray-600 space-y-1">
+                  <li>• Cash and Credit Cards</li>
+                  <li>• Flexible financing available</li>
+                  <li>• Payment plans</li>
+                  <li>• CareCredit accepted</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          {/* What to Expect */}
+          <div className="bg-white rounded-2xl shadow-lg p-8">
+            <div className="text-center mb-6">
+              <div className="bg-accent text-white feature-icon mx-auto mb-4">
+                <Clock />
+              </div>
+              <h2 className="text-2xl font-bold text-gray-800">What to Expect</h2>
+            </div>
+            <p className="text-gray-600 mb-6">Your comfort and understanding are our priorities. Here's what you can expect during your visit.</p>
+            <div className="space-y-4">
+              <div className="flex">
+                <div className="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 mt-1 text-sm font-bold">1</div>
+                <div>
+                  <h3 className="font-semibold text-gray-800">Warm Welcome</h3>
+                  <p className="text-sm text-gray-600">Our friendly staff will greet you and help you get settled.</p>
+                </div>
+              </div>
+              <div className="flex">
+                <div className="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 mt-1 text-sm font-bold">2</div>
+                <div>
+                  <h3 className="font-semibold text-gray-800">Thorough Examination</h3>
+                  <p className="text-sm text-gray-600">Dr. Chuang will perform a comprehensive exam and explain findings.</p>
+                </div>
+              </div>
+              <div className="flex">
+                <div className="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 mt-1 text-sm font-bold">3</div>
+                <div>
+                  <h3 className="font-semibold text-gray-800">Personalized Plan</h3>
+                  <p className="text-sm text-gray-600">We'll create a treatment plan tailored to your needs and budget.</p>
+                </div>
+              </div>
+              <div className="flex">
+                <div className="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 mt-1 text-sm font-bold">4</div>
+                <div>
+                  <h3 className="font-semibold text-gray-800">Comfortable Care</h3>
+                  <p className="text-sm text-gray-600">Enjoy amenities like blankets, water, and entertainment during treatment.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Oral Health Education */}
+        <div className="mt-16">
+          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Oral Health Education</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="h-48 bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
+                <i className="fas fa-tooth text-primary text-6xl"></i>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">How to Brush Properly</h3>
+                <p className="text-gray-600 mb-4">Learn the correct brushing technique to effectively remove plaque and maintain healthy teeth and gums.</p>
+                <Button
+                  variant="link"
+                  className="text-primary font-medium p-0"
+                  onClick={() => showEducationModal('brushing')}
+                >
+                  Read More
+                </Button>
+              </div>
+            </div>
+            
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="h-48 bg-gradient-to-br from-secondary/10 to-secondary/5 flex items-center justify-center">
+                <i className="fas fa-cut text-secondary text-6xl"></i>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">Flossing Fundamentals</h3>
+                <p className="text-gray-600 mb-4">Discover why flossing is essential and learn the proper technique for optimal gum health.</p>
+                <Button
+                  variant="link"
+                  className="text-primary font-medium p-0"
+                  onClick={() => showEducationModal('flossing')}
+                >
+                  Read More
+                </Button>
+              </div>
+            </div>
+            
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="h-48 bg-gradient-to-br from-accent/10 to-accent/5 flex items-center justify-center">
+                <i className="fas fa-apple-alt text-accent text-6xl"></i>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">Nutrition for Healthy Teeth</h3>
+                <p className="text-gray-600 mb-4">Understand how your diet affects your oral health and which foods promote strong teeth.</p>
+                <Button
+                  variant="link"
+                  className="text-primary font-medium p-0"
+                  onClick={() => showEducationModal('nutrition')}
+                >
+                  Read More
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* FAQs */}
+        <div className="mt-16 bg-white rounded-2xl shadow-lg p-8">
+          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            {faqs.map((faq) => (
+              <div key={faq.id} className="border-b border-gray-200 pb-4 last:border-b-0">
+                <Button
+                  variant="ghost"
+                  className="flex items-center justify-between w-full text-left font-semibold text-gray-800 hover:text-primary p-0"
+                  onClick={() => toggleFAQ(faq.id)}
+                >
+                  <span>{faq.question}</span>
+                  <ChevronDown className={`h-4 w-4 transform transition-transform ${expandedFAQ === faq.id ? "rotate-180" : ""}`} />
+                </Button>
+                {expandedFAQ === faq.id && (
+                  <div className="mt-3 text-gray-600">
+                    <p>{faq.answer}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

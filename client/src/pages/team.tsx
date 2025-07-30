@@ -1,0 +1,112 @@
+import { Button } from "@/components/ui/button";
+import { Link } from "wouter";
+import { GraduationCap, Stethoscope, Heart, UserRound, HandHeart, Users } from "lucide-react";
+
+export default function Team() {
+  return (
+    <div className="pt-16 pb-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Meet Our Team</h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">Dedicated professionals committed to providing exceptional dental care with compassion and expertise</p>
+        </div>
+        
+        {/* Dr. Chuang Bio */}
+        <div className="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl p-8 lg:p-12 mb-16">
+          <div className="grid lg:grid-cols-3 gap-12 items-center">
+            <div className="lg:col-span-1">
+              <img 
+                src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=600" 
+                alt="Dr. Tim J. Chuang, DDS professional headshot" 
+                className="rounded-2xl shadow-lg w-full max-w-md mx-auto"
+              />
+            </div>
+            <div className="lg:col-span-2">
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Dr. Tim J. Chuang, DDS</h2>
+              <p className="text-xl text-primary font-semibold mb-6">Lead Dentist & Practice Owner</p>
+              
+              <div className="space-y-4 text-gray-600 mb-8">
+                <p>Dr. Chuang brings a wealth of knowledge and a gentle touch to every patient interaction. Born and raised in Cupertino, CA, he has deep roots in the local community and understands the unique needs of Bay Area families.</p>
+                
+                <p>His educational journey began with a Bachelor's degree in Human Biology from UC San Diego, where he developed a strong foundation in biological sciences. He then earned his Doctor of Dental Surgery (DDS) degree from the prestigious University of the Pacific School of Dentistry in 2020.</p>
+                
+                <p>To further refine his skills, Dr. Chuang completed a comprehensive general dentistry residency in Hawaii, where he gained advanced experience in complex cases and developed his signature gentle approach to patient care.</p>
+              </div>
+              
+              <div className="grid md:grid-cols-3 gap-6 mb-8">
+                <div className="text-center">
+                  <div className="bg-primary text-white feature-icon mx-auto mb-3">
+                    <GraduationCap />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 mb-1">Education</h3>
+                  <p className="text-sm text-gray-600">University of the Pacific School of Dentistry</p>
+                </div>
+                <div className="text-center">
+                  <div className="bg-secondary text-white feature-icon mx-auto mb-3">
+                    <Stethoscope />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 mb-1">Experience</h3>
+                  <p className="text-sm text-gray-600">5+ Years in Practice</p>
+                </div>
+                <div className="text-center">
+                  <div className="bg-accent text-white feature-icon mx-auto mb-3">
+                    <Heart />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 mb-1">Specialty</h3>
+                  <p className="text-sm text-gray-600">Gentle, Family-Centered Care</p>
+                </div>
+              </div>
+              
+              <div className="bg-white rounded-lg p-6">
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">Dr. Chuang's Approach</h3>
+                <p className="text-gray-600 italic">"I believe that dental care should be a positive experience for every patient. My goal is to provide thorough explanations, gentle treatment, and personalized care that helps each patient feel comfortable and confident about their oral health."</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Team Section */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Caring Team</h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">Behind every great dentist is an exceptional team. Our friendly hygienists, assistants, and staff are dedicated to making your visit comfortable and stress-free.</p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
+            <div className="bg-primary text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <UserRound className="h-8 w-8" />
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">Dental Hygienists</h3>
+            <p className="text-gray-600">Our licensed hygienists provide thorough cleanings and personalized oral health education with gentle, caring techniques.</p>
+          </div>
+          
+          <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
+            <div className="bg-secondary text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <HandHeart className="h-8 w-8" />
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">Dental Assistants</h3>
+            <p className="text-gray-600">Our skilled assistants support Dr. Chuang and ensure your comfort throughout every procedure, big or small.</p>
+          </div>
+          
+          <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
+            <div className="bg-accent text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Users className="h-8 w-8" />
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">Front Office Staff</h3>
+            <p className="text-gray-600">Our welcoming reception team handles scheduling, insurance, and ensures your visit runs smoothly from start to finish.</p>
+          </div>
+        </div>
+        
+        <div className="bg-gray-50 rounded-2xl p-8 mt-16 text-center">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">Join Our Dental Family</h2>
+          <p className="text-gray-600 mb-6">Experience the difference that compassionate, personalized dental care can make for you and your family.</p>
+          <Link href="/contact">
+            <Button className="bg-primary text-white hover:bg-blue-700 font-semibold px-8 py-3">
+              Meet Us Today
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
