@@ -16,7 +16,7 @@ export default function Team() {
           <div className="grid lg:grid-cols-3 gap-12 items-center">
             <div className="lg:col-span-1">
               <img 
-                src="/attached_assets/Dr. Chuang_1753971820008.png" 
+                src="/@assets/Dr. Chuang_1753971820008.png" 
                 alt="Dr. Tim J. Chuang, DDS professional headshot" 
                 className="rounded-2xl shadow-lg w-full max-w-md mx-auto"
               />
@@ -77,7 +77,7 @@ export default function Team() {
           <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
             <div className="mb-4">
               <img 
-                src="/attached_assets/Dental Assisitant_1753971816018.png" 
+                src="/@assets/Dental Assisitant_1753971816018.png" 
                 alt="Dental Assistant team member" 
                 className="w-32 h-32 rounded-full mx-auto object-cover shadow-md"
               />
@@ -89,7 +89,7 @@ export default function Team() {
           <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
             <div className="mb-4">
               <img 
-                src="/attached_assets/Office Manager_1753971816019.png" 
+                src="/@assets/Office Manager_1753971816019.png" 
                 alt="Office Manager team member" 
                 className="w-32 h-32 rounded-full mx-auto object-cover shadow-md"
               />

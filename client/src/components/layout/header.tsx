@@ -24,7 +24,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <img 
-              src="/attached_assets/Logo_1753972444614.png" 
+              src="/@assets/Logo_1753972444614.png" 
               alt="Family First Smile Care Logo" 
               className="h-10 w-10 mr-3"
             />
