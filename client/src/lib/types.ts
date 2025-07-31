@@ -22,6 +22,7 @@ export interface Service {
   icon: string;
   details: string[];
   featured?: boolean;
+  subServices?: Service[];
 }
 
 export interface FAQItem {

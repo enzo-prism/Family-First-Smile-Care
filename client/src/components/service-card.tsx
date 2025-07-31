@@ -70,13 +70,41 @@ export default function ServiceCard({ service, featured = false }: ServiceCardPr
             </Button>
             
             {isExpanded && (
-              <div className="mt-4 space-y-2">
-                {service.details.map((detail, index) => (
-                  <div key={index} className="flex items-center text-gray-600">
-                    <Check className="text-secondary mr-3 h-4 w-4" />
-                    <span>{detail}</span>
+              <div className="mt-4 space-y-4">
+                <div className="space-y-2">
+                  {service.details.map((detail, index) => (
+                    <div key={index} className="flex items-center text-gray-600">
+                      <Check className="text-secondary mr-3 h-4 w-4" />
+                      <span>{detail}</span>
+                    </div>
+                  ))}
+                </div>
+                
+                {service.subServices && service.subServices.length > 0 && (
+                  <div className="border-t pt-4">
+                    <h4 className="font-semibold text-gray-800 mb-3">Specialized Treatments:</h4>
+                    <div className="space-y-3">
+                      {service.subServices.map((subService) => (
+                        <div key={subService.id} className="bg-gray-50 rounded-lg p-3">
+                          <div className="flex items-center mb-2">
+                            <div className={`${getIconColor(subService.icon)} text-white w-8 h-8 rounded-full flex items-center justify-center mr-3`}>
+                              {getIconComponent(subService.icon)}
+                            </div>
+                            <div>
+                              <h5 className="font-semibold text-gray-800">{subService.title}</h5>
+                              <p className="text-sm text-gray-600">{subService.description}</p>
+                            </div>
+                          </div>
+                          {subService.featured && (
+                            <div className="mt-2">
+                              <span className="bg-primary text-white text-xs px-2 py-1 rounded-full">⭐ FREE CONSULTATION AVAILABLE</span>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                ))}
+                )}
               </div>
             )}
           </div>
@@ -90,7 +118,7 @@ export default function ServiceCard({ service, featured = false }: ServiceCardPr
               </Link>
             )}
             
-            {featured && (
+            {(featured || (service.subServices && service.subServices.some(sub => sub.featured))) && (
               <a 
                 href="https://fxuqp40sseh.typeform.com/to/CiLYdxSU" 
                 target="_blank" 
