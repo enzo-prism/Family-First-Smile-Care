@@ -314,11 +314,11 @@ export default function About() {
               >
                 <iframe
                   className="absolute top-0 left-0 w-full h-full rounded-xl shadow-lg"
-                  src="https://www.youtube.com/embed/53N7iyvh4Nw?start=2"
+                  src="https://player.vimeo.com/video/1106179834?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;background=1&amp;controls=0"
                   title="Family First Smile Care Office Tour - Los Gatos Location"
                   frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                  style={{ border: 'none', outline: 'none' }}
                 />
               </motion.div>
             </div>
