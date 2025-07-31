@@ -1,7 +1,7 @@
-import { useState } from "react";
+
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -9,24 +9,17 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { MapPin, Phone, Mail, Clock, Facebook, Instagram } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { insertContactSchema, type InsertContact } from "@shared/schema";
+import { apiRequest } from "@/lib/queryClient";
 
-const contactFormSchema = z.object({
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
-  email: z.string().email("Please enter a valid email address"),
-  phone: z.string().optional(),
-  service: z.string().optional(),
-  message: z.string().optional(),
-});
-
-type ContactFormValues = z.infer<typeof contactFormSchema>;
+type ContactFormValues = InsertContact;
 
 export default function Contact() {
   const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const queryClient = useQueryClient();
 
   const form = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
+    resolver: zodResolver(insertContactSchema),
     defaultValues: {
       firstName: "",
       lastName: "",
@@ -37,21 +30,31 @@ export default function Contact() {
     },
   });
 
-  const onSubmit = async (values: ContactFormValues) => {
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    console.log("Form submitted:", values);
-    
-    toast({
-      title: "Message sent successfully!",
-      description: "Thank you for contacting us. We will get back to you soon.",
-    });
-    
-    form.reset();
-    setIsSubmitting(false);
+  const contactMutation = useMutation({
+    mutationFn: async (values: ContactFormValues) => {
+      return apiRequest('/api/contacts', {
+        method: 'POST',
+        body: JSON.stringify(values),
+      });
+    },
+    onSuccess: () => {
+      toast({
+        title: "Message sent successfully!",
+        description: "Thank you for contacting us. We will get back to you soon.",
+      });
+      form.reset();
+    },
+    onError: (error: any) => {
+      toast({
+        title: "Error sending message",
+        description: error.message || "Please try again later.",
+        variant: "destructive",
+      });
+    },
+  });
+
+  const onSubmit = (values: ContactFormValues) => {
+    contactMutation.mutate(values);
   };
 
   return (
@@ -249,9 +252,9 @@ export default function Contact() {
                   <Button 
                     type="submit" 
                     className="w-full bg-primary text-white hover:bg-blue-700 font-semibold py-3"
-                    disabled={isSubmitting}
+                    disabled={contactMutation.isPending}
                   >
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                    {contactMutation.isPending ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
               </Form>

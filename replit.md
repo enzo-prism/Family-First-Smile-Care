@@ -10,15 +10,17 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Changes
 
+- **January 31, 2025**: Added PostgreSQL database with contact form functionality - contact submissions now stored in database with full validation and error handling
+- **January 31, 2025**: Replaced gradient placeholders with authentic Vimeo videos - hero section shows office tour, about page shows patient experience
+- **January 31, 2025**: Integrated authentic Google reviews from real patients - replaced stock testimonials with 10 actual patient reviews
+- **January 31, 2025**: Updated all appointment booking buttons to open Typeform booking system instead of contact page
+- **January 31, 2025**: Updated office hours display to Monday-Thursday 9AM-5PM, Friday closed format
+- **January 31, 2025**: Removed patient forms section from Patient Info page while maintaining seamless 2-column design
 - **January 31, 2025**: Added custom favicon using Family First Smile Care logo for all website pages, plus enhanced SEO meta tags and Open Graph properties
 - **January 31, 2025**: Replaced generic smile icon with authentic Family First Smile Care logo (colorful puzzle piece design) in header and footer
 - **January 31, 2025**: Added Google review CTA buttons in footer and dedicated home page section with 5-star visual appeal (removed from navigation header per user request)
 - **January 31, 2025**: Integrated YouTube office tour video showcasing the actual Los Gatos location front entrance in the About page Office Tour section
 - **January 31, 2025**: Added online bill pay buttons to navigation header and footer linking to SwipeSimple payment portal that opens in new tab
-- **January 31, 2025**: Added comprehensive office photo gallery with 12 authentic images of Family First Smile Care practice, showing actual reception area, treatment rooms, equipment, and exterior branding
-- **January 31, 2025**: Updated Dr. Chuang's biography with detailed background information including his Cupertino upbringing, UCSD education, UOP dental school graduation in 2020, and Hawaii residency experience
-- **January 31, 2025**: Replaced remaining stock placeholder photos with elegant gradients matching the website's color palette (blues, greens, oranges)
-- **January 31, 2025**: Integrated real team photos for Dr. Chuang, dental assistant, and office manager
 
 ## System Architecture
 
