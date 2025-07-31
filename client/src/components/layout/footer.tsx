@@ -73,11 +73,13 @@ export default function Footer() {
           
           {/* Office Hours & Social */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Office Hours</h3>
+            <h3 className="text-lg font-semibold mb-4">Our Hours</h3>
             <div className="text-gray-300 space-y-1 mb-6">
-              <p>Monday - Friday: 9AM - 5PM</p>
-              <p>Saturday: By appointment</p>
-              <p>Sunday: Closed</p>
+              <p>Monday: 9AM - 5PM</p>
+              <p>Tuesday: 9AM - 5PM</p>
+              <p>Wednesday: 9AM - 5PM</p>
+              <p>Thursday: 9AM - 5PM</p>
+              <p>Friday: Closed</p>
             </div>
             <div className="flex space-x-4">
               <a 
