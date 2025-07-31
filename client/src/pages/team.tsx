@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { GraduationCap, Stethoscope, Heart, UserRound, HandHeart, Users } from "lucide-react";
 import drChuangPhoto from "@assets/Dr. Chuang_1753971820008.png";
-import dentalAssistantPhoto from "@assets/Dental Assisitant_1753971816018.png";
+
 import officeManagerPhoto from "@assets/Office Manager_1753977345657.jpeg";
 
 export default function Team() {
@@ -87,19 +87,7 @@ export default function Team() {
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">Behind every great dentist is an exceptional team. Our friendly hygienists, assistants, and staff are dedicated to making your visit comfortable and stress-free.</p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
-            <div className="mb-4">
-              <img 
-                src={dentalAssistantPhoto} 
-                alt="Dental Assistant team member" 
-                className="w-32 h-32 rounded-full mx-auto object-cover shadow-md"
-              />
-            </div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">Dental Assistant</h3>
-            <p className="text-gray-600">Our skilled assistant supports Dr. Chuang and ensures your comfort throughout every procedure, big or small.</p>
-          </div>
-          
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
             <div className="mb-4">
               <img 
