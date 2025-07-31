@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import TestimonialCarousel from "@/components/testimonial-carousel";
-import { Heart, Microscope, Users, Stethoscope, Baby, Sparkles, Smile } from "lucide-react";
+import { Heart, Microscope, Users, Stethoscope, Baby, Sparkles, Smile, Star } from "lucide-react";
 
 export default function Home() {
   return (
@@ -143,6 +143,31 @@ export default function Home() {
           </div>
           
           <TestimonialCarousel />
+        </div>
+      </section>
+
+      {/* Google Review CTA Section */}
+      <section className="py-16 bg-gradient-to-br from-orange-50 to-orange-100">
+        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-center mb-4">
+            <div className="flex space-x-1">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-8 h-8 text-orange-400 fill-current" />
+              ))}
+            </div>
+          </div>
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">Love Your Experience?</h2>
+          <p className="text-xl text-gray-600 mb-8">Help other families find us by sharing your experience on Google. Your review means the world to us!</p>
+          <a 
+            href="https://g.page/r/Cej0Xl18KcCyEAE/review" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            <Button className="bg-orange-500 text-white hover:bg-orange-600 text-lg font-semibold px-8 py-3">
+              <Star className="h-5 w-5 mr-2" />
+              Leave a Google Review
+            </Button>
+          </a>
         </div>
       </section>
 

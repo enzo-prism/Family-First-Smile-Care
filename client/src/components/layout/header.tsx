@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Smile, CreditCard } from "lucide-react";
+import { Menu, Smile, CreditCard, Star } from "lucide-react";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -42,6 +42,17 @@ export default function Header() {
                 {item.name}
               </Link>
             ))}
+            <a 
+              href="https://g.page/r/Cej0Xl18KcCyEAE/review" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="mr-3"
+            >
+              <Button variant="outline" className="border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white">
+                <Star className="h-4 w-4 mr-2" />
+                Review Us
+              </Button>
+            </a>
             <a 
               href="https://swipesimple.com/links/lnk_67505de480da165de07d5bd3f42fbcce" 
               target="_blank" 
@@ -84,6 +95,18 @@ export default function Header() {
                       {item.name}
                     </Link>
                   ))}
+                  <a 
+                    href="https://g.page/r/Cej0Xl18KcCyEAE/review" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    onClick={() => setIsOpen(false)}
+                    className="w-fit"
+                  >
+                    <Button variant="outline" className="border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white w-full">
+                      <Star className="h-4 w-4 mr-2" />
+                      Leave a Google Review
+                    </Button>
+                  </a>
                   <a 
                     href="https://swipesimple.com/links/lnk_67505de480da165de07d5bd3f42fbcce" 
                     target="_blank" 
