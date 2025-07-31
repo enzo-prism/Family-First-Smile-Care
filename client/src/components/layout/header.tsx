@@ -3,7 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Smile, CreditCard, Star } from "lucide-react";
-import familyFirstLogo from "@assets/Logo_1753972444614.png";
+import familyFirstLogo from "@assets/Logo_1753972987510.png";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -28,6 +28,14 @@ export default function Header() {
               src={familyFirstLogo} 
               alt="Family First Smile Care Logo" 
               className="h-10 w-10 mr-3"
+              onError={(e) => {
+                console.error('ES module logo failed, trying fallback path:', familyFirstLogo);
+                e.currentTarget.src = '/attached_assets/Logo_1753972987510.png';
+                e.currentTarget.onError = () => {
+                  console.error('All logo paths failed');
+                  e.currentTarget.style.display = 'none';
+                };
+              }}
             />
             <span className="text-xl font-bold text-gray-800">Family First Smile Care</span>
           </Link>

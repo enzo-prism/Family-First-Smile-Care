@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Smile, MapPin, Phone, Mail, Facebook, Instagram, CreditCard, Star } from "lucide-react";
-import familyFirstLogo from "@assets/Logo_1753972444614.png";
+import familyFirstLogo from "@assets/Logo_1753972987510.png";
 
 export default function Footer() {
   return (
