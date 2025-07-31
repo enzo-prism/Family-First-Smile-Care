@@ -41,20 +41,24 @@ export default function ServiceCard({ service, featured = false }: ServiceCardPr
   };
 
   return (
-    <div className={`bg-white rounded-2xl shadow-lg overflow-hidden ${featured ? "border-2 border-primary" : ""}`}>
+    <div className={`bg-white rounded-3xl shadow-xl overflow-hidden border transition-all duration-300 hover:shadow-2xl ${
+      featured 
+        ? "border-2 border-primary shadow-primary/10" 
+        : "border-gray-100 hover:border-primary/30"
+    }`}>
       {featured && (
-        <div className="bg-primary text-white p-3 text-center">
-          <span className="font-semibold">⭐ FREE CONSULTATION AVAILABLE ⭐</span>
+        <div className="bg-gradient-to-r from-primary to-secondary text-white p-4 text-center">
+          <span className="font-bold text-sm tracking-wide">⭐ FREE CONSULTATION AVAILABLE ⭐</span>
         </div>
       )}
-      <div className="p-8">
-        <div className="flex items-center mb-6">
-          <div className={`${getIconColor(service.icon)} text-white w-16 h-16 rounded-full flex items-center justify-center mr-4`}>
+      <div className="p-6 sm:p-8">
+        <div className="flex flex-col sm:flex-row sm:items-center mb-6 space-y-4 sm:space-y-0">
+          <div className={`${getIconColor(service.icon)} text-white w-16 h-16 rounded-2xl flex items-center justify-center sm:mr-6 shadow-lg flex-shrink-0 mx-auto sm:mx-0`}>
             {getIconComponent(service.icon)}
           </div>
-          <div>
-            <h2 className="text-2xl font-bold text-gray-800">{service.title}</h2>
-            <p className="text-gray-600">{service.description}</p>
+          <div className="text-center sm:text-left">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">{service.title}</h2>
+            <p className="text-gray-600 leading-relaxed">{service.description}</p>
           </div>
         </div>
         
@@ -62,42 +66,44 @@ export default function ServiceCard({ service, featured = false }: ServiceCardPr
           <div className="mb-4">
             <Button
               variant="ghost"
-              className="flex items-center justify-between w-full text-left font-semibold text-gray-800 hover:text-primary p-0"
+              className="flex items-center justify-between w-full text-left font-semibold text-gray-800 hover:text-primary hover:bg-primary/5 p-3 rounded-xl transition-all duration-200"
               onClick={toggleExpanded}
             >
-              <span>Learn More</span>
-              <ChevronDown className={`h-4 w-4 transform transition-transform ${isExpanded ? "rotate-180" : ""}`} />
+              <span className="text-base">Learn More</span>
+              <ChevronDown className={`h-5 w-5 transform transition-all duration-300 ${isExpanded ? "rotate-180 text-primary" : "text-gray-400"}`} />
             </Button>
             
             {isExpanded && (
-              <div className="mt-4 space-y-4">
-                <div className="space-y-2">
+              <div className="mt-6 space-y-6 animate-in slide-in-from-top-2 duration-300">
+                <div className="space-y-3">
                   {service.details.map((detail, index) => (
-                    <div key={index} className="flex items-center text-gray-600">
-                      <Check className="text-secondary mr-3 h-4 w-4" />
-                      <span>{detail}</span>
+                    <div key={index} className="flex items-start text-gray-600 group">
+                      <Check className="text-secondary mr-3 h-5 w-5 mt-0.5 flex-shrink-0 group-hover:text-primary transition-colors duration-200" />
+                      <span className="leading-relaxed">{detail}</span>
                     </div>
                   ))}
                 </div>
                 
                 {service.subServices && service.subServices.length > 0 && (
-                  <div className="border-t pt-4">
-                    <h4 className="font-semibold text-gray-800 mb-3">Specialized Treatments:</h4>
-                    <div className="space-y-3">
+                  <div className="border-t border-gray-200 pt-6">
+                    <h4 className="font-bold text-gray-800 mb-4 text-lg">Specialized Treatments:</h4>
+                    <div className="grid gap-4 sm:gap-3">
                       {service.subServices.map((subService) => (
-                        <div key={subService.id} className="bg-gray-50 rounded-lg p-3">
-                          <div className="flex items-center mb-2">
-                            <div className={`${getIconColor(subService.icon)} text-white w-8 h-8 rounded-full flex items-center justify-center mr-3`}>
+                        <div key={subService.id} className="bg-gradient-to-r from-gray-50 to-gray-50/50 rounded-2xl p-4 border border-gray-100 hover:border-primary/20 transition-all duration-200 hover:shadow-md">
+                          <div className="flex items-center mb-3">
+                            <div className={`${getIconColor(subService.icon)} text-white w-10 h-10 rounded-xl flex items-center justify-center mr-4 shadow-md`}>
                               {getIconComponent(subService.icon)}
                             </div>
-                            <div>
-                              <h5 className="font-semibold text-gray-800">{subService.title}</h5>
-                              <p className="text-sm text-gray-600">{subService.description}</p>
+                            <div className="flex-1">
+                              <h5 className="font-bold text-gray-800 text-base">{subService.title}</h5>
+                              <p className="text-sm text-gray-600 leading-relaxed">{subService.description}</p>
                             </div>
                           </div>
                           {subService.featured && (
-                            <div className="mt-2">
-                              <span className="bg-primary text-white text-xs px-2 py-1 rounded-full">⭐ FREE CONSULTATION AVAILABLE</span>
+                            <div className="mt-3">
+                              <span className="bg-gradient-to-r from-primary to-secondary text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+                                ⭐ FREE CONSULTATION AVAILABLE
+                              </span>
                             </div>
                           )}
                         </div>
@@ -109,10 +115,10 @@ export default function ServiceCard({ service, featured = false }: ServiceCardPr
             )}
           </div>
           
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-4 mt-6">
             {service.id === "tmj" && (
               <Link href="/tmj">
-                <Button className="w-full bg-secondary text-white hover:bg-blue-600 font-semibold">
+                <Button className="w-full bg-gradient-to-r from-secondary to-blue-600 text-white hover:from-blue-600 hover:to-secondary font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-[1.02]">
                   Learn More About TMJ Treatment
                 </Button>
               </Link>
@@ -124,7 +130,7 @@ export default function ServiceCard({ service, featured = false }: ServiceCardPr
                 target="_blank" 
                 rel="noopener noreferrer"
               >
-                <Button className="bg-primary text-white hover:bg-blue-700 font-semibold">
+                <Button className="w-full bg-gradient-to-r from-primary to-blue-600 text-white hover:from-blue-600 hover:to-primary font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-[1.02]">
                   Schedule Free Consultation
                 </Button>
               </a>
