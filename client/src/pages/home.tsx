@@ -31,11 +31,21 @@ export default function Home() {
               </div>
             </div>
             <div className="relative">
-              <div className="rounded-2xl shadow-xl w-full h-96 bg-gradient-to-br from-primary via-blue-400 to-secondary flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-50/20 to-green-50/20"></div>
-                <div className="text-center text-white z-10">
-                  <Smile className="w-20 h-20 mx-auto mb-4 opacity-80" />
-                  <p className="text-lg font-medium opacity-90">Your Family's Smile Starts Here</p>
+              <div className="rounded-2xl shadow-xl w-full h-96 relative overflow-hidden">
+                <iframe
+                  src="https://player.vimeo.com/video/1106154947?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;background=1"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                  title="Family First Smile Care Office Tour"
+                ></iframe>
+                {/* Subtle overlay for text readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                {/* Video overlay text */}
+                <div className="absolute bottom-4 left-4 text-white z-10">
+                  <p className="text-sm font-medium opacity-90 bg-black/30 px-3 py-1 rounded-full">
+                    Welcome to Family First Smile Care
+                  </p>
                 </div>
               </div>
               <div className="absolute -bottom-6 -left-6 bg-white rounded-lg p-4 shadow-lg">
