@@ -48,13 +48,14 @@ export default function About() {
             </div>
           </div>
           <div>
-            <div className="rounded-2xl shadow-xl w-full h-96 bg-gradient-to-br from-secondary via-green-400 to-primary flex items-center justify-center relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-green-50/20 to-blue-50/20"></div>
-              <div className="text-center text-white z-10">
-                <Heart className="w-16 h-16 mx-auto mb-4 opacity-80" />
-                <p className="text-lg font-medium opacity-90">Compassionate Care</p>
-                <p className="text-sm opacity-70">Built on Trust & Excellence</p>
-              </div>
+            <div className="rounded-2xl shadow-xl w-full h-96 relative overflow-hidden">
+              <iframe
+                src="https://player.vimeo.com/video/1106158527?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;background=1"
+                className="absolute inset-0 w-full h-full object-cover"
+                frameBorder="0"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                title="Family First Smile Care Patient Experience"
+              ></iframe>
             </div>
           </div>
         </div>
