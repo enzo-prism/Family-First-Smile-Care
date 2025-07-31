@@ -230,7 +230,7 @@ export default function TMJ() {
               </Button>
             </a>
             <Link href="/contact">
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-primary font-semibold px-8 py-3">
+              <Button className="bg-white/20 text-white border border-white/30 hover:bg-white hover:text-primary font-semibold px-8 py-3 backdrop-blur-sm">
                 Contact Us
               </Button>
             </Link>
