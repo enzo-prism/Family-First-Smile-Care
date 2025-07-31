@@ -56,7 +56,7 @@ export default function About() {
             <div className="rounded-2xl shadow-xl w-full h-96 relative overflow-hidden">
               <iframe
                 src="https://player.vimeo.com/video/1106158527?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;background=1"
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute w-[102%] h-[102%] -top-[1%] -left-[1%] object-cover"
                 frameBorder="0"
                 allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
                 title="Family First Smile Care Patient Experience"
