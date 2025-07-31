@@ -79,9 +79,15 @@ export default function ServiceCard({ service, featured = false }: ServiceCardPr
           </div>
           
           {featured && (
-            <Button className="bg-primary text-white hover:bg-blue-700 font-semibold">
-              Schedule Free Consultation
-            </Button>
+            <a 
+              href="https://fxuqp40sseh.typeform.com/to/CiLYdxSU" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <Button className="bg-primary text-white hover:bg-blue-700 font-semibold">
+                Schedule Free Consultation
+              </Button>
+            </a>
           )}
         </div>
       </div>

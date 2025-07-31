@@ -18,11 +18,15 @@ export default function Home() {
                 We provide exceptional dental care in a warm environment to foster healthy smiles for life.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/contact">
+                <a 
+                  href="https://fxuqp40sseh.typeform.com/to/CiLYdxSU" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
                   <Button className="bg-primary text-white hover:bg-blue-700 text-lg font-semibold px-8 py-3">
                     Schedule Appointment
                   </Button>
-                </Link>
+                </a>
                 <Link href="/services">
                   <Button variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-white text-lg font-semibold px-8 py-3">
                     Our Services

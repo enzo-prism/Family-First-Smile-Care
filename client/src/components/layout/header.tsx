@@ -31,7 +31,7 @@ export default function Header() {
               onError={(e) => {
                 console.error('ES module logo failed, trying fallback path:', familyFirstLogo);
                 e.currentTarget.src = '/attached_assets/Logo_1753972987510.png';
-                e.currentTarget.onError = () => {
+                e.currentTarget.onerror = () => {
                   console.error('All logo paths failed');
                   e.currentTarget.style.display = 'none';
                 };
@@ -66,11 +66,15 @@ export default function Header() {
                 Pay Bill
               </Button>
             </a>
-            <Link href="/contact">
+            <a 
+              href="https://fxuqp40sseh.typeform.com/to/CiLYdxSU" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
               <Button className="bg-primary text-white hover:bg-blue-700">
                 Book Appointment
               </Button>
-            </Link>
+            </a>
           </div>
           
           {/* Mobile Menu */}
