@@ -8,6 +8,12 @@ This is a modern, family-oriented dental practice website built for Family First
 
 Preferred communication style: Simple, everyday language.
 
+## Recent Changes
+
+- **January 31, 2025**: Updated Dr. Chuang's biography with detailed background information including his Cupertino upbringing, UCSD education, UOP dental school graduation in 2020, and Hawaii residency experience
+- **January 31, 2025**: Replaced all stock placeholder photos with elegant gradients matching the website's color palette (blues, greens, oranges)
+- **January 31, 2025**: Integrated real team photos for Dr. Chuang, dental assistant, and office manager
+
 ## System Architecture
 
 ### Frontend Architecture

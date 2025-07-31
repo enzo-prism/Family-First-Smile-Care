@@ -26,11 +26,13 @@ export default function Team() {
               <p className="text-xl text-primary font-semibold mb-6">Lead Dentist & Practice Owner</p>
               
               <div className="space-y-4 text-gray-600 mb-8">
-                <p>Dr. Chuang brings a wealth of knowledge and a gentle touch to every patient interaction. Born and raised in Cupertino, CA, he has deep roots in the local community and understands the unique needs of Bay Area families.</p>
+                <p>Dr. Chuang was born and raised in Cupertino, where his passion for healthcare and helping others began at an early age. He has deep roots in the local community and understands the unique needs of Bay Area families, bringing a wealth of knowledge and gentle touch to every patient interaction.</p>
                 
-                <p>His educational journey began with a Bachelor's degree in Human Biology from UC San Diego, where he developed a strong foundation in biological sciences. He then earned his Doctor of Dental Surgery (DDS) degree from the prestigious University of the Pacific School of Dentistry in 2020.</p>
+                <p>He pursued his undergraduate studies at the University of California, San Diego (UCSD), earning a bachelor's degree in Human Biology. His strong interest in dentistry and commitment to patient care led him back to the Bay Area, where he continued his education in one of the nation's top dental programs.</p>
                 
-                <p>To further refine his skills, Dr. Chuang completed a comprehensive general dentistry residency in Hawaii, where he gained advanced experience in complex cases and developed his signature gentle approach to patient care.</p>
+                <p>In 2020, Dr. Chuang graduated from the prestigious University of the Pacific (UOP) School of Dentistry in San Francisco, where he honed his skills in comprehensive dental care. Seeking to further expand his expertise, he moved to the Big Island of Hawaii to complete a residency in general dentistry.</p>
+                
+                <p>During his residency, he gained hands-on experience in advanced procedures, treating a diverse patient population, and refining his approach to providing high-quality, patient-centered care. This comprehensive training has shaped his signature gentle approach that patients know and trust.</p>
               </div>
               
               <div className="grid md:grid-cols-3 gap-6 mb-8">
