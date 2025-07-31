@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { FileText, Shield, Clock, Download, ChevronDown } from "lucide-react";
+import { FileText, Shield, Clock, Download, ChevronDown, Stethoscope, Scissors, Apple } from "lucide-react";
 import type { FAQItem } from "@/lib/types";
 
 const faqs: FAQItem[] = [
@@ -181,8 +181,8 @@ export default function PatientInfo() {
           <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Oral Health Education</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-              <div className="h-48 bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
-                <i className="fas fa-tooth text-primary text-6xl"></i>
+              <div className="h-48 bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center">
+                <Stethoscope className="text-primary w-16 h-16" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-gray-800 mb-3">How to Brush Properly</h3>
@@ -198,8 +198,8 @@ export default function PatientInfo() {
             </div>
             
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-              <div className="h-48 bg-gradient-to-br from-secondary/10 to-secondary/5 flex items-center justify-center">
-                <i className="fas fa-cut text-secondary text-6xl"></i>
+              <div className="h-48 bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center">
+                <Scissors className="text-secondary w-16 h-16" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-gray-800 mb-3">Flossing Fundamentals</h3>
@@ -215,8 +215,8 @@ export default function PatientInfo() {
             </div>
             
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-              <div className="h-48 bg-gradient-to-br from-accent/10 to-accent/5 flex items-center justify-center">
-                <i className="fas fa-apple-alt text-accent text-6xl"></i>
+              <div className="h-48 bg-gradient-to-br from-orange-100 to-orange-50 flex items-center justify-center">
+                <Apple className="text-accent w-16 h-16" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-gray-800 mb-3">Nutrition for Healthy Teeth</h3>

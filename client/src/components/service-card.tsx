@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, Check } from "lucide-react";
+import { ChevronDown, Check, Stethoscope, Baby, Sparkles, Smile } from "lucide-react";
 import type { Service } from "@/lib/types";
 
 interface ServiceCardProps {
@@ -16,15 +16,14 @@ export default function ServiceCard({ service, featured = false }: ServiceCardPr
   };
 
   const getIconComponent = (iconName: string) => {
-    // This would typically use a more sophisticated icon mapping
     const iconMap: { [key: string]: JSX.Element } = {
-      tooth: <i className="fas fa-tooth text-2xl" />,
-      child: <i className="fas fa-child text-2xl" />,
-      sparkles: <i className="fas fa-sparkles text-2xl" />,
-      smile: <i className="fas fa-smile text-2xl" />,
+      tooth: <Stethoscope className="w-6 h-6" />,
+      child: <Baby className="w-6 h-6" />,
+      sparkles: <Sparkles className="w-6 h-6" />,
+      smile: <Smile className="w-6 h-6" />,
     };
     
-    return iconMap[iconName] || <i className="fas fa-tooth text-2xl" />;
+    return iconMap[iconName] || <Stethoscope className="w-6 h-6" />;
   };
 
   const getIconColor = (iconName: string) => {

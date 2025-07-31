@@ -1,3 +1,5 @@
+import { Heart, Stethoscope, Users, User, Shield } from "lucide-react";
+
 export default function About() {
   return (
     <div className="pt-16 pb-20 bg-white">
@@ -32,11 +34,14 @@ export default function About() {
             </div>
           </div>
           <div>
-            <img 
-              src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-              alt="Modern dental office interior" 
-              className="rounded-2xl shadow-xl w-full"
-            />
+            <div className="rounded-2xl shadow-xl w-full h-96 bg-gradient-to-br from-secondary via-green-400 to-primary flex items-center justify-center relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-green-50/20 to-blue-50/20"></div>
+              <div className="text-center text-white z-10">
+                <Heart className="w-16 h-16 mx-auto mb-4 opacity-80" />
+                <p className="text-lg font-medium opacity-90">Compassionate Care</p>
+                <p className="text-sm opacity-70">Built on Trust & Excellence</p>
+              </div>
+            </div>
           </div>
         </div>
         
@@ -45,21 +50,21 @@ export default function About() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="bg-primary text-white feature-icon mx-auto mb-4">
-                <i className="fas fa-heart text-2xl"></i>
+                <Heart />
               </div>
               <h3 className="text-xl font-semibold mb-3">Compassion</h3>
               <p className="text-gray-600">We treat every patient with empathy, understanding, and respect, ensuring a comfortable experience for all.</p>
             </div>
             <div className="text-center">
               <div className="bg-secondary text-white feature-icon mx-auto mb-4">
-                <i className="fas fa-user-circle text-2xl"></i>
+                <User />
               </div>
               <h3 className="text-xl font-semibold mb-3">Personalization</h3>
               <p className="text-gray-600">Every treatment plan is tailored to your unique needs, goals, and comfort level.</p>
             </div>
             <div className="text-center">
               <div className="bg-accent text-white feature-icon mx-auto mb-4">
-                <i className="fas fa-shield-alt text-2xl"></i>
+                <Shield />
               </div>
               <h3 className="text-xl font-semibold mb-3">Prevention</h3>
               <p className="text-gray-600">We focus on preventive care and education to help you maintain optimal oral health for life.</p>
@@ -71,32 +76,26 @@ export default function About() {
           <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Office Tour</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="relative group">
-              <img 
-                src="https://images.unsplash.com/photo-1581056771392-8a90ddb76831?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" 
-                alt="Comfortable dental office waiting area" 
-                className="rounded-xl w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-40 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <div className="rounded-xl w-full h-64 bg-gradient-to-br from-blue-100 via-primary/20 to-blue-200 group-hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+                <Users className="w-12 h-12 text-primary opacity-60" />
+              </div>
+              <div className="absolute inset-0 bg-primary/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <span className="text-white font-semibold">Welcoming Reception Area</span>
               </div>
             </div>
             <div className="relative group">
-              <img 
-                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" 
-                alt="Modern dental treatment room" 
-                className="rounded-xl w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-40 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <div className="rounded-xl w-full h-64 bg-gradient-to-br from-green-100 via-secondary/20 to-green-200 group-hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+                <Stethoscope className="w-12 h-12 text-secondary opacity-60" />
+              </div>
+              <div className="absolute inset-0 bg-secondary/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <span className="text-white font-semibold">State-of-the-Art Treatment Rooms</span>
               </div>
             </div>
             <div className="relative group">
-              <img 
-                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" 
-                alt="Dental office consultation area" 
-                className="rounded-xl w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-40 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <div className="rounded-xl w-full h-64 bg-gradient-to-br from-orange-100 via-accent/20 to-orange-200 group-hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+                <Heart className="w-12 h-12 text-accent opacity-60" />
+              </div>
+              <div className="absolute inset-0 bg-accent/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <span className="text-white font-semibold">Private Consultation Rooms</span>
               </div>
             </div>
