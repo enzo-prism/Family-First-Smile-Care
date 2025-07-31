@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { GraduationCap, Stethoscope, Heart, UserRound, HandHeart, Users } from "lucide-react";
-import drChuangPhoto from "@assets/Dr. Chuang_1753971820008.png";
+import drChuangPhoto from "@assets/Dr. Chuang_1753977515693.png";
 
 import officeManagerPhoto from "@assets/Office Manager_1753977345657.jpeg";
 
