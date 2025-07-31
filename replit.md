@@ -29,6 +29,7 @@ Preferred communication style: Simple, everyday language.
 - **January 31, 2025**: Restructured services page with complete service offerings - organized 10 services with nested structure including Children's Dentistry, Dental Exams, Dental Hygiene, General & Family Dentistry, Night Guards, Restorative Dentistry (with Invisalign, Teeth Whitening, Dental Crowns as sub-services), and TMJ Treatment
 - **January 31, 2025**: Added automatic scroll-to-top functionality - all pages now automatically scroll to the top when first opened or navigated to for improved user experience
 - **January 31, 2025**: Replaced YouTube office tour video with new Vimeo video (1106179834) - configured for autoplay, loop, and no player controls for seamless viewing experience
+- **January 31, 2025**: Optimized video component for 9:16 aspect ratio - centered layout with proper vertical dimensions and responsive max-width for better visual presentation
 
 ## System Architecture
 

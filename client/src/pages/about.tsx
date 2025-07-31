@@ -307,19 +307,23 @@ export default function About() {
                 Take a virtual tour of our welcoming Los Gatos location
               </motion.p>
               <motion.div 
-                className="relative w-full" 
-                style={{ paddingBottom: '56.25%' }}
+                className="flex justify-center"
                 variants={scaleIn}
                 whileHover={{ scale: 1.01, transition: { duration: 0.3 } }}
               >
-                <iframe
-                  className="absolute top-0 left-0 w-full h-full rounded-xl shadow-lg"
-                  src="https://player.vimeo.com/video/1106179834?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;background=1&amp;controls=0"
-                  title="Family First Smile Care Office Tour - Los Gatos Location"
-                  frameBorder="0"
-                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-                  style={{ border: 'none', outline: 'none' }}
-                />
+                <div 
+                  className="relative w-full max-w-md mx-auto" 
+                  style={{ paddingBottom: '177.78%' }} // 9:16 aspect ratio (16/9 * 100 = 177.78%)
+                >
+                  <iframe
+                    className="absolute top-0 left-0 w-full h-full rounded-xl shadow-lg"
+                    src="https://player.vimeo.com/video/1106179834?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;background=1&amp;controls=0"
+                    title="Family First Smile Care Office Tour - Los Gatos Location"
+                    frameBorder="0"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                    style={{ border: 'none', outline: 'none' }}
+                  />
+                </div>
               </motion.div>
             </div>
           </motion.div>
