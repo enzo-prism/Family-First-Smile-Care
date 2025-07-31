@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { FileText, Shield, Clock, Download, ChevronDown, Stethoscope, Scissors, Apple } from "lucide-react";
+import { Shield, Clock, ChevronDown, Stethoscope, Scissors, Apple } from "lucide-react";
 import type { FAQItem } from "@/lib/types";
 
 const faqs: FAQItem[] = [
@@ -39,9 +39,7 @@ export default function PatientInfo() {
     setExpandedFAQ(expandedFAQ === id ? null : id);
   };
 
-  const downloadForm = (formType: string) => {
-    alert(`Downloading ${formType} form. This would link to a PDF file in a real implementation.`);
-  };
+
 
   const showEducationModal = (topic: string) => {
     alert(`This would show detailed information about ${topic} in a modal or new page.`);
@@ -55,52 +53,7 @@ export default function PatientInfo() {
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">Everything you need to know for a smooth and comfortable dental experience</p>
         </div>
         
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* New Patient Forms */}
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <div className="text-center mb-6">
-              <div className="bg-primary text-white feature-icon mx-auto mb-4">
-                <FileText />
-              </div>
-              <h2 className="text-2xl font-bold text-gray-800">New Patient Forms</h2>
-            </div>
-            <p className="text-gray-600 mb-6">Save time during your visit by completing these forms in advance. Download and print them out, or complete them digitally.</p>
-            <div className="space-y-3">
-              <Button
-                variant="ghost" 
-                className="flex items-center text-primary hover:text-blue-700 transition-colors w-full justify-start p-0"
-                onClick={() => downloadForm('patient-history')}
-              >
-                <Download className="mr-3 h-4 w-4" />
-                <span>Patient Medical History Form</span>
-              </Button>
-              <Button
-                variant="ghost"
-                className="flex items-center text-primary hover:text-blue-700 transition-colors w-full justify-start p-0"
-                onClick={() => downloadForm('registration')}
-              >
-                <Download className="mr-3 h-4 w-4" />
-                <span>Patient Registration Form</span>
-              </Button>
-              <Button
-                variant="ghost"
-                className="flex items-center text-primary hover:text-blue-700 transition-colors w-full justify-start p-0"
-                onClick={() => downloadForm('insurance')}
-              >
-                <Download className="mr-3 h-4 w-4" />
-                <span>Insurance Information Form</span>
-              </Button>
-              <Button
-                variant="ghost"
-                className="flex items-center text-primary hover:text-blue-700 transition-colors w-full justify-start p-0"
-                onClick={() => downloadForm('hipaa')}
-              >
-                <Download className="mr-3 h-4 w-4" />
-                <span>HIPAA Privacy Notice</span>
-              </Button>
-            </div>
-          </div>
-          
+        <div className="grid lg:grid-cols-2 gap-8">
           {/* Insurance Information */}
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <div className="text-center mb-6">
