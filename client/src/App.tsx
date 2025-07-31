@@ -14,6 +14,7 @@ import Team from "@/pages/team";
 import PatientInfo from "@/pages/patient-info";
 import Contact from "@/pages/contact";
 import TMJ from "@/pages/tmj";
+import ServiceDetail from "@/pages/service-detail";
 import NotFound from "@/pages/not-found";
 
 function ScrollToTop() {
@@ -34,6 +35,7 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/services" component={Services} />
+        <Route path="/services/:serviceId" component={ServiceDetail} />
         <Route path="/team" component={Team} />
         <Route path="/patient-info" component={PatientInfo} />
         <Route path="/contact" component={Contact} />

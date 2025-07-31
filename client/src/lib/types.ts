@@ -23,6 +23,10 @@ export interface Service {
   details: string[];
   featured?: boolean;
   subServices?: Service[];
+  heroDescription?: string;
+  longDescription?: string;
+  benefits?: string[];
+  process?: string[];
 }
 
 export interface FAQItem {
