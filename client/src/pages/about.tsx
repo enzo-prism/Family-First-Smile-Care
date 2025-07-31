@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Heart, Stethoscope, Users, User, Shield } from "lucide-react";
 
 // Import office photos
@@ -17,6 +18,10 @@ import officePhoto12 from "@assets/Office Photo 12_1753972057108.png";
 export default function About() {
   return (
     <div className="pt-16 pb-20 bg-white">
+      <Helmet>
+        <title>About Us - Family First Smile Care | Los Gatos Dentist</title>
+        <meta name="description" content="Learn about Dr. Tim J. Chuang and Family First Smile Care. Our Los Gatos dental practice is built on compassion, personalization, and prevention." />
+      </Helmet>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">About Family First Smile Care</h1>

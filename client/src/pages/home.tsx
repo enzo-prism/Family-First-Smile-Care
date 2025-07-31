@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import TestimonialCarousel from "@/components/testimonial-carousel";
 import { Heart, Microscope, Users, Stethoscope, Baby, Sparkles, Smile, Star } from "lucide-react";
@@ -6,6 +7,10 @@ import { Heart, Microscope, Users, Stethoscope, Baby, Sparkles, Smile, Star } fr
 export default function Home() {
   return (
     <div className="pt-16">
+      <Helmet>
+        <title>Family First Smile Care - Gentle Dental Care in Los Gatos, CA</title>
+        <meta name="description" content="Gentle, compassionate dental care for the whole family in Los Gatos, CA. Dr. Tim J. Chuang offers comprehensive dental services in a welcoming environment." />
+      </Helmet>
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-primary/10 to-secondary/10 py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

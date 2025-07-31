@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { GraduationCap, Stethoscope, Heart, UserRound, HandHeart, Users } from "lucide-react";
@@ -8,6 +9,10 @@ import officeManagerPhoto from "@assets/Office Manager_1753971816019.png";
 export default function Team() {
   return (
     <div className="pt-16 pb-20 bg-white">
+      <Helmet>
+        <title>Meet Our Team - Dr. Tim J. Chuang DDS | Los Gatos Dentist</title>
+        <meta name="description" content="Meet Dr. Tim J. Chuang and our caring dental team. Experienced professionals providing gentle, compassionate dental care in Los Gatos, CA." />
+      </Helmet>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Meet Our Team</h1>

@@ -1,6 +1,7 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Helmet } from "react-helmet-async";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -59,6 +60,10 @@ export default function Contact() {
 
   return (
     <div className="pt-16 pb-20 bg-white">
+      <Helmet>
+        <title>Contact Us - Family First Smile Care | Los Gatos Dentist</title>
+        <meta name="description" content="Contact Family First Smile Care in Los Gatos, CA. Schedule your appointment today at (408) 358-8100 or visit us at 15251 National Ave, Suite 102." />
+      </Helmet>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Contact Us</h1>

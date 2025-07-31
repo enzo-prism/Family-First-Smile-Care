@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Shield, Clock, ChevronDown, Stethoscope, Scissors, Apple } from "lucide-react";
 import type { FAQItem } from "@/lib/types";
@@ -47,6 +48,10 @@ export default function PatientInfo() {
 
   return (
     <div className="pt-16 pb-20 bg-gray-50">
+      <Helmet>
+        <title>Patient Information - Family First Smile Care | Los Gatos</title>
+        <meta name="description" content="Important patient information including insurance, FAQs, and office policies. Get prepared for your visit to Family First Smile Care in Los Gatos, CA." />
+      </Helmet>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Patient Information</h1>

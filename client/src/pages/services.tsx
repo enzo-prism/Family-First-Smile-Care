@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import ServiceCard from "@/components/service-card";
 import type { Service } from "@/lib/types";
 
@@ -60,6 +61,10 @@ const services: Service[] = [
 export default function Services() {
   return (
     <div className="pt-16 pb-20 bg-gray-50">
+      <Helmet>
+        <title>Dental Services - Family First Smile Care | Los Gatos</title>
+        <meta name="description" content="Comprehensive dental services including family dentistry, children's care, cleanings, and Invisalign. Quality dental care for all ages in Los Gatos, CA." />
+      </Helmet>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Our Comprehensive Services</h1>
