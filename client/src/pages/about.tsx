@@ -53,7 +53,7 @@ export default function About() {
             </div>
           </div>
           <div>
-            <div className="rounded-2xl shadow-xl w-full h-96 relative overflow-hidden bg-gray-100">
+            <div className="rounded-2xl shadow-xl w-full h-96 relative overflow-hidden bg-white">
               <div className="absolute inset-2 rounded-xl overflow-hidden">
                 <iframe
                   src="https://player.vimeo.com/video/1106163189?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;background=1"
