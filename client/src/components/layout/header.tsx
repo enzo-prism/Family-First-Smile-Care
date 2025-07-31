@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Smile } from "lucide-react";
+import { Menu, Smile, CreditCard } from "lucide-react";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -42,6 +42,17 @@ export default function Header() {
                 {item.name}
               </Link>
             ))}
+            <a 
+              href="https://swipesimple.com/links/lnk_67505de480da165de07d5bd3f42fbcce" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="mr-4"
+            >
+              <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
+                <CreditCard className="h-4 w-4 mr-2" />
+                Pay Bill
+              </Button>
+            </a>
             <Link href="/contact">
               <Button className="bg-primary text-white hover:bg-blue-700">
                 Book Appointment
@@ -73,6 +84,18 @@ export default function Header() {
                       {item.name}
                     </Link>
                   ))}
+                  <a 
+                    href="https://swipesimple.com/links/lnk_67505de480da165de07d5bd3f42fbcce" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    onClick={() => setIsOpen(false)}
+                    className="w-fit"
+                  >
+                    <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white w-full">
+                      <CreditCard className="h-4 w-4 mr-2" />
+                      Pay Bill Online
+                    </Button>
+                  </a>
                   <Link href="/contact" onClick={() => setIsOpen(false)}>
                     <Button className="bg-primary text-white hover:bg-blue-700 w-fit">
                       Book Appointment

@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Smile, MapPin, Phone, Mail, Facebook, Instagram } from "lucide-react";
+import { Smile, MapPin, Phone, Mail, Facebook, Instagram, CreditCard } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -41,6 +41,17 @@ export default function Footer() {
               <li><Link href="/team" className="hover:text-primary transition-colors">Our Team</Link></li>
               <li><Link href="/patient-info" className="hover:text-primary transition-colors">Patient Info</Link></li>
               <li><Link href="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
+              <li>
+                <a 
+                  href="https://swipesimple.com/links/lnk_67505de480da165de07d5bd3f42fbcce" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors flex items-center"
+                >
+                  <CreditCard className="h-4 w-4 mr-2" />
+                  Pay Bill Online
+                </a>
+              </li>
             </ul>
           </div>
           
