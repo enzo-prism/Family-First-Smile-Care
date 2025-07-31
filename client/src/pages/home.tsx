@@ -344,6 +344,71 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Office Tour Video Section */}
+      <motion.section 
+        className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              variants={slideInLeft}
+            >
+              <motion.h2 
+                className="text-3xl lg:text-4xl font-bold text-gray-800 mb-6"
+                variants={fadeInUp}
+              >
+                Take a Virtual Tour of Our Office
+              </motion.h2>
+              <motion.p 
+                className="text-xl text-gray-600 mb-8"
+                variants={fadeInUp}
+              >
+                Step inside our welcoming Los Gatos location and see why families choose us for their dental care. From our comfortable waiting area to our state-of-the-art treatment rooms.
+              </motion.p>
+              <motion.div variants={scaleIn}>
+                <Link href="/about">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Button className="bg-primary text-white hover:bg-blue-700 text-lg font-semibold px-8 py-3 transform transition-transform duration-200">
+                      Learn More About Our Office
+                    </Button>
+                  </motion.div>
+                </Link>
+              </motion.div>
+            </motion.div>
+            <motion.div 
+              className="flex justify-center"
+              variants={slideInRight}
+            >
+              <motion.div 
+                className="relative max-w-sm mx-auto rounded-xl overflow-hidden shadow-lg"
+                variants={scaleIn}
+                whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+              >
+                <iframe
+                  className="w-full h-96 sm:h-[28rem] md:h-[32rem]"
+                  src="https://player.vimeo.com/video/1106179834?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;background=1&amp;controls=0"
+                  title="Family First Smile Care Virtual Office Tour"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                  style={{ 
+                    border: 'none', 
+                    outline: 'none',
+                    objectFit: 'cover'
+                  }}
+                />
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
       {/* Google Review CTA Section */}
       <motion.section 
         className="py-16 bg-gradient-to-br from-orange-50 to-orange-100"
