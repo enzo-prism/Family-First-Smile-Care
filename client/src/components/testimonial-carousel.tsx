@@ -6,30 +6,72 @@ import type { Testimonial } from "@/lib/types";
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Kevin L.",
-    title: "Parent of 3-year-old patient",
-    content: "Dr. Chuang was so patient with my toddler! She actually enjoyed her visit and can't wait to go back. The staff made the whole experience stress-free for our family.",
+    name: "Kevin Lan",
+    title: "Parent",
+    content: "Dr Chuang was great for my 2-year-old daughter's first dental visit. He was patient, fun and knew how to interact with toddlers.",
     rating: 5
   },
   {
     id: 2,
-    name: "Eternal E.",
-    title: "Long-time patient",
-    content: "Best dentist experience ever! The office is beautiful and calming, and Dr. Chuang explained everything thoroughly. I finally found a dentist I trust completely.",
+    name: "Eternel Elegance",
+    title: "Patient",
+    content: "I am impressed with the excellent care I have received from Dr. Tim J Chuang and his team. Dr. Chuang is a skilled and caring professional.",
     rating: 5
   },
   {
     id: 3,
-    name: "Sarah M.",
-    title: "Invisalign patient",
-    content: "The Invisalign treatment exceeded my expectations. Dr. Chuang and his team made the process seamless, and I'm thrilled with my new smile!",
+    name: "Monica Lee",
+    title: "Patient",
+    content: "Dr. Chuang is stellar and provides great service! He was very patient and walked me through every step of my annual cleaning. Highly recommend!",
     rating: 5
   },
   {
     id: 4,
-    name: "Michael R.",
-    title: "Anxious patient",
-    content: "As someone with dental anxiety, I was nervous about finding a new dentist. Dr. Chuang's gentle approach and the welcoming atmosphere put me completely at ease.",
+    name: "Janey Lee",
+    title: "Patient",
+    content: "I have some dental anxiety and Dr. Chuang is always readily available with solid advice and a reassuring manner in addressing my concerns.",
+    rating: 5
+  },
+  {
+    id: 5,
+    name: "Chloe Yue",
+    title: "New Patient",
+    content: "We moved to Bay mid of last year and Family First Smile Care was the first and ideal dental care that we feel comfortable with.",
+    rating: 5
+  },
+  {
+    id: 6,
+    name: "Don Goers",
+    title: "Patient",
+    content: "Cleanings have been a breeze with a fun staff and a knowledgeable and laid-back Doctor leading the team.",
+    rating: 5
+  },
+  {
+    id: 7,
+    name: "Josephine Lan",
+    title: "Patient",
+    content: "I had a wonderful experience at this establishment. Dr. Chuang is warm, knowledgeable, and incredibly patient.",
+    rating: 5
+  },
+  {
+    id: 8,
+    name: "Tiecheng Yang",
+    title: "Patient",
+    content: "Great dental clinic! Dr Chuang and his team are friendly and professional. My treatment was smooth and painless. Highly recommended!",
+    rating: 5
+  },
+  {
+    id: 9,
+    name: "Davy H",
+    title: "Patient",
+    content: "Dr. Chuang's clinic is welcoming, professional, and truly caring. His team provides attentive, personalized care with expertise and kindness.",
+    rating: 5
+  },
+  {
+    id: 10,
+    name: "Zach Reece",
+    title: "Patient",
+    content: "Tim and the team here are great. He is patient, transparent, and took time to explain things to me. Definitely would recommend.",
     rating: 5
   }
 ];
