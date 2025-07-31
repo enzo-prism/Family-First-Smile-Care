@@ -1,6 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { GraduationCap, Stethoscope, Heart, UserRound, HandHeart, Users } from "lucide-react";
+import drChuangPhoto from "@assets/Dr. Chuang_1753971820008.png";
+import dentalAssistantPhoto from "@assets/Dental Assisitant_1753971816018.png";
+import officeManagerPhoto from "@assets/Office Manager_1753971816019.png";
 
 export default function Team() {
   return (
@@ -16,7 +19,7 @@ export default function Team() {
           <div className="grid lg:grid-cols-3 gap-12 items-center">
             <div className="lg:col-span-1">
               <img 
-                src="/@assets/Dr. Chuang_1753971820008.png" 
+                src={drChuangPhoto} 
                 alt="Dr. Tim J. Chuang, DDS professional headshot" 
                 className="rounded-2xl shadow-lg w-full max-w-md mx-auto"
               />
@@ -77,7 +80,7 @@ export default function Team() {
           <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
             <div className="mb-4">
               <img 
-                src="/@assets/Dental Assisitant_1753971816018.png" 
+                src={dentalAssistantPhoto} 
                 alt="Dental Assistant team member" 
                 className="w-32 h-32 rounded-full mx-auto object-cover shadow-md"
               />
@@ -89,7 +92,7 @@ export default function Team() {
           <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
             <div className="mb-4">
               <img 
-                src="/@assets/Office Manager_1753971816019.png" 
+                src={officeManagerPhoto} 
                 alt="Office Manager team member" 
                 className="w-32 h-32 rounded-full mx-auto object-cover shadow-md"
               />

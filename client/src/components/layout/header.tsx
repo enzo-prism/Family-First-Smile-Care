@@ -3,6 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Smile, CreditCard, Star } from "lucide-react";
+import familyFirstLogo from "@assets/Logo_1753972444614.png";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -24,7 +25,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <img 
-              src="/@assets/Logo_1753972444614.png" 
+              src={familyFirstLogo} 
               alt="Family First Smile Care Logo" 
               className="h-10 w-10 mr-3"
             />

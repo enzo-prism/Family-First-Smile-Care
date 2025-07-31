@@ -1,5 +1,19 @@
 import { Heart, Stethoscope, Users, User, Shield } from "lucide-react";
 
+// Import office photos
+import officePhoto1 from "@assets/Office Photo 1_1753972057110.jpeg";
+import officePhoto2 from "@assets/Office photo 2_1753972057109.jpeg";
+import officePhoto3 from "@assets/Office Photo 3_1753972057109.jpeg";
+import officePhoto4 from "@assets/Office Photo 4_1753972057109.jpeg";
+import officePhoto5 from "@assets/Office Photo 5_1753972057109.jpeg";
+import officePhoto6 from "@assets/Office Photo 6_1753972057109.jpeg";
+import officePhoto7 from "@assets/Office Photo 7_1753972057109.jpeg";
+import officePhoto8 from "@assets/Office Photo 8_1753972057109.jpeg";
+import officePhoto9 from "@assets/Office Photo 9_1753972057108.jpeg";
+import officePhoto10 from "@assets/Office Photo 10_1753972057108.jpeg";
+import officePhoto11 from "@assets/Office Photo 11_1753972057108.png";
+import officePhoto12 from "@assets/Office Photo 12_1753972057108.png";
+
 export default function About() {
   return (
     <div className="pt-16 pb-20 bg-white">
@@ -96,7 +110,7 @@ export default function About() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="relative group">
               <img 
-                src="/@assets/Office Photo 11_1753972057108.png" 
+                src={officePhoto11} 
                 alt="Family First Smile Care welcoming front entrance with practice branding" 
                 className="rounded-xl w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
               />
@@ -106,7 +120,7 @@ export default function About() {
             </div>
             <div className="relative group">
               <img 
-                src="/@assets/Office Photo 12_1753972057108.png" 
+                src={officePhoto12} 
                 alt="Family First Smile Care professional office exterior showing Suite 102" 
                 className="rounded-xl w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
               />
@@ -116,7 +130,7 @@ export default function About() {
             </div>
             <div className="relative group">
               <img 
-                src="/@assets/Office Photo 1_1753972057110.jpeg" 
+                src={officePhoto1} 
                 alt="Modern dental office reception area with comfortable seating" 
                 className="rounded-xl w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
               />
@@ -130,7 +144,7 @@ export default function About() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
             <div className="relative group">
               <img 
-                src="/@assets/Office photo 2_1753972057109.jpeg" 
+                src={officePhoto2} 
                 alt="Modern dental treatment room with state-of-the-art equipment" 
                 className="rounded-lg w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
               />
@@ -140,7 +154,7 @@ export default function About() {
             </div>
             <div className="relative group">
               <img 
-                src="/@assets/Office Photo 3_1753972057109.jpeg" 
+                src={officePhoto3} 
                 alt="Advanced dental technology and equipment" 
                 className="rounded-lg w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
               />
@@ -150,7 +164,7 @@ export default function About() {
             </div>
             <div className="relative group">
               <img 
-                src="/@assets/Office Photo 4_1753972057109.jpeg" 
+                src={officePhoto4} 
                 alt="Professional dental consultation space" 
                 className="rounded-lg w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
               />
@@ -160,7 +174,7 @@ export default function About() {
             </div>
             <div className="relative group">
               <img 
-                src="/@assets/Office Photo 5_1753972057109.jpeg" 
+                src={officePhoto5} 
                 alt="Clean and organized dental office environment" 
                 className="rounded-lg w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
               />
@@ -174,7 +188,7 @@ export default function About() {
           <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-3 mt-6">
             <div className="relative group">
               <img 
-                src="/@assets/Office Photo 6_1753972057109.jpeg" 
+                src={officePhoto6} 
                 alt="Dental office equipment and workspace" 
                 className="rounded-lg w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
               />
@@ -184,7 +198,7 @@ export default function About() {
             </div>
             <div className="relative group">
               <img 
-                src="/@assets/Office Photo 7_1753972057109.jpeg" 
+                src={officePhoto7} 
                 alt="Professional dental workspace setup" 
                 className="rounded-lg w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
               />
@@ -194,7 +208,7 @@ export default function About() {
             </div>
             <div className="relative group">
               <img 
-                src="/@assets/Office Photo 8_1753972057109.jpeg" 
+                src={officePhoto8} 
                 alt="Modern dental facility interior" 
                 className="rounded-lg w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
               />
@@ -204,7 +218,7 @@ export default function About() {
             </div>
             <div className="relative group">
               <img 
-                src="/@assets/Office Photo 9_1753972057108.jpeg" 
+                src={officePhoto9} 
                 alt="Additional office space and amenities" 
                 className="rounded-lg w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
               />
@@ -214,7 +228,7 @@ export default function About() {
             </div>
             <div className="relative group">
               <img 
-                src="/@assets/Office Photo 10_1753972057108.jpeg" 
+                src={officePhoto10} 
                 alt="Complete view of dental practice facilities" 
                 className="rounded-lg w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
               />

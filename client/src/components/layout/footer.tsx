@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Smile, MapPin, Phone, Mail, Facebook, Instagram, CreditCard, Star } from "lucide-react";
+import familyFirstLogo from "@assets/Logo_1753972444614.png";
 
 export default function Footer() {
   return (
@@ -10,7 +11,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
               <img 
-                src="/@assets/Logo_1753972444614.png" 
+                src={familyFirstLogo} 
                 alt="Family First Smile Care Logo" 
                 className="h-8 w-8 mr-3"
               />
