@@ -9,7 +9,11 @@ export default function Footer() {
           {/* Practice Info */}
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
-              <Smile className="text-primary text-2xl mr-3" />
+              <img 
+                src="/attached_assets/Logo_1753972444614.png" 
+                alt="Family First Smile Care Logo" 
+                className="h-8 w-8 mr-3"
+              />
               <span className="text-xl font-bold">Family First Smile Care</span>
             </div>
             <p className="text-gray-300 mb-4">

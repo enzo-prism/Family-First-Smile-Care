@@ -23,7 +23,11 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <Smile className="text-primary text-2xl mr-3" aria-hidden="true" />
+            <img 
+              src="/attached_assets/Logo_1753972444614.png" 
+              alt="Family First Smile Care Logo" 
+              className="h-10 w-10 mr-3"
+            />
             <span className="text-xl font-bold text-gray-800">Family First Smile Care</span>
           </Link>
           
