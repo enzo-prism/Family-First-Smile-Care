@@ -10,6 +10,7 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Changes
 
+- **January 31, 2025**: Integrated YouTube office tour video showcasing the actual Los Gatos location front entrance in the About page Office Tour section
 - **January 31, 2025**: Added online bill pay buttons to navigation header and footer linking to SwipeSimple payment portal that opens in new tab
 - **January 31, 2025**: Added comprehensive office photo gallery with 12 authentic images of Family First Smile Care practice, showing actual reception area, treatment rooms, equipment, and exterior branding
 - **January 31, 2025**: Updated Dr. Chuang's biography with detailed background information including his Cupertino upbringing, UCSD education, UOP dental school graduation in 2020, and Hawaii residency experience

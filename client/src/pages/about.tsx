@@ -74,6 +74,25 @@ export default function About() {
         
         <div className="mt-20">
           <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Office Tour</h2>
+          
+          {/* Featured Office Video */}
+          <div className="mb-12 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl p-8">
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-2xl font-semibold text-gray-800 mb-4 text-center">Visit Our Office</h3>
+              <p className="text-gray-600 text-center mb-6">Take a virtual tour of our welcoming Los Gatos location</p>
+              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full rounded-xl shadow-lg"
+                  src="https://www.youtube.com/embed/53N7iyvh4Nw?start=2"
+                  title="Family First Smile Care Office Tour - Los Gatos Location"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          </div>
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="relative group">
               <img 
