@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, Check, Stethoscope, Baby, Sparkles, Smile } from "lucide-react";
+import { ChevronDown, Check, Stethoscope, Baby, Sparkles, Smile, Activity } from "lucide-react";
+import { Link } from "wouter";
 import type { Service } from "@/lib/types";
 
 interface ServiceCardProps {
@@ -21,6 +22,7 @@ export default function ServiceCard({ service, featured = false }: ServiceCardPr
       child: <Baby className="w-6 h-6" />,
       sparkles: <Sparkles className="w-6 h-6" />,
       smile: <Smile className="w-6 h-6" />,
+      activity: <Activity className="w-6 h-6" />,
     };
     
     return iconMap[iconName] || <Stethoscope className="w-6 h-6" />;
@@ -32,6 +34,7 @@ export default function ServiceCard({ service, featured = false }: ServiceCardPr
       child: "bg-secondary", 
       sparkles: "bg-accent",
       smile: "bg-primary",
+      activity: "bg-secondary",
     };
     
     return colorMap[iconName] || "bg-primary";
@@ -78,17 +81,27 @@ export default function ServiceCard({ service, featured = false }: ServiceCardPr
             )}
           </div>
           
-          {featured && (
-            <a 
-              href="https://fxuqp40sseh.typeform.com/to/CiLYdxSU" 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              <Button className="bg-primary text-white hover:bg-blue-700 font-semibold">
-                Schedule Free Consultation
-              </Button>
-            </a>
-          )}
+          <div className="flex flex-col gap-3">
+            {service.id === "tmj" && (
+              <Link href="/tmj">
+                <Button className="w-full bg-secondary text-white hover:bg-blue-600 font-semibold">
+                  Learn More About TMJ Treatment
+                </Button>
+              </Link>
+            )}
+            
+            {featured && (
+              <a 
+                href="https://fxuqp40sseh.typeform.com/to/CiLYdxSU" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                <Button className="bg-primary text-white hover:bg-blue-700 font-semibold">
+                  Schedule Free Consultation
+                </Button>
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -12,6 +12,7 @@ import Services from "@/pages/services";
 import Team from "@/pages/team";
 import PatientInfo from "@/pages/patient-info";
 import Contact from "@/pages/contact";
+import TMJ from "@/pages/tmj";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -23,6 +24,7 @@ function Router() {
       <Route path="/team" component={Team} />
       <Route path="/patient-info" component={PatientInfo} />
       <Route path="/contact" component={Contact} />
+      <Route path="/tmj" component={TMJ} />
       <Route component={NotFound} />
     </Switch>
   );

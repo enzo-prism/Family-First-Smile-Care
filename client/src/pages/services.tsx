@@ -55,6 +55,19 @@ const services: Service[] = [
       "Shorter treatment time than traditional braces",
       "Free initial consultation and 3D preview"
     ]
+  },
+  {
+    id: "tmj",
+    title: "TMJ Treatment",
+    description: "Relief for jaw pain and dysfunction",
+    icon: "activity",
+    details: [
+      "Comprehensive TMJ/TMD evaluation and diagnosis",
+      "Custom night guards to prevent teeth grinding",
+      "Physical therapy and jaw exercises",
+      "Advanced CBCT imaging for precise assessment",
+      "Personalized treatment plans for lasting relief"
+    ]
   }
 ];
 
@@ -63,7 +76,7 @@ export default function Services() {
     <div className="pt-16 pb-20 bg-gray-50">
       <Helmet>
         <title>Dental Services - Family First Smile Care | Los Gatos</title>
-        <meta name="description" content="Comprehensive dental services including family dentistry, children's care, cleanings, and Invisalign. Quality dental care for all ages in Los Gatos, CA." />
+        <meta name="description" content="Comprehensive dental services including family dentistry, children's care, cleanings, Invisalign, and TMJ treatment. Quality dental care for all ages in Los Gatos, CA." />
       </Helmet>
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-primary/5 to-secondary/5 py-20 lg:py-32">
