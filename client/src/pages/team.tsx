@@ -4,7 +4,7 @@ import { Link } from "wouter";
 import { GraduationCap, Stethoscope, Heart, UserRound, HandHeart, Users } from "lucide-react";
 import drChuangPhoto from "@assets/Dr. Chuang_1753971820008.png";
 import dentalAssistantPhoto from "@assets/Dental Assisitant_1753971816018.png";
-import officeManagerPhoto from "@assets/Office Manager_1753971816019.png";
+import officeManagerPhoto from "@assets/Office Manager_1753977345657.jpeg";
 
 export default function Team() {
   return (
