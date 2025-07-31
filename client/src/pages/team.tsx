@@ -16,7 +16,7 @@ export default function Team() {
           <div className="grid lg:grid-cols-3 gap-12 items-center">
             <div className="lg:col-span-1">
               <img 
-                src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=600" 
+                src="/attached_assets/Dr. Chuang_1753971820008.png" 
                 alt="Dr. Tim J. Chuang, DDS professional headshot" 
                 className="rounded-2xl shadow-lg w-full max-w-md mx-auto"
               />
@@ -73,27 +73,35 @@ export default function Team() {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
-            <div className="bg-primary text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <UserRound className="h-8 w-8" />
+            <div className="mb-4">
+              <img 
+                src="/attached_assets/Dental Assisitant_1753971816018.png" 
+                alt="Dental Assistant team member" 
+                className="w-32 h-32 rounded-full mx-auto object-cover shadow-md"
+              />
             </div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">Dental Hygienists</h3>
-            <p className="text-gray-600">Our licensed hygienists provide thorough cleanings and personalized oral health education with gentle, caring techniques.</p>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">Dental Assistant</h3>
+            <p className="text-gray-600">Our skilled assistant supports Dr. Chuang and ensures your comfort throughout every procedure, big or small.</p>
           </div>
           
           <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
-            <div className="bg-secondary text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <HandHeart className="h-8 w-8" />
+            <div className="mb-4">
+              <img 
+                src="/attached_assets/Office Manager_1753971816019.png" 
+                alt="Office Manager team member" 
+                className="w-32 h-32 rounded-full mx-auto object-cover shadow-md"
+              />
             </div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">Dental Assistants</h3>
-            <p className="text-gray-600">Our skilled assistants support Dr. Chuang and ensure your comfort throughout every procedure, big or small.</p>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">Office Manager</h3>
+            <p className="text-gray-600">Our welcoming office manager handles scheduling, insurance, and ensures your visit runs smoothly from start to finish.</p>
           </div>
           
           <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
             <div className="bg-accent text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
               <Users className="h-8 w-8" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">Front Office Staff</h3>
-            <p className="text-gray-600">Our welcoming reception team handles scheduling, insurance, and ensures your visit runs smoothly from start to finish.</p>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">Our Extended Team</h3>
+            <p className="text-gray-600">Additional hygienists and support staff work together to provide comprehensive care for your entire family.</p>
           </div>
         </div>
         
