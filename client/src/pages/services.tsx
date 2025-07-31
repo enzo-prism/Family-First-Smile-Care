@@ -65,11 +65,17 @@ export default function Services() {
         <title>Dental Services - Family First Smile Care | Los Gatos</title>
         <meta name="description" content="Comprehensive dental services including family dentistry, children's care, cleanings, and Invisalign. Quality dental care for all ages in Los Gatos, CA." />
       </Helmet>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Our Comprehensive Services</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">From routine cleanings to advanced treatments, we offer complete dental care for your entire family</p>
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-r from-primary/5 to-secondary/5 py-20 lg:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Our Comprehensive Services</h1>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">From routine cleanings to advanced treatments, we offer complete dental care for your entire family</p>
+          </div>
         </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         
         <div className="grid lg:grid-cols-2 gap-8">
           {services.map((service) => (

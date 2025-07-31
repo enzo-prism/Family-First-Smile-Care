@@ -13,11 +13,17 @@ export default function Team() {
         <title>Meet Our Team - Dr. Tim J. Chuang DDS | Los Gatos Dentist</title>
         <meta name="description" content="Meet Dr. Tim J. Chuang and our caring dental team. Experienced professionals providing gentle, compassionate dental care in Los Gatos, CA." />
       </Helmet>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Meet Our Team</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">Dedicated professionals committed to providing exceptional dental care with compassion and expertise</p>
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-r from-primary/5 to-secondary/5 py-20 lg:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Meet Our Team</h1>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">Dedicated professionals committed to providing exceptional dental care with compassion and expertise</p>
+          </div>
         </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         
         {/* Dr. Chuang Bio */}
         <div className="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl p-8 lg:p-12 mb-16">

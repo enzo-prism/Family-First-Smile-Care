@@ -81,26 +81,32 @@ export default function About() {
         <title>About Us - Family First Smile Care | Los Gatos Dentist</title>
         <meta name="description" content="Learn about Dr. Tim J. Chuang and Family First Smile Care. Our Los Gatos dental practice is built on compassion, personalization, and prevention." />
       </Helmet>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          className="text-center mb-16"
-          initial="hidden"
-          animate="visible"
-          variants={staggerContainer}
-        >
-          <motion.h1 
-            className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6"
-            variants={fadeInUp}
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-r from-primary/5 to-secondary/5 py-20 lg:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center"
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
           >
-            About Family First Smile Care
-          </motion.h1>
-          <motion.p 
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
-            variants={fadeInUp}
-          >
-            Founded on the principles of compassionate care and family-centered dentistry
-          </motion.p>
-        </motion.div>
+            <motion.h1 
+              className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6"
+              variants={fadeInUp}
+            >
+              About Family First Smile Care
+            </motion.h1>
+            <motion.p 
+              className="text-xl text-gray-600 max-w-3xl mx-auto"
+              variants={fadeInUp}
+            >
+              Founded on the principles of compassionate care and family-centered dentistry
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
           <motion.div
