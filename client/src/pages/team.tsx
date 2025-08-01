@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import { GraduationCap, Stethoscope, Heart, UserRound, HandHeart, Users } from "lucide-react";
+import { GraduationCap, Stethoscope, Heart, UserRound, HandHeart } from "lucide-react";
 import drChuangPhoto from "@assets/Dr. Chuang_1753977515693.png";
 
 import officeManagerPhoto from "@assets/Office Manager_1753977345657.jpeg";
@@ -87,7 +87,7 @@ export default function Team() {
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">Behind every great dentist is an exceptional team. Our friendly hygienists, assistants, and staff are dedicated to making your visit comfortable and stress-free.</p>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="max-w-md mx-auto">
           <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
             <div className="mb-4">
               <img 
@@ -98,14 +98,6 @@ export default function Team() {
             </div>
             <h3 className="text-xl font-semibold text-gray-800 mb-2">Office Manager</h3>
             <p className="text-gray-600">Our welcoming office manager handles scheduling, insurance, and ensures your visit runs smoothly from start to finish.</p>
-          </div>
-          
-          <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
-            <div className="bg-accent text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Users className="h-8 w-8" />
-            </div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">Our Extended Team</h3>
-            <p className="text-gray-600">Additional hygienists and support staff work together to provide comprehensive care for your entire family.</p>
           </div>
         </div>
         

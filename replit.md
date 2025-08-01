@@ -31,6 +31,9 @@ Preferred communication style: Simple, everyday language.
 - **January 31, 2025**: Replaced YouTube office tour video with new Vimeo video (1106179834) - configured for autoplay, loop, and no player controls for seamless viewing experience
 - **January 31, 2025**: Optimized video component for 9:16 aspect ratio - centered layout with proper vertical dimensions and responsive max-width for better visual presentation
 - **January 31, 2025**: Added Office Tour Video section to homepage - features the Vimeo office tour video with CTA button leading to About page, positioned between testimonials and Google review sections for optimal user flow
+- **February 1, 2025**: Implemented dynamic service detail pages architecture - each service now has its own dedicated page with comprehensive information, benefits, and process sections accessed via /services/:serviceId routing
+- **February 1, 2025**: Updated service cards to link directly to individual service pages instead of expanding inline - maintains cleaner design with preview of first 3 features and "Learn More" buttons
+- **February 1, 2025**: Removed "Our Extended Team" card from Team page - now features only Dr. Chuang's detailed biography and Office Manager with centered, focused layout
 
 ## System Architecture
 
