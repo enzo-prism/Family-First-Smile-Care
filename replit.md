@@ -35,6 +35,7 @@ Preferred communication style: Simple, everyday language.
 - **February 1, 2025**: Updated service cards to link directly to individual service pages instead of expanding inline - maintains cleaner design with preview of first 3 features and "Learn More" buttons
 - **February 1, 2025**: Removed "Our Extended Team" card from Team page - now features only Dr. Chuang's detailed biography and Office Manager with centered, focused layout
 - **February 1, 2025**: Integrated Google Analytics with measurement ID G-54ESSN4BF8 - includes automatic page view tracking, custom event tracking capabilities, and proper TypeScript integration
+- **February 1, 2025**: Added Hotjar tracking (ID: 6487571) for user behavior analysis and heatmaps - provides comprehensive user interaction insights including click tracking, scroll behavior, and session recordings
 
 ## System Architecture
 

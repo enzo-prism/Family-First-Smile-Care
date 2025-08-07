@@ -1,8 +1,13 @@
-// Define the gtag function globally
+// Define the gtag and hotjar functions globally
 declare global {
   interface Window {
     dataLayer: any[];
     gtag: (...args: any[]) => void;
+    hj: (...args: any[]) => void;
+    _hjSettings: {
+      hjid: number;
+      hjsv: number;
+    };
   }
 }
 
@@ -30,6 +35,23 @@ export const initGA = () => {
     gtag('config', '${measurementId}');
   `;
   document.head.appendChild(script2);
+};
+
+// Initialize Hotjar
+export const initHotjar = () => {
+  // Hotjar Tracking Code for Family First Smile Care
+  const script = document.createElement('script');
+  script.textContent = `
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:6487571,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  `;
+  document.head.appendChild(script);
 };
 
 // Track page views - useful for single-page applications
