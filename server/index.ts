@@ -77,17 +77,53 @@ app.use((req, res, next) => {
   // Serve attached assets statically
   app.use('/attached_assets', express.static(path.resolve(process.cwd(), 'attached_assets')));
 
-  // Serve robots.txt and sitemap.xml from client directory
+  // Serve robots.txt and sitemap.xml with proper fallbacks for production
   app.get('/robots.txt', (_req, res) => {
-    const robotsPath = path.resolve(process.cwd(), 'client', 'robots.txt');
+    // Try production location first, then development location
+    const productionPath = path.resolve(process.cwd(), 'dist', 'public', 'robots.txt');
+    const developmentPath = path.resolve(process.cwd(), 'client', 'robots.txt');
+    
+    const robotsPath = require('fs').existsSync(productionPath) ? productionPath : developmentPath;
+    
     res.type('text/plain');
-    res.sendFile(robotsPath);
+    res.sendFile(robotsPath, (err) => {
+      if (err) {
+        // If file not found, send a default robots.txt
+        res.status(200).send(`# Robots.txt for Family First Smile Care
+# https://famfirstsmile.com
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /attached_assets/
+
+Sitemap: https://famfirstsmile.com/sitemap.xml`);
+      }
+    });
   });
 
   app.get('/sitemap.xml', (_req, res) => {
-    const sitemapPath = path.resolve(process.cwd(), 'client', 'sitemap.xml');
+    // Try production location first, then development location
+    const productionPath = path.resolve(process.cwd(), 'dist', 'public', 'sitemap.xml');
+    const developmentPath = path.resolve(process.cwd(), 'client', 'sitemap.xml');
+    
+    const sitemapPath = require('fs').existsSync(productionPath) ? productionPath : developmentPath;
+    
     res.type('text/xml');
-    res.sendFile(sitemapPath);
+    res.sendFile(sitemapPath, (err) => {
+      if (err) {
+        // If file not found, send a minimal sitemap
+        res.status(200).send(`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://famfirstsmile.com/</loc>
+    <lastmod>2025-02-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>`);
+      }
+    });
   });
 
   // importantly only setup vite in development and after
