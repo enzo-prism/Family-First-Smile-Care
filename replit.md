@@ -36,7 +36,7 @@ Preferred communication style: Simple, everyday language.
 - **February 1, 2025**: Removed "Our Extended Team" card from Team page - now features only Dr. Chuang's detailed biography and Office Manager with centered, focused layout
 - **February 1, 2025**: Integrated Google Analytics with measurement ID G-54ESSN4BF8 - includes automatic page view tracking, custom event tracking capabilities, and proper TypeScript integration
 - **February 1, 2025**: Added Hotjar tracking (ID: 6487571) for user behavior analysis and heatmaps - provides comprehensive user interaction insights including click tracking, scroll behavior, and session recordings
-- **February 1, 2025**: Fixed duplicate title tag SEO issue - removed static title from index.html, added canonical URLs to all pages to resolve www vs non-www duplicate content issues
+- **February 1, 2025**: Fixed duplicate title tag SEO issue - implemented server-side 301 redirect from www to non-www, updated static HTML with full title and description for better SEO crawling, added canonical URLs to all pages
 
 ## System Architecture
 
