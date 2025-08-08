@@ -70,12 +70,16 @@ export default function Home() {
               animate="visible"
               variants={slideInLeft}
             >
-              <motion.h1 
-                className="text-4xl lg:text-6xl font-bold text-gray-800 mb-6"
-                variants={fadeInUp}
-              >
-                Gentle, Compassionate Dental Care for the Whole Family
-              </motion.h1>
+              <h1 className="text-4xl lg:text-6xl font-bold text-gray-800 mb-6">
+                <motion.span
+                  initial="hidden"
+                  animate="visible"
+                  variants={fadeInUp}
+                  style={{ display: 'block' }}
+                >
+                  Gentle, Compassionate Dental Care for the Whole Family
+                </motion.span>
+              </h1>
               <motion.p 
                 className="text-xl text-gray-600 mb-8"
                 variants={fadeInUp}
