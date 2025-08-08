@@ -51,6 +51,7 @@ export default function PatientInfo() {
       <Helmet>
         <title>Patient Information - Family First Smile Care | Los Gatos</title>
         <meta name="description" content="Important patient information including insurance, FAQs, and office policies. Get prepared for your visit to Family First Smile Care in Los Gatos, CA." />
+        <link rel="canonical" href="https://famfirstsmile.com/patient-info" />
       </Helmet>
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-primary/5 to-secondary/5 py-20 lg:py-32">

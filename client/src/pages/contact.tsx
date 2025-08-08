@@ -63,6 +63,7 @@ export default function Contact() {
       <Helmet>
         <title>Contact Us - Family First Smile Care | Los Gatos Dentist</title>
         <meta name="description" content="Contact Family First Smile Care in Los Gatos, CA. Schedule your appointment today at (408) 358-8100 or visit us at 15251 National Ave, Suite 102." />
+        <link rel="canonical" href="https://famfirstsmile.com/contact" />
       </Helmet>
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-primary/5 to-secondary/5 py-20 lg:py-32">

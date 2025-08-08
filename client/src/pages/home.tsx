@@ -59,6 +59,7 @@ export default function Home() {
       <Helmet>
         <title>Family First Smile Care - Gentle Dental Care in Los Gatos, CA</title>
         <meta name="description" content="Gentle, compassionate dental care for the whole family in Los Gatos, CA. Dr. Tim J. Chuang offers comprehensive dental services in a welcoming environment." />
+        <link rel="canonical" href="https://famfirstsmile.com/" />
       </Helmet>
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-primary/10 to-secondary/10 py-20 lg:py-32">
