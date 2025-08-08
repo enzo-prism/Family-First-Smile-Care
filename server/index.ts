@@ -1,9 +1,24 @@
 import express, { type Request, Response, NextFunction } from "express";
+import compression from "compression";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 import path from "path";
 
 const app = express();
+
+// Enable gzip compression for all responses
+app.use(compression({
+  filter: (req, res) => {
+    // Compress all text-based responses
+    if (req.headers['x-no-compression']) {
+      return false;
+    }
+    return compression.filter(req, res);
+  },
+  level: 6, // Compression level (0-9, 6 is default balance of speed/compression)
+  threshold: 1024, // Only compress files larger than 1KB
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -81,6 +96,21 @@ app.use((req, res, next) => {
   if (app.get("env") === "development") {
     await setupVite(app, server);
   } else {
+    // In production, serve static assets with compression before the catch-all route
+    const distPath = path.resolve(process.cwd(), 'dist/public');
+    app.use('/assets', express.static(path.join(distPath, 'assets'), {
+      maxAge: '1y', // Cache assets for 1 year
+      etag: true,
+      lastModified: true,
+      setHeaders: (res, filePath) => {
+        // Ensure proper content types
+        if (filePath.endsWith('.js')) {
+          res.setHeader('Content-Type', 'application/javascript; charset=utf-8');
+        } else if (filePath.endsWith('.css')) {
+          res.setHeader('Content-Type', 'text/css; charset=utf-8');
+        }
+      }
+    }));
     serveStatic(app);
   }
 
