@@ -62,6 +62,19 @@ app.use((req, res, next) => {
   // Serve attached assets statically
   app.use('/attached_assets', express.static(path.resolve(process.cwd(), 'attached_assets')));
 
+  // Serve robots.txt and sitemap.xml from client directory
+  app.get('/robots.txt', (_req, res) => {
+    const robotsPath = path.resolve(process.cwd(), 'client', 'robots.txt');
+    res.type('text/plain');
+    res.sendFile(robotsPath);
+  });
+
+  app.get('/sitemap.xml', (_req, res) => {
+    const sitemapPath = path.resolve(process.cwd(), 'client', 'sitemap.xml');
+    res.type('text/xml');
+    res.sendFile(sitemapPath);
+  });
+
   // importantly only setup vite in development and after
   // setting up all the other routes so the catch-all route
   // doesn't interfere with the other routes
