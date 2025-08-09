@@ -93,7 +93,6 @@ export default function PatientInfo() {
                   <li>• Cash and Credit Cards</li>
                   <li>• Flexible financing available</li>
                   <li>• Payment plans</li>
-                  <li>• CareCredit accepted</li>
                 </ul>
               </div>
             </div>
