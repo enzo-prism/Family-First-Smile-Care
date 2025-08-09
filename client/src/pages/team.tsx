@@ -10,7 +10,7 @@ export default function Team() {
   return (
     <div className="pt-16 pb-20 bg-white">
       <Helmet>
-        <title>Meet Our Team - Dr. Tim J. Chuang DDS | Los Gatos Dentist</title>
+        <title>Meet Our Team - Dr. Tim J. Chuang | Los Gatos Dentist</title>
         <meta name="description" content="Meet Dr. Tim J. Chuang and our caring dental team. Experienced professionals providing gentle, compassionate dental care in Los Gatos, CA." />
         <link rel="canonical" href="https://famfirstsmile.com/team" />
       </Helmet>
@@ -32,12 +32,12 @@ export default function Team() {
             <div className="lg:col-span-1">
               <img 
                 src={drChuangPhoto} 
-                alt="Dr. Tim J. Chuang, DDS professional headshot" 
+                alt="Dr. Tim J. Chuang professional headshot" 
                 className="rounded-2xl shadow-lg w-full max-w-md mx-auto"
               />
             </div>
             <div className="lg:col-span-2">
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Dr. Tim J. Chuang, DDS</h2>
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Dr. Tim J. Chuang</h2>
               <p className="text-xl text-primary font-semibold mb-6">Lead Dentist & Practice Owner</p>
               
               <div className="space-y-4 text-gray-600 mb-8">
