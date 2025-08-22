@@ -319,7 +319,7 @@ export default function About() {
                   <div className="relative" style={{ paddingBottom: '177.78%' }}> {/* 9:16 aspect ratio */}
                     <iframe
                       className="absolute inset-0 w-full h-full"
-                      src="https://player.vimeo.com/video/1112347739?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                      src="https://player.vimeo.com/video/1112347739?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;background=1&amp;muted=1&amp;loop=1&amp;autoplay=1"
                       title="Family First Smile Care Office Tour"
                       frameBorder="0"
                       allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
@@ -340,7 +340,7 @@ export default function About() {
                   <div className="relative" style={{ paddingBottom: '177.78%' }}> {/* 9:16 aspect ratio */}
                     <iframe
                       className="absolute inset-0 w-full h-full"
-                      src="https://player.vimeo.com/video/1106179818?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                      src="https://player.vimeo.com/video/1106179818?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;background=1&amp;muted=1&amp;loop=1&amp;autoplay=1"
                       title="Family First Smile Care Facility Tour"
                       frameBorder="0"
                       allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
