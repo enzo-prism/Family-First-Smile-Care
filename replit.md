@@ -10,6 +10,8 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Changes
 
+- **August 22, 2025**: Implemented Raleway font family across entire website - replaced system fonts with custom Raleway variable fonts for improved typography, includes all weights from Light (300) to ExtraBold (800) with italic variants
+
 - **January 31, 2025**: Added PostgreSQL database with contact form functionality - contact submissions now stored in database with full validation and error handling
 - **January 31, 2025**: Replaced gradient placeholders with authentic Vimeo videos - hero section shows office tour, about page shows patient experience
 - **January 31, 2025**: Integrated authentic Google reviews from real patients - replaced stock testimonials with 10 actual patient reviews

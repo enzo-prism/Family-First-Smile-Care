@@ -2,6 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Raleway Font Face Declarations */
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('@assets/Raleway-VariableFont_wght_1755880021461.ttf') format('truetype-variations');
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('@assets/Raleway-Italic-VariableFont_wght_1755880021461.ttf') format('truetype-variations');
+}
+
+/* Fallback for browsers that don't support variable fonts */
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('@assets/Raleway-Light_1755880014359.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('@assets/Raleway-Regular_1755880014360.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('@assets/Raleway-Medium_1755880014359.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('@assets/Raleway-SemiBold_1755880014360.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('@assets/Raleway-Bold_1755880014358.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('@assets/Raleway-ExtraBold_1755880014358.ttf') format('truetype');
+}
+
 :root {
   --background: hsl(0, 0%, 100%);
   --foreground: hsl(20, 14.3%, 4.1%);

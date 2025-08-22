@@ -17,6 +17,7 @@ import PatientInfo from "@/pages/patient-info";
 import Contact from "@/pages/contact";
 import TMJ from "@/pages/tmj";
 import ServiceDetail from "@/pages/service-detail";
+import FontTest from "@/pages/font-test";
 import NotFound from "@/pages/not-found";
 
 function ScrollToTop() {
@@ -45,6 +46,7 @@ function Router() {
         <Route path="/patient-info" component={PatientInfo} />
         <Route path="/contact" component={Contact} />
         <Route path="/tmj" component={TMJ} />
+        <Route path="/font-test" component={FontTest} />
         <Route component={NotFound} />
       </Switch>
     </>
