@@ -309,7 +309,7 @@ export default function About() {
               </motion.p>
               
               {/* Video Grid - Optimized for 9:16 aspect ratio */}
-              <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
                 {/* First Vimeo Video */}
                 <motion.div 
                   className="relative rounded-xl overflow-hidden shadow-lg bg-black"
@@ -344,27 +344,6 @@ export default function About() {
                       title="Family First Smile Care Facility Tour"
                       frameBorder="0"
                       allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-                      style={{ 
-                        border: 'none', 
-                        outline: 'none'
-                      }}
-                    />
-                  </div>
-                </motion.div>
-
-                {/* Google Docs Video */}
-                <motion.div 
-                  className="relative rounded-xl overflow-hidden shadow-lg bg-black"
-                  variants={scaleIn}
-                  whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
-                >
-                  <div className="relative" style={{ paddingBottom: '177.78%' }}> {/* 9:16 aspect ratio */}
-                    <iframe
-                      className="absolute inset-0 w-full h-full"
-                      src="https://drive.google.com/file/d/1A1MVBp2akeAW0bhZ6bC9xR-WyeuO1lhds_NvQesPQHk/preview"
-                      title="Family First Smile Care Office Tour - Extended Version"
-                      frameBorder="0"
-                      allow="autoplay; fullscreen"
                       style={{ 
                         border: 'none', 
                         outline: 'none'
