@@ -11,7 +11,7 @@ Preferred communication style: Simple, everyday language.
 ## Recent Changes
 
 - **August 22, 2025**: Implemented Raleway font family across entire website - replaced system fonts with custom Raleway variable fonts for improved typography, includes all weights from Light (300) to ExtraBold (800) with italic variants
-- **August 22, 2025**: Updated office tour video on /about page - replaced Vimeo video with Google Docs video for better integration with practice's Google Workspace
+- **August 22, 2025**: Updated office tour video section on /about page - added two Vimeo videos (1112347739 and 1106179818) in a grid layout, plus Google Docs video for comprehensive office viewing experience
 
 - **January 31, 2025**: Added PostgreSQL database with contact form functionality - contact submissions now stored in database with full validation and error handling
 - **January 31, 2025**: Replaced gradient placeholders with authentic Vimeo videos - hero section shows office tour, about page shows patient experience

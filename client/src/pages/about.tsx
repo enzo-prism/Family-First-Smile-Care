@@ -289,12 +289,12 @@ export default function About() {
             Office Tour
           </motion.h2>
           
-          {/* Featured Office Video */}
+          {/* Featured Office Videos */}
           <motion.div 
             className="mb-12 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl p-8"
             variants={scaleIn}
           >
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-6xl mx-auto">
               <motion.h3 
                 className="text-2xl font-semibold text-gray-800 mb-4 text-center"
                 variants={fadeInUp}
@@ -302,13 +302,56 @@ export default function About() {
                 Visit Our Office
               </motion.h3>
               <motion.p 
-                className="text-gray-600 text-center mb-6"
+                className="text-gray-600 text-center mb-8"
                 variants={fadeInUp}
               >
                 Take a virtual tour of our welcoming Los Gatos location
               </motion.p>
+              
+              {/* Video Grid */}
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* First Vimeo Video */}
+                <motion.div 
+                  className="relative rounded-xl overflow-hidden shadow-lg"
+                  variants={scaleIn}
+                  whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+                >
+                  <iframe
+                    className="w-full h-64 sm:h-80 md:h-96"
+                    src="https://player.vimeo.com/video/1112347739?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                    title="Family First Smile Care Office Tour"
+                    frameBorder="0"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                    style={{ 
+                      border: 'none', 
+                      outline: 'none'
+                    }}
+                  />
+                </motion.div>
+
+                {/* Second Vimeo Video */}
+                <motion.div 
+                  className="relative rounded-xl overflow-hidden shadow-lg"
+                  variants={scaleIn}
+                  whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+                >
+                  <iframe
+                    className="w-full h-64 sm:h-80 md:h-96"
+                    src="https://player.vimeo.com/video/1106179818?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                    title="Family First Smile Care Facility Tour"
+                    frameBorder="0"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                    style={{ 
+                      border: 'none', 
+                      outline: 'none'
+                    }}
+                  />
+                </motion.div>
+              </div>
+
+              {/* Google Docs Video - Keeping it below */}
               <motion.div 
-                className="flex justify-center"
+                className="mt-8 flex justify-center"
                 variants={scaleIn}
                 whileHover={{ scale: 1.01, transition: { duration: 0.3 } }}
               >
@@ -316,7 +359,7 @@ export default function About() {
                   <iframe
                     className="w-full h-96 sm:h-[28rem] md:h-[32rem]"
                     src="https://drive.google.com/file/d/1A1MVBp2akeAW0bhZ6bC9xR-WyeuO1lhds_NvQesPQHk/preview"
-                    title="Family First Smile Care Office Tour - Los Gatos Location"
+                    title="Family First Smile Care Office Tour - Extended Version"
                     frameBorder="0"
                     allow="autoplay; fullscreen"
                     style={{ 
