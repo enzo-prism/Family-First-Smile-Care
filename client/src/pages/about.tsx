@@ -315,10 +315,10 @@ export default function About() {
                 <div className="relative max-w-sm mx-auto rounded-xl overflow-hidden shadow-lg">
                   <iframe
                     className="w-full h-96 sm:h-[28rem] md:h-[32rem]"
-                    src="https://player.vimeo.com/video/1106179834?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;background=1&amp;controls=0"
+                    src="https://drive.google.com/file/d/1A1MVBp2akeAW0bhZ6bC9xR-WyeuO1lhds_NvQesPQHk/preview"
                     title="Family First Smile Care Office Tour - Los Gatos Location"
                     frameBorder="0"
-                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                    allow="autoplay; fullscreen"
                     style={{ 
                       border: 'none', 
                       outline: 'none',
