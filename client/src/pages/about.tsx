@@ -308,68 +308,71 @@ export default function About() {
                 Take a virtual tour of our welcoming Los Gatos location
               </motion.p>
               
-              {/* Video Grid */}
-              <div className="grid md:grid-cols-2 gap-8">
+              {/* Video Grid - Optimized for 9:16 aspect ratio */}
+              <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
                 {/* First Vimeo Video */}
                 <motion.div 
-                  className="relative rounded-xl overflow-hidden shadow-lg"
+                  className="relative rounded-xl overflow-hidden shadow-lg bg-black"
                   variants={scaleIn}
                   whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
                 >
-                  <iframe
-                    className="w-full h-64 sm:h-80 md:h-96"
-                    src="https://player.vimeo.com/video/1112347739?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-                    title="Family First Smile Care Office Tour"
-                    frameBorder="0"
-                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-                    style={{ 
-                      border: 'none', 
-                      outline: 'none'
-                    }}
-                  />
+                  <div className="relative" style={{ paddingBottom: '177.78%' }}> {/* 9:16 aspect ratio */}
+                    <iframe
+                      className="absolute inset-0 w-full h-full"
+                      src="https://player.vimeo.com/video/1112347739?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                      title="Family First Smile Care Office Tour"
+                      frameBorder="0"
+                      allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                      style={{ 
+                        border: 'none', 
+                        outline: 'none'
+                      }}
+                    />
+                  </div>
                 </motion.div>
 
                 {/* Second Vimeo Video */}
                 <motion.div 
-                  className="relative rounded-xl overflow-hidden shadow-lg"
+                  className="relative rounded-xl overflow-hidden shadow-lg bg-black"
                   variants={scaleIn}
                   whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
                 >
-                  <iframe
-                    className="w-full h-64 sm:h-80 md:h-96"
-                    src="https://player.vimeo.com/video/1106179818?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-                    title="Family First Smile Care Facility Tour"
-                    frameBorder="0"
-                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-                    style={{ 
-                      border: 'none', 
-                      outline: 'none'
-                    }}
-                  />
+                  <div className="relative" style={{ paddingBottom: '177.78%' }}> {/* 9:16 aspect ratio */}
+                    <iframe
+                      className="absolute inset-0 w-full h-full"
+                      src="https://player.vimeo.com/video/1106179818?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                      title="Family First Smile Care Facility Tour"
+                      frameBorder="0"
+                      allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                      style={{ 
+                        border: 'none', 
+                        outline: 'none'
+                      }}
+                    />
+                  </div>
+                </motion.div>
+
+                {/* Google Docs Video */}
+                <motion.div 
+                  className="relative rounded-xl overflow-hidden shadow-lg bg-black"
+                  variants={scaleIn}
+                  whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+                >
+                  <div className="relative" style={{ paddingBottom: '177.78%' }}> {/* 9:16 aspect ratio */}
+                    <iframe
+                      className="absolute inset-0 w-full h-full"
+                      src="https://drive.google.com/file/d/1A1MVBp2akeAW0bhZ6bC9xR-WyeuO1lhds_NvQesPQHk/preview"
+                      title="Family First Smile Care Office Tour - Extended Version"
+                      frameBorder="0"
+                      allow="autoplay; fullscreen"
+                      style={{ 
+                        border: 'none', 
+                        outline: 'none'
+                      }}
+                    />
+                  </div>
                 </motion.div>
               </div>
-
-              {/* Google Docs Video - Keeping it below */}
-              <motion.div 
-                className="mt-8 flex justify-center"
-                variants={scaleIn}
-                whileHover={{ scale: 1.01, transition: { duration: 0.3 } }}
-              >
-                <div className="relative max-w-sm mx-auto rounded-xl overflow-hidden shadow-lg">
-                  <iframe
-                    className="w-full h-96 sm:h-[28rem] md:h-[32rem]"
-                    src="https://drive.google.com/file/d/1A1MVBp2akeAW0bhZ6bC9xR-WyeuO1lhds_NvQesPQHk/preview"
-                    title="Family First Smile Care Office Tour - Extended Version"
-                    frameBorder="0"
-                    allow="autoplay; fullscreen"
-                    style={{ 
-                      border: 'none', 
-                      outline: 'none',
-                      objectFit: 'cover'
-                    }}
-                  />
-                </div>
-              </motion.div>
             </div>
           </motion.div>
           
