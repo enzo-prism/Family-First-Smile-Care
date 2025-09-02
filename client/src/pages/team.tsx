@@ -106,13 +106,12 @@ export default function Team() {
             <div className="mb-4">
               <img 
                 src={trangAssistantPhoto} 
-                alt="Trang - Dental Assistant" 
+                alt="Dental Assistant team member" 
                 className="w-32 h-32 rounded-full mx-auto object-cover shadow-md"
               />
             </div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">Trang</h3>
-            <p className="text-sm text-primary font-medium mb-2">Dental Assistant</p>
-            <p className="text-gray-600">Trang ensures every patient feels comfortable and cared for during their visit, providing gentle assistance throughout your treatment.</p>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">Dental Assistant</h3>
+            <p className="text-gray-600">Our skilled dental assistant ensures your comfort throughout every procedure, providing gentle care and support during your treatment.</p>
           </div>
         </div>
         
