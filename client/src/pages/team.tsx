@@ -5,6 +5,7 @@ import { GraduationCap, Stethoscope, Heart, UserRound, HandHeart } from "lucide-
 import drChuangPhoto from "@assets/Dr. Chuang_1753977515693.png";
 
 import officeManagerPhoto from "@assets/Office Manager_1753977345657.jpeg";
+import trangAssistantPhoto from "@assets/Trang Assistant Headshot_1756845643362.png";
 
 export default function Team() {
   return (
@@ -88,7 +89,7 @@ export default function Team() {
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">Behind every great dentist is an exceptional team. Our staff are dedicated to making your visit comfortable and stress-free.</p>
         </div>
         
-        <div className="max-w-md mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
             <div className="mb-4">
               <img 
@@ -99,6 +100,19 @@ export default function Team() {
             </div>
             <h3 className="text-xl font-semibold text-gray-800 mb-2">Office Manager</h3>
             <p className="text-gray-600">Our welcoming office manager handles scheduling, insurance, and ensures your visit runs smoothly from start to finish.</p>
+          </div>
+          
+          <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
+            <div className="mb-4">
+              <img 
+                src={trangAssistantPhoto} 
+                alt="Trang - Dental Assistant" 
+                className="w-32 h-32 rounded-full mx-auto object-cover shadow-md"
+              />
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">Trang</h3>
+            <p className="text-sm text-primary font-medium mb-2">Dental Assistant</p>
+            <p className="text-gray-600">Trang ensures every patient feels comfortable and cared for during their visit, providing gentle assistance throughout your treatment.</p>
           </div>
         </div>
         

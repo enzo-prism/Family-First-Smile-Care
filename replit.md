@@ -10,6 +10,7 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Changes
 
+- **September 2, 2025**: Added Trang as Dental Assistant to team page - expanded team section with new team member photo and description
 - **August 22, 2025**: Implemented Raleway font family across entire website - replaced system fonts with custom Raleway variable fonts for improved typography, includes all weights from Light (300) to ExtraBold (800) with italic variants
 - **August 22, 2025**: Updated office tour video section on /about page - displays two Vimeo videos (1112347739 and 1106179818) in an optimized 9:16 aspect ratio grid layout
 
