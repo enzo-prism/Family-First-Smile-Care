@@ -276,21 +276,47 @@ export default function Contact() {
         
         {/* Map Section */}
         <div className="mt-16">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Find Us</h2>
-          <div className="bg-gray-200 rounded-2xl overflow-hidden shadow-lg h-96">
-            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-300 to-gray-400">
-              <div className="text-center">
-                <MapPin className="h-12 w-12 text-gray-600 mb-4 mx-auto" />
-                <p className="text-gray-700 font-semibold">Google Maps Integration</p>
-                <p className="text-sm text-gray-600">15251 National Ave, Suite 102, Los Gatos, CA 95032</p>
-                <a 
-                  href="https://maps.google.com/?q=15251+National+Ave,+Suite+102,+Los+Gatos,+CA+95032" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block mt-4 bg-primary text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-                >
-                  Open in Google Maps
-                </a>
+          <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center">Find Us</h2>
+          <div className="bg-white rounded-2xl overflow-hidden shadow-xl">
+            {/* Map Container */}
+            <div className="relative h-[500px]">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3173.916!2d-121.9707!3d37.2970!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s15251%20National%20Ave%2C%20Suite%20102%2C%20Los%20Gatos%2C%20CA%2095032!5e0!3m2!1sen!2sus!4v1735847521234!5m2!1sen!2sus&q=Family+First+Smile+Care,15251+National+Ave+Suite+102,Los+Gatos,CA+95032"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Family First Smile Care Location"
+                className="absolute inset-0"
+              />
+            </div>
+            {/* Info Bar */}
+            <div className="bg-gradient-to-r from-primary to-secondary p-6">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div className="text-white text-center md:text-left">
+                  <h3 className="font-semibold text-lg mb-1">Family First Smile Care</h3>
+                  <p className="text-white/90">15251 National Ave, Suite 102, Los Gatos, CA 95032</p>
+                </div>
+                <div className="flex gap-3">
+                  <a 
+                    href="https://maps.google.com/?q=Family+First+Smile+Care+15251+National+Ave+Suite+102+Los+Gatos+CA+95032" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="bg-white text-primary px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors font-semibold flex items-center gap-2"
+                  >
+                    <MapPin className="h-4 w-4" />
+                    Get Directions
+                  </a>
+                  <a 
+                    href="tel:4083588100"
+                    className="bg-white/20 backdrop-blur text-white px-6 py-2 rounded-lg hover:bg-white/30 transition-colors font-semibold flex items-center gap-2 border border-white/30"
+                  >
+                    <Phone className="h-4 w-4" />
+                    Call Now
+                  </a>
+                </div>
               </div>
             </div>
           </div>
