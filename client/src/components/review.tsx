@@ -49,6 +49,16 @@ export default function ReviewComponent({ review, index = 0 }: ReviewProps) {
       
       <p className="text-gray-700 leading-relaxed mb-3">
         "{review.text}"
+        {!review.isComplete && (
+          <a
+            href={googleBusinessProfileUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-primary/80 ml-2 text-sm font-medium transition-colors"
+          >
+            Read full review →
+          </a>
+        )}
       </p>
       
       {review.ownerReply && (
@@ -109,7 +119,7 @@ export function ReviewsSection({ reviews, title = "What Our Patients Say", showC
               </a>
               <span className="text-gray-400">•</span>
               <a
-                href="https://typeform.com/dental"
+                href="https://fxuqp40sseh.typeform.com/to/CiLYdxSU"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 font-semibold transition-colors"

@@ -249,7 +249,24 @@ export default function ServiceDetail() {
 
         {/* Patient Reviews Section */}
         {(() => {
-          const reviewData = serviceReviews.find(sr => sr.serviceId === service.id);
+          // First try to find reviews for the exact service ID
+          let reviewData = serviceReviews.find(sr => sr.serviceId === service.id);
+          
+          // If no exact match, try to find the parent service reviews for sub-services
+          if (!reviewData) {
+            // Map sub-services to their parent categories
+            const parentMappings: { [key: string]: string } = {
+              'invisalign': 'restorative-dentistry',
+              'teeth-whitening': 'restorative-dentistry',
+              'dental-crowns': 'restorative-dentistry'
+            };
+            
+            const parentId = parentMappings[service.id];
+            if (parentId) {
+              reviewData = serviceReviews.find(sr => sr.serviceId === parentId);
+            }
+          }
+          
           if (reviewData && reviewData.reviews.length > 0) {
             return (
               <ReviewsSection 
