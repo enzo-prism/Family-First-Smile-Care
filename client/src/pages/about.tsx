@@ -372,13 +372,6 @@ export default function About() {
                 alt="Family First Smile Care welcoming front entrance with practice branding" 
                 className="rounded-xl w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <motion.div 
-                className="absolute inset-0 bg-primary/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-              >
-                <span className="text-white font-semibold">Welcoming Front Entrance</span>
-              </motion.div>
             </motion.div>
             <motion.div 
               className="relative group"
@@ -390,13 +383,6 @@ export default function About() {
                 alt="Family First Smile Care professional office exterior showing Suite 102" 
                 className="rounded-xl w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <motion.div 
-                className="absolute inset-0 bg-secondary/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-              >
-                <span className="text-white font-semibold">Professional Office Location</span>
-              </motion.div>
             </motion.div>
             <motion.div 
               className="relative group"
@@ -408,13 +394,6 @@ export default function About() {
                 alt="Modern dental office reception area with comfortable seating" 
                 className="rounded-xl w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <motion.div 
-                className="absolute inset-0 bg-accent/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-              >
-                <span className="text-white font-semibold">Comfortable Reception Area</span>
-              </motion.div>
             </motion.div>
           </motion.div>
           
@@ -436,9 +415,6 @@ export default function About() {
                 alt="Modern dental treatment room with state-of-the-art equipment" 
                 className="rounded-lg w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 bg-primary/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span className="text-white font-medium text-sm text-center">Treatment Room</span>
-              </div>
             </motion.div>
             <motion.div 
               className="relative group"
@@ -450,9 +426,6 @@ export default function About() {
                 alt="Advanced dental technology and equipment" 
                 className="rounded-lg w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 bg-secondary/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span className="text-white font-medium text-sm text-center">Advanced Technology</span>
-              </div>
             </motion.div>
             <motion.div 
               className="relative group"
@@ -464,9 +437,6 @@ export default function About() {
                 alt="Professional dental consultation space" 
                 className="rounded-lg w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 bg-accent/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span className="text-white font-medium text-sm text-center">Consultation Area</span>
-              </div>
             </motion.div>
             <motion.div 
               className="relative group"
@@ -478,9 +448,6 @@ export default function About() {
                 alt="Clean and organized dental office environment" 
                 className="rounded-lg w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 bg-primary/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span className="text-white font-medium text-sm text-center">Clean Environment</span>
-              </div>
             </motion.div>
           </motion.div>
           
@@ -502,9 +469,6 @@ export default function About() {
                 alt="Dental office equipment and workspace" 
                 className="rounded-lg w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 bg-black/40 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span className="text-white font-medium text-xs text-center">Equipment</span>
-              </div>
             </motion.div>
             <motion.div 
               className="relative group"
@@ -516,9 +480,6 @@ export default function About() {
                 alt="Professional dental workspace setup" 
                 className="rounded-lg w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 bg-black/40 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span className="text-white font-medium text-xs text-center">Workspace</span>
-              </div>
             </motion.div>
             <motion.div 
               className="relative group"
@@ -530,9 +491,6 @@ export default function About() {
                 alt="Modern dental facility interior" 
                 className="rounded-lg w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 bg-black/40 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span className="text-white font-medium text-xs text-center">Interior</span>
-              </div>
             </motion.div>
             <motion.div 
               className="relative group"
@@ -544,9 +502,6 @@ export default function About() {
                 alt="Additional office space and amenities" 
                 className="rounded-lg w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 bg-black/40 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span className="text-white font-medium text-xs text-center">Amenities</span>
-              </div>
             </motion.div>
             <motion.div 
               className="relative group"
@@ -558,9 +513,6 @@ export default function About() {
                 alt="Complete view of dental practice facilities" 
                 className="rounded-lg w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 bg-black/40 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span className="text-white font-medium text-xs text-center">Facilities</span>
-              </div>
             </motion.div>
           </motion.div>
         </motion.div>
