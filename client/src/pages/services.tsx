@@ -2,6 +2,8 @@ import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import ServiceCard from "@/components/service-card";
 import { services } from "@/data/services";
+import { ReviewsSection } from "@/components/review";
+import { generalReviews } from "@/data/reviews";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -96,9 +98,18 @@ export default function Services() {
         </div>
       </motion.div>
 
+      {/* Featured Patient Reviews */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ReviewsSection 
+          reviews={generalReviews.slice(0, 4)} 
+          title="What Our Patients Say About Our Services"
+          showCTA={true}
+        />
+      </div>
+
       {/* Call to Action Section */}
       <motion.section 
-        className="relative py-16 lg:py-24 mx-4 sm:mx-6 lg:mx-8"
+        className="relative py-16 lg:py-24 mx-4 sm:mx-6 lg:mx-8 mt-16"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
