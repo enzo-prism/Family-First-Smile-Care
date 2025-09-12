@@ -4,6 +4,8 @@ import { Link, useParams } from "wouter";
 import { CheckCircle, ArrowLeft, Stethoscope, Baby, Sparkles, Smile, Activity } from "lucide-react";
 import { motion } from "framer-motion";
 import { services } from "@/data/services";
+import { ReviewsSection } from "@/components/review";
+import { serviceReviews } from "@/data/reviews";
 
 // Animation variants
 const fadeInUp = {
@@ -245,9 +247,24 @@ export default function ServiceDetail() {
           </motion.div>
         )}
 
+        {/* Patient Reviews Section */}
+        {(() => {
+          const reviewData = serviceReviews.find(sr => sr.serviceId === service.id);
+          if (reviewData && reviewData.reviews.length > 0) {
+            return (
+              <ReviewsSection 
+                reviews={reviewData.reviews} 
+                title={`${service.title} Patient Reviews`}
+                showCTA={true}
+              />
+            );
+          }
+          return null;
+        })()}
+
         {/* Call to Action */}
         <motion.div 
-          className="bg-gradient-to-r from-primary to-secondary rounded-3xl p-8 lg:p-12 text-center text-white"
+          className="bg-gradient-to-r from-primary to-secondary rounded-3xl p-8 lg:p-12 text-center text-white mt-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
