@@ -134,59 +134,6 @@ export default function About() {
             >
               Our practice is built on the foundation of trust, compassion, and excellence. We believe that dental care should be a positive experience for every member of your family, from toddlers taking their first steps into oral health to seniors maintaining their beautiful smiles.
             </motion.p>
-            <motion.div 
-              className="grid md:grid-cols-3 gap-6 mt-8"
-              variants={staggerContainer}
-            >
-              <motion.div 
-                className="text-center group"
-                variants={scaleIn}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
-                <motion.div 
-                  className="text-3xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform duration-300"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ delay: 0.3, duration: 0.5, type: "spring" }}
-                  viewport={{ once: true }}
-                >
-                  5+
-                </motion.div>
-                <div className="text-sm text-gray-600">Years of Excellence</div>
-              </motion.div>
-              <motion.div 
-                className="text-center group"
-                variants={scaleIn}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
-                <motion.div 
-                  className="text-3xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform duration-300"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ delay: 0.5, duration: 0.5, type: "spring" }}
-                  viewport={{ once: true }}
-                >
-                  1000+
-                </motion.div>
-                <div className="text-sm text-gray-600">Happy Patients</div>
-              </motion.div>
-              <motion.div 
-                className="text-center group"
-                variants={scaleIn}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
-                <motion.div 
-                  className="text-3xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform duration-300"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ delay: 0.7, duration: 0.5, type: "spring" }}
-                  viewport={{ once: true }}
-                >
-                  500+
-                </motion.div>
-                <div className="text-sm text-gray-600">Families Served</div>
-              </motion.div>
-            </motion.div>
           </motion.div>
           <motion.div
             initial="hidden"
