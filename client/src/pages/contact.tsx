@@ -281,7 +281,7 @@ export default function Contact() {
             {/* Map Container */}
             <div className="relative h-[500px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3173.9167520749896!2d-121.97072708468927!3d37.29700797984456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808e358a9c8a0b0d%3A0x4d9d1e1e1e1e1e1e!2sTim%20J%20Chuang%2C%20DDS%20-%20Family%20First%20Smile%20Care!5e0!3m2!1sen!2sus!4v1735847521234!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3174.8858269999997!2d-121.95269418469015!3d37.24628897985869!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808e3557c7180047%3A0xb2c0297c5d5ef4e8!2sTim%20J%20Chuang%2C%20DDS%20-%20Family%20First%20Smile%20Care!5e0!3m2!1sen!2sus!4v1735847521234!5m2!1sen!2sus"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
