@@ -281,7 +281,7 @@ export default function Contact() {
             {/* Map Container */}
             <div className="relative h-[500px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3173.916!2d-121.9707!3d37.2970!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s15251%20National%20Ave%2C%20Suite%20102%2C%20Los%20Gatos%2C%20CA%2095032!5e0!3m2!1sen!2sus!4v1735847521234!5m2!1sen!2sus&q=Family+First+Smile+Care,15251+National+Ave+Suite+102,Los+Gatos,CA+95032"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3173.9167520749896!2d-121.97072708468927!3d37.29700797984456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808e358a9c8a0b0d%3A0x4d9d1e1e1e1e1e1e!2sTim%20J%20Chuang%2C%20DDS%20-%20Family%20First%20Smile%20Care!5e0!3m2!1sen!2sus!4v1735847521234!5m2!1sen!2sus"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -301,7 +301,7 @@ export default function Contact() {
                 </div>
                 <div className="flex gap-3">
                   <a 
-                    href="https://maps.google.com/?q=Family+First+Smile+Care+15251+National+Ave+Suite+102+Los+Gatos+CA+95032" 
+                    href="https://www.google.com/maps/dir/?api=1&destination=Tim+J+Chuang+DDS+Family+First+Smile+Care+15251+National+Ave+Suite+102+Los+Gatos+CA+95032" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="bg-white text-primary px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors font-semibold flex items-center gap-2"
