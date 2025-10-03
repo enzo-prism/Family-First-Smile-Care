@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Instagram } from 'lucide-react';
+import { Instagram, BookOpen } from 'lucide-react';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -69,12 +69,9 @@ export default function SocialMediaSection() {
           className="text-center mb-12"
           variants={fadeInUp}
         >
-          <div className="flex justify-center items-center gap-2 mb-4">
-            <Instagram className="w-8 h-8 text-pink-500" />
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-800">
-              Follow Us on Social Media
-            </h2>
-          </div>
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+            Follow Us on Social Media
+          </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Stay updated with the latest from our practice, dental tips, and behind-the-scenes moments
           </p>
@@ -182,19 +179,34 @@ export default function SocialMediaSection() {
 
         {/* Call to Action */}
         <motion.div 
-          className="text-center mt-12"
+          className="text-center mt-12 space-y-4"
           variants={fadeInUp}
         >
-          <a 
-            href="https://www.instagram.com/famfirstsmilecare/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-medium rounded-full hover:from-pink-600 hover:to-purple-700 transition-all transform hover:scale-105"
-            data-testid="button-follow-instagram"
-          >
-            <Instagram className="w-5 h-5" />
-            Follow @famfirstsmilecare
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a 
+              href="https://www.instagram.com/famfirstsmilecare/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-medium rounded-full hover:from-pink-600 hover:to-purple-700 transition-all transform hover:scale-105"
+              data-testid="button-follow-instagram"
+            >
+              <Instagram className="w-5 h-5" />
+              Follow @famfirstsmilecare
+            </a>
+            <a 
+              href="https://www.xiaohongshu.com/user/profile/6787d0fa000000000801e7e7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white font-medium rounded-full hover:from-red-600 hover:to-red-700 transition-all transform hover:scale-105"
+              data-testid="button-follow-xiaohongshu"
+            >
+              <BookOpen className="w-5 h-5" />
+              Dr. Chuang on Xiaohongshu
+            </a>
+          </div>
+          <p className="text-sm text-gray-600 mt-2">
+            Follow Dr. Chuang on Xiaohongshu (小红书) for dental tips and updates in Chinese
+          </p>
         </motion.div>
       </div>
 
