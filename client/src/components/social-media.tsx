@@ -198,23 +198,6 @@ export default function SocialMediaSection() {
         </motion.div>
       </div>
 
-      {/* Custom CSS for Instagram embed responsiveness */}
-      <style jsx>{`
-        .instagram-embed-container {
-          width: 100%;
-        }
-        
-        .instagram-embed-container .instagram-media {
-          width: 100% !important;
-          max-width: 540px !important;
-        }
-
-        @media (max-width: 640px) {
-          .instagram-embed-container .instagram-media {
-            min-width: 100% !important;
-          }
-        }
-      `}</style>
     </motion.section>
   );
 }

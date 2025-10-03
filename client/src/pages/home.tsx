@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import TestimonialCarousel from "@/components/testimonial-carousel";
+import SocialMediaSection from "@/components/social-media";
 import { Heart, Microscope, Users, Stethoscope, Baby, Sparkles, Smile, Star } from "lucide-react";
 
 // Animation variants for reusable patterns
@@ -468,6 +469,9 @@ export default function Home() {
           </motion.a>
         </div>
       </motion.section>
+
+      {/* Social Media Section */}
+      <SocialMediaSection />
 
       {/* Call to Action Section */}
       <motion.section 
