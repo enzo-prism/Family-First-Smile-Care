@@ -143,7 +143,7 @@ export default function Home() {
                   <span className="text-accent mr-2">⭐</span>
                   <span className="font-semibold">5.0 Rating</span>
                 </div>
-                <p className="text-sm text-gray-600">From 40+ families</p>
+                <p className="text-sm text-gray-600">From 45+ families</p>
               </motion.div>
             </motion.div>
           </div>
