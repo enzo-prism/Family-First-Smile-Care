@@ -59,9 +59,9 @@ function App() {
     // Initialize Google Analytics
     if (!import.meta.env.VITE_GA_MEASUREMENT_ID) {
       console.warn('Missing required Google Analytics key: VITE_GA_MEASUREMENT_ID');
-    } else {
-      initGA();
     }
+
+    initGA();
     
     // Initialize Hotjar
     initHotjar();

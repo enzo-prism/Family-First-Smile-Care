@@ -11,30 +11,51 @@ declare global {
   }
 }
 
+const GOOGLE_ADS_TAG_ID = "G-36WRRLZB2B";
+
+const getGtagMeasurementIds = () => {
+  const ids = [
+    import.meta.env.VITE_GA_MEASUREMENT_ID?.trim(),
+    GOOGLE_ADS_TAG_ID,
+  ].filter((id): id is string => Boolean(id));
+
+  return Array.from(new Set(ids));
+};
+
 // Initialize Google Analytics
 export const initGA = () => {
-  const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID;
-
-  if (!measurementId) {
-    console.warn('Missing required Google Analytics key: VITE_GA_MEASUREMENT_ID');
+  if (typeof window === "undefined") {
     return;
   }
 
-  // Add Google Analytics script to the head
-  const script1 = document.createElement('script');
-  script1.async = true;
-  script1.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-  document.head.appendChild(script1);
+  const measurementIds = getGtagMeasurementIds();
+  if (!measurementIds.length) {
+    console.warn("No Google Analytics or Ads measurement IDs found for gtag.");
+    return;
+  }
 
-  // Initialize gtag
-  const script2 = document.createElement('script');
-  script2.textContent = `
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '${measurementId}');
-  `;
-  document.head.appendChild(script2);
+  const loaderId = measurementIds[0];
+  const existingLoader = document.querySelector<HTMLScriptElement>('script[data-gtag-loader="true"]');
+  if (!existingLoader) {
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${loaderId}`;
+    script.setAttribute("data-gtag-loader", "true");
+    document.head.appendChild(script);
+  }
+
+  window.dataLayer = window.dataLayer || [];
+
+  if (!window.gtag) {
+    window.gtag = function gtag(...args: any[]) {
+      window.dataLayer.push(args);
+    };
+  }
+
+  window.gtag("js", new Date());
+  measurementIds.forEach((id) => {
+    window.gtag("config", id);
+  });
 };
 
 // Initialize Hotjar
@@ -57,12 +78,14 @@ export const initHotjar = () => {
 // Track page views - useful for single-page applications
 export const trackPageView = (url: string) => {
   if (typeof window === 'undefined' || !window.gtag) return;
-  
-  const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID;
-  if (!measurementId) return;
-  
-  window.gtag('config', measurementId, {
-    page_path: url
+
+  const measurementIds = getGtagMeasurementIds();
+  if (!measurementIds.length) return;
+
+  measurementIds.forEach((id) => {
+    window.gtag('config', id, {
+      page_path: url
+    });
   });
 };
 
