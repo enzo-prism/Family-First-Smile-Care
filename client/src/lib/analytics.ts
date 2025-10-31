@@ -3,6 +3,7 @@ declare global {
   interface Window {
     dataLayer: any[];
     gtag: (...args: any[]) => void;
+    gtagSendEvent?: (url?: string, target?: "_self" | "_blank") => void;
     hj: (...args: any[]) => void;
     _hjSettings: {
       hjid: number;
@@ -12,6 +13,8 @@ declare global {
 }
 
 const GOOGLE_ADS_TAG_ID = "G-36WRRLZB2B";
+const GOOGLE_ADS_CONVERSION_EVENT = "ads_conversion_Submit_lead_form_1";
+export const APPOINTMENT_FORM_URL = "https://fxuqp40sseh.typeform.com/to/CiLYdxSU";
 
 const getGtagMeasurementIds = () => {
   const ids = [
@@ -20,6 +23,48 @@ const getGtagMeasurementIds = () => {
   ].filter((id): id is string => Boolean(id));
 
   return Array.from(new Set(ids));
+};
+
+const openUrl = (url: string, target: "_self" | "_blank") => {
+  if (!url) return;
+
+  if (target === "_blank") {
+    const newWindow = window.open(url, "_blank");
+    if (newWindow) {
+      newWindow.opener = null;
+    }
+    return;
+  }
+
+  window.location.assign(url);
+};
+
+export const triggerGoogleAdsConversion = (url?: string, target: "_self" | "_blank" = "_self") => {
+  if (typeof window === "undefined") return;
+
+  const navigate = () => {
+    if (!url) return;
+    openUrl(url, target);
+  };
+
+  if (!window.gtag) {
+    navigate();
+    return;
+  }
+
+  let callbackInvoked = false;
+  const callback = () => {
+    if (callbackInvoked) return;
+    callbackInvoked = true;
+    navigate();
+  };
+
+  window.gtag("event", GOOGLE_ADS_CONVERSION_EVENT, {
+    event_callback: callback,
+    event_timeout: 2000,
+  });
+
+  window.setTimeout(callback, 2100);
 };
 
 // Initialize Google Analytics
@@ -56,6 +101,12 @@ export const initGA = () => {
   measurementIds.forEach((id) => {
     window.gtag("config", id);
   });
+
+  if (!window.gtagSendEvent) {
+    window.gtagSendEvent = (url?: string, target: "_self" | "_blank" = "_self") => {
+      triggerGoogleAdsConversion(url, target);
+    };
+  }
 };
 
 // Initialize Hotjar

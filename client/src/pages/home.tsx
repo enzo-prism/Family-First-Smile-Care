@@ -1,10 +1,12 @@
 import { Link } from "wouter";
+import type { MouseEvent } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import TestimonialCarousel from "@/components/testimonial-carousel";
 import SocialMediaSection from "@/components/social-media";
 import { Heart, Microscope, Users, Stethoscope, Baby, Sparkles, Smile, Star } from "lucide-react";
+import { APPOINTMENT_FORM_URL, triggerGoogleAdsConversion } from "@/lib/analytics";
 
 // Animation variants for reusable patterns
 const fadeInUp = {
@@ -55,6 +57,11 @@ const scaleIn = {
 };
 
 export default function Home() {
+  const handleAppointmentClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    triggerGoogleAdsConversion(APPOINTMENT_FORM_URL, "_blank");
+  };
+
   return (
     <div className="pt-16">
       <Helmet>
@@ -92,9 +99,10 @@ export default function Home() {
                 variants={fadeInUp}
               >
                 <a 
-                  href="https://fxuqp40sseh.typeform.com/to/CiLYdxSU" 
+                  href={APPOINTMENT_FORM_URL} 
                   target="_blank" 
                   rel="noopener noreferrer"
+                  onClick={handleAppointmentClick}
                 >
                   <Button className="bg-primary text-white hover:bg-blue-700 text-lg font-semibold px-8 py-3 transform hover:scale-105 transition-transform duration-200">
                     Schedule Appointment

@@ -1,9 +1,16 @@
+import type { MouseEvent } from "react";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Activity, Shield, Stethoscope, CheckCircle, Clock, Users } from "lucide-react";
+import { APPOINTMENT_FORM_URL, triggerGoogleAdsConversion } from "@/lib/analytics";
 
 export default function TMJ() {
+  const handleAppointmentClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    triggerGoogleAdsConversion(APPOINTMENT_FORM_URL, "_blank");
+  };
+
   return (
     <div className="pt-16 pb-20 bg-white">
       <Helmet>
@@ -222,9 +229,10 @@ export default function TMJ() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="https://fxuqp40sseh.typeform.com/to/CiLYdxSU" 
+              href={APPOINTMENT_FORM_URL} 
               target="_blank" 
               rel="noopener noreferrer"
+              onClick={handleAppointmentClick}
             >
               <Button className="bg-white text-primary hover:bg-gray-100 font-semibold px-8 py-3">
                 Schedule Consultation

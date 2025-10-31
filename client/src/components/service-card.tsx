@@ -1,7 +1,9 @@
+import type { MouseEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Check, Stethoscope, Baby, Sparkles, Smile, Activity } from "lucide-react";
 import { Link } from "wouter";
 import type { Service } from "@/lib/types";
+import { APPOINTMENT_FORM_URL, triggerGoogleAdsConversion } from "@/lib/analytics";
 
 interface ServiceCardProps {
   service: Service;
@@ -9,6 +11,10 @@ interface ServiceCardProps {
 }
 
 export default function ServiceCard({ service, featured = false }: ServiceCardProps) {
+  const handleAppointmentClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    triggerGoogleAdsConversion(APPOINTMENT_FORM_URL, "_blank");
+  };
 
   const getIconComponent = (iconName: string) => {
     const iconMap: { [key: string]: JSX.Element } = {
@@ -103,9 +109,10 @@ export default function ServiceCard({ service, featured = false }: ServiceCardPr
             
             {(featured || (service.subServices && service.subServices.some(sub => sub.featured))) && (
               <a 
-                href="https://fxuqp40sseh.typeform.com/to/CiLYdxSU" 
+                href={APPOINTMENT_FORM_URL} 
                 target="_blank" 
                 rel="noopener noreferrer"
+                onClick={handleAppointmentClick}
               >
                 <Button variant="outline" className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold py-3 rounded-xl transition-all duration-200">
                   Schedule Free Consultation

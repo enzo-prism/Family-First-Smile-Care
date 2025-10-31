@@ -1,3 +1,4 @@
+import type { MouseEvent } from "react";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Link, useParams } from "wouter";
@@ -6,6 +7,7 @@ import { motion } from "framer-motion";
 import { services } from "@/data/services";
 import { ReviewsSection } from "@/components/review";
 import { serviceReviews } from "@/data/reviews";
+import { APPOINTMENT_FORM_URL, triggerGoogleAdsConversion } from "@/lib/analytics";
 
 // Animation variants
 const fadeInUp = {
@@ -57,6 +59,11 @@ export default function ServiceDetail() {
       </div>
     );
   }
+
+  const handleAppointmentClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    triggerGoogleAdsConversion(APPOINTMENT_FORM_URL, "_blank");
+  };
 
   const getIconComponent = (iconName: string) => {
     const iconMap: { [key: string]: JSX.Element } = {
@@ -304,10 +311,11 @@ export default function ServiceDetail() {
             variants={fadeInUp}
           >
             <a 
-              href="https://fxuqp40sseh.typeform.com/to/CiLYdxSU" 
+              href={APPOINTMENT_FORM_URL} 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-full sm:w-auto"
+              onClick={handleAppointmentClick}
             >
               <motion.button
                 className="bg-white text-primary hover:bg-gray-100 font-semibold px-8 py-4 rounded-xl text-lg shadow-lg w-full sm:w-auto transition-all duration-200"

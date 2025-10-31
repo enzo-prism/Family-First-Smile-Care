@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Smile, CreditCard, Star } from "lucide-react";
 import familyFirstLogo from "@assets/Logo_1753972987510.png";
+import { APPOINTMENT_FORM_URL, triggerGoogleAdsConversion } from "@/lib/analytics";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -17,6 +18,10 @@ const navigation = [
 export default function Header() {
   const [location] = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const handleAppointmentClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    triggerGoogleAdsConversion(APPOINTMENT_FORM_URL, "_blank");
+  };
 
   return (
     <nav className="fixed top-0 w-full bg-white shadow-md z-50" role="navigation" aria-label="Main navigation">
@@ -67,9 +72,10 @@ export default function Header() {
               </Button>
             </a>
             <a 
-              href="https://fxuqp40sseh.typeform.com/to/CiLYdxSU" 
+              href={APPOINTMENT_FORM_URL} 
               target="_blank" 
               rel="noopener noreferrer"
+              onClick={handleAppointmentClick}
             >
               <Button className="bg-primary text-white hover:bg-blue-700">
                 Book Appointment

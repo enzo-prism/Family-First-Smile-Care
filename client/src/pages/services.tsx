@@ -1,9 +1,11 @@
+import type { MouseEvent } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import ServiceCard from "@/components/service-card";
 import { services } from "@/data/services";
 import { ReviewsSection } from "@/components/review";
 import { generalReviews } from "@/data/reviews";
+import { APPOINTMENT_FORM_URL, triggerGoogleAdsConversion } from "@/lib/analytics";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -31,6 +33,11 @@ const scaleIn = {
 };
 
 export default function Services() {
+  const handleAppointmentClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    triggerGoogleAdsConversion(APPOINTMENT_FORM_URL, "_blank");
+  };
+
   return (
     <div className="pt-16 pb-20 bg-gradient-to-br from-gray-50 via-white to-gray-50">
       <Helmet>
@@ -134,10 +141,11 @@ export default function Services() {
               variants={fadeInUp}
             >
               <a 
-                href="https://fxuqp40sseh.typeform.com/to/CiLYdxSU" 
+                href={APPOINTMENT_FORM_URL} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto"
+                onClick={handleAppointmentClick}
               >
                 <motion.button
                   className="bg-white text-primary hover:bg-gray-100 font-semibold px-8 py-4 rounded-xl text-lg shadow-lg w-full sm:w-auto transition-all duration-200"
