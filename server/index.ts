@@ -134,6 +134,8 @@ Sitemap: https://famfirstsmile.com/sitemap.xml`);
   } else {
     // In production, serve static assets with compression before the catch-all route
     const distPath = path.resolve(process.cwd(), 'dist/public');
+    
+    // Serve static assets
     app.use('/assets', express.static(path.join(distPath, 'assets'), {
       maxAge: '1y', // Cache assets for 1 year
       etag: true,
@@ -147,6 +149,8 @@ Sitemap: https://famfirstsmile.com/sitemap.xml`);
         }
       }
     }));
+    
+    // Serve static files and the React app
     serveStatic(app);
   }
 
