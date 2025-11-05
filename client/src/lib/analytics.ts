@@ -12,7 +12,7 @@ declare global {
   }
 }
 
-const GOOGLE_ADS_TAG_ID = "G-36WRRLZB2B";
+const GOOGLE_ADS_TAG_ID = "AW-11373090310"; // Google Ads conversion tracking ID
 const GOOGLE_ADS_CONVERSION_EVENT = "ads_conversion_Submit_lead_form_1";
 export const APPOINTMENT_FORM_URL = "https://fxuqp40sseh.typeform.com/to/CiLYdxSU";
 
