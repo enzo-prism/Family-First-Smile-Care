@@ -1,14 +1,33 @@
 # Robots.txt for Family First Smile Care
 # https://famfirstsmile.com
 
-# Allow all crawlers
+# Google AdsBot (critical for Google Ads campaigns)
+User-agent: AdsBot-Google
+Allow: /
+Disallow: /api/
+Disallow: /attached_assets/
+Crawl-delay: 0
+
+# Google AdsBot Mobile
+User-agent: AdsBot-Google-Mobile
+Allow: /
+Disallow: /api/
+Disallow: /attached_assets/
+Crawl-delay: 0
+
+# Googlebot (for SEO)
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+Disallow: /attached_assets/
+Crawl-delay: 0
+
+# All other crawlers
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /attached_assets/
+Crawl-delay: 1
 
 # Sitemap location
 Sitemap: https://famfirstsmile.com/sitemap.xml
-
-# Crawl delay (in seconds) - optional, helps prevent server overload
-Crawl-delay: 1

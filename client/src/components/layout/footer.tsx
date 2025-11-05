@@ -27,11 +27,15 @@ export default function Footer() {
               </div>
               <div className="flex items-center">
                 <Phone className="mr-3 h-4 w-4" />
-                <span>(408) 358-8100</span>
+                <a href="tel:4083588100" className="hover:text-primary transition-colors">
+                  (408) 358-8100
+                </a>
               </div>
               <div className="flex items-center">
                 <Mail className="mr-3 h-4 w-4" />
-                <span>hello@famfirstsmile.com</span>
+                <a href="mailto:hello@famfirstsmile.com" className="hover:text-primary transition-colors">
+                  hello@famfirstsmile.com
+                </a>
               </div>
             </div>
           </div>
