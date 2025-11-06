@@ -1,8 +1,9 @@
 import express, { type Request, Response, NextFunction } from "express";
 import compression from "compression";
+import fs from "node:fs";
+import path from "path";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
-import path from "path";
 
 const app = express();
 
@@ -83,7 +84,7 @@ app.use((req, res, next) => {
     const productionPath = path.resolve(process.cwd(), 'dist', 'public', 'robots.txt');
     const developmentPath = path.resolve(process.cwd(), 'client', 'robots.txt');
     
-    const robotsPath = require('fs').existsSync(productionPath) ? productionPath : developmentPath;
+    const robotsPath = fs.existsSync(productionPath) ? productionPath : developmentPath;
     
     res.type('text/plain');
     res.sendFile(robotsPath, (err) => {
@@ -107,7 +108,7 @@ Sitemap: https://famfirstsmile.com/sitemap.xml`);
     const productionPath = path.resolve(process.cwd(), 'dist', 'public', 'sitemap.xml');
     const developmentPath = path.resolve(process.cwd(), 'client', 'sitemap.xml');
     
-    const sitemapPath = require('fs').existsSync(productionPath) ? productionPath : developmentPath;
+    const sitemapPath = fs.existsSync(productionPath) ? productionPath : developmentPath;
     
     res.type('text/xml');
     res.sendFile(sitemapPath, (err) => {
