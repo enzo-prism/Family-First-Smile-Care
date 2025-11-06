@@ -7,6 +7,20 @@ import { setupVite, serveStatic, log } from "./vite";
 
 const app = express();
 
+const trimTrailingSlash = (value: string) => {
+  if (value === "/") return value;
+  return value.replace(/\/+$/, "");
+};
+
+const legacyRedirects = new Map<string, string>([
+  ["/hello-world", "/"],
+  ["/dental-services/dental-crowns", "/services/dental-crowns"],
+  ["/digital-x-ray", "/services/dental-exams"],
+  ["/articles/premium_education/category/47362", "/services"],
+  ["/articles/premium_education/category/47364", "/services"],
+  ["/articles/premium_education/category/47367", "/services"],
+]);
+
 // Enable gzip compression for all responses
 app.use(compression({
   filter: (req, res) => {
@@ -22,6 +36,21 @@ app.use(compression({
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use((req, res, next) => {
+  if (req.path === "/" && req.query.page_id === "1073") {
+    return res.redirect(301, "/patient-info");
+  }
+
+  const normalizedPath = trimTrailingSlash(req.path);
+  const redirectTarget = legacyRedirects.get(normalizedPath);
+
+  if (redirectTarget) {
+    return res.redirect(301, redirectTarget);
+  }
+
+  next();
+});
 
 // Redirect www to non-www
 app.use((req, res, next) => {
