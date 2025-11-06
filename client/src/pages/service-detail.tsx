@@ -89,12 +89,52 @@ export default function ServiceDetail() {
     return colorMap[iconName] || "bg-primary";
   };
 
+  const serviceUrl =
+    service.id === "tmj"
+      ? "https://famfirstsmile.com/tmj"
+      : `https://famfirstsmile.com/services/${service.id}`;
+
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "MedicalProcedure",
+    name: service.title,
+    description: service.heroDescription || service.description,
+    url: serviceUrl,
+    provider: {
+      "@type": "Dentist",
+      name: "Family First Smile Care",
+      url: "https://famfirstsmile.com/",
+      telephone: "+1-408-358-8100",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "15251 National Ave, Suite 102",
+        addressLocality: "Los Gatos",
+        addressRegion: "CA",
+        postalCode: "95032",
+        addressCountry: "US",
+      },
+    },
+    areaServed: {
+      "@type": "City",
+      name: "Los Gatos",
+      address: {
+        "@type": "PostalAddress",
+        addressRegion: "CA",
+        addressCountry: "US",
+      },
+    },
+    medicalSpecialty: "Dentistry",
+  };
+
   return (
     <div className="pt-16 pb-20 bg-white">
       <Helmet>
         <title>{service.title} - Family First Smile Care | Los Gatos</title>
         <meta name="description" content={`${service.heroDescription || service.description} Professional ${service.title.toLowerCase()} services in Los Gatos, CA by Dr. Tim J. Chuang.`} />
-        <link rel="canonical" href={`https://famfirstsmile.com/services/${service.id}`} />
+        <link rel="canonical" href={serviceUrl} />
+        <script type="application/ld+json">
+          {JSON.stringify(serviceSchema)}
+        </script>
       </Helmet>
       
       {/* Hero Section */}

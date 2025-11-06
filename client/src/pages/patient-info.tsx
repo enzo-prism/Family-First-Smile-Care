@@ -46,12 +46,28 @@ export default function PatientInfo() {
     alert(`This would show detailed information about ${topic} in a modal or new page.`);
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
   return (
     <div className="pt-16 pb-20 bg-gray-50">
       <Helmet>
         <title>Patient Information - Family First Smile Care | Los Gatos</title>
         <meta name="description" content="Important patient information including insurance, FAQs, and office policies. Get prepared for your visit to Family First Smile Care in Los Gatos, CA." />
         <link rel="canonical" href="https://famfirstsmile.com/patient-info" />
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
       </Helmet>
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-primary/5 to-secondary/5 py-20 lg:py-32">
