@@ -1,8 +1,14 @@
-import { type User, type InsertUser, type Contact, type InsertContact } from "@shared/schema";
 import { randomUUID } from "crypto";
-
-// modify the interface with any CRUD methods
-// you might need
+import { eq } from "drizzle-orm";
+import {
+  contacts,
+  users,
+  type Contact,
+  type InsertContact,
+  type InsertUser,
+  type User,
+} from "@shared/schema";
+import { db } from "./db";
 
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
@@ -11,31 +17,34 @@ export interface IStorage {
   createContact(contact: InsertContact): Promise<Contact>;
 }
 
-import { users, contacts } from "@shared/schema";
-import { db } from "./db";
-import { eq } from "drizzle-orm";
+type DrizzleDatabase = NonNullable<typeof db>;
 
 export class DatabaseStorage implements IStorage {
+  constructor(private readonly database: DrizzleDatabase) {}
+
   async getUser(id: string): Promise<User | undefined> {
-    const [user] = await db.select().from(users).where(eq(users.id, id));
+    const [user] = await this.database
+      .select()
+      .from(users)
+      .where(eq(users.id, id));
     return user || undefined;
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    const [user] = await db.select().from(users).where(eq(users.username, username));
+    const [user] = await this.database
+      .select()
+      .from(users)
+      .where(eq(users.username, username));
     return user || undefined;
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const [user] = await db
-      .insert(users)
-      .values(insertUser)
-      .returning();
+    const [user] = await this.database.insert(users).values(insertUser).returning();
     return user;
   }
 
   async createContact(insertContact: InsertContact): Promise<Contact> {
-    const [contact] = await db
+    const [contact] = await this.database
       .insert(contacts)
       .values(insertContact)
       .returning();
@@ -43,4 +52,47 @@ export class DatabaseStorage implements IStorage {
   }
 }
 
-export const storage = new DatabaseStorage();
+class InMemoryStorage implements IStorage {
+  private readonly users = new Map<string, User>();
+  private readonly contacts = new Map<string, Contact>();
+
+  async getUser(id: string): Promise<User | undefined> {
+    return this.users.get(id);
+  }
+
+  async getUserByUsername(username: string): Promise<User | undefined> {
+    return Array.from(this.users.values()).find(
+      (user) => user.username === username,
+    );
+  }
+
+  async createUser(insertUser: InsertUser): Promise<User> {
+    const user: User = {
+      id: randomUUID(),
+      ...insertUser,
+    };
+    this.users.set(user.id, user);
+    return user;
+  }
+
+  async createContact(insertContact: InsertContact): Promise<Contact> {
+    const contact: Contact = {
+      id: randomUUID(),
+      createdAt: new Date(),
+      firstName: insertContact.firstName,
+      lastName: insertContact.lastName,
+      email: insertContact.email,
+      phone: insertContact.phone ?? null,
+      service: insertContact.service ?? null,
+      message: insertContact.message ?? null,
+    };
+    this.contacts.set(contact.id, contact);
+    return contact;
+  }
+}
+
+const drizzleDb = db;
+
+export const storage: IStorage = drizzleDb
+  ? new DatabaseStorage(drizzleDb)
+  : new InMemoryStorage();
