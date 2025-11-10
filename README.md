@@ -52,14 +52,17 @@ Key files of note:
 
 ## Build & Deploy
 - `npm run build` – Produces the static client bundle and the bundled Express server (outputs to `dist/`).
+- `node scripts/post-build.js` – Copies `client/robots.txt` and `client/sitemap.xml` into `dist/public/` so they ship with the release.
 - `npm start` – Runs the bundled server in production mode; ensure `DATABASE_URL` is set.
 - `npm run check` – TypeScript project check. (Currently surfaces known form-typing errors in `client/src/pages/contact.tsx`; address before enforcing in CI.)
 - `npm run db:push` – Applies Drizzle schema changes to the configured database.
+- See `docs/build-and-deploy.md` for a step-by-step cookbook covering prerequisites, smoke tests, and automation tips.
 
 Deployment checklist:
 1. Run `npm run build`.
-2. Ensure `client/sitemap.xml` and `client/robots.txt` include any new routes or assets.
-3. Deploy both `dist/index.js` and `dist/public` along with `attached_assets`.
+2. Run `node scripts/post-build.js` to copy sitemap/robots into the `dist/public/` payload.
+3. Ensure `client/sitemap.xml` and `client/robots.txt` include any new routes or assets.
+4. Deploy both `dist/index.js` and `dist/public` along with `attached_assets`.
 
 ## Authoring Content & SEO
 - **Services:** Update `client/src/data/services.ts` for new offerings. Keep `id` slugs in sync with sitemap entries and any legacy redirects defined in `server/index.ts`.

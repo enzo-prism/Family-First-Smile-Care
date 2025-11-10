@@ -190,9 +190,9 @@ export default function Home() {
                     Schedule Appointment
                   </Button>
                 </a>
-                <Link href="/services">
+                <Link href="/team">
                   <Button variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-white text-lg font-semibold px-8 py-3 transform hover:scale-105 transition-transform duration-200">
-                    Our Services
+                    Meet the Team
                   </Button>
                 </Link>
               </motion.div>
@@ -225,10 +225,45 @@ export default function Home() {
                   <span className="text-accent mr-2">⭐</span>
                   <span className="font-semibold">5.0 Rating</span>
                 </div>
-                <p className="text-sm text-gray-600">From 45+ families</p>
+                <p className="text-sm text-gray-600">From 47+ families</p>
               </motion.div>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+          >
+            <motion.h2 
+              className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4"
+              variants={fadeInUp}
+            >
+              What Our Patients Say
+            </motion.h2>
+            <motion.p 
+              className="text-xl text-gray-600"
+              variants={fadeInUp}
+            >
+              Real stories from families who trust us with their smiles
+            </motion.p>
+          </motion.div>
+          
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={scaleIn}
+          >
+            <TestimonialCarousel />
+          </motion.div>
         </div>
       </section>
 
@@ -310,6 +345,9 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* Social Media Section */}
+      <SocialMediaSection />
 
       {/* Featured Services Section */}
       <section className="py-20 bg-gray-50">
@@ -401,41 +439,6 @@ export default function Home() {
                 <Button variant="link" className="text-primary font-medium p-0 group-hover:text-primary-dark transition-colors duration-200">Learn More</Button>
               </Link>
             </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="text-center mb-16"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeInUp}
-          >
-            <motion.h2 
-              className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4"
-              variants={fadeInUp}
-            >
-              What Our Patients Say
-            </motion.h2>
-            <motion.p 
-              className="text-xl text-gray-600"
-              variants={fadeInUp}
-            >
-              Real stories from families who trust us with their smiles
-            </motion.p>
-          </motion.div>
-          
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={scaleIn}
-          >
-            <TestimonialCarousel />
           </motion.div>
         </div>
       </section>
@@ -559,9 +562,6 @@ export default function Home() {
           </motion.a>
         </div>
       </motion.section>
-
-      {/* Social Media Section */}
-      <SocialMediaSection />
 
       {/* Call to Action Section */}
       <motion.section 
