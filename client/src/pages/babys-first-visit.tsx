@@ -4,7 +4,8 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Baby, Shield, Sparkles, Heart, NotebookPen, PhoneCall, Smile, Star, MapPin, Phone, BookOpen } from "lucide-react";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Baby, Shield, Sparkles, Heart, NotebookPen, PhoneCall, Smile, Star, MapPin, Phone, BookOpen, Expand } from "lucide-react";
 import { APPOINTMENT_FORM_URL, triggerGoogleAdsConversion } from "@/lib/analytics";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
@@ -63,6 +64,8 @@ export default function BabysFirstVisit() {
       description: "Celebrating little wins so the first visit stays positive."
     }
   ];
+
+  const infographicUrl = "https://res.cloudinary.com/dhqpqfw6w/image/upload/v1763745802/Generated_Image_November_21_2025_-_9_22AM_hbuzza.webp";
 
   return (
     <div className="pt-16 pb-20 bg-white">
@@ -249,6 +252,83 @@ export default function BabysFirstVisit() {
               ))}
             </div>
           </div>
+        </motion.section>
+
+        {/* Infographic */}
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={fadeInUp}
+        >
+          <Dialog>
+            <div className="bg-white border border-gray-200 rounded-3xl shadow-sm p-8 lg:p-12">
+              <div className="flex items-start justify-between gap-4 flex-wrap mb-6">
+                <div className="max-w-3xl">
+                  <h2 className="text-3xl font-bold text-gray-800">Baby&apos;s first visit at a glance</h2>
+                  <p className="text-gray-700 mt-2">A quick visual roadmap so you and your little one know exactly how the appointment flows.</p>
+                </div>
+                <DialogTrigger asChild>
+                  <Button variant="outline" className="border-primary text-primary hover:bg-primary/5">
+                    <Expand className="w-4 h-4 mr-2" />
+                    Open full screen
+                  </Button>
+                </DialogTrigger>
+              </div>
+              <div className="grid lg:grid-cols-[1.4fr,1fr] gap-6 items-start">
+                <DialogTrigger asChild>
+                  <button
+                    type="button"
+                    className="group relative w-full overflow-hidden rounded-2xl border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <img
+                      src={infographicUrl}
+                      alt="Baby&apos;s first dental visit infographic"
+                      className="w-full h-full object-cover bg-gray-50"
+                      loading="lazy"
+                    />
+                    <div className="absolute bottom-4 left-4 flex items-center gap-2 text-white font-semibold drop-shadow">
+                      <Expand className="w-5 h-5" />
+                      <span>Tap to view full screen</span>
+                    </div>
+                  </button>
+                </DialogTrigger>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <Sparkles className="w-5 h-5 text-secondary mt-0.5" />
+                    <p className="text-gray-700">
+                      Timeline of the visit, from lap exam to the toothbrush cleaning, so you know what comes next.
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Shield className="w-5 h-5 text-primary mt-0.5" />
+                    <p className="text-gray-700">
+                      Gentle comfort cues and safety steps we follow for babies and toddlers.
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Heart className="w-5 h-5 text-secondary mt-0.5" />
+                    <p className="text-gray-700">
+                      Parent tips called out visually for quick prep before your appointment.
+                    </p>
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Click anywhere on the graphic or use the button to open it in a full-screen viewer.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <DialogContent className="max-w-6xl w-[95vw] max-h-[90vh] p-0 bg-transparent border-none shadow-none">
+              <div className="w-full h-full flex items-center justify-center">
+                <img
+                  src={infographicUrl}
+                  alt="Baby&apos;s first dental visit infographic full view"
+                  className="max-h-[85vh] w-auto max-w-full rounded-2xl shadow-2xl"
+                />
+              </div>
+            </DialogContent>
+          </Dialog>
         </motion.section>
 
         {/* What to expect */}
