@@ -28,6 +28,32 @@ export const services: Service[] = [
       "Fun educational activities about oral health",
       "Professional cleaning if appropriate",
       "Home care instructions for parents"
+    ],
+    subServices: [
+      {
+        id: "childrens-dentistry/babys-first-visit",
+        title: "Baby's First Visit",
+        description: "Gentle, parent-involved dental visits for infants and toddlers",
+        icon: "child",
+        details: [
+          "Knee-to-knee exams with parents present",
+          "Teething and feeding guidance",
+          "Age-appropriate cleanings and fluoride"
+        ],
+        heroDescription: "A warm, unrushed introduction to dental care where parents stay close and babies feel secure.",
+        longDescription: "We pace baby visits slowly, letting little ones explore while we coach parents on brushing, nutrition, and soothing techniques.",
+        benefits: [
+          "Positive first impressions of dental care",
+          "Personalized coaching for home routines",
+          "Early detection of tongue or lip ties"
+        ],
+        process: [
+          "Warm welcome and comfort visit",
+          "Knee-to-knee exam with a parent",
+          "Gentle cleaning and fluoride if recommended",
+          "Customized home-care plan"
+        ]
+      }
     ]
   },
   {
