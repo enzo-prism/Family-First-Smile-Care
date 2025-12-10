@@ -126,6 +126,27 @@ export default function ServiceDetail() {
     medicalSpecialty: "Dentistry",
   };
 
+  const findReviewData = () => {
+    let reviewData = serviceReviews.find((sr) => sr.serviceId === service.id);
+
+    if (!reviewData) {
+      const parentMappings: { [key: string]: string } = {
+        invisalign: "restorative-dentistry",
+        "teeth-whitening": "restorative-dentistry",
+        "dental-crowns": "restorative-dentistry",
+      };
+
+      const parentId = parentMappings[service.id];
+      if (parentId) {
+        reviewData = serviceReviews.find((sr) => sr.serviceId === parentId);
+      }
+    }
+
+    return reviewData;
+  };
+
+  const reviewData = findReviewData();
+
   return (
     <div className="pt-16 pb-20 bg-white">
       <Helmet>
@@ -169,6 +190,21 @@ export default function ServiceDetail() {
       </motion.section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        {reviewData && reviewData.reviews.length > 0 && (
+          <motion.div
+            className="mb-12"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+          >
+            <ReviewsSection
+              reviews={reviewData.reviews}
+              title={`${service.title} Patient Reviews`}
+              showCTA={true}
+            />
+          </motion.div>
+        )}
         
         {/* Back Button */}
         <motion.div 
@@ -293,38 +329,6 @@ export default function ServiceDetail() {
             </motion.div>
           </motion.div>
         )}
-
-        {/* Patient Reviews Section */}
-        {(() => {
-          // First try to find reviews for the exact service ID
-          let reviewData = serviceReviews.find(sr => sr.serviceId === service.id);
-          
-          // If no exact match, try to find the parent service reviews for sub-services
-          if (!reviewData) {
-            // Map sub-services to their parent categories
-            const parentMappings: { [key: string]: string } = {
-              'invisalign': 'restorative-dentistry',
-              'teeth-whitening': 'restorative-dentistry',
-              'dental-crowns': 'restorative-dentistry'
-            };
-            
-            const parentId = parentMappings[service.id];
-            if (parentId) {
-              reviewData = serviceReviews.find(sr => sr.serviceId === parentId);
-            }
-          }
-          
-          if (reviewData && reviewData.reviews.length > 0) {
-            return (
-              <ReviewsSection 
-                reviews={reviewData.reviews} 
-                title={`${service.title} Patient Reviews`}
-                showCTA={true}
-              />
-            );
-          }
-          return null;
-        })()}
 
         {/* Call to Action */}
         <motion.div 
