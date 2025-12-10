@@ -191,6 +191,12 @@ export const serviceReviews: ServiceReviews[] = [
 // Reviews to show across multiple services or as general testimonials
 export const generalReviews: Review[] = [
   {
+    name: "Priscilla Barajas",
+    rating: 5,
+    text: "I can't say enough wonderful things about Dr. Chuang and the staff at this office. Georgia has been more than incredible. They have treated my entire family of seven with so much kindness, patience, and care. Every visit feels comfortable and they always go above and beyond to make sure each one of us - from the youngest to the oldest - is taken care of. My husband and I truly love going here and trust them completely. Our kids actually enjoy going to the dentist now, which says everything! This will absolutely be our family dentist, and I highly recommend them to anyone who wants a team that treats you like family.",
+    isComplete: true
+  },
+  {
     name: "Don Spingola",
     rating: 5,
     text: "I couldn't be happier with my experience with Dr. Chuang and his staff. They are kind, gentle, and patient especially...",

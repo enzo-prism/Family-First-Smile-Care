@@ -5,6 +5,13 @@ import type { Testimonial } from "@/lib/types";
 
 const testimonials: Testimonial[] = [
   {
+    id: 0,
+    name: "Priscilla Barajas",
+    title: "Patient & parent",
+    content: "They treat my family of seven with so much kindness and care. Every visit feels comfortable, and our kids actually enjoy going to the dentist now. We trust Dr. Chuang and his team completely.",
+    rating: 5
+  },
+  {
     id: 1,
     name: "Kevin Lan",
     title: "Parent",
