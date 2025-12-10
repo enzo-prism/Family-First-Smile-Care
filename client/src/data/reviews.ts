@@ -80,6 +80,12 @@ export const serviceReviews: ServiceReviews[] = [
     serviceId: "children-dentistry",
     reviews: [
       {
+        name: "Priscilla Barajas",
+        rating: 5,
+        text: "I can't say enough wonderful things about Dr. Chuang and the staff at this office. Georgia has been more than incredible. They have treated my entire family of seven with so much kindness, patience, and care. Every visit feels comfortable, and they always go above and beyond to make sure each one of us - from the youngest to the oldest - is taken care of. My husband and I truly love going here, and we trust them completely. They do an amazing job every single time, and it's clear they genuinely care about their patients' well-being. Our kids actually enjoy going to the dentist now, which says everything! This will absolutely be our family dentist from now on, and I highly recommend them to anyone who has children of any age - or anyone who wants a dentist who treats you like family. We are so grateful to have found them!",
+        isComplete: true
+      },
+      {
         name: "Kevin Lan",
         rating: 5,
         text: "Dr. Chuang was great for my 2-year-old daughter's first dental visit. He was patient, fun and knew how to interact with...",
@@ -193,7 +199,7 @@ export const generalReviews: Review[] = [
   {
     name: "Priscilla Barajas",
     rating: 5,
-    text: "I can't say enough wonderful things about Dr. Chuang and the staff at this office. Georgia has been more than incredible. They have treated my entire family of seven with so much kindness, patience, and care. Every visit feels comfortable and they always go above and beyond to make sure each one of us - from the youngest to the oldest - is taken care of. My husband and I truly love going here and trust them completely. Our kids actually enjoy going to the dentist now, which says everything! This will absolutely be our family dentist, and I highly recommend them to anyone who wants a team that treats you like family.",
+    text: "I can't say enough wonderful things about Dr. Chuang and the staff at this office. Georgia has been more than incredible. They have treated my entire family of seven with so much kindness, patience, and care. Every visit feels comfortable, and they always go above and beyond to make sure each one of us - from the youngest to the oldest - is taken care of. My husband and I truly love going here, and we trust them completely. They do an amazing job every single time, and it's clear they genuinely care about their patients' well-being. Our kids actually enjoy going to the dentist now, which says everything! This will absolutely be our family dentist from now on, and I highly recommend them to anyone who has children of any age - or anyone who wants a dentist who treats you like family. We are so grateful to have found them!",
     isComplete: true
   },
   {
