@@ -7,8 +7,8 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, '..');
 
-// Copy robots.txt and sitemap.xml to build directory
-const filesToCopy = ['robots.txt', 'sitemap.xml'];
+// Copy robots.txt, sitemap.xml, and llms.txt to build directory
+const filesToCopy = ['robots.txt', 'sitemap.xml', 'llms.txt'];
 
 filesToCopy.forEach(file => {
   const sourcePath = path.join(projectRoot, 'client', file);

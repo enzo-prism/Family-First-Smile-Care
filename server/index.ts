@@ -155,6 +155,43 @@ Sitemap: https://famfirstsmile.com/sitemap.xml`);
     });
   });
 
+  app.get('/llms.txt', (_req, res) => {
+    // Try production location first, then development location
+    const productionPath = path.resolve(process.cwd(), 'dist', 'public', 'llms.txt');
+    const developmentPath = path.resolve(process.cwd(), 'client', 'llms.txt');
+
+    const llmsPath = fs.existsSync(productionPath) ? productionPath : developmentPath;
+
+    res.type('text/plain');
+    res.sendFile(llmsPath, (err) => {
+      if (err) {
+        res.status(200).send(`# Family First Smile Care
+> Gentle, compassionate dental care for the whole family in Los Gatos, CA.
+
+## Summary
+Family First Smile Care is a family dental practice in Los Gatos, California, led by Dr. Tim J. Chuang. This site provides information about services, the care team, patient resources, and how to contact the office.
+
+## Key Pages
+- https://famfirstsmile.com/
+- https://famfirstsmile.com/about
+- https://famfirstsmile.com/services
+- https://famfirstsmile.com/services/childrens-dentistry/babys-first-visit
+- https://famfirstsmile.com/tmj
+- https://famfirstsmile.com/team
+- https://famfirstsmile.com/patient-info
+- https://famfirstsmile.com/contact
+
+## Contact
+- Phone: +1-408-358-8100
+- Email: hello@famfirstsmile.com
+- Address: 15251 National Ave, Suite 102, Los Gatos, CA 95032
+
+## Notes
+- Content is for general informational purposes and does not constitute medical or dental advice.`);
+      }
+    });
+  });
+
   // importantly only setup vite in development and after
   // setting up all the other routes so the catch-all route
   // doesn't interfere with the other routes
