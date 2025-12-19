@@ -5,7 +5,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -26,14 +25,13 @@ const navigation: Array<{ name: string; href: string; dropdown?: boolean }> = [
 const getServiceHref = (serviceId: string) =>
   serviceId === "tmj" ? "/tmj" : `/services/${serviceId}`;
 
-const serviceMenuGroups = services.map((service) => ({
-  title: service.title,
-  href: getServiceHref(service.id),
-  children: service.subServices?.map((subService) => ({
+const serviceMenuItems = services.flatMap((service) => [
+  { title: service.title, href: getServiceHref(service.id) },
+  ...(service.subServices?.map((subService) => ({
     title: subService.title,
     href: getServiceHref(subService.id),
-  })),
-}));
+  })) ?? []),
+]);
 
 export default function Header() {
   const [location] = useLocation();
@@ -89,34 +87,19 @@ export default function Header() {
                   <DropdownMenuContent align="start" className="w-80 p-3">
                     <DropdownMenuItem
                       asChild
-                      className="cursor-pointer rounded-md bg-primary/5 px-3 py-2 font-semibold text-primary focus:bg-primary/10 focus:text-primary"
+                      className="cursor-pointer rounded-md px-3 py-2 text-sm font-semibold text-gray-900 focus:bg-primary/10 focus:text-primary"
                     >
                       <Link href="/services">View all services</Link>
                     </DropdownMenuItem>
-                    <DropdownMenuSeparator className="my-2" />
-                    <div className="space-y-3">
-                      {serviceMenuGroups.map((service) => (
-                        <div key={service.href} className="space-y-1">
-                          <DropdownMenuItem
-                            asChild
-                            className="cursor-pointer rounded-md px-3 py-2 text-sm font-semibold text-gray-900 focus:bg-primary/10 focus:text-primary"
-                          >
-                            <Link href={service.href}>{service.title}</Link>
-                          </DropdownMenuItem>
-                          {service.children?.length ? (
-                            <div className="space-y-1 pl-4">
-                              {service.children.map((child) => (
-                                <DropdownMenuItem
-                                  key={child.href}
-                                  asChild
-                                  className="cursor-pointer rounded-md px-3 py-2 text-sm text-gray-600 focus:bg-primary/10 focus:text-primary"
-                                >
-                                  <Link href={child.href}>{child.title}</Link>
-                                </DropdownMenuItem>
-                              ))}
-                            </div>
-                          ) : null}
-                        </div>
+                    <div className="space-y-1">
+                      {serviceMenuItems.map((service) => (
+                        <DropdownMenuItem
+                          key={service.href}
+                          asChild
+                          className="cursor-pointer rounded-md px-3 py-2 text-sm font-semibold text-gray-900 focus:bg-primary/10 focus:text-primary"
+                        >
+                          <Link href={service.href}>{service.title}</Link>
+                        </DropdownMenuItem>
                       ))}
                     </div>
                   </DropdownMenuContent>
@@ -192,30 +175,15 @@ export default function Header() {
                       >
                         View all services
                       </Link>
-                      {serviceMenuGroups.map((service) => (
-                        <div key={service.href} className="space-y-2">
-                          <Link
-                            href={service.href}
-                            className="text-gray-800 font-semibold hover:text-primary"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            {service.title}
-                          </Link>
-                          {service.children?.length ? (
-                            <div className="space-y-2 pl-4">
-                              {service.children.map((child) => (
-                                <Link
-                                  key={child.href}
-                                  href={child.href}
-                                  className="text-sm text-gray-600 hover:text-primary"
-                                  onClick={() => setIsOpen(false)}
-                                >
-                                  {child.title}
-                                </Link>
-                              ))}
-                            </div>
-                          ) : null}
-                        </div>
+                      {serviceMenuItems.map((service) => (
+                        <Link
+                          key={service.href}
+                          href={service.href}
+                          className="text-gray-800 font-semibold hover:text-primary"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {service.title}
+                        </Link>
                       ))}
                     </div>
                   </div>
