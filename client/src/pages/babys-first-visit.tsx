@@ -1,6 +1,5 @@
 import type { MouseEvent } from "react";
 import { useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -69,13 +68,6 @@ export default function BabysFirstVisit() {
 
   return (
     <div className="pt-16 pb-20 bg-white">
-      <Helmet>
-        <title>Baby&apos;s First Dental Visit in Los Gatos, CA | Family First Smile Care</title>
-        <meta
-          name="description"
-          content="A calm, playful first dental visit for babies in Los Gatos. Learn what happens, how to prepare, and why early visits matter for lifelong oral health."
-        />
-      </Helmet>
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/10 py-16 lg:py-24">

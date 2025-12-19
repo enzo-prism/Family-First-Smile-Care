@@ -1,5 +1,4 @@
 import type { MouseEvent } from "react";
-import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Activity, Shield, Stethoscope, CheckCircle, Clock, Users } from "lucide-react";
@@ -13,10 +12,6 @@ export default function TMJ() {
 
   return (
     <div className="pt-16 pb-20 bg-white">
-      <Helmet>
-        <title>TMJ Treatment in Los Gatos - Family First Smile Care</title>
-        <meta name="description" content="Expert TMJ treatment in Los Gatos by Dr. Tim J. Chuang. Relief for jaw pain, headaches, and TMD symptoms with personalized care and advanced technology." />
-      </Helmet>
       
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-primary/5 to-secondary/5 py-20 lg:py-32">

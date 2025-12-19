@@ -15,19 +15,7 @@ export interface Testimonial {
   rating: number;
 }
 
-export interface Service {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-  details: string[];
-  featured?: boolean;
-  subServices?: Service[];
-  heroDescription?: string;
-  longDescription?: string;
-  benefits?: string[];
-  process?: string[];
-}
+export type { Service } from "@shared/services";
 
 export interface FAQItem {
   id: string;

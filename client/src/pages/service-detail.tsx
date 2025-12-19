@@ -150,8 +150,6 @@ export default function ServiceDetail() {
   return (
     <div className="pt-16 pb-20 bg-white">
       <Helmet>
-        <title>{service.title} - Family First Smile Care | Los Gatos</title>
-        <meta name="description" content={`${service.heroDescription || service.description} Professional ${service.title.toLowerCase()} services in Los Gatos, CA by Dr. Tim J. Chuang.`} />
         <script type="application/ld+json">
           {JSON.stringify(serviceSchema)}
         </script>

@@ -7,8 +7,6 @@ export default function NotFound() {
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-gray-50 via-white to-gray-50 pt-16">
       <Helmet>
-        <title>Page Not Found - Family First Smile Care</title>
-        <meta name="description" content="The page you're looking for doesn't exist. Return to our homepage or contact us for assistance." />
         <meta name="robots" content="noindex,follow" />
       </Helmet>
       

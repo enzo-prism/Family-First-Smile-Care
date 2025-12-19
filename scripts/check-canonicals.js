@@ -7,6 +7,8 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
 const canonicalRegex = /<link\s+[^>]*rel=["']canonical["'][^>]*>/i;
+const metaDescriptionRegex = /<meta\s+[^>]*name=["']description["'][^>]*>/i;
+const titleRegex = /<title>.*?<\/title>/i;
 
 const issues = [];
 
@@ -17,6 +19,12 @@ const checkFile = (label, filePath) => {
   const contents = fs.readFileSync(filePath, "utf-8");
   if (canonicalRegex.test(contents)) {
     issues.push(`${label} contains a canonical tag: ${filePath}`);
+  }
+  if (metaDescriptionRegex.test(contents)) {
+    issues.push(`${label} contains a meta description tag: ${filePath}`);
+  }
+  if (titleRegex.test(contents)) {
+    issues.push(`${label} contains a title tag: ${filePath}`);
   }
 };
 
@@ -47,6 +55,12 @@ for (const file of pageFiles) {
   const contents = fs.readFileSync(file, "utf-8");
   if (canonicalRegex.test(contents)) {
     issues.push(`Canonical tag found in page file: ${file}`);
+  }
+  if (metaDescriptionRegex.test(contents)) {
+    issues.push(`Meta description tag found in page file: ${file}`);
+  }
+  if (titleRegex.test(contents)) {
+    issues.push(`Title tag found in page file: ${file}`);
   }
 }
 

@@ -1,5 +1,4 @@
 import type { MouseEvent } from "react";
-import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import ServiceCard from "@/components/service-card";
 import { services } from "@/data/services";
@@ -40,10 +39,6 @@ export default function Services() {
 
   return (
     <div className="pt-16 pb-20 bg-gradient-to-br from-gray-50 via-white to-gray-50">
-      <Helmet>
-        <title>Dental Services - Family First Smile Care | Los Gatos</title>
-        <meta name="description" content="Comprehensive dental services including children's dentistry, dental exams, hygiene, general & family care, night guards, restorative dentistry, Invisalign, teeth whitening, dental crowns, and TMJ treatment in Los Gatos, CA." />
-      </Helmet>
       
       {/* Hero Section */}
       <section className="relative overflow-hidden py-20 lg:py-32">

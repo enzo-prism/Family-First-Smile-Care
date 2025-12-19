@@ -96,8 +96,6 @@ export default function PatientInfo() {
   return (
     <div className="pt-16 pb-20 bg-gray-50">
       <Helmet>
-        <title>Patient Information - Family First Smile Care | Los Gatos</title>
-        <meta name="description" content="Important patient information including insurance, FAQs, and office policies. Get prepared for your visit to Family First Smile Care in Los Gatos, CA." />
         <script type="application/ld+json">
           {JSON.stringify(faqSchema)}
         </script>

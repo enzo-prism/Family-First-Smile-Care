@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { GraduationCap, Stethoscope, Heart, UserRound, HandHeart } from "lucide-react";
@@ -10,10 +9,6 @@ import trangAssistantPhoto from "@assets/Trang Assistant Headshot_1756845643362.
 export default function Team() {
   return (
     <div className="pt-16 pb-20 bg-white">
-      <Helmet>
-        <title>Meet Our Team - Dr. Tim J. Chuang | Los Gatos Dentist</title>
-        <meta name="description" content="Meet Dr. Tim J. Chuang and our caring dental team. Experienced professionals providing gentle, compassionate dental care in Los Gatos, CA." />
-      </Helmet>
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-primary/5 to-secondary/5 py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

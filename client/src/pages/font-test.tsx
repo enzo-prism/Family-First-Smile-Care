@@ -1,11 +1,7 @@
-import { Helmet } from "react-helmet-async";
 
 export default function FontTest() {
   return (
     <div className="pt-16 pb-20 bg-white">
-      <Helmet>
-        <title>Raleway Font Test - Family First Smile Care</title>
-      </Helmet>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <h1 className="text-5xl font-bold mb-8">Raleway Font Test</h1>
         

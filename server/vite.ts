@@ -5,11 +5,13 @@ import { createServer as createViteServer, createLogger } from "vite";
 import { type Server } from "http";
 import viteConfig from "../vite.config";
 import { nanoid } from "nanoid";
-import { resolveCanonicalPath } from "@shared/seo";
+import { resolveCanonicalPath, resolvePageMeta } from "@shared/seo";
 
 const viteLogger = createLogger();
 const canonicalHost = (process.env.CANONICAL_HOST || "https://famfirstsmile.com").replace(/\/$/, "");
 const canonicalTagRegex = /<link\s+[^>]*rel=["']canonical["'][^>]*>\s*/gi;
+const metaDescriptionRegex = /<meta\s+[^>]*name=["']description["'][^>]*>\s*/gi;
+const titleTagRegex = /<title>.*?<\/title>\s*/is;
 
 export function log(message: string, source = "express") {
   const formattedTime = new Date().toLocaleTimeString("en-US", {
@@ -37,12 +39,27 @@ const buildCanonicalUrl = (req: Request) => {
   return `${host}${path === "/" ? "/" : path}`;
 };
 
-const injectCanonical = (html: string, canonicalUrl: string) => {
-  const cleaned = html.replace(canonicalTagRegex, "");
-  const tag = `<link rel="canonical" href="${canonicalUrl}" data-react-helmet="true" />`;
+const escapeHtml = (value: string) =>
+  value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
+const injectSeo = (html: string, canonicalUrl: string, meta: { title: string; description: string }) => {
+  const cleaned = html
+    .replace(canonicalTagRegex, "")
+    .replace(metaDescriptionRegex, "")
+    .replace(titleTagRegex, "");
+  const tags = [
+    `<title data-react-helmet="true">${escapeHtml(meta.title)}</title>`,
+    `<meta name="description" content="${escapeHtml(meta.description)}" data-react-helmet="true" />`,
+    `<link rel="canonical" href="${canonicalUrl}" data-react-helmet="true" />`,
+  ];
   return cleaned.includes("</head>")
-    ? cleaned.replace("</head>", `  ${tag}\n  </head>`)
-    : `${tag}\n${cleaned}`;
+    ? cleaned.replace("</head>", `  ${tags.join("\n  ")}\n  </head>`)
+    : `${tags.join("\n")}\n${cleaned}`;
 };
 
 export async function setupVite(app: Express, server: Server) {
@@ -85,7 +102,7 @@ export async function setupVite(app: Express, server: Server) {
         `src="/src/main.tsx?v=${nanoid()}"`,
       );
       const page = await vite.transformIndexHtml(url, template);
-      const html = injectCanonical(page, buildCanonicalUrl(req));
+      const html = injectSeo(page, buildCanonicalUrl(req), resolvePageMeta(url));
       res.status(200).set({ "Content-Type": "text/html" }).end(html);
     } catch (e) {
       vite.ssrFixStacktrace(e as Error);
@@ -116,7 +133,7 @@ export function serveStatic(app: Express) {
 
   // fall through to index.html if the file doesn't exist
   app.use("*", (req, res) => {
-    const html = injectCanonical(indexTemplate, buildCanonicalUrl(req));
+    const html = injectSeo(indexTemplate, buildCanonicalUrl(req), resolvePageMeta(req.originalUrl));
     res.status(200).set({ "Content-Type": "text/html" }).end(html);
   });
 }

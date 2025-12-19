@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Heart, Stethoscope, Users, User, Shield } from "lucide-react";
 
@@ -77,10 +76,6 @@ import officePhoto12 from "@assets/Office Photo 12_1753972057108.png";
 export default function About() {
   return (
     <div className="pt-16 pb-20 bg-white">
-      <Helmet>
-        <title>About Us - Family First Smile Care | Los Gatos Dentist</title>
-        <meta name="description" content="Learn about Dr. Tim J. Chuang and Family First Smile Care. Our Los Gatos dental practice is built on compassion, personalization, and prevention." />
-      </Helmet>
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-primary/5 to-secondary/5 py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

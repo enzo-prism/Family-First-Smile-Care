@@ -182,8 +182,6 @@ export default function Home() {
   return (
     <div className="pt-16">
       <Helmet>
-        <title>Family First Smile Care - Gentle Dental Care in Los Gatos, CA</title>
-        <meta name="description" content="Gentle, compassionate dental care for the whole family in Los Gatos, CA. Dr. Tim J. Chuang offers comprehensive dental services in a welcoming environment." />
         <script type="application/ld+json">
           {JSON.stringify(organizationSchema)}
         </script>
