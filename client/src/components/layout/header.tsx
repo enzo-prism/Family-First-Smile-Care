@@ -1,19 +1,52 @@
 import { useState, type MouseEvent } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Smile, CreditCard, Star } from "lucide-react";
+import { ChevronDown, CreditCard, Menu } from "lucide-react";
 import familyFirstLogo from "@assets/Logo_1753972987510.png";
+import { services } from "@/data/services";
 import { APPOINTMENT_FORM_URL, triggerGoogleAdsConversion } from "@/lib/analytics";
 
-const navigation = [
+const navigation: Array<{ name: string; href: string; dropdown?: boolean }> = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
-  { name: "Services", href: "/services" },
+  { name: "Services", href: "/services", dropdown: true },
   { name: "Our Team", href: "/team" },
   { name: "Patient Info", href: "/patient-info" },
   { name: "Contact", href: "/contact" },
 ];
+
+const getServiceHref = (serviceId: string) =>
+  serviceId === "tmj" ? "/tmj" : `/services/${serviceId}`;
+
+const serviceMenuItems = services.flatMap((service) => {
+  const entries = [
+    {
+      title: service.title,
+      href: getServiceHref(service.id),
+      isSubService: false,
+    },
+  ];
+
+  if (service.subServices?.length) {
+    entries.push(
+      ...service.subServices.map((subService) => ({
+        title: subService.title,
+        href: getServiceHref(subService.id),
+        isSubService: true,
+      }))
+    );
+  }
+
+  return entries;
+});
 
 export default function Header() {
   const [location] = useLocation();
@@ -22,6 +55,12 @@ export default function Header() {
     event.preventDefault();
     triggerGoogleAdsConversion(APPOINTMENT_FORM_URL, "_blank");
   };
+  const isServicesActive =
+    location === "/services" ||
+    location.startsWith("/services/") ||
+    location === "/tmj";
+  const serviceGridClass =
+    serviceMenuItems.length > 8 ? "grid-cols-2" : "grid-cols-1";
 
   return (
     <nav className="fixed top-0 w-full bg-white shadow-md z-50" role="navigation" aria-label="Main navigation">
@@ -48,17 +87,54 @@ export default function Header() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={`nav-link ${
-                  location === item.href
-                    ? "text-primary font-semibold"
-                    : "text-gray-700 hover:text-primary"
-                }`}
-              >
-                {item.name}
-              </Link>
+              item.dropdown ? (
+                <DropdownMenu key={item.name}>
+                  <DropdownMenuTrigger asChild>
+                    <button
+                      type="button"
+                      className={`nav-link inline-flex items-center gap-1 ${
+                        isServicesActive
+                          ? "text-primary font-semibold"
+                          : "text-gray-700 hover:text-primary"
+                      } data-[state=open]:text-primary`}
+                    >
+                      Services
+                      <ChevronDown className="h-4 w-4" />
+                    </button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="start" className="w-80 p-2">
+                    <DropdownMenuItem asChild className="cursor-pointer font-semibold">
+                      <Link href="/services">View all services</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <div className={`grid ${serviceGridClass} gap-1`}>
+                      {serviceMenuItems.map((service) => (
+                        <DropdownMenuItem
+                          key={service.href}
+                          asChild
+                          className={`cursor-pointer ${
+                            service.isSubService ? "pl-6 text-gray-600" : "font-medium"
+                          }`}
+                        >
+                          <Link href={service.href}>{service.title}</Link>
+                        </DropdownMenuItem>
+                      ))}
+                    </div>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`nav-link ${
+                    location === item.href
+                      ? "text-primary font-semibold"
+                      : "text-gray-700 hover:text-primary"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              )
             ))}
             <a 
               href="https://swipesimple.com/links/lnk_67505de480da165de07d5bd3f42fbcce" 
@@ -93,7 +169,7 @@ export default function Header() {
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <nav className="flex flex-col space-y-4 mt-8">
-                  {navigation.map((item) => (
+                  {navigation.filter((item) => !item.dropdown).map((item) => (
                     <Link
                       key={item.name}
                       href={item.href}
@@ -107,6 +183,30 @@ export default function Header() {
                       {item.name}
                     </Link>
                   ))}
+                  <div className="border-t border-gray-200 pt-4">
+                    <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide">Services</p>
+                    <div className="mt-3 flex flex-col space-y-2">
+                      <Link
+                        href="/services"
+                        className="text-gray-800 font-semibold hover:text-primary"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        View all services
+                      </Link>
+                      {serviceMenuItems.map((service) => (
+                        <Link
+                          key={service.href}
+                          href={service.href}
+                          className={`text-gray-700 hover:text-primary ${
+                            service.isSubService ? "pl-4 text-sm" : "text-base"
+                          }`}
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {service.title}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                   <a 
                     href="https://swipesimple.com/links/lnk_67505de480da165de07d5bd3f42fbcce" 
                     target="_blank" 
