@@ -33,11 +33,15 @@ Key files of note:
 2. **Provide environment variables**
    - `DATABASE_URL` – Neon/PostgreSQL connection string (required for real persistence).
    - `VITE_GA_MEASUREMENT_ID` – Google Analytics ID (optional but recommended).
+   - `CANONICAL_HOST` – Base URL used for server-rendered canonical tags (optional).
+   - `VITE_CANONICAL_HOST` – Base URL used for client-side canonical updates (optional).
 
    During development you can export them in your shell:
    ```bash
    export DATABASE_URL="postgres://..."
    export VITE_GA_MEASUREMENT_ID="G-XXXXXXX"
+   export CANONICAL_HOST="https://famfirstsmile.com"
+   export VITE_CANONICAL_HOST="https://famfirstsmile.com"
    ```
    If `DATABASE_URL` is omitted the API will fall back to in-memory storage (changes are not persisted).
 

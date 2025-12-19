@@ -70,12 +70,11 @@ export default function BabysFirstVisit() {
   return (
     <div className="pt-16 pb-20 bg-white">
       <Helmet>
-        <title>Baby&apos;s First Dental Visit in Los Gatos, CA</title>
+        <title>Baby&apos;s First Dental Visit in Los Gatos, CA | Family First Smile Care</title>
         <meta
           name="description"
           content="A calm, playful first dental visit for babies in Los Gatos. Learn what happens, how to prepare, and why early visits matter for lifelong oral health."
         />
-        <link rel="canonical" href="https://famfirstsmile.com/services/childrens-dentistry/babys-first-visit" />
       </Helmet>
 
       {/* Hero */}

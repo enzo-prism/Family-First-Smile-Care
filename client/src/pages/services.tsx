@@ -43,7 +43,6 @@ export default function Services() {
       <Helmet>
         <title>Dental Services - Family First Smile Care | Los Gatos</title>
         <meta name="description" content="Comprehensive dental services including children's dentistry, dental exams, hygiene, general & family care, night guards, restorative dentistry, Invisalign, teeth whitening, dental crowns, and TMJ treatment in Los Gatos, CA." />
-        <link rel="canonical" href="https://famfirstsmile.com/services" />
       </Helmet>
       
       {/* Hero Section */}

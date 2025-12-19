@@ -80,7 +80,6 @@ export default function About() {
       <Helmet>
         <title>About Us - Family First Smile Care | Los Gatos Dentist</title>
         <meta name="description" content="Learn about Dr. Tim J. Chuang and Family First Smile Care. Our Los Gatos dental practice is built on compassion, personalization, and prevention." />
-        <link rel="canonical" href="https://famfirstsmile.com/about" />
       </Helmet>
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-primary/5 to-secondary/5 py-20 lg:py-32">

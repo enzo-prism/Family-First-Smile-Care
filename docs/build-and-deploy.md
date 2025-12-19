@@ -4,7 +4,7 @@ This guide documents the exact steps we use to produce shipping artifacts for Fa
 
 ## Prerequisites
 - **Node.js 20.x / npm 10.x** – matches the TypeScript and Vite toolchain in `package.json`.
-- **Environment variables** – `DATABASE_URL` (required for real persistence) and `VITE_GA_MEASUREMENT_ID` (optional). Set them in your shell or `.env` before running `npm start`/`npm run dev`.
+- **Environment variables** – `DATABASE_URL` (required for real persistence), `VITE_GA_MEASUREMENT_ID` (optional), and optional canonical hosts (`CANONICAL_HOST`, `VITE_CANONICAL_HOST`). Set them in your shell or `.env` before running `npm start`/`npm run dev`.
 - **Neon/PostgreSQL access** – needed when running `npm run db:push`.
 
 ## One-Time Setup
@@ -37,7 +37,7 @@ npx update-browserslist-db@latest --no-update-notifier --no-fund  # silences the
 
 ## Deployment Checklist
 - Upload **`dist/index.js`**, **`dist/public/`**, and **`attached_assets/`** to your hosting environment. `attached_assets/` holds marketing downloads that are not part of the Vite bundle.
-- Provide the same environment variables used locally (`DATABASE_URL`, `VITE_GA_MEASUREMENT_ID`, analytics keys, etc.).
+- Provide the same environment variables used locally (`DATABASE_URL`, `VITE_GA_MEASUREMENT_ID`, `CANONICAL_HOST`, `VITE_CANONICAL_HOST`, analytics keys, etc.).
 - Run `npm run db:push` against Neon whenever the schema in `shared/schema.ts` changes.
 
 ## Troubleshooting

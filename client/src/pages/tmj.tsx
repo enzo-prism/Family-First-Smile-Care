@@ -16,7 +16,6 @@ export default function TMJ() {
       <Helmet>
         <title>TMJ Treatment in Los Gatos - Family First Smile Care</title>
         <meta name="description" content="Expert TMJ treatment in Los Gatos by Dr. Tim J. Chuang. Relief for jaw pain, headaches, and TMD symptoms with personalized care and advanced technology." />
-        <link rel="canonical" href="https://famfirstsmile.com/tmj" />
       </Helmet>
       
       {/* Hero Section */}

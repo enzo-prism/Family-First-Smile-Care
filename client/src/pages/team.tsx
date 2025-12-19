@@ -13,7 +13,6 @@ export default function Team() {
       <Helmet>
         <title>Meet Our Team - Dr. Tim J. Chuang | Los Gatos Dentist</title>
         <meta name="description" content="Meet Dr. Tim J. Chuang and our caring dental team. Experienced professionals providing gentle, compassionate dental care in Los Gatos, CA." />
-        <link rel="canonical" href="https://famfirstsmile.com/team" />
       </Helmet>
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-primary/5 to-secondary/5 py-20 lg:py-32">

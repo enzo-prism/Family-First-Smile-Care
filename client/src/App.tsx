@@ -9,6 +9,7 @@ import { initGA, initHotjar } from "./lib/analytics";
 import { useAnalytics } from "./hooks/use-analytics";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
+import Canonical from "@/components/seo/canonical";
 import Home from "@/pages/home";
 import About from "@/pages/about";
 import Services from "@/pages/services";
@@ -37,6 +38,7 @@ function Router() {
   
   return (
     <>
+      <Canonical />
       <ScrollToTop />
       <Switch>
         <Route path="/" component={Home} />

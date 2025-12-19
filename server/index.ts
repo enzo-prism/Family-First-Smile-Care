@@ -125,7 +125,6 @@ app.use((req, res, next) => {
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /attached_assets/
 
 Sitemap: https://famfirstsmile.com/sitemap.xml`);
       }

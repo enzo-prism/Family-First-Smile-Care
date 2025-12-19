@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "wouter";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Shield, Clock, ChevronDown, Stethoscope, Scissors, Apple } from "lucide-react";
@@ -30,6 +31,39 @@ const faqs: FAQItem[] = [
     question: "Do you offer emergency dental services?",
     answer: "Yes, we provide emergency dental care for urgent situations. If you have a dental emergency, please call our office immediately and we'll do our best to see you the same day."
   }
+];
+
+const popularServices = [
+  {
+    title: "Dental Exams",
+    description: "Comprehensive checkups and early detection.",
+    href: "/services/dental-exams",
+  },
+  {
+    title: "Dental Hygiene",
+    description: "Professional cleanings and gum health care.",
+    href: "/services/dental-hygiene",
+  },
+  {
+    title: "Children's Dentistry",
+    description: "Gentle care for kids of all ages.",
+    href: "/services/children-dentistry",
+  },
+  {
+    title: "Baby's First Visit",
+    description: "First visits for infants and toddlers.",
+    href: "/services/childrens-dentistry/babys-first-visit",
+  },
+  {
+    title: "Night Guards",
+    description: "Protection for grinding and jaw tension.",
+    href: "/services/night-guards",
+  },
+  {
+    title: "TMJ Treatment",
+    description: "Care for jaw pain and dysfunction.",
+    href: "/tmj",
+  },
 ];
 
 export default function PatientInfo() {
@@ -64,7 +98,6 @@ export default function PatientInfo() {
       <Helmet>
         <title>Patient Information - Family First Smile Care | Los Gatos</title>
         <meta name="description" content="Important patient information including insurance, FAQs, and office policies. Get prepared for your visit to Family First Smile Care in Los Gatos, CA." />
-        <link rel="canonical" href="https://famfirstsmile.com/patient-info" />
         <script type="application/ld+json">
           {JSON.stringify(faqSchema)}
         </script>
@@ -210,6 +243,25 @@ export default function PatientInfo() {
                 </Button>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Popular Services */}
+        <div className="mt-16">
+          <h2 className="text-3xl font-bold text-gray-800 mb-4 text-center">Popular Appointments</h2>
+          <p className="text-lg text-gray-600 mb-8 text-center">
+            Quick links to the services patients ask for most.
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {popularServices.map((service) => (
+              <Link key={service.href} href={service.href} className="block h-full">
+                <div className="h-full bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">{service.title}</h3>
+                  <p className="text-gray-600 mb-4">{service.description}</p>
+                  <span className="text-primary font-semibold">Learn more</span>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
         

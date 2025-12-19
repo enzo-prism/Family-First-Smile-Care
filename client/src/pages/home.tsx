@@ -57,6 +57,44 @@ const scaleIn = {
   }
 };
 
+const additionalServices = [
+  {
+    title: "Dental Exams",
+    description: "Comprehensive checkups and early detection.",
+    href: "/services/dental-exams",
+  },
+  {
+    title: "Night Guards",
+    description: "Custom protection for grinding and jaw tension.",
+    href: "/services/night-guards",
+  },
+  {
+    title: "Restorative Dentistry",
+    description: "Repair damaged teeth and restore function.",
+    href: "/services/restorative-dentistry",
+  },
+  {
+    title: "Teeth Whitening",
+    description: "Professional brightening for a confident smile.",
+    href: "/services/teeth-whitening",
+  },
+  {
+    title: "Dental Crowns",
+    description: "Durable crowns to restore damaged teeth.",
+    href: "/services/dental-crowns",
+  },
+  {
+    title: "TMJ Treatment",
+    description: "Relief for jaw pain and headaches.",
+    href: "/tmj",
+  },
+  {
+    title: "Baby's First Visit",
+    description: "Gentle introductions for infants and toddlers.",
+    href: "/services/childrens-dentistry/babys-first-visit",
+  },
+];
+
 export default function Home() {
   const handleAppointmentClick = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
@@ -146,7 +184,6 @@ export default function Home() {
       <Helmet>
         <title>Family First Smile Care - Gentle Dental Care in Los Gatos, CA</title>
         <meta name="description" content="Gentle, compassionate dental care for the whole family in Los Gatos, CA. Dr. Tim J. Chuang offers comprehensive dental services in a welcoming environment." />
-        <link rel="canonical" href="https://famfirstsmile.com/" />
         <script type="application/ld+json">
           {JSON.stringify(organizationSchema)}
         </script>
@@ -390,7 +427,7 @@ export default function Home() {
               </motion.div>
               <h3 className="text-lg font-semibold mb-2">Family Dentistry</h3>
               <p className="text-gray-600 text-sm mb-4">Routine check-ups, cleanings, and preventive care for all ages.</p>
-              <Link href="/services">
+              <Link href="/services/family-dentistry">
                 <Button variant="link" className="text-primary font-medium p-0 group-hover:text-primary-dark transition-colors duration-200">Learn More</Button>
               </Link>
             </motion.div>
@@ -405,7 +442,7 @@ export default function Home() {
               </motion.div>
               <h3 className="text-lg font-semibold mb-2">Children's Dentistry</h3>
               <p className="text-gray-600 text-sm mb-4">Gentle first visits and child-friendly approach with toys and stickers.</p>
-              <Link href="/services">
+              <Link href="/services/children-dentistry">
                 <Button variant="link" className="text-primary font-medium p-0 group-hover:text-primary-dark transition-colors duration-200">Learn More</Button>
               </Link>
             </motion.div>
@@ -420,7 +457,7 @@ export default function Home() {
               </motion.div>
               <h3 className="text-lg font-semibold mb-2">Dental Hygiene</h3>
               <p className="text-gray-600 text-sm mb-4">Professional cleanings and education for maintaining strong smiles.</p>
-              <Link href="/services">
+              <Link href="/services/dental-hygiene">
                 <Button variant="link" className="text-primary font-medium p-0 group-hover:text-primary-dark transition-colors duration-200">Learn More</Button>
               </Link>
             </motion.div>
@@ -435,10 +472,59 @@ export default function Home() {
               </motion.div>
               <h3 className="text-lg font-semibold mb-2">Invisalign</h3>
               <p className="text-gray-600 text-sm mb-4">Clear aligners for straightening teeth with free consultations.</p>
-              <Link href="/services">
+              <Link href="/services/invisalign">
                 <Button variant="link" className="text-primary font-medium p-0 group-hover:text-primary-dark transition-colors duration-200">Learn More</Button>
               </Link>
             </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Explore More Services */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center mb-12"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+          >
+            <motion.h2 
+              className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4"
+              variants={fadeInUp}
+            >
+              Explore More Services
+            </motion.h2>
+            <motion.p 
+              className="text-lg text-gray-600 max-w-3xl mx-auto"
+              variants={fadeInUp}
+            >
+              Specialized care options to support every stage of your smile.
+            </motion.p>
+          </motion.div>
+          <motion.div 
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={staggerContainer}
+          >
+            {additionalServices.map((service) => (
+              <motion.div
+                key={service.href}
+                variants={scaleIn}
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              >
+                <Link href={service.href} className="block h-full">
+                  <div className="h-full rounded-2xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow-lg transition-all duration-200">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">{service.title}</h3>
+                    <p className="text-sm text-gray-600">{service.description}</p>
+                    <span className="mt-4 inline-flex text-sm font-semibold text-primary">Learn more</span>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>

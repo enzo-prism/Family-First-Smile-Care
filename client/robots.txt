@@ -5,28 +5,24 @@
 User-agent: AdsBot-Google
 Allow: /
 Disallow: /api/
-Disallow: /attached_assets/
 Crawl-delay: 0
 
 # Google AdsBot Mobile
 User-agent: AdsBot-Google-Mobile
 Allow: /
 Disallow: /api/
-Disallow: /attached_assets/
 Crawl-delay: 0
 
 # Googlebot (for SEO)
 User-agent: Googlebot
 Allow: /
 Disallow: /api/
-Disallow: /attached_assets/
 Crawl-delay: 0
 
 # All other crawlers
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /attached_assets/
 Crawl-delay: 1
 
 # Sitemap location

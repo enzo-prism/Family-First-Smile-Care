@@ -152,7 +152,6 @@ export default function ServiceDetail() {
       <Helmet>
         <title>{service.title} - Family First Smile Care | Los Gatos</title>
         <meta name="description" content={`${service.heroDescription || service.description} Professional ${service.title.toLowerCase()} services in Los Gatos, CA by Dr. Tim J. Chuang.`} />
-        <link rel="canonical" href={serviceUrl} />
         <script type="application/ld+json">
           {JSON.stringify(serviceSchema)}
         </script>
