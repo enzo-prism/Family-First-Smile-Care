@@ -15,6 +15,9 @@ import About from "@/pages/about";
 import Services from "@/pages/services";
 import Team from "@/pages/team";
 import PatientInfo from "@/pages/patient-info";
+import PatientInfoBrushing from "@/pages/patient-info-brushing";
+import PatientInfoFlossing from "@/pages/patient-info-flossing";
+import PatientInfoNutrition from "@/pages/patient-info-nutrition";
 import Contact from "@/pages/contact";
 import TMJ from "@/pages/tmj";
 import BabysFirstVisit from "@/pages/babys-first-visit";
@@ -47,6 +50,9 @@ function Router() {
         <Route path="/services/childrens-dentistry/babys-first-visit" component={BabysFirstVisit} />
         <Route path="/services/:serviceId" component={ServiceDetail} />
         <Route path="/team" component={Team} />
+        <Route path="/patient-info/brushing" component={PatientInfoBrushing} />
+        <Route path="/patient-info/flossing" component={PatientInfoFlossing} />
+        <Route path="/patient-info/nutrition" component={PatientInfoNutrition} />
         <Route path="/patient-info" component={PatientInfo} />
         <Route path="/contact" component={Contact} />
         <Route path="/tmj" component={TMJ} />

@@ -45,9 +45,25 @@ const staticMeta: Record<string, PageMeta> = {
     title: "Contact Us - Family First Smile Care | Los Gatos Dentist",
     description: "Contact Family First Smile Care in Los Gatos, CA. Schedule your appointment today at (408) 358-8100 or visit us at 15251 National Ave, Suite 102.",
   },
+  "/patient-info/brushing": {
+    title: "How to Brush Properly | Family First Smile Care",
+    description: "Learn the right brushing technique, timing, and tools to protect enamel and keep gums healthy. Simple tips for kids and adults.",
+  },
+  "/patient-info/flossing": {
+    title: "Flossing Fundamentals | Family First Smile Care",
+    description: "Step-by-step flossing guidance to clean between teeth, reduce gum inflammation, and prevent cavities.",
+  },
+  "/patient-info/nutrition": {
+    title: "Nutrition for Healthy Teeth | Family First Smile Care",
+    description: "Tooth-friendly nutrition tips, foods to limit, and daily habits that help prevent decay and support healthy gums.",
+  },
   "/tmj": {
     title: "TMJ Treatment in Los Gatos - Family First Smile Care",
     description: "Expert TMJ treatment in Los Gatos by Dr. Tim J. Chuang. Relief for jaw pain, headaches, and TMD symptoms with personalized care and advanced technology.",
+  },
+  "/font-test": {
+    title: "Font Test - Family First Smile Care",
+    description: "Internal typography preview for Family First Smile Care.",
   },
 };
 

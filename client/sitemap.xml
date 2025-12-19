@@ -31,6 +31,24 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://famfirstsmile.com/patient-info/brushing</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://famfirstsmile.com/patient-info/flossing</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://famfirstsmile.com/patient-info/nutrition</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://famfirstsmile.com/contact</loc>
     <lastmod>2025-12-19</lastmod>
     <changefreq>monthly</changefreq>

@@ -68,16 +68,9 @@ const popularServices = [
 
 export default function PatientInfo() {
   const [expandedFAQ, setExpandedFAQ] = useState<string | null>(null);
-  const [expandedEducation, setExpandedEducation] = useState<string | null>(null);
 
   const toggleFAQ = (id: string) => {
     setExpandedFAQ(expandedFAQ === id ? null : id);
-  };
-
-
-
-  const showEducationModal = (topic: string) => {
-    alert(`This would show detailed information about ${topic} in a modal or new page.`);
   };
 
   const faqSchema = {
@@ -198,12 +191,8 @@ export default function PatientInfo() {
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-gray-800 mb-3">How to Brush Properly</h3>
                 <p className="text-gray-600 mb-4">Learn the correct brushing technique to effectively remove plaque and maintain healthy teeth and gums.</p>
-                <Button
-                  variant="link"
-                  className="text-primary font-medium p-0"
-                  onClick={() => showEducationModal('brushing')}
-                >
-                  Read More
+                <Button asChild variant="link" className="text-primary font-medium p-0">
+                  <Link href="/patient-info/brushing">Read More</Link>
                 </Button>
               </div>
             </div>
@@ -215,12 +204,8 @@ export default function PatientInfo() {
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-gray-800 mb-3">Flossing Fundamentals</h3>
                 <p className="text-gray-600 mb-4">Discover why flossing is essential and learn the proper technique for optimal gum health.</p>
-                <Button
-                  variant="link"
-                  className="text-primary font-medium p-0"
-                  onClick={() => showEducationModal('flossing')}
-                >
-                  Read More
+                <Button asChild variant="link" className="text-primary font-medium p-0">
+                  <Link href="/patient-info/flossing">Read More</Link>
                 </Button>
               </div>
             </div>
@@ -232,12 +217,8 @@ export default function PatientInfo() {
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-gray-800 mb-3">Nutrition for Healthy Teeth</h3>
                 <p className="text-gray-600 mb-4">Understand how your diet affects your oral health and which foods promote strong teeth.</p>
-                <Button
-                  variant="link"
-                  className="text-primary font-medium p-0"
-                  onClick={() => showEducationModal('nutrition')}
-                >
-                  Read More
+                <Button asChild variant="link" className="text-primary font-medium p-0">
+                  <Link href="/patient-info/nutrition">Read More</Link>
                 </Button>
               </div>
             </div>
