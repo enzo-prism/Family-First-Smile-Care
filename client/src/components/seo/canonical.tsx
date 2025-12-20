@@ -20,6 +20,12 @@ export default function SeoMeta() {
     <Helmet>
       <title>{meta.title}</title>
       <meta name="description" content={meta.description} />
+      <meta property="og:title" content={meta.title} />
+      <meta property="og:description" content={meta.description} />
+      <meta property="og:url" content={canonicalUrl} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={meta.title} />
+      <meta name="twitter:description" content={meta.description} />
       <link rel="canonical" href={canonicalUrl} />
     </Helmet>
   );

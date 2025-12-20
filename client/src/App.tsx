@@ -10,6 +10,7 @@ import { useAnalytics } from "./hooks/use-analytics";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import SeoMeta from "@/components/seo/canonical";
+import LocalBusinessSchema from "@/components/seo/local-business-schema";
 import Home from "@/pages/home";
 import About from "@/pages/about";
 import Services from "@/pages/services";
@@ -21,6 +22,8 @@ import PatientInfoNutrition from "@/pages/patient-info-nutrition";
 import Contact from "@/pages/contact";
 import TMJ from "@/pages/tmj";
 import BabysFirstVisit from "@/pages/babys-first-visit";
+import Invisalign from "@/pages/invisalign";
+import IteroDigitalScanner from "@/pages/itero-digital-scanner";
 import ServiceDetail from "@/pages/service-detail";
 import FontTest from "@/pages/font-test";
 import NotFound from "@/pages/not-found";
@@ -42,13 +45,16 @@ function Router() {
   return (
     <>
       <SeoMeta />
+      <LocalBusinessSchema />
       <ScrollToTop />
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/services" component={Services} />
         <Route path="/services/childrens-dentistry/babys-first-visit" component={BabysFirstVisit} />
+        <Route path="/services/invisalign" component={Invisalign} />
         <Route path="/services/:serviceId" component={ServiceDetail} />
+        <Route path="/technology/itero-digital-scanner" component={IteroDigitalScanner} />
         <Route path="/team" component={Team} />
         <Route path="/patient-info/brushing" component={PatientInfoBrushing} />
         <Route path="/patient-info/flossing" component={PatientInfoFlossing} />

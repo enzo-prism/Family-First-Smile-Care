@@ -61,6 +61,10 @@ const staticMeta: Record<string, PageMeta> = {
     title: "TMJ Treatment in Los Gatos - Family First Smile Care",
     description: "Expert TMJ treatment in Los Gatos by Dr. Tim J. Chuang. Relief for jaw pain, headaches, and TMD symptoms with personalized care and advanced technology.",
   },
+  "/technology/itero-digital-scanner": {
+    title: "iTero Digital Scanner Los Gatos | Family First Smile Care",
+    description: "Digital impressions in Los Gatos with an iTero\u00ae scanner. Comfortable 3D scans for Invisalign planning and smile previews. Book your visit today.",
+  },
   "/font-test": {
     title: "Font Test - Family First Smile Care",
     description: "Internal typography preview for Family First Smile Care.",
