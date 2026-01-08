@@ -20,11 +20,14 @@ const staggerContainer = {
 
 // Instagram post URLs extracted from embed codes
 const instagramPosts = [
-  'https://www.instagram.com/reel/DPC4XC5AYjR/',
-  'https://www.instagram.com/p/DOrx8tmjwO4/',
-  'https://www.instagram.com/reel/DNrGJb4ZMXi/',
-  'https://www.instagram.com/reel/DNYUG_KBaKM/',
-  'https://www.instagram.com/p/DNOvY7ny3ey/'
+  "https://www.instagram.com/p/DSvVBG3EnVf/",
+  "https://www.instagram.com/reel/DSL1E46D9yM/",
+  "https://www.instagram.com/reel/DRVD-p7kt-4/",
+  "https://www.instagram.com/reel/DPC4XC5AYjR/",
+  "https://www.instagram.com/p/DOrx8tmjwO4/",
+  "https://www.instagram.com/reel/DNrGJb4ZMXi/",
+  "https://www.instagram.com/reel/DNYUG_KBaKM/",
+  "https://www.instagram.com/p/DNOvY7ny3ey/"
 ];
 
 export default function SocialMediaSection() {
@@ -79,10 +82,10 @@ export default function SocialMediaSection() {
 
         {/* Instagram Posts Grid */}
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 justify-items-center"
           variants={staggerContainer}
         >
-          {instagramPosts.slice(0, 3).map((postUrl, index) => (
+          {instagramPosts.map((postUrl) => (
             <motion.div
               key={postUrl}
               variants={fadeInUp}
@@ -94,77 +97,27 @@ export default function SocialMediaSection() {
                 data-instgrm-permalink={`${postUrl}?utm_source=ig_embed&utm_campaign=loading`}
                 data-instgrm-version="14"
                 style={{
-                  background: '#FFF',
+                  background: "#FFF",
                   border: 0,
-                  borderRadius: '3px',
-                  boxShadow: '0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)',
-                  margin: '1px',
-                  maxWidth: '540px',
-                  minWidth: '326px',
+                  borderRadius: "3px",
+                  boxShadow: "0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)",
+                  margin: "1px",
+                  maxWidth: "540px",
+                  minWidth: "326px",
                   padding: 0,
-                  width: '99.375%'
+                  width: "99.375%"
                 }}
               >
-                <div style={{ padding: '16px' }}>
+                <div style={{ padding: "16px" }}>
                   <a 
                     href={postUrl}
                     style={{
-                      background: '#FFFFFF',
+                      background: "#FFFFFF",
                       lineHeight: 0,
                       padding: 0,
-                      textAlign: 'center',
-                      textDecoration: 'none',
-                      width: '100%'
-                    }}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View this post on Instagram
-                  </a>
-                </div>
-              </blockquote>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Second Row - Last 2 Posts Centered */}
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 mt-8 max-w-4xl mx-auto"
-          variants={staggerContainer}
-        >
-          {instagramPosts.slice(3, 5).map((postUrl, index) => (
-            <motion.div
-              key={postUrl}
-              variants={fadeInUp}
-              className="instagram-embed-container flex justify-center"
-            >
-              <blockquote 
-                className="instagram-media" 
-                data-instgrm-captioned 
-                data-instgrm-permalink={`${postUrl}?utm_source=ig_embed&utm_campaign=loading`}
-                data-instgrm-version="14"
-                style={{
-                  background: '#FFF',
-                  border: 0,
-                  borderRadius: '3px',
-                  boxShadow: '0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)',
-                  margin: '1px',
-                  maxWidth: '540px',
-                  minWidth: '326px',
-                  padding: 0,
-                  width: '99.375%'
-                }}
-              >
-                <div style={{ padding: '16px' }}>
-                  <a 
-                    href={postUrl}
-                    style={{
-                      background: '#FFFFFF',
-                      lineHeight: 0,
-                      padding: 0,
-                      textAlign: 'center',
-                      textDecoration: 'none',
-                      width: '100%'
+                      textAlign: "center",
+                      textDecoration: "none",
+                      width: "100%"
                     }}
                     target="_blank"
                     rel="noopener noreferrer"
