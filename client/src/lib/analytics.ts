@@ -3,7 +3,6 @@ declare global {
   interface Window {
     dataLayer: any[];
     gtag: (...args: any[]) => void;
-    gtagSendEvent?: (url?: string, target?: "_self" | "_blank") => void;
     hj: (...args: any[]) => void;
     _hjSettings: {
       hjid: number;
@@ -14,15 +13,46 @@ declare global {
 
 const GOOGLE_ADS_TAG_ID = "AW-11373090310"; // Google Ads conversion tracking ID
 const GOOGLE_ADS_CONVERSION_EVENT = "ads_conversion_Submit_lead_form_1";
+const DEFAULT_GA_MEASUREMENT_ID = "G-L7MH47XYXL";
+const GA_MEASUREMENT_ID =
+  import.meta.env.VITE_GA_MEASUREMENT_ID?.trim() || DEFAULT_GA_MEASUREMENT_ID;
 export const APPOINTMENT_FORM_URL = "https://fxuqp40sseh.typeform.com/to/CiLYdxSU";
 
-const getGtagMeasurementIds = () => {
-  const ids = [
-    import.meta.env.VITE_GA_MEASUREMENT_ID?.trim(),
-    GOOGLE_ADS_TAG_ID,
-  ].filter((id): id is string => Boolean(id));
+let gtagInitialized = false;
+let gtagScriptInjected = false;
 
-  return Array.from(new Set(ids));
+const ensureGtag = () => {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  window.dataLayer = window.dataLayer || [];
+  if (!window.gtag) {
+    window.gtag = function gtag(...args: any[]) {
+      window.dataLayer.push(args);
+    };
+  }
+
+  return true;
+};
+
+const injectGtagScript = (loaderId: string) => {
+  if (gtagScriptInjected) {
+    return;
+  }
+
+  const existingLoader = document.querySelector<HTMLScriptElement>("script[data-gtag-loader=\"true\"]");
+  if (existingLoader) {
+    gtagScriptInjected = true;
+    return;
+  }
+
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(loaderId)}`;
+  script.setAttribute("data-gtag-loader", "true");
+  document.head.appendChild(script);
+  gtagScriptInjected = true;
 };
 
 const openUrl = (url: string, target: "_self" | "_blank") => {
@@ -41,6 +71,8 @@ const openUrl = (url: string, target: "_self" | "_blank") => {
 
 export const triggerGoogleAdsConversion = (url?: string, target: "_self" | "_blank" = "_self") => {
   if (typeof window === "undefined") return;
+
+  initGA();
 
   const navigate = () => {
     if (!url) return;
@@ -69,44 +101,14 @@ export const triggerGoogleAdsConversion = (url?: string, target: "_self" | "_bla
 
 // Initialize Google Analytics
 export const initGA = () => {
-  if (typeof window === "undefined") {
-    return;
-  }
+  if (gtagInitialized) return;
+  if (!ensureGtag()) return;
 
-  const measurementIds = getGtagMeasurementIds();
-  if (!measurementIds.length) {
-    console.warn("No Google Analytics or Ads measurement IDs found for gtag.");
-    return;
-  }
-
-  const loaderId = measurementIds[0];
-  const existingLoader = document.querySelector<HTMLScriptElement>('script[data-gtag-loader="true"]');
-  if (!existingLoader) {
-    const script = document.createElement("script");
-    script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${loaderId}`;
-    script.setAttribute("data-gtag-loader", "true");
-    document.head.appendChild(script);
-  }
-
-  window.dataLayer = window.dataLayer || [];
-
-  if (!window.gtag) {
-    window.gtag = function gtag(...args: any[]) {
-      window.dataLayer.push(args);
-    };
-  }
-
+  injectGtagScript(GA_MEASUREMENT_ID);
   window.gtag("js", new Date());
-  measurementIds.forEach((id) => {
-    window.gtag("config", id);
-  });
-
-  if (!window.gtagSendEvent) {
-    window.gtagSendEvent = (url?: string, target: "_self" | "_blank" = "_self") => {
-      triggerGoogleAdsConversion(url, target);
-    };
-  }
+  window.gtag("config", GA_MEASUREMENT_ID, { send_page_view: false });
+  window.gtag("config", GOOGLE_ADS_TAG_ID);
+  gtagInitialized = true;
 };
 
 // Initialize Hotjar
@@ -128,15 +130,16 @@ export const initHotjar = () => {
 
 // Track page views - useful for single-page applications
 export const trackPageView = (url: string) => {
-  if (typeof window === 'undefined' || !window.gtag) return;
+  if (typeof window === "undefined") return;
 
-  const measurementIds = getGtagMeasurementIds();
-  if (!measurementIds.length) return;
+  initGA();
+  if (!window.gtag) return;
 
-  measurementIds.forEach((id) => {
-    window.gtag('config', id, {
-      page_path: url
-    });
+  const pagePath = url || `${window.location.pathname}${window.location.search}`;
+  window.gtag("event", "page_view", {
+    page_path: pagePath,
+    page_location: window.location.href,
+    page_title: document.title
   });
 };
 
@@ -147,9 +150,12 @@ export const trackEvent = (
   label?: string, 
   value?: number
 ) => {
-  if (typeof window === 'undefined' || !window.gtag) return;
+  if (typeof window === "undefined") return;
+
+  initGA();
+  if (!window.gtag) return;
   
-  window.gtag('event', action, {
+  window.gtag("event", action, {
     event_category: category,
     event_label: label,
     value: value,
