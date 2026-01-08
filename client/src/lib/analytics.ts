@@ -13,13 +13,10 @@ declare global {
 
 const GOOGLE_ADS_TAG_ID = "AW-11373090310"; // Google Ads conversion tracking ID
 const GOOGLE_ADS_CONVERSION_EVENT = "ads_conversion_Submit_lead_form_1";
-const DEFAULT_GA_MEASUREMENT_ID = "G-L7MH47XYXL";
-const GA_MEASUREMENT_ID =
-  import.meta.env.VITE_GA_MEASUREMENT_ID?.trim() || DEFAULT_GA_MEASUREMENT_ID;
+const GA_MEASUREMENT_ID = "G-L7MH47XYXL";
 export const APPOINTMENT_FORM_URL = "https://fxuqp40sseh.typeform.com/to/CiLYdxSU";
 
 let gtagInitialized = false;
-let gtagScriptInjected = false;
 
 const ensureGtag = () => {
   if (typeof window === "undefined") {
@@ -34,25 +31,6 @@ const ensureGtag = () => {
   }
 
   return true;
-};
-
-const injectGtagScript = (loaderId: string) => {
-  if (gtagScriptInjected) {
-    return;
-  }
-
-  const existingLoader = document.querySelector<HTMLScriptElement>("script[data-gtag-loader=\"true\"]");
-  if (existingLoader) {
-    gtagScriptInjected = true;
-    return;
-  }
-
-  const script = document.createElement("script");
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(loaderId)}`;
-  script.setAttribute("data-gtag-loader", "true");
-  document.head.appendChild(script);
-  gtagScriptInjected = true;
 };
 
 const openUrl = (url: string, target: "_self" | "_blank") => {
@@ -104,9 +82,6 @@ export const initGA = () => {
   if (gtagInitialized) return;
   if (!ensureGtag()) return;
 
-  injectGtagScript(GA_MEASUREMENT_ID);
-  window.gtag("js", new Date());
-  window.gtag("config", GA_MEASUREMENT_ID, { send_page_view: false });
   window.gtag("config", GOOGLE_ADS_TAG_ID);
   gtagInitialized = true;
 };
@@ -137,6 +112,7 @@ export const trackPageView = (url: string) => {
 
   const pagePath = url || `${window.location.pathname}${window.location.search}`;
   window.gtag("event", "page_view", {
+    send_to: GA_MEASUREMENT_ID,
     page_path: pagePath,
     page_location: window.location.href,
     page_title: document.title
@@ -156,6 +132,7 @@ export const trackEvent = (
   if (!window.gtag) return;
   
   window.gtag("event", action, {
+    send_to: GA_MEASUREMENT_ID,
     event_category: category,
     event_label: label,
     value: value,
