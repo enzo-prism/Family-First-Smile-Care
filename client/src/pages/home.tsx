@@ -1,13 +1,11 @@
 import { Link } from "wouter";
 import type { MouseEvent } from "react";
-import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import TestimonialCarousel from "@/components/testimonial-carousel";
 import SocialMediaSection from "@/components/social-media";
 import { Heart, Microscope, Users, Stethoscope, Baby, Sparkles, Smile, Star } from "lucide-react";
 import { APPOINTMENT_FORM_URL, triggerGoogleAdsConversion } from "@/lib/analytics";
-import { services } from "@/data/services";
 
 // Animation variants for reusable patterns
 const fadeInUp = {
@@ -101,91 +99,8 @@ export default function Home() {
     triggerGoogleAdsConversion(APPOINTMENT_FORM_URL, "_blank");
   };
 
-  const offerItems = services.flatMap((service) => {
-    const serviceUrl =
-      service.id === "tmj"
-        ? "https://famfirstsmile.com/tmj"
-        : `https://famfirstsmile.com/services/${service.id}`;
-
-    const baseOffer = {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "MedicalProcedure",
-        name: service.title,
-        description: service.description,
-        url: serviceUrl,
-      },
-    };
-
-    const subOffers = (service.subServices || []).map((subService) => ({
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "MedicalProcedure",
-        name: subService.title,
-        description: subService.description,
-        url: `https://famfirstsmile.com/services/${subService.id}`,
-      },
-    }));
-
-    return [baseOffer, ...subOffers];
-  });
-
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": ["Dentist", "MedicalOrganization"],
-    "@id": "https://famfirstsmile.com/#dentist",
-    name: "Family First Smile Care",
-    url: "https://famfirstsmile.com/",
-    logo: "https://famfirstsmile.com/attached_assets/Logo_1753972987510.png",
-    image: "https://famfirstsmile.com/attached_assets/Frame%205_1753974553020.png",
-    telephone: "+1-408-358-8100",
-    email: "hello@famfirstsmile.com",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "15251 National Ave, Suite 102",
-      addressLocality: "Los Gatos",
-      addressRegion: "CA",
-      postalCode: "95032",
-      addressCountry: "US",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: 37.239115,
-      longitude: -121.96721,
-    },
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"],
-        opens: "09:00",
-        closes: "17:00",
-      },
-    ],
-    sameAs: [
-      "https://www.facebook.com/famfirstsmile/",
-      "https://www.instagram.com/famfirstsmile/",
-      "https://g.page/r/Cej0Xl18KcCyEAE",
-      "https://www.google.com/maps/place/Family+First+Smile+Care/",
-    ],
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Dental Services",
-      itemListElement: offerItems,
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5.0",
-      reviewCount: "45",
-    },
-  };
-
   return (
     <div className="pt-16">
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify(organizationSchema)}
-        </script>
-      </Helmet>
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-primary/10 to-secondary/10 py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

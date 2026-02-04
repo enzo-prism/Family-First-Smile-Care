@@ -23,7 +23,14 @@ export default function Footer() {
             <div className="space-y-2 text-gray-300">
               <div className="flex items-center">
                 <MapPin className="mr-3 h-4 w-4" />
-                <span>15251 National Ave, Suite 102, Los Gatos, CA 95032</span>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=15251+National+Ave+Suite+102+Los+Gatos+CA+95032"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
+                  15251 National Ave, Suite 102, Los Gatos, CA 95032
+                </a>
               </div>
               <div className="flex items-center">
                 <Phone className="mr-3 h-4 w-4" />

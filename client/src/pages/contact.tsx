@@ -84,6 +84,14 @@ export default function Contact() {
                   <div>
                     <h3 className="font-semibold text-gray-800 mb-1">Our Location</h3>
                     <p className="text-gray-600">15251 National Ave, Suite 102<br />Los Gatos, CA 95032</p>
+                    <a
+                      href="https://www.google.com/maps/search/?api=1&query=15251+National+Ave+Suite+102+Los+Gatos+CA+95032"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-semibold text-primary hover:text-blue-700 transition-colors inline-block mt-2"
+                    >
+                      Get Directions
+                    </a>
                   </div>
                 </div>
                 
@@ -115,7 +123,7 @@ export default function Contact() {
                     <h3 className="font-semibold text-gray-800 mb-1">Office Hours</h3>
                     <div className="text-gray-600">
                       <p>Monday - Thursday: 9:00 AM - 5:00 PM</p>
-                      <p>Friday - Sunday: Closed</p>
+                      <p>Friday: Closed</p>
                     </div>
                   </div>
                 </div>

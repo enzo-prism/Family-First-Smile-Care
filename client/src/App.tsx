@@ -9,7 +9,6 @@ import { useAnalytics } from "./hooks/use-analytics";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import SeoMeta from "@/components/seo/canonical";
-import LocalBusinessSchema from "@/components/seo/local-business-schema";
 import Home from "@/pages/home";
 import About from "@/pages/about";
 import Services from "@/pages/services";
@@ -44,7 +43,6 @@ function Router() {
   return (
     <>
       <SeoMeta />
-      <LocalBusinessSchema />
       <ScrollToTop />
       <Switch>
         <Route path="/" component={Home} />

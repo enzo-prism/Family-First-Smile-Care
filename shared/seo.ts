@@ -22,39 +22,39 @@ export interface PageMeta {
 
 const staticMeta: Record<string, PageMeta> = {
   "/": {
-    title: "Family First Smile Care - Gentle Dental Care in Los Gatos, CA",
-    description: "Gentle, compassionate dental care for the whole family in Los Gatos, CA. Dr. Tim J. Chuang offers comprehensive dental services in a welcoming environment.",
+    title: "Family First Smile Care | Los Gatos, CA Dentist",
+    description: "Gentle, compassionate dental care for the whole family in Los Gatos, CA. Dr. Tim J. Chuang provides comprehensive dentistry in a welcoming environment.",
   },
   "/about": {
-    title: "About Us - Family First Smile Care | Los Gatos Dentist",
-    description: "Learn about Dr. Tim J. Chuang and Family First Smile Care. Our Los Gatos dental practice is built on compassion, personalization, and prevention.",
+    title: "About Our Los Gatos, CA Dentist | Family First Smile Care",
+    description: "Meet Dr. Tim J. Chuang and learn how Family First Smile Care delivers compassionate, personalized dentistry in Los Gatos, CA.",
   },
   "/services": {
-    title: "Dental Services - Family First Smile Care | Los Gatos",
-    description: "Comprehensive dental services including children's dentistry, dental exams, hygiene, general & family care, night guards, restorative dentistry, Invisalign, teeth whitening, dental crowns, and TMJ treatment in Los Gatos, CA.",
+    title: "Dental Services in Los Gatos, CA | Family First Smile Care",
+    description: "Explore family, restorative, cosmetic, and preventive dental services in Los Gatos, CA including exams, cleanings, Invisalign, crowns, whitening, and TMJ care.",
   },
   "/team": {
-    title: "Meet Our Team - Dr. Tim J. Chuang | Los Gatos Dentist",
-    description: "Meet Dr. Tim J. Chuang and our caring dental team. Experienced professionals providing gentle, compassionate dental care in Los Gatos, CA.",
+    title: "Our Los Gatos Dental Team | Family First Smile Care",
+    description: "Meet Dr. Tim J. Chuang and our caring dental team providing gentle, comprehensive dentistry in Los Gatos, CA.",
   },
   "/patient-info": {
-    title: "Patient Information - Family First Smile Care | Los Gatos",
-    description: "Important patient information including insurance, FAQs, and office policies. Get prepared for your visit to Family First Smile Care in Los Gatos, CA.",
+    title: "Patient Info | Los Gatos, CA Dentist",
+    description: "Patient information for Family First Smile Care in Los Gatos, CA including insurance, FAQs, and visit preparation.",
   },
   "/contact": {
-    title: "Contact Us - Family First Smile Care | Los Gatos Dentist",
-    description: "Contact Family First Smile Care in Los Gatos, CA. Schedule your appointment today at (408) 358-8100 or visit us at 15251 National Ave, Suite 102.",
+    title: "Contact Family First Smile Care | Los Gatos, CA Dentist",
+    description: "Contact Family First Smile Care in Los Gatos, CA to schedule an appointment. Call (408) 358-8100 or visit 15251 National Ave, Suite 102.",
   },
   "/patient-info/brushing": {
-    title: "How to Brush Properly | Family First Smile Care",
-    description: "Learn the right brushing technique, timing, and tools to protect enamel and keep gums healthy. Simple tips for kids and adults.",
+    title: "How to Brush Properly | Los Gatos Dentist",
+    description: "Learn the right brushing technique, timing, and tools to protect enamel and keep gums healthy. Tips from your Los Gatos dentist.",
   },
   "/patient-info/flossing": {
-    title: "Flossing Fundamentals | Family First Smile Care",
-    description: "Step-by-step flossing guidance to clean between teeth, reduce gum inflammation, and prevent cavities.",
+    title: "Flossing Fundamentals | Los Gatos Dentist",
+    description: "Step-by-step flossing guidance to clean between teeth, reduce gum inflammation, and prevent cavities from your Los Gatos dental team.",
   },
   "/patient-info/nutrition": {
-    title: "Nutrition for Healthy Teeth | Family First Smile Care",
+    title: "Nutrition for Healthy Teeth | Los Gatos Dentist",
     description: "Tooth-friendly nutrition tips, foods to limit, and daily habits that help prevent decay and support healthy gums.",
   },
   "/tmj": {
@@ -85,7 +85,8 @@ const serviceById = new Map(allServices.map((service) => [service.id, service]))
 const buildServiceMeta = (service: Service): PageMeta => {
   const baseDescription = service.heroDescription || service.description;
   const title =
-    service.seoTitle || `${service.title} - Family First Smile Care | Los Gatos`;
+    service.seoTitle ||
+    `${service.title} in Los Gatos, CA | Family First Smile Care`;
   const description =
     service.seoDescription ||
     `${baseDescription} Professional ${service.title.toLowerCase()} services in Los Gatos, CA by Dr. Tim J. Chuang.`;
