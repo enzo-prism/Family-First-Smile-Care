@@ -2,12 +2,14 @@ import type { MouseEvent } from "react";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Link, useParams } from "wouter";
-import { CheckCircle, ArrowLeft, Stethoscope, Baby, Sparkles, Smile, Activity } from "lucide-react";
+import { CheckCircle, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import { services } from "@/data/services";
 import { ReviewsSection } from "@/components/review";
 import { serviceReviews } from "@/data/reviews";
 import { APPOINTMENT_FORM_URL, triggerGoogleAdsConversion } from "@/lib/analytics";
+import BrandIcon, { type BrandIconName } from "@/components/brand/BrandIcon";
+import HeroBackdrop from "@/components/brand/HeroBackdrop";
 
 // Animation variants
 const fadeInUp = {
@@ -65,16 +67,17 @@ export default function ServiceDetail() {
     triggerGoogleAdsConversion(APPOINTMENT_FORM_URL, "_blank");
   };
 
-  const getIconComponent = (iconName: string) => {
-    const iconMap: { [key: string]: JSX.Element } = {
-      tooth: <Stethoscope className="w-8 h-8" />,
-      child: <Baby className="w-8 h-8" />,
-      sparkles: <Sparkles className="w-8 h-8" />,
-      smile: <Smile className="w-8 h-8" />,
-      activity: <Activity className="w-8 h-8" />,
-    };
-    
-    return iconMap[iconName] || <Stethoscope className="w-8 h-8" />;
+  const normalizeIconName = (iconName: string): BrandIconName => {
+    if (
+      iconName === "tooth" ||
+      iconName === "child" ||
+      iconName === "sparkles" ||
+      iconName === "smile" ||
+      iconName === "activity"
+    ) {
+      return iconName;
+    }
+    return "tooth";
   };
 
   const getIconColor = (iconName: string) => {
@@ -157,18 +160,19 @@ export default function ServiceDetail() {
       
       {/* Hero Section */}
       <motion.section 
-        className="relative bg-gradient-to-r from-primary/5 to-secondary/5 py-20 lg:py-32"
+        className="relative overflow-hidden py-20 lg:py-32"
         initial="hidden"
         animate="visible"
         variants={fadeInUp}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <HeroBackdrop variant="default" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <motion.div 
               className={`${getIconColor(service.icon)} text-white w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg`}
               variants={scaleIn}
             >
-              {getIconComponent(service.icon)}
+              <BrandIcon name={normalizeIconName(service.icon)} className="h-8 w-8" />
             </motion.div>
             <motion.h1 
               className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6"

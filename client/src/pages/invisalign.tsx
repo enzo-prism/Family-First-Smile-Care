@@ -10,6 +10,9 @@ import { serviceReviews } from "@/data/reviews";
 import { APPOINTMENT_FORM_URL, triggerGoogleAdsConversion } from "@/lib/analytics";
 import { invisalignContent } from "@shared/marketing-pages";
 import { buildFaqSchema, buildServiceSchema } from "@shared/structured-data";
+import HeadingMark from "@/components/brand/HeadingMark";
+import HeroBackdrop from "@/components/brand/HeroBackdrop";
+import illustrationAligners from "@assets/brand/illustration-aligners.webp";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -82,31 +85,50 @@ export default function Invisalign() {
       </Helmet>
 
       <motion.section
-        className="relative bg-gradient-to-r from-primary/5 to-secondary/5 py-20 lg:py-32"
+        className="relative overflow-hidden py-20 lg:py-32"
         initial="hidden"
         animate="visible"
         variants={fadeInUp}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
+        <HeroBackdrop variant="warm" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="text-center lg:text-left">
+              <motion.div
+                className="bg-primary text-white w-20 h-20 rounded-2xl flex items-center justify-center mx-auto lg:mx-0 mb-6 shadow-lg"
+                variants={scaleIn}
+              >
+                <Smile className="w-8 h-8" />
+              </motion.div>
+              <motion.h1
+                className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6"
+                variants={fadeInUp}
+              >
+                <span className="inline-flex items-center gap-3 flex-wrap justify-center lg:justify-start">
+                  <HeadingMark />
+                  <span>{invisalignContent.hero.title}</span>
+                </span>
+              </motion.h1>
+              <motion.p
+                className="text-xl text-gray-600 max-w-3xl mx-auto lg:mx-0"
+                variants={fadeInUp}
+              >
+                {invisalignContent.hero.subtitle}
+              </motion.p>
+            </div>
+
             <motion.div
-              className="bg-primary text-white w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg"
+              className="flex justify-center lg:justify-end"
               variants={scaleIn}
             >
-              <Smile className="w-8 h-8" />
+              <img
+                src={illustrationAligners}
+                alt="Clear aligner trays illustration"
+                className="w-full max-w-xl rounded-2xl bg-white/60 p-6 shadow-2xl"
+                loading="eager"
+                decoding="async"
+              />
             </motion.div>
-            <motion.h1
-              className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6"
-              variants={fadeInUp}
-            >
-              {invisalignContent.hero.title}
-            </motion.h1>
-            <motion.p
-              className="text-xl text-gray-600 max-w-3xl mx-auto"
-              variants={fadeInUp}
-            >
-              {invisalignContent.hero.subtitle}
-            </motion.p>
           </div>
         </div>
       </motion.section>

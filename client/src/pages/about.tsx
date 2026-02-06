@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Heart, Stethoscope, Users, User, Shield } from "lucide-react";
+import HeroBackdrop from "@/components/brand/HeroBackdrop";
 
 // Animation variants for reusable patterns
 const fadeInUp = {
@@ -77,8 +78,9 @@ export default function About() {
   return (
     <div className="pt-16 pb-20 bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary/5 to-secondary/5 py-20 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-20 lg:py-32">
+        <HeroBackdrop variant="default" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="text-center"
             initial="hidden"

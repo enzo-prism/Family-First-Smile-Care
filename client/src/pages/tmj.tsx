@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Activity, Shield, Stethoscope, CheckCircle, Clock, Users } from "lucide-react";
 import { APPOINTMENT_FORM_URL, triggerGoogleAdsConversion } from "@/lib/analytics";
+import HeroBackdrop from "@/components/brand/HeroBackdrop";
 
 export default function TMJ() {
   const handleAppointmentClick = (event: MouseEvent<HTMLAnchorElement>) => {
@@ -14,8 +15,9 @@ export default function TMJ() {
     <div className="pt-16 pb-20 bg-white">
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary/5 to-secondary/5 py-20 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-20 lg:py-32">
+        <HeroBackdrop variant="default" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">TMJ Treatment in Los Gatos</h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">Find relief from jaw pain and dysfunction with personalized TMJ treatment from Dr. Tim J. Chuang</p>

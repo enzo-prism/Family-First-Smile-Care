@@ -4,8 +4,11 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import TestimonialCarousel from "@/components/testimonial-carousel";
 import SocialMediaSection from "@/components/social-media";
-import { Heart, Microscope, Users, Stethoscope, Baby, Sparkles, Smile, Star } from "lucide-react";
+import { Heart, Microscope, Users, Star } from "lucide-react";
 import { APPOINTMENT_FORM_URL, triggerGoogleAdsConversion } from "@/lib/analytics";
+import BrandIcon from "@/components/brand/BrandIcon";
+import HeadingMark from "@/components/brand/HeadingMark";
+import HeroBackdrop from "@/components/brand/HeroBackdrop";
 
 // Animation variants for reusable patterns
 const fadeInUp = {
@@ -102,8 +105,9 @@ export default function Home() {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary/10 to-secondary/10 py-20 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-20 lg:py-32">
+        <HeroBackdrop variant="default" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial="hidden"
@@ -192,11 +196,14 @@ export default function Home() {
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
           >
-            <motion.h2 
+            <motion.h2
               className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4"
               variants={fadeInUp}
             >
-              What Our Patients Say
+              <span className="inline-flex items-center justify-center gap-3">
+                <HeadingMark />
+                <span>What Our Patients Say</span>
+              </span>
             </motion.h2>
             <motion.p 
               className="text-xl text-gray-600"
@@ -227,11 +234,14 @@ export default function Home() {
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
           >
-            <motion.h2 
+            <motion.h2
               className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4"
               variants={fadeInUp}
             >
-              Why Choose Family First Smile Care?
+              <span className="inline-flex items-center justify-center gap-3">
+                <HeadingMark />
+                <span>Why Choose Family First Smile Care?</span>
+              </span>
             </motion.h2>
             <motion.p 
               className="text-xl text-gray-600 max-w-3xl mx-auto"
@@ -309,11 +319,14 @@ export default function Home() {
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
           >
-            <motion.h2 
+            <motion.h2
               className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4"
               variants={fadeInUp}
             >
-              Our Featured Services
+              <span className="inline-flex items-center justify-center gap-3">
+                <HeadingMark />
+                <span>Our Featured Services</span>
+              </span>
             </motion.h2>
             <motion.p 
               className="text-xl text-gray-600"
@@ -335,8 +348,10 @@ export default function Home() {
               variants={scaleIn}
               whileHover={{ y: -8, transition: { duration: 0.2 } }}
             >
-              <motion.div whileHover={{ scale: 1.1, rotate: 5 }}>
-                <Stethoscope className="text-primary text-3xl mb-4 group-hover:text-primary transition-colors duration-300" />
+              <motion.div className="mb-4" whileHover={{ scale: 1.05, rotate: 4 }}>
+                <div className="h-14 w-14 rounded-2xl bg-primary flex items-center justify-center shadow-md">
+                  <BrandIcon name="tooth" className="h-7 w-7" />
+                </div>
               </motion.div>
               <h3 className="text-lg font-semibold mb-2">Family Dentistry</h3>
               <p className="text-gray-600 text-sm mb-4">Routine check-ups, cleanings, and preventive care for all ages.</p>
@@ -350,8 +365,10 @@ export default function Home() {
               variants={scaleIn}
               whileHover={{ y: -8, transition: { duration: 0.2 } }}
             >
-              <motion.div whileHover={{ scale: 1.1, rotate: 5 }}>
-                <Baby className="text-secondary text-3xl mb-4 group-hover:text-secondary transition-colors duration-300" />
+              <motion.div className="mb-4" whileHover={{ scale: 1.05, rotate: 4 }}>
+                <div className="h-14 w-14 rounded-2xl bg-secondary flex items-center justify-center shadow-md">
+                  <BrandIcon name="child" className="h-7 w-7" />
+                </div>
               </motion.div>
               <h3 className="text-lg font-semibold mb-2">Children's Dentistry</h3>
               <p className="text-gray-600 text-sm mb-4">Gentle first visits and child-friendly approach with toys and stickers.</p>
@@ -365,8 +382,10 @@ export default function Home() {
               variants={scaleIn}
               whileHover={{ y: -8, transition: { duration: 0.2 } }}
             >
-              <motion.div whileHover={{ scale: 1.1, rotate: 5 }}>
-                <Sparkles className="text-accent text-3xl mb-4 group-hover:text-accent transition-colors duration-300" />
+              <motion.div className="mb-4" whileHover={{ scale: 1.05, rotate: 4 }}>
+                <div className="h-14 w-14 rounded-2xl bg-accent flex items-center justify-center shadow-md">
+                  <BrandIcon name="sparkles" className="h-7 w-7" />
+                </div>
               </motion.div>
               <h3 className="text-lg font-semibold mb-2">Dental Hygiene</h3>
               <p className="text-gray-600 text-sm mb-4">Professional cleanings and education for maintaining strong smiles.</p>
@@ -380,8 +399,10 @@ export default function Home() {
               variants={scaleIn}
               whileHover={{ y: -8, transition: { duration: 0.2 } }}
             >
-              <motion.div whileHover={{ scale: 1.1, rotate: 5 }}>
-                <Smile className="text-primary text-3xl mb-4 group-hover:text-primary transition-colors duration-300" />
+              <motion.div className="mb-4" whileHover={{ scale: 1.05, rotate: 4 }}>
+                <div className="h-14 w-14 rounded-2xl bg-primary flex items-center justify-center shadow-md">
+                  <BrandIcon name="smile" className="h-7 w-7" />
+                </div>
               </motion.div>
               <h3 className="text-lg font-semibold mb-2">Invisalign</h3>
               <p className="text-gray-600 text-sm mb-4">Clear aligners for straightening teeth with free consultations.</p>

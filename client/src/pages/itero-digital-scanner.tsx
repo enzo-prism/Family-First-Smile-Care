@@ -7,6 +7,8 @@ import IteroScannerImage from "@/components/itero-scanner-image";
 import { APPOINTMENT_FORM_URL, triggerGoogleAdsConversion } from "@/lib/analytics";
 import { iteroContent } from "@shared/marketing-pages";
 import { buildFaqSchema, buildServiceSchema } from "@shared/structured-data";
+import HeadingMark from "@/components/brand/HeadingMark";
+import HeroBackdrop from "@/components/brand/HeroBackdrop";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -54,12 +56,13 @@ export default function IteroDigitalScanner() {
       </Helmet>
 
       <motion.section
-        className="relative bg-gradient-to-r from-primary/5 to-secondary/5 py-20 lg:py-32"
+        className="relative overflow-hidden py-20 lg:py-32"
         initial="hidden"
         animate="visible"
         variants={fadeInUp}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <HeroBackdrop variant="default" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <motion.div
@@ -72,7 +75,10 @@ export default function IteroDigitalScanner() {
                 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6"
                 variants={fadeInUp}
               >
-                {iteroContent.hero.title}
+                <span className="inline-flex items-center gap-3 flex-wrap">
+                  <HeadingMark />
+                  <span>{iteroContent.hero.title}</span>
+                </span>
               </motion.h1>
               <motion.p className="text-xl text-gray-600" variants={fadeInUp}>
                 {iteroContent.hero.subtitle}

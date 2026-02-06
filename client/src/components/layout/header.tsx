@@ -45,24 +45,30 @@ export default function Header() {
     location.startsWith("/services/") ||
     location === "/tmj";
   return (
-    <nav className="fixed top-0 w-full bg-white shadow-md z-50" role="navigation" aria-label="Main navigation">
+    <nav
+      className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur border-b border-gray-200/60 shadow-sm"
+      role="navigation"
+      aria-label="Main navigation"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <img 
-              src={familyFirstLogo} 
-              alt="Family First Smile Care Logo" 
-              className="h-10 w-10 mr-3"
-              onError={(e) => {
-                console.error('ES module logo failed, trying fallback path:', familyFirstLogo);
-                e.currentTarget.src = '/attached_assets/Logo_1753972987510.png';
-                e.currentTarget.onerror = () => {
-                  console.error('All logo paths failed');
-                  e.currentTarget.style.display = 'none';
-                };
-              }}
-            />
+            <div className="h-10 w-10 mr-3 rounded-xl overflow-hidden bg-black shadow-sm ring-1 ring-black/5">
+              <img
+                src={familyFirstLogo}
+                alt="Family First Smile Care Logo"
+                className="h-full w-full object-cover"
+                onError={(e) => {
+                  console.error("ES module logo failed, trying fallback path:", familyFirstLogo);
+                  e.currentTarget.src = "/attached_assets/Logo_1753972987510.png";
+                  e.currentTarget.onerror = () => {
+                    console.error("All logo paths failed");
+                    e.currentTarget.parentElement?.setAttribute("style", "display:none");
+                  };
+                }}
+              />
+            </div>
             <span className="text-xl font-bold text-gray-800">Family First Smile Care</span>
           </Link>
           
@@ -210,6 +216,10 @@ export default function Header() {
           </div>
         </div>
       </div>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-primary/35 to-transparent"
+      />
     </nav>
   );
 }

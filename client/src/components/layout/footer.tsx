@@ -1,11 +1,21 @@
 import { Link } from "wouter";
 import { Smile, MapPin, Phone, Mail, Facebook, Instagram, CreditCard, Star } from "lucide-react";
 import familyFirstLogo from "@assets/Logo_1753972987510.png";
+import meshWarm from "@assets/brand/mesh-hero-warm.webp";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-800 text-white py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="relative overflow-hidden bg-gradient-to-b from-gray-900 to-gray-950 text-white py-12">
+      <img
+        src={meshWarm}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-10 mix-blend-soft-light"
+        loading="lazy"
+        decoding="async"
+      />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Practice Info */}
           <div className="md:col-span-2">

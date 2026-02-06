@@ -1,8 +1,9 @@
 import type { MouseEvent } from "react";
 import { Button } from "@/components/ui/button";
-import { Check, Stethoscope, Baby, Sparkles, Smile, Activity } from "lucide-react";
+import { Check } from "lucide-react";
 import { Link } from "wouter";
 import type { Service } from "@/lib/types";
+import BrandIcon, { type BrandIconName } from "@/components/brand/BrandIcon";
 import { APPOINTMENT_FORM_URL, triggerGoogleAdsConversion } from "@/lib/analytics";
 
 interface ServiceCardProps {
@@ -16,16 +17,17 @@ export default function ServiceCard({ service, featured = false }: ServiceCardPr
     triggerGoogleAdsConversion(APPOINTMENT_FORM_URL, "_blank");
   };
 
-  const getIconComponent = (iconName: string) => {
-    const iconMap: { [key: string]: JSX.Element } = {
-      tooth: <Stethoscope className="w-6 h-6" />,
-      child: <Baby className="w-6 h-6" />,
-      sparkles: <Sparkles className="w-6 h-6" />,
-      smile: <Smile className="w-6 h-6" />,
-      activity: <Activity className="w-6 h-6" />,
-    };
-    
-    return iconMap[iconName] || <Stethoscope className="w-6 h-6" />;
+  const normalizeIconName = (iconName: string): BrandIconName => {
+    if (
+      iconName === "tooth" ||
+      iconName === "child" ||
+      iconName === "sparkles" ||
+      iconName === "smile" ||
+      iconName === "activity"
+    ) {
+      return iconName;
+    }
+    return "tooth";
   };
 
   const getIconColor = (iconName: string) => {
@@ -54,7 +56,7 @@ export default function ServiceCard({ service, featured = false }: ServiceCardPr
       <div className="p-6 sm:p-8">
         <div className="flex flex-col sm:flex-row sm:items-center mb-6 space-y-4 sm:space-y-0">
           <div className={`${getIconColor(service.icon)} text-white w-16 h-16 rounded-2xl flex items-center justify-center sm:mr-6 shadow-lg flex-shrink-0 mx-auto sm:mx-0`}>
-            {getIconComponent(service.icon)}
+            <BrandIcon name={normalizeIconName(service.icon)} className="h-6 w-6" />
           </div>
           <div className="text-center sm:text-left">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">{service.title}</h2>
@@ -84,7 +86,7 @@ export default function ServiceCard({ service, featured = false }: ServiceCardPr
                     <div key={subService.id} className="bg-gradient-to-r from-gray-50 to-gray-50/50 rounded-xl p-3 border border-gray-100">
                       <div className="flex items-center">
                         <div className={`${getIconColor(subService.icon)} text-white w-8 h-8 rounded-lg flex items-center justify-center mr-3 shadow-sm`}>
-                          {getIconComponent(subService.icon)}
+                          <BrandIcon name={normalizeIconName(subService.icon)} className="h-4 w-4" />
                         </div>
                         <div className="flex-1">
                           <Link href={`/services/${subService.id}`}>

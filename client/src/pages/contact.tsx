@@ -11,6 +11,7 @@ import { MapPin, Phone, Mail, Clock, Facebook, Instagram } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { insertContactSchema, type InsertContact } from "@shared/schema";
 import { apiRequest } from "@/lib/queryClient";
+import HeroBackdrop from "@/components/brand/HeroBackdrop";
 
 type ContactFormValues = InsertContact;
 
@@ -57,8 +58,9 @@ export default function Contact() {
   return (
     <div className="pt-16 pb-20 bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary/5 to-secondary/5 py-20 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-20 lg:py-32">
+        <HeroBackdrop variant="default" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Contact Us</h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">Ready to schedule your appointment? We're here to help and answer any questions you may have.</p>
