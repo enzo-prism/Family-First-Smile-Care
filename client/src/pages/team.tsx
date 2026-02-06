@@ -3,11 +3,37 @@ import { Link } from "wouter";
 import { GraduationCap, Stethoscope, Heart, UserRound, HandHeart } from "lucide-react";
 import drChuangPhoto from "@assets/Dr. Chuang_1753977515693.png";
 import HeroBackdrop from "@/components/brand/HeroBackdrop";
+import PageBreadcrumbs from "@/components/navigation/PageBreadcrumbs";
+import RelatedLinksSection from "@/components/navigation/RelatedLinksSection";
+import type { RelatedLink } from "@/lib/internal-links";
 
 import officeManagerPhoto from "@assets/Office Manager_1753977345657.jpeg";
 import trangAssistantPhoto from "@assets/Trang Assistant Headshot_1756845643362.png";
 
 export default function Team() {
+  const relatedLinks: RelatedLink[] = [
+    {
+      href: "/about",
+      title: "About Our Office",
+      description: "Learn what makes Family First Smile Care different.",
+    },
+    {
+      href: "/services",
+      title: "All Dental Services",
+      description: "Explore preventive, restorative, and family care options.",
+    },
+    {
+      href: "/patient-info",
+      title: "Patient Information",
+      description: "FAQs, what to expect, and helpful resources for your visit.",
+    },
+    {
+      href: "/contact",
+      title: "Contact & Scheduling",
+      description: "Book an appointment, ask a question, or get directions.",
+    },
+  ];
+
   return (
     <div className="pt-16 pb-20 bg-white">
       {/* Hero Section */}
@@ -22,6 +48,12 @@ export default function Team() {
       </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <PageBreadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Our Team" },
+          ]}
+        />
         
         {/* Dr. Chuang Bio */}
         <div className="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl p-8 lg:p-12 mb-16">
@@ -111,6 +143,8 @@ export default function Team() {
           </div>
         </div>
         
+        <RelatedLinksSection title="Explore More" links={relatedLinks} />
+
         <div className="bg-gray-50 rounded-2xl p-8 mt-16 text-center">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Join Our Dental Family</h2>
           <p className="text-gray-600 mb-6">Experience the difference that compassionate, personalized dental care can make for you and your family.</p>

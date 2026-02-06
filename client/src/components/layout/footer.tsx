@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Smile, MapPin, Phone, Mail, Facebook, Instagram, CreditCard, Star } from "lucide-react";
+import { MapPin, Phone, Mail, Facebook, Instagram, CreditCard, Star } from "lucide-react";
 import familyFirstLogo from "@assets/Logo_1753972987510.png";
 import meshWarm from "@assets/brand/mesh-hero-warm.webp";
 
@@ -90,6 +90,18 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
+
+            <h4 className="mt-7 text-sm font-semibold tracking-wide text-gray-200">Popular Services</h4>
+            <ul className="mt-3 space-y-2 text-gray-300">
+              <li><Link href="/services/dental-exams" className="hover:text-blue-300 transition-colors">Dental Exams</Link></li>
+              <li><Link href="/services/dental-hygiene" className="hover:text-blue-300 transition-colors">Dental Hygiene</Link></li>
+              <li><Link href="/services/family-dentistry" className="hover:text-blue-300 transition-colors">Family Dentistry</Link></li>
+              <li><Link href="/services/children-dentistry" className="hover:text-blue-300 transition-colors">Children&apos;s Dentistry</Link></li>
+              <li><Link href="/services/invisalign" className="hover:text-blue-300 transition-colors">Invisalign</Link></li>
+              <li><Link href="/tmj" className="hover:text-blue-300 transition-colors">TMJ Treatment</Link></li>
+              <li><Link href="/services/night-guards" className="hover:text-blue-300 transition-colors">Night Guards</Link></li>
+              <li><Link href="/technology/itero-digital-scanner" className="hover:text-blue-300 transition-colors">iTero Digital Scanner</Link></li>
+            </ul>
           </div>
           
           {/* Office Hours & Social */}
@@ -126,8 +138,15 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 Family First Smile Care. All rights reserved. | 
-            <a href="#" className="hover:text-blue-300 transition-colors ml-1">Privacy Policy</a>
+          <p>
+            &copy; 2026 Family First Smile Care. All rights reserved. |{" "}
+            <Link href="/privacy-policy" className="hover:text-blue-300 transition-colors">
+              Privacy Policy
+            </Link>{" "}
+            |{" "}
+            <Link href="/sitemap" className="hover:text-blue-300 transition-colors">
+              Site Map
+            </Link>
           </p>
         </div>
       </div>

@@ -1,6 +1,10 @@
+import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Heart, Stethoscope, Users, User, Shield } from "lucide-react";
 import HeroBackdrop from "@/components/brand/HeroBackdrop";
+import PageBreadcrumbs from "@/components/navigation/PageBreadcrumbs";
+import RelatedLinksSection from "@/components/navigation/RelatedLinksSection";
+import type { RelatedLink } from "@/lib/internal-links";
 
 // Animation variants for reusable patterns
 const fadeInUp = {
@@ -75,6 +79,39 @@ import officePhoto11 from "@assets/Office Photo 11_1753972057108.png";
 import officePhoto12 from "@assets/Office Photo 12_1753972057108.png";
 
 export default function About() {
+  const relatedLinks: RelatedLink[] = [
+    {
+      href: "/team",
+      title: "Meet Our Team",
+      description: "Get to know Dr. Chuang and the caring team behind your visit.",
+    },
+    {
+      href: "/services",
+      title: "All Dental Services",
+      description: "Explore preventive, restorative, and family care options.",
+    },
+    {
+      href: "/patient-info",
+      title: "Patient Information",
+      description: "FAQs, what to expect, and helpful resources for your visit.",
+    },
+    {
+      href: "/contact",
+      title: "Contact & Scheduling",
+      description: "Ask a question, request an appointment, or get directions to our office.",
+    },
+    {
+      href: "/technology/itero-digital-scanner",
+      title: "iTero Digital Scanner",
+      description: "Comfortable 3D digital scans used in Invisalign planning and smile previews.",
+    },
+    {
+      href: "/tmj",
+      title: "TMJ Treatment",
+      description: "Relief for jaw pain and dysfunction with personalized care.",
+    },
+  ];
+
   return (
     <div className="pt-16 pb-20 bg-white">
       {/* Hero Section */}
@@ -104,6 +141,7 @@ export default function About() {
       </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <PageBreadcrumbs items={[{ label: "Home", href: "/" }, { label: "About" }]} />
         
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
           <motion.div
@@ -129,6 +167,33 @@ export default function About() {
               variants={fadeInUp}
             >
               Our practice is built on the foundation of trust, compassion, and excellence. We believe that dental care should be a positive experience for every member of your family, from toddlers taking their first steps into oral health to seniors maintaining their beautiful smiles.
+            </motion.p>
+            <motion.p
+              className="text-gray-600 mb-6"
+              variants={fadeInUp}
+            >
+              Meet our{" "}
+              <Link
+                href="/team"
+                className="text-primary font-semibold hover:text-blue-700 transition-colors"
+              >
+                team
+              </Link>
+              , explore our{" "}
+              <Link
+                href="/services"
+                className="text-primary font-semibold hover:text-blue-700 transition-colors"
+              >
+                services
+              </Link>
+              , or{" "}
+              <Link
+                href="/contact"
+                className="text-primary font-semibold hover:text-blue-700 transition-colors"
+              >
+                contact us
+              </Link>
+              {" "}to schedule a visit.
             </motion.p>
           </motion.div>
           <motion.div
@@ -459,6 +524,8 @@ export default function About() {
             </motion.div>
           </motion.div>
         </motion.div>
+
+        <RelatedLinksSection title="Keep Exploring" links={relatedLinks} />
       </div>
     </div>
   );

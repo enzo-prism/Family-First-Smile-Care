@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Shield, Clock, ChevronDown, Stethoscope, Scissors, Apple } from "lucide-react";
 import type { FAQItem } from "@/lib/types";
+import PageBreadcrumbs from "@/components/navigation/PageBreadcrumbs";
 
 const faqs: FAQItem[] = [
   {
@@ -104,6 +105,7 @@ export default function PatientInfo() {
       </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <PageBreadcrumbs items={[{ label: "Home", href: "/" }, { label: "Patient Info" }]} />
         
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Insurance Information */}

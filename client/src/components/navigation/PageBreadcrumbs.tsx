@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { Link } from "wouter";
 import {
   Breadcrumb,
@@ -24,16 +25,18 @@ export default function PageBreadcrumbs({ items }: { items: BreadcrumbItemModel[
             const isLast = index === items.length - 1;
 
             return (
-              <BreadcrumbItem key={`${item.label}-${index}`}>
-                {item.href && !isLast ? (
-                  <BreadcrumbLink asChild>
-                    <Link href={item.href}>{item.label}</Link>
-                  </BreadcrumbLink>
-                ) : (
-                  <BreadcrumbPage>{item.label}</BreadcrumbPage>
-                )}
+              <Fragment key={`${item.label}-${index}`}>
+                <BreadcrumbItem>
+                  {item.href && !isLast ? (
+                    <BreadcrumbLink asChild>
+                      <Link href={item.href}>{item.label}</Link>
+                    </BreadcrumbLink>
+                  ) : (
+                    <BreadcrumbPage>{item.label}</BreadcrumbPage>
+                  )}
+                </BreadcrumbItem>
                 {!isLast ? <BreadcrumbSeparator /> : null}
-              </BreadcrumbItem>
+              </Fragment>
             );
           })}
         </BreadcrumbList>
@@ -41,4 +44,3 @@ export default function PageBreadcrumbs({ items }: { items: BreadcrumbItemModel[
     </div>
   );
 }
-

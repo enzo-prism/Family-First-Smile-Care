@@ -96,6 +96,29 @@ const additionalServices = [
   },
 ];
 
+const patientResources = [
+  {
+    title: "Patient Info",
+    description: "FAQs, insurance, and what to expect at your visit.",
+    href: "/patient-info",
+  },
+  {
+    title: "Brushing Guide",
+    description: "Step-by-step brushing technique and age-based tips.",
+    href: "/patient-info/brushing",
+  },
+  {
+    title: "Flossing Fundamentals",
+    description: "Daily flossing technique to support healthy gums.",
+    href: "/patient-info/flossing",
+  },
+  {
+    title: "Nutrition Tips",
+    description: "Tooth-friendly food choices and habits that help prevent decay.",
+    href: "/patient-info/nutrition",
+  },
+];
+
 export default function Home() {
   const handleAppointmentClick = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
@@ -455,6 +478,56 @@ export default function Home() {
                     <h3 className="text-lg font-semibold text-gray-800 mb-2">{service.title}</h3>
                     <p className="text-sm text-gray-600">{service.description}</p>
                     <span className="mt-4 inline-flex text-sm font-semibold text-primary">Learn more</span>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Patient Resources */}
+      <section className="py-16 bg-gradient-to-br from-gray-50 via-white to-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-12"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+          >
+            <motion.h2
+              className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4"
+              variants={fadeInUp}
+            >
+              Patient Resources
+            </motion.h2>
+            <motion.p
+              className="text-lg text-gray-600 max-w-3xl mx-auto"
+              variants={fadeInUp}
+            >
+              Helpful guides and FAQs to make your visit smooth and stress-free.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={staggerContainer}
+          >
+            {patientResources.map((resource) => (
+              <motion.div
+                key={resource.href}
+                variants={scaleIn}
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              >
+                <Link href={resource.href} className="block h-full">
+                  <div className="h-full rounded-2xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow-lg transition-all duration-200">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">{resource.title}</h3>
+                    <p className="text-sm text-gray-600">{resource.description}</p>
+                    <span className="mt-4 inline-flex text-sm font-semibold text-primary">Read more</span>
                   </div>
                 </Link>
               </motion.div>

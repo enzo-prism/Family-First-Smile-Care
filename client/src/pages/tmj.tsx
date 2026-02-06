@@ -4,12 +4,43 @@ import { Link } from "wouter";
 import { Activity, Shield, Stethoscope, CheckCircle, Clock, Users } from "lucide-react";
 import { APPOINTMENT_FORM_URL, triggerGoogleAdsConversion } from "@/lib/analytics";
 import HeroBackdrop from "@/components/brand/HeroBackdrop";
+import PageBreadcrumbs from "@/components/navigation/PageBreadcrumbs";
+import RelatedLinksSection from "@/components/navigation/RelatedLinksSection";
+import type { RelatedLink } from "@/lib/internal-links";
 
 export default function TMJ() {
   const handleAppointmentClick = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     triggerGoogleAdsConversion(APPOINTMENT_FORM_URL, "_blank");
   };
+
+  const relatedLinks: RelatedLink[] = [
+    {
+      href: "/services/night-guards",
+      title: "Night Guards",
+      description: "Custom protection for grinding and jaw tension that can worsen TMJ symptoms.",
+    },
+    {
+      href: "/services/invisalign",
+      title: "Invisalign Clear Aligners",
+      description: "Orthodontic options that may help with bite-related jaw strain (doctor will confirm).",
+    },
+    {
+      href: "/services/dental-exams",
+      title: "Dental Exams",
+      description: "Comprehensive evaluations to understand symptoms and plan next steps.",
+    },
+    {
+      href: "/patient-info",
+      title: "Patient Information",
+      description: "FAQs, what to expect, and helpful resources for your visit.",
+    },
+    {
+      href: "/contact",
+      title: "Contact & Scheduling",
+      description: "Book a TMJ consultation, ask a question, or get directions to our office.",
+    },
+  ];
 
   return (
     <div className="pt-16 pb-20 bg-white">
@@ -26,6 +57,13 @@ export default function TMJ() {
       </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <PageBreadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Services", href: "/services" },
+            { label: "TMJ Treatment" },
+          ]}
+        />
         
         {/* Understanding TMJ Section */}
         <div className="mb-20">
@@ -80,21 +118,27 @@ export default function TMJ() {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
-              <div className="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                <Shield className="h-6 w-6" />
+            <Link href="/services/night-guards" className="block h-full">
+              <div className="h-full bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300 hover:border-primary/40">
+                <div className="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                  <Shield className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">Custom Night Guards</h3>
+                <p className="text-gray-600">We design night guards to prevent teeth grinding and clenching, which can exacerbate TMJ discomfort.</p>
+                <span className="mt-4 inline-flex text-sm font-semibold text-primary">Learn more</span>
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">Custom Night Guards</h3>
-              <p className="text-gray-600">We design night guards to prevent teeth grinding and clenching, which can exacerbate TMJ discomfort.</p>
-            </div>
+            </Link>
             
-            <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
-              <div className="bg-secondary text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                <Activity className="h-6 w-6" />
+            <Link href="/services/invisalign" className="block h-full">
+              <div className="h-full bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300 hover:border-primary/40">
+                <div className="bg-secondary text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                  <Activity className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">Orthodontic Solutions</h3>
+                <p className="text-gray-600">Conditions related to bite misalignment can be treated through customized orthodontic treatment plans, such as braces or Invisalign.</p>
+                <span className="mt-4 inline-flex text-sm font-semibold text-primary">Learn more</span>
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">Orthodontic Solutions</h3>
-              <p className="text-gray-600">Conditions related to bite misalignment can be treated through customized orthodontic treatment plans, such as braces or Invisalign.</p>
-            </div>
+            </Link>
             
             <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
               <div className="bg-accent text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">
@@ -120,13 +164,16 @@ export default function TMJ() {
               <p className="text-gray-600">For more severe cases, we may recommend targeted treatments, such as restorative dental work, to improve the alignment of your bite.</p>
             </div>
             
-            <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
-              <div className="bg-accent text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                <Activity className="h-6 w-6" />
+            <Link href="/services/dental-exams" className="block h-full">
+              <div className="h-full bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300 hover:border-primary/40">
+                <div className="bg-accent text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                  <Activity className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">CBCT Imaging</h3>
+                <p className="text-gray-600">Advanced digital imaging using our CBCT Scanner provides precise views of your jaw structure for accurate diagnosis.</p>
+                <span className="mt-4 inline-flex text-sm font-semibold text-primary">Learn more</span>
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">CBCT Imaging</h3>
-              <p className="text-gray-600">Advanced digital imaging using our CBCT Scanner provides precise views of your jaw structure for accurate diagnosis.</p>
-            </div>
+            </Link>
           </div>
         </div>
 
@@ -216,6 +263,8 @@ export default function TMJ() {
             </div>
           </div>
         </div>
+
+        <RelatedLinksSection title="Related Services & Resources" links={relatedLinks} />
 
         {/* Call to Action */}
         <div className="bg-gradient-to-r from-primary to-secondary rounded-2xl p-8 lg:p-12 text-center text-white">

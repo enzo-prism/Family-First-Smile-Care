@@ -9,6 +9,9 @@ import { iteroContent } from "@shared/marketing-pages";
 import { buildFaqSchema, buildServiceSchema } from "@shared/structured-data";
 import HeadingMark from "@/components/brand/HeadingMark";
 import HeroBackdrop from "@/components/brand/HeroBackdrop";
+import PageBreadcrumbs from "@/components/navigation/PageBreadcrumbs";
+import RelatedLinksSection from "@/components/navigation/RelatedLinksSection";
+import type { RelatedLink } from "@/lib/internal-links";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -47,6 +50,28 @@ export default function IteroDigitalScanner() {
     iteroContent.hero.subtitle,
     "https://famfirstsmile.com/technology/itero-digital-scanner",
   );
+  const relatedLinks: RelatedLink[] = [
+    {
+      href: "/services/invisalign",
+      title: "Invisalign Clear Aligners",
+      description: "See how iTero scans support Invisalign planning and smile previews.",
+    },
+    {
+      href: "/services",
+      title: "All Dental Services",
+      description: "Explore preventive, restorative, and family care options.",
+    },
+    {
+      href: "/patient-info",
+      title: "Patient Information",
+      description: "FAQs, what to expect, and helpful resources for your visit.",
+    },
+    {
+      href: "/contact",
+      title: "Contact & Scheduling",
+      description: "Book an appointment, ask a question, or get directions.",
+    },
+  ];
 
   return (
     <div className="pt-16 pb-20 bg-white">
@@ -99,6 +124,14 @@ export default function IteroDigitalScanner() {
       </motion.section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <PageBreadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Services", href: "/services" },
+            { label: "iTero Digital Scanner" },
+          ]}
+        />
+
         <motion.section
           className="mb-16"
           initial="hidden"
@@ -182,6 +215,8 @@ export default function IteroDigitalScanner() {
             ))}
           </div>
         </motion.section>
+
+        <RelatedLinksSection title="Related Services & Resources" links={relatedLinks} />
 
         <motion.section
           className="bg-gradient-to-r from-primary to-secondary rounded-3xl p-8 lg:p-12 text-center text-white"

@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Scissors, Shield, CheckCircle, Heart, Smile } from "lucide-react";
+import PageBreadcrumbs from "@/components/navigation/PageBreadcrumbs";
 
 export default function PatientInfoFlossing() {
   return (
@@ -34,6 +35,14 @@ export default function PatientInfoFlossing() {
       </section>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+        <PageBreadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Patient Info", href: "/patient-info" },
+            { label: "Flossing Fundamentals" },
+          ]}
+        />
+
         <section className="grid lg:grid-cols-3 gap-6">
           {[
             {

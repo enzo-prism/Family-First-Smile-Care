@@ -8,10 +8,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { MapPin, Phone, Mail, Clock, Facebook, Instagram } from "lucide-react";
+import { Link } from "wouter";
 import { useToast } from "@/hooks/use-toast";
 import { insertContactSchema, type InsertContact } from "@shared/schema";
 import { apiRequest } from "@/lib/queryClient";
 import HeroBackdrop from "@/components/brand/HeroBackdrop";
+import PageBreadcrumbs from "@/components/navigation/PageBreadcrumbs";
 
 type ContactFormValues = InsertContact;
 
@@ -69,6 +71,7 @@ export default function Contact() {
       </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <PageBreadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
         
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
@@ -151,6 +154,30 @@ export default function Contact() {
                 >
                   <Instagram className="h-6 w-6" />
                 </a>
+              </div>
+            </div>
+
+            <div className="mt-10 bg-gray-50 rounded-2xl p-6">
+              <h3 className="text-lg font-semibold text-gray-800 mb-4">Explore</h3>
+              <div className="grid grid-cols-2 gap-3 text-sm">
+                <Link href="/services" className="text-primary font-semibold hover:text-blue-700 transition-colors">
+                  Services
+                </Link>
+                <Link href="/patient-info" className="text-primary font-semibold hover:text-blue-700 transition-colors">
+                  Patient Info
+                </Link>
+                <Link href="/services/invisalign" className="text-primary font-semibold hover:text-blue-700 transition-colors">
+                  Invisalign
+                </Link>
+                <Link href="/tmj" className="text-primary font-semibold hover:text-blue-700 transition-colors">
+                  TMJ Treatment
+                </Link>
+                <Link href="/technology/itero-digital-scanner" className="text-primary font-semibold hover:text-blue-700 transition-colors">
+                  iTero Scanner
+                </Link>
+                <Link href="/team" className="text-primary font-semibold hover:text-blue-700 transition-colors">
+                  Our Team
+                </Link>
               </div>
             </div>
           </div>

@@ -7,6 +7,9 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Baby, Shield, Sparkles, Heart, NotebookPen, PhoneCall, Smile, Star, MapPin, Phone, BookOpen, Expand } from "lucide-react";
 import { APPOINTMENT_FORM_URL, triggerGoogleAdsConversion } from "@/lib/analytics";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import PageBreadcrumbs from "@/components/navigation/PageBreadcrumbs";
+import RelatedLinksSection from "@/components/navigation/RelatedLinksSection";
+import type { RelatedLink } from "@/lib/internal-links";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 24 },
@@ -65,6 +68,39 @@ export default function BabysFirstVisit() {
   ];
 
   const infographicUrl = "https://res.cloudinary.com/dhqpqfw6w/image/upload/v1763745802/Generated_Image_November_21_2025_-_9_22AM_hbuzza.webp";
+
+  const relatedLinks: RelatedLink[] = [
+    {
+      href: "/services/children-dentistry",
+      title: "Children's Dentistry",
+      description: "Gentle, kid-friendly care that builds lifelong healthy habits.",
+    },
+    {
+      href: "/patient-info",
+      title: "Patient Information",
+      description: "FAQs, what to expect, and helpful resources for your visit.",
+    },
+    {
+      href: "/patient-info/brushing",
+      title: "How to Brush Properly",
+      description: "Age-based brushing tips to protect enamel and gums.",
+    },
+    {
+      href: "/patient-info/nutrition",
+      title: "Nutrition for Healthy Teeth",
+      description: "Tooth-friendly snack ideas and habits for little smiles.",
+    },
+    {
+      href: "/contact",
+      title: "Contact & Scheduling",
+      description: "Ask a question, request an appointment, or get directions.",
+    },
+    {
+      href: "/team",
+      title: "Meet Our Team",
+      description: "Get to know Dr. Chuang and our caring staff.",
+    },
+  ];
 
   return (
     <div className="pt-16 pb-20 bg-white">
@@ -169,6 +205,15 @@ export default function BabysFirstVisit() {
       </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+        <PageBreadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Services", href: "/services" },
+            { label: "Children's Dentistry", href: "/services/children-dentistry" },
+            { label: "Baby's First Visit" },
+          ]}
+        />
+
         {/* Photo carousel */}
         <motion.section
           initial="hidden"
@@ -582,6 +627,8 @@ export default function BabysFirstVisit() {
             </div>
           </div>
         </motion.section>
+
+        <RelatedLinksSection title="Related Services & Resources" links={relatedLinks} />
 
         {/* CTA */}
         <motion.section

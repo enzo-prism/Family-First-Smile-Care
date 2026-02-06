@@ -17,6 +17,8 @@ import PatientInfo from "@/pages/patient-info";
 import PatientInfoBrushing from "@/pages/patient-info-brushing";
 import PatientInfoFlossing from "@/pages/patient-info-flossing";
 import PatientInfoNutrition from "@/pages/patient-info-nutrition";
+import PrivacyPolicy from "@/pages/privacy-policy";
+import SiteMap from "@/pages/sitemap";
 import Contact from "@/pages/contact";
 import TMJ from "@/pages/tmj";
 import BabysFirstVisit from "@/pages/babys-first-visit";
@@ -58,6 +60,8 @@ function Router() {
         <Route path="/patient-info/flossing" component={PatientInfoFlossing} />
         <Route path="/patient-info/nutrition" component={PatientInfoNutrition} />
         <Route path="/patient-info" component={PatientInfo} />
+        <Route path="/privacy-policy" component={PrivacyPolicy} />
+        <Route path="/sitemap" component={SiteMap} />
         <Route path="/contact" component={Contact} />
         <Route path="/tmj" component={TMJ} />
         <Route path="/font-test" component={FontTest} />

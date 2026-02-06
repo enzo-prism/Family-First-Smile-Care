@@ -7,6 +7,7 @@ import { generalReviews } from "@/data/reviews";
 import { APPOINTMENT_FORM_URL, triggerGoogleAdsConversion } from "@/lib/analytics";
 import HeadingMark from "@/components/brand/HeadingMark";
 import HeroBackdrop from "@/components/brand/HeroBackdrop";
+import PageBreadcrumbs from "@/components/navigation/PageBreadcrumbs";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -78,6 +79,10 @@ export default function Services() {
           </motion.div>
         </div>
       </section>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <PageBreadcrumbs items={[{ label: "Home", href: "/" }, { label: "Services" }]} />
+      </div>
 
       {/* Services Grid */}
       <motion.div 

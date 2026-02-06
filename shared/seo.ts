@@ -45,6 +45,14 @@ const staticMeta: Record<string, PageMeta> = {
     title: "Contact Family First Smile Care | Los Gatos, CA Dentist",
     description: "Contact Family First Smile Care in Los Gatos, CA to schedule an appointment. Call (408) 358-8100 or visit 15251 National Ave, Suite 102.",
   },
+  "/privacy-policy": {
+    title: "Privacy Policy | Family First Smile Care",
+    description: "Learn how Family First Smile Care collects and uses information submitted through our website and how we protect your privacy.",
+  },
+  "/sitemap": {
+    title: "Site Map | Family First Smile Care",
+    description: "Browse all pages, patient resources, and dental services available on the Family First Smile Care website.",
+  },
   "/patient-info/brushing": {
     title: "How to Brush Properly | Los Gatos Dentist",
     description: "Learn the right brushing technique, timing, and tools to protect enamel and keep gums healthy. Tips from your Los Gatos dentist.",
