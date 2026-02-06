@@ -143,21 +143,17 @@ export default function Services() {
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
               variants={fadeInUp}
             >
-              <a 
-                href={APPOINTMENT_FORM_URL} 
-                target="_blank" 
+              <motion.a
+                href={APPOINTMENT_FORM_URL}
+                target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto inline-flex items-center justify-center whitespace-nowrap rounded-xl bg-white px-8 py-4 text-lg font-semibold text-primary shadow-lg ring-offset-background transition-[transform,box-shadow] duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none"
                 onClick={handleAppointmentClick}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <motion.button
-                  className="bg-white text-primary hover:bg-gray-100 font-semibold px-8 py-4 rounded-xl text-lg shadow-lg w-full sm:w-auto transition-all duration-200"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Book Your Appointment
-                </motion.button>
-              </a>
+                Book Your Appointment
+              </motion.a>
               <span className="text-white text-sm">or call (408) 358-8100</span>
             </motion.div>
           </div>

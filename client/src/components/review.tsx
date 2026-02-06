@@ -41,7 +41,7 @@ export default function ReviewComponent({ review, index = 0 }: ReviewProps) {
             href={googleBusinessProfileUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-primary hover:text-blue-700 transition-colors"
+            className="text-primary hover:text-primary/80 transition-colors"
             aria-label="Read full review on Google"
           >
             <ExternalLink className="w-4 h-4" />
@@ -56,7 +56,7 @@ export default function ReviewComponent({ review, index = 0 }: ReviewProps) {
             href={googleBusinessProfileUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-primary hover:text-blue-700 ml-2 text-sm font-medium transition-colors"
+            className="text-primary hover:text-primary/80 ml-2 text-sm font-medium transition-colors"
           >
             Read full review →
           </a>
@@ -118,7 +118,7 @@ export function ReviewsSection({ reviews, title = "What Our Patients Say", showC
                 href={googleBusinessProfileUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary hover:text-blue-700 font-medium transition-colors flex items-center gap-2"
+                className="text-primary hover:text-primary/80 font-medium transition-colors flex items-center gap-2"
               >
                 Read More Reviews
                 <ExternalLink className="w-4 h-4" />

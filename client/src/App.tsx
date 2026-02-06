@@ -9,6 +9,7 @@ import { useAnalytics } from "./hooks/use-analytics";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import SeoMeta from "@/components/seo/canonical";
+import { MotionConfig } from "framer-motion";
 import Home from "@/pages/home";
 import About from "@/pages/about";
 import Services from "@/pages/services";
@@ -77,14 +78,22 @@ function App() {
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
-          <div className="min-h-screen flex flex-col">
-            <Header />
-            <main className="flex-1">
-              <Router />
-            </main>
-            <Footer />
-          </div>
-          <Toaster />
+          <MotionConfig reducedMotion="user">
+            <a
+              href="#main-content"
+              className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 z-[60] rounded-md bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-lg ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-primary/40"
+            >
+              Skip to content
+            </a>
+            <div className="min-h-screen flex flex-col">
+              <Header />
+              <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
+                <Router />
+              </main>
+              <Footer />
+            </div>
+            <Toaster />
+          </MotionConfig>
         </TooltipProvider>
       </QueryClientProvider>
     </HelmetProvider>

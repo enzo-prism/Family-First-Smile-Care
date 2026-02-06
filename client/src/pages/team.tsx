@@ -63,6 +63,8 @@ export default function Team() {
                 src={drChuangPhoto} 
                 alt="Dr. Tim J. Chuang professional headshot" 
                 className="rounded-2xl shadow-lg w-full max-w-md mx-auto"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="lg:col-span-2">
@@ -123,7 +125,11 @@ export default function Team() {
               <img 
                 src={officeManagerPhoto} 
                 alt="Office Manager team member" 
+                width={128}
+                height={128}
                 className="w-32 h-32 rounded-full mx-auto object-cover shadow-md"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <h3 className="text-xl font-semibold text-gray-800 mb-2">Office Manager</h3>
@@ -135,7 +141,11 @@ export default function Team() {
               <img 
                 src={trangAssistantPhoto} 
                 alt="Dental Assistant team member" 
+                width={128}
+                height={128}
                 className="w-32 h-32 rounded-full mx-auto object-cover shadow-md"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <h3 className="text-xl font-semibold text-gray-800 mb-2">Dental Assistant</h3>
@@ -148,11 +158,9 @@ export default function Team() {
         <div className="bg-gray-50 rounded-2xl p-8 mt-16 text-center">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Join Our Dental Family</h2>
           <p className="text-gray-600 mb-6">Experience the difference that compassionate, personalized dental care can make for you and your family.</p>
-          <Link href="/contact">
-            <Button className="bg-primary text-white hover:bg-blue-700 font-semibold px-8 py-3">
-              Meet Us Today
-            </Button>
-          </Link>
+          <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-8 py-3">
+            <Link href="/contact">Meet Us Today</Link>
+          </Button>
         </div>
       </div>
     </div>

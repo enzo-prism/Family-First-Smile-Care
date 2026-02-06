@@ -90,7 +90,7 @@ export default function Contact() {
                       href="https://www.google.com/maps/search/?api=1&query=15251+National+Ave+Suite+102+Los+Gatos+CA+95032"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm font-semibold text-primary hover:text-blue-700 transition-colors inline-block mt-2"
+                      className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors inline-block mt-2"
                     >
                       Get Directions
                     </a>
@@ -160,22 +160,22 @@ export default function Contact() {
             <div className="mt-10 bg-gray-50 rounded-2xl p-6">
               <h3 className="text-lg font-semibold text-gray-800 mb-4">Explore</h3>
               <div className="grid grid-cols-2 gap-3 text-sm">
-                <Link href="/services" className="text-primary font-semibold hover:text-blue-700 transition-colors">
+                <Link href="/services" className="text-primary font-semibold hover:text-primary/80 transition-colors">
                   Services
                 </Link>
-                <Link href="/patient-info" className="text-primary font-semibold hover:text-blue-700 transition-colors">
+                <Link href="/patient-info" className="text-primary font-semibold hover:text-primary/80 transition-colors">
                   Patient Info
                 </Link>
-                <Link href="/services/invisalign" className="text-primary font-semibold hover:text-blue-700 transition-colors">
+                <Link href="/services/invisalign" className="text-primary font-semibold hover:text-primary/80 transition-colors">
                   Invisalign
                 </Link>
-                <Link href="/tmj" className="text-primary font-semibold hover:text-blue-700 transition-colors">
+                <Link href="/tmj" className="text-primary font-semibold hover:text-primary/80 transition-colors">
                   TMJ Treatment
                 </Link>
-                <Link href="/technology/itero-digital-scanner" className="text-primary font-semibold hover:text-blue-700 transition-colors">
+                <Link href="/technology/itero-digital-scanner" className="text-primary font-semibold hover:text-primary/80 transition-colors">
                   iTero Scanner
                 </Link>
-                <Link href="/team" className="text-primary font-semibold hover:text-blue-700 transition-colors">
+                <Link href="/team" className="text-primary font-semibold hover:text-primary/80 transition-colors">
                   Our Team
                 </Link>
               </div>
@@ -196,7 +196,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>First Name *</FormLabel>
                           <FormControl>
-                            <Input {...field} />
+                            <Input {...field} autoComplete="given-name" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -209,7 +209,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Last Name *</FormLabel>
                           <FormControl>
-                            <Input {...field} />
+                            <Input {...field} autoComplete="family-name" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -224,7 +224,7 @@ export default function Contact() {
                       <FormItem>
                         <FormLabel>Email Address *</FormLabel>
                         <FormControl>
-                          <Input type="email" {...field} />
+                          <Input type="email" autoComplete="email" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -238,7 +238,7 @@ export default function Contact() {
                       <FormItem>
                         <FormLabel>Phone Number</FormLabel>
                         <FormControl>
-                          <Input type="tel" {...field} value={field.value ?? ""} />
+                          <Input type="tel" autoComplete="tel" {...field} value={field.value ?? ""} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -294,7 +294,7 @@ export default function Contact() {
                   
                   <Button 
                     type="submit" 
-                    className="w-full bg-primary text-white hover:bg-blue-700 font-semibold py-3"
+                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold py-3"
                     disabled={contactMutation.isPending}
                   >
                     {contactMutation.isPending ? "Sending..." : "Send Message"}

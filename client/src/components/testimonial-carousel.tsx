@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { useReducedMotion } from "framer-motion";
 import type { Testimonial } from "@/lib/types";
 
 const testimonials: Testimonial[] = [
@@ -85,6 +86,8 @@ const testimonials: Testimonial[] = [
 
 export default function TestimonialCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const prefersReducedMotion = useReducedMotion();
+  const [isPaused, setIsPaused] = useState(false);
 
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -98,14 +101,26 @@ export default function TestimonialCarousel() {
     setCurrentIndex(index);
   };
 
-  // Auto-advance testimonials every 8 seconds
   useEffect(() => {
-    const timer = setInterval(nextTestimonial, 8000);
-    return () => clearInterval(timer);
-  }, []);
+    if (prefersReducedMotion || isPaused) return;
+
+    const timer = window.setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    }, 8000);
+
+    return () => window.clearInterval(timer);
+  }, [prefersReducedMotion, isPaused]);
 
   return (
-    <div className="relative max-w-4xl mx-auto">
+    <div
+      className="relative max-w-4xl mx-auto"
+      role="region"
+      aria-label="Patient testimonials"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onFocusCapture={() => setIsPaused(true)}
+      onBlurCapture={() => setIsPaused(false)}
+    >
       <div className="overflow-hidden">
         <div 
           className="flex transition-transform duration-500 ease-in-out"

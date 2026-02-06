@@ -127,7 +127,19 @@
   }
 
   html {
-    scroll-behavior: smooth;
+    /* Default to no smooth scrolling; enable only when the user hasn't requested reduced motion. */
+    scroll-behavior: auto;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Prevent anchor-linked headings from hiding behind the fixed header. */
+  :is(h1, h2, h3, h4, h5, h6) {
+    scroll-margin-top: 5rem;
   }
 }
 
@@ -137,7 +149,7 @@
   }
 
   .nav-link {
-    @apply transition-colors duration-200;
+    @apply inline-flex items-center rounded-md px-3 py-2 text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
   }
 
   .nav-link:hover {
@@ -145,7 +157,7 @@
   }
 
   .service-card {
-    @apply bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1;
+    @apply bg-white rounded-xl shadow-md hover:shadow-xl transition-[transform,box-shadow] duration-300 hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:translate-y-0;
   }
 
   .testimonial-card {

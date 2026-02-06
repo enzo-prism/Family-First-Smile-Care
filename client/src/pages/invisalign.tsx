@@ -60,12 +60,12 @@ export default function Invisalign() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
           <h1 className="text-3xl font-bold text-gray-800 mb-4">Service Not Found</h1>
           <p className="text-gray-600 mb-8">The service you're looking for doesn't exist.</p>
-          <Link href="/services">
-            <Button className="bg-primary text-white hover:bg-blue-700">
+          <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
+            <Link href="/services">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Services
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         </div>
       </div>
     );
@@ -245,12 +245,12 @@ export default function Invisalign() {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <Link href="/services">
-            <Button variant="ghost" className="text-primary hover:bg-primary/5">
+          <Button asChild variant="ghost" className="text-primary hover:bg-primary/5">
+            <Link href="/services">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to All Services
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         </motion.div>
 
         <motion.div
@@ -430,21 +430,17 @@ export default function Invisalign() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             variants={fadeInUp}
           >
-            <a
+            <motion.a
               href={APPOINTMENT_FORM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto"
+              className="w-full sm:w-auto inline-flex items-center justify-center whitespace-nowrap rounded-xl bg-white px-8 py-4 text-lg font-semibold text-primary shadow-lg ring-offset-background transition-[transform,box-shadow] duration-200 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none"
               onClick={handleAppointmentClick}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <motion.button
-                className="bg-white text-primary hover:bg-gray-100 font-semibold px-8 py-4 rounded-xl text-lg shadow-lg w-full sm:w-auto transition-all duration-200"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Book Your Appointment
-              </motion.button>
-            </a>
+              Book Your Appointment
+            </motion.a>
             <span className="text-white text-sm">or call (408) 358-8100</span>
           </motion.div>
         </motion.div>

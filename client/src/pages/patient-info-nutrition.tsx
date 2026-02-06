@@ -20,16 +20,16 @@ export default function PatientInfoNutrition() {
             tooth-friendly habits.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact">
-              <Button className="bg-primary text-white hover:bg-blue-700 font-semibold px-6 py-3">
-                Schedule a Checkup
-              </Button>
-            </Link>
-            <Link href="/patient-info">
-              <Button variant="outline" className="border-primary text-primary hover:bg-primary/5 font-semibold px-6 py-3">
-                Back to Patient Info
-              </Button>
-            </Link>
+            <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-6 py-3">
+              <Link href="/contact">Schedule a Checkup</Link>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              className="border-primary text-primary hover:bg-primary/5 font-semibold px-6 py-3"
+            >
+              <Link href="/patient-info">Back to Patient Info</Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -133,16 +133,16 @@ export default function PatientInfoNutrition() {
             We can help you build a personalized nutrition plan that supports long-term oral health.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/contact">
-              <Button className="bg-white text-primary hover:bg-gray-100 font-semibold px-6 py-3">
-                Book an Appointment
-              </Button>
-            </Link>
-            <Link href="/services/family-dentistry">
-              <Button variant="outline" className="bg-white/5 border-white/25 text-white hover:bg-white hover:text-primary font-semibold px-6 py-3">
-                Learn About Family Care
-              </Button>
-            </Link>
+            <Button asChild className="bg-white text-primary hover:bg-gray-100 font-semibold px-6 py-3">
+              <Link href="/contact">Book an Appointment</Link>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              className="bg-white/5 border-white/25 text-white hover:bg-white hover:text-primary font-semibold px-6 py-3"
+            >
+              <Link href="/services/family-dentistry">Learn About Family Care</Link>
+            </Button>
           </div>
         </section>
 

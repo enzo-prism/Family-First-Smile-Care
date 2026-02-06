@@ -59,6 +59,8 @@ export default function Header() {
               <img
                 src={familyFirstLogo}
                 alt="Family First Smile Care Logo"
+                width={40}
+                height={40}
                 className="h-full w-full object-cover"
                 onError={(e) => {
                   console.error("ES module logo failed, trying fallback path:", familyFirstLogo);
@@ -81,6 +83,7 @@ export default function Header() {
                   <DropdownMenuTrigger asChild>
                     <button
                       type="button"
+                      aria-current={isServicesActive ? "page" : undefined}
                       className={`nav-link inline-flex items-center gap-1 ${
                         isServicesActive
                           ? "text-primary font-semibold"
@@ -128,6 +131,7 @@ export default function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
+                  aria-current={location === item.href ? "page" : undefined}
                   className={`nav-link ${
                     location === item.href
                       ? "text-primary font-semibold"
@@ -138,27 +142,30 @@ export default function Header() {
                 </Link>
               )
             ))}
-            <a 
-              href="https://swipesimple.com/links/lnk_67505de480da165de07d5bd3f42fbcce" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="mr-4"
+            <Button
+              asChild
+              variant="outline"
+              className="mr-4 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
             >
-              <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
+              <a
+                href="https://swipesimple.com/links/lnk_67505de480da165de07d5bd3f42fbcce"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <CreditCard className="h-4 w-4 mr-2" />
                 Pay Bill
-              </Button>
-            </a>
-            <a 
-              href={APPOINTMENT_FORM_URL} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              onClick={handleAppointmentClick}
-            >
-              <Button className="bg-primary text-white hover:bg-blue-700">
+              </a>
+            </Button>
+            <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
+              <a
+                href={APPOINTMENT_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleAppointmentClick}
+              >
                 Book Appointment
-              </Button>
-            </a>
+              </a>
+            </Button>
           </div>
           
           {/* Mobile Menu */}
@@ -175,6 +182,7 @@ export default function Header() {
                     <Link
                       key={item.name}
                       href={item.href}
+                      aria-current={location === item.href ? "page" : undefined}
                       className={`nav-link text-lg ${
                         location === item.href
                           ? "text-primary font-semibold"
@@ -219,23 +227,35 @@ export default function Header() {
                       </div>
                     </div>
                   </div>
-                  <a 
-                    href="https://swipesimple.com/links/lnk_67505de480da165de07d5bd3f42fbcce" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    onClick={() => setIsOpen(false)}
-                    className="w-fit"
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
                   >
-                    <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white w-full">
+                    <a
+                      href="https://swipesimple.com/links/lnk_67505de480da165de07d5bd3f42fbcce"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsOpen(false)}
+                    >
                       <CreditCard className="h-4 w-4 mr-2" />
                       Pay Bill Online
-                    </Button>
-                  </a>
-                  <Link href="/contact" onClick={() => setIsOpen(false)}>
-                    <Button className="bg-primary text-white hover:bg-blue-700 w-fit">
+                    </a>
+                  </Button>
+
+                  <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                    <a
+                      href={APPOINTMENT_FORM_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(event) => {
+                        setIsOpen(false);
+                        handleAppointmentClick(event);
+                      }}
+                    >
                       Book Appointment
-                    </Button>
-                  </Link>
+                    </a>
+                  </Button>
                 </nav>
               </SheetContent>
             </Sheet>

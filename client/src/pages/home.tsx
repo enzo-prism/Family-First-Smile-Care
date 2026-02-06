@@ -157,21 +157,26 @@ export default function Home() {
                 className="flex flex-col sm:flex-row gap-4"
                 variants={fadeInUp}
               >
-                <a 
-                  href={APPOINTMENT_FORM_URL} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  onClick={handleAppointmentClick}
+                <Button
+                  asChild
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg font-semibold px-8 py-3 hover:scale-105 transition duration-200 motion-reduce:hover:scale-100 motion-reduce:transition-none"
                 >
-                  <Button className="bg-primary text-white hover:bg-blue-700 text-lg font-semibold px-8 py-3 transform hover:scale-105 transition-transform duration-200">
+                  <a
+                    href={APPOINTMENT_FORM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handleAppointmentClick}
+                  >
                     Schedule Appointment
-                  </Button>
-                </a>
-                <Link href="/team">
-                  <Button variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-white text-lg font-semibold px-8 py-3 transform hover:scale-105 transition-transform duration-200">
-                    Meet the Team
-                  </Button>
-                </Link>
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground text-lg font-semibold px-8 py-3 hover:scale-105 transition duration-200 motion-reduce:hover:scale-100 motion-reduce:transition-none"
+                >
+                  <Link href="/team">Meet the Team</Link>
+                </Button>
               </motion.div>
             </motion.div>
             <motion.div 
@@ -282,7 +287,7 @@ export default function Home() {
             variants={staggerContainer}
           >
             <motion.div 
-              className="text-center p-6 rounded-xl bg-gradient-to-br from-primary/5 to-primary/10 hover:shadow-lg transition-all duration-300 group"
+              className="text-center p-6 rounded-xl bg-gradient-to-br from-primary/5 to-primary/10 hover:shadow-lg transition-shadow duration-300 group"
               variants={scaleIn}
               whileHover={{ y: -5, transition: { duration: 0.2 } }}
             >
@@ -297,7 +302,7 @@ export default function Home() {
             </motion.div>
             
             <motion.div 
-              className="text-center p-6 rounded-xl bg-gradient-to-br from-secondary/5 to-secondary/10 hover:shadow-lg transition-all duration-300 group"
+              className="text-center p-6 rounded-xl bg-gradient-to-br from-secondary/5 to-secondary/10 hover:shadow-lg transition-shadow duration-300 group"
               variants={scaleIn}
               whileHover={{ y: -5, transition: { duration: 0.2 } }}
             >
@@ -312,7 +317,7 @@ export default function Home() {
             </motion.div>
             
             <motion.div 
-              className="text-center p-6 rounded-xl bg-gradient-to-br from-accent/5 to-accent/10 hover:shadow-lg transition-all duration-300 group"
+              className="text-center p-6 rounded-xl bg-gradient-to-br from-accent/5 to-accent/10 hover:shadow-lg transition-shadow duration-300 group"
               variants={scaleIn}
               whileHover={{ y: -5, transition: { duration: 0.2 } }}
             >
@@ -378,9 +383,13 @@ export default function Home() {
               </motion.div>
               <h3 className="text-lg font-semibold mb-2">Family Dentistry</h3>
               <p className="text-gray-600 text-sm mb-4">Routine check-ups, cleanings, and preventive care for all ages.</p>
-              <Link href="/services/family-dentistry">
-                <Button variant="link" className="text-primary font-medium p-0 group-hover:text-primary-dark transition-colors duration-200">Learn More</Button>
-              </Link>
+              <Button
+                asChild
+                variant="link"
+                className="p-0 text-primary font-medium transition-colors duration-200 group-hover:underline"
+              >
+                <Link href="/services/family-dentistry">Learn More</Link>
+              </Button>
             </motion.div>
             
             <motion.div 
@@ -395,9 +404,13 @@ export default function Home() {
               </motion.div>
               <h3 className="text-lg font-semibold mb-2">Children's Dentistry</h3>
               <p className="text-gray-600 text-sm mb-4">Gentle first visits and child-friendly approach with toys and stickers.</p>
-              <Link href="/services/children-dentistry">
-                <Button variant="link" className="text-primary font-medium p-0 group-hover:text-primary-dark transition-colors duration-200">Learn More</Button>
-              </Link>
+              <Button
+                asChild
+                variant="link"
+                className="p-0 text-primary font-medium transition-colors duration-200 group-hover:underline"
+              >
+                <Link href="/services/children-dentistry">Learn More</Link>
+              </Button>
             </motion.div>
             
             <motion.div 
@@ -412,9 +425,13 @@ export default function Home() {
               </motion.div>
               <h3 className="text-lg font-semibold mb-2">Dental Hygiene</h3>
               <p className="text-gray-600 text-sm mb-4">Professional cleanings and education for maintaining strong smiles.</p>
-              <Link href="/services/dental-hygiene">
-                <Button variant="link" className="text-primary font-medium p-0 group-hover:text-primary-dark transition-colors duration-200">Learn More</Button>
-              </Link>
+              <Button
+                asChild
+                variant="link"
+                className="p-0 text-primary font-medium transition-colors duration-200 group-hover:underline"
+              >
+                <Link href="/services/dental-hygiene">Learn More</Link>
+              </Button>
             </motion.div>
             
             <motion.div 
@@ -429,9 +446,13 @@ export default function Home() {
               </motion.div>
               <h3 className="text-lg font-semibold mb-2">Invisalign</h3>
               <p className="text-gray-600 text-sm mb-4">Clear aligners for straightening teeth with free consultations.</p>
-              <Link href="/services/invisalign">
-                <Button variant="link" className="text-primary font-medium p-0 group-hover:text-primary-dark transition-colors duration-200">Learn More</Button>
-              </Link>
+              <Button
+                asChild
+                variant="link"
+                className="p-0 text-primary font-medium transition-colors duration-200 group-hover:underline"
+              >
+                <Link href="/services/invisalign">Learn More</Link>
+              </Button>
             </motion.div>
           </motion.div>
         </div>
@@ -473,8 +494,11 @@ export default function Home() {
                 variants={scaleIn}
                 whileHover={{ y: -5, transition: { duration: 0.2 } }}
               >
-                <Link href={service.href} className="block h-full">
-                  <div className="h-full rounded-2xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow-lg transition-all duration-200">
+                <Link
+                  href={service.href}
+                  className="block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                >
+                  <div className="h-full rounded-2xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow-lg transition-shadow duration-200">
                     <h3 className="text-lg font-semibold text-gray-800 mb-2">{service.title}</h3>
                     <p className="text-sm text-gray-600">{service.description}</p>
                     <span className="mt-4 inline-flex text-sm font-semibold text-primary">Learn more</span>
@@ -523,8 +547,11 @@ export default function Home() {
                 variants={scaleIn}
                 whileHover={{ y: -5, transition: { duration: 0.2 } }}
               >
-                <Link href={resource.href} className="block h-full">
-                  <div className="h-full rounded-2xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow-lg transition-all duration-200">
+                <Link
+                  href={resource.href}
+                  className="block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                >
+                  <div className="h-full rounded-2xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow-lg transition-shadow duration-200">
                     <h3 className="text-lg font-semibold text-gray-800 mb-2">{resource.title}</h3>
                     <p className="text-sm text-gray-600">{resource.description}</p>
                     <span className="mt-4 inline-flex text-sm font-semibold text-primary">Read more</span>
@@ -562,16 +589,14 @@ export default function Home() {
                 Step inside our welcoming Los Gatos location and see why families choose us for their dental care. From our comfortable waiting area to our state-of-the-art treatment rooms.
               </motion.p>
               <motion.div variants={scaleIn}>
-                <Link href="/about">
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button
+                    asChild
+                    className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg font-semibold px-8 py-3 transition-colors duration-200"
                   >
-                    <Button className="bg-primary text-white hover:bg-blue-700 text-lg font-semibold px-8 py-3 transform transition-transform duration-200">
-                      Learn More About Our Office
-                    </Button>
-                  </motion.div>
-                </Link>
+                    <Link href="/about">Learn More About Our Office</Link>
+                  </Button>
+                </motion.div>
               </motion.div>
             </motion.div>
             <motion.div 
@@ -589,6 +614,7 @@ export default function Home() {
                   title="Family First Smile Care Virtual Office Tour"
                   frameBorder="0"
                   allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                  loading="lazy"
                   style={{ 
                     border: 'none', 
                     outline: 'none',
@@ -640,19 +666,14 @@ export default function Home() {
           >
             Help other families find us by sharing your experience on Google. Your review means the world to us!
           </motion.p>
-          <motion.a 
-            href="https://g.page/r/Cej0Xl18KcCyEAE/review" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            variants={scaleIn}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Button className="bg-orange-700 text-white hover:bg-orange-800 text-lg font-semibold px-8 py-3 transform transition-transform">
-              <Star className="h-5 w-5 mr-2" />
-              Leave a Google Review
+          <motion.div variants={scaleIn} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Button asChild className="bg-orange-700 text-white hover:bg-orange-800 text-lg font-semibold px-8 py-3">
+              <a href="https://g.page/r/Cej0Xl18KcCyEAE/review" target="_blank" rel="noopener noreferrer">
+                <Star className="h-5 w-5 mr-2" />
+                Leave a Google Review
+              </a>
             </Button>
-          </motion.a>
+          </motion.div>
         </div>
       </motion.section>
 
@@ -678,16 +699,11 @@ export default function Home() {
             Schedule your free Invisalign consultation today and take the first step towards a healthier, more confident smile.
           </motion.p>
           <motion.div variants={scaleIn}>
-            <Link href="/contact">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button className="bg-white text-primary hover:bg-gray-100 text-lg font-semibold px-8 py-3 transform transition-transform">
-                  Schedule Free Consultation
-                </Button>
-              </motion.div>
-            </Link>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button asChild className="bg-white text-primary hover:bg-gray-100 text-lg font-semibold px-8 py-3">
+                <Link href="/contact">Schedule Free Consultation</Link>
+              </Button>
+            </motion.div>
           </motion.div>
         </div>
       </motion.section>

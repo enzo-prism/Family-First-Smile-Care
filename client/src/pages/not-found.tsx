@@ -27,19 +27,19 @@ export default function NotFound() {
           
           {/* Quick Actions */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Link href="/">
-              <Button className="bg-primary text-white hover:bg-blue-700 text-lg font-semibold px-6 py-3 flex items-center gap-2">
+            <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg font-semibold px-6 py-3 flex items-center gap-2">
+              <Link href="/">
                 <Home className="h-5 w-5" />
                 Back to Homepage
-              </Button>
-            </Link>
-            
-            <a href="tel:4083588100">
-              <Button variant="outline" className="text-lg font-semibold px-6 py-3 flex items-center gap-2">
+              </Link>
+            </Button>
+
+            <Button asChild variant="outline" className="text-lg font-semibold px-6 py-3 flex items-center gap-2">
+              <a href="tel:4083588100">
                 <Phone className="h-5 w-5" />
                 Call Us: (408) 358-8100
-              </Button>
-            </a>
+              </a>
+            </Button>
           </div>
           
           {/* Helpful Links */}
@@ -48,20 +48,14 @@ export default function NotFound() {
               Helpful Links
             </h3>
             <div className="grid sm:grid-cols-3 gap-4 max-w-lg mx-auto">
-              <Link href="/services">
-                <span className="text-primary hover:text-blue-700 font-medium cursor-pointer">
-                  Our Services
-                </span>
+              <Link href="/services" className="text-primary hover:text-primary/80 font-medium">
+                Our Services
               </Link>
-              <Link href="/about">
-                <span className="text-primary hover:text-blue-700 font-medium cursor-pointer">
-                  About Us
-                </span>
+              <Link href="/about" className="text-primary hover:text-primary/80 font-medium">
+                About Us
               </Link>
-              <Link href="/contact">
-                <span className="text-primary hover:text-blue-700 font-medium cursor-pointer">
-                  Contact & Location
-                </span>
+              <Link href="/contact" className="text-primary hover:text-primary/80 font-medium">
+                Contact & Location
               </Link>
             </div>
           </div>

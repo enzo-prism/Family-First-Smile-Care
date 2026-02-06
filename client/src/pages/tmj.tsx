@@ -273,21 +273,22 @@ export default function TMJ() {
             Don't let TMJ pain interfere with your daily life. Take the first step toward a healthy, pain-free smile.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href={APPOINTMENT_FORM_URL} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              onClick={handleAppointmentClick}
-            >
-              <Button className="bg-white text-primary hover:bg-gray-100 font-semibold px-8 py-3">
+            <Button asChild className="bg-white text-primary hover:bg-gray-100 font-semibold px-8 py-3">
+              <a
+                href={APPOINTMENT_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleAppointmentClick}
+              >
                 Schedule Consultation
-              </Button>
-            </a>
-            <Link href="/contact">
-              <Button className="bg-white/5 text-white border border-white/25 hover:bg-white hover:text-primary font-semibold px-8 py-3 backdrop-blur-sm">
-                Contact Us
-              </Button>
-            </Link>
+              </a>
+            </Button>
+            <Button
+              asChild
+              className="bg-white/5 text-white border border-white/25 hover:bg-white hover:text-primary font-semibold px-8 py-3 backdrop-blur-sm"
+            >
+              <Link href="/contact">Contact Us</Link>
+            </Button>
           </div>
         </div>
       </div>

@@ -44,7 +44,7 @@ export default function ServiceCard({ service, featured = false }: ServiceCardPr
   };
 
   return (
-    <div className={`bg-white rounded-3xl shadow-xl overflow-hidden border transition-all duration-300 hover:shadow-2xl ${
+    <div className={`bg-white rounded-3xl shadow-xl overflow-hidden border transition-[box-shadow,border-color] duration-300 hover:shadow-2xl ${
       featured 
         ? "border-2 border-primary shadow-primary/10" 
         : "border-gray-100 hover:border-primary/30"
@@ -104,23 +104,28 @@ export default function ServiceCard({ service, featured = false }: ServiceCardPr
           </div>
           
           <div className="flex flex-col gap-3 mt-6">
-            <Link href={getServiceHref(service.id)}>
-              <Button className="w-full bg-gradient-to-r from-primary to-blue-600 text-white hover:from-blue-600 hover:to-primary font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-[1.02]">
-                Learn More About {service.title}
-              </Button>
-            </Link>
+            <Button
+              asChild
+              className="w-full rounded-xl bg-gradient-to-r from-primary to-blue-600 py-3 font-semibold text-white shadow-lg transition duration-200 hover:from-blue-600 hover:to-primary hover:shadow-xl hover:scale-[1.02] motion-reduce:hover:scale-100 motion-reduce:transition-none"
+            >
+              <Link href={getServiceHref(service.id)}>Learn More About {service.title}</Link>
+            </Button>
             
             {(featured || (service.subServices && service.subServices.some(sub => sub.featured))) && (
-              <a 
-                href={APPOINTMENT_FORM_URL} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                onClick={handleAppointmentClick}
+              <Button
+                asChild
+                variant="outline"
+                className="w-full rounded-xl border-2 border-primary py-3 font-semibold text-primary transition-colors duration-200 hover:bg-primary hover:text-primary-foreground"
               >
-                <Button variant="outline" className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold py-3 rounded-xl transition-all duration-200">
+                <a
+                  href={APPOINTMENT_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={handleAppointmentClick}
+                >
                   Schedule Free Consultation
-                </Button>
-              </a>
+                </a>
+              </Button>
             )}
           </div>
         </div>

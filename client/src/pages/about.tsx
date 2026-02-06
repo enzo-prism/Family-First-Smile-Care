@@ -175,21 +175,21 @@ export default function About() {
               Meet our{" "}
               <Link
                 href="/team"
-                className="text-primary font-semibold hover:text-blue-700 transition-colors"
+                className="text-primary font-semibold hover:text-primary/80 transition-colors"
               >
                 team
               </Link>
               , explore our{" "}
               <Link
                 href="/services"
-                className="text-primary font-semibold hover:text-blue-700 transition-colors"
+                className="text-primary font-semibold hover:text-primary/80 transition-colors"
               >
                 services
               </Link>
               , or{" "}
               <Link
                 href="/contact"
-                className="text-primary font-semibold hover:text-blue-700 transition-colors"
+                className="text-primary font-semibold hover:text-primary/80 transition-colors"
               >
                 contact us
               </Link>
@@ -213,6 +213,7 @@ export default function About() {
                   className="absolute w-full h-full scale-110"
                   frameBorder="0"
                   allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                  loading="lazy"
                   title="Family First Smile Care Patient Experience"
                   style={{ border: 'none', outline: 'none' }}
                 ></iframe>
@@ -331,6 +332,7 @@ export default function About() {
                       title="Family First Smile Care Office Tour"
                       frameBorder="0"
                       allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                      loading="lazy"
                       style={{ 
                         border: 'none', 
                         outline: 'none'
@@ -352,6 +354,7 @@ export default function About() {
                       title="Family First Smile Care Facility Tour"
                       frameBorder="0"
                       allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                      loading="lazy"
                       style={{ 
                         border: 'none', 
                         outline: 'none'
@@ -379,6 +382,8 @@ export default function About() {
                 src={officePhoto11} 
                 alt="Family First Smile Care welcoming front entrance with practice branding" 
                 className="rounded-xl w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
             <motion.div 
@@ -390,6 +395,8 @@ export default function About() {
                 src={officePhoto12} 
                 alt="Family First Smile Care professional office exterior showing Suite 102" 
                 className="rounded-xl w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
             <motion.div 
@@ -401,6 +408,8 @@ export default function About() {
                 src={officePhoto1} 
                 alt="Modern dental office reception area with comfortable seating" 
                 className="rounded-xl w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
           </motion.div>
@@ -422,6 +431,8 @@ export default function About() {
                 src={officePhoto2} 
                 alt="Modern dental treatment room with state-of-the-art equipment" 
                 className="rounded-lg w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
             <motion.div 
@@ -433,6 +444,8 @@ export default function About() {
                 src={officePhoto3} 
                 alt="Advanced dental technology and equipment" 
                 className="rounded-lg w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
             <motion.div 
@@ -444,6 +457,8 @@ export default function About() {
                 src={officePhoto4} 
                 alt="Professional dental consultation space" 
                 className="rounded-lg w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
             <motion.div 
@@ -455,6 +470,8 @@ export default function About() {
                 src={officePhoto5} 
                 alt="Clean and organized dental office environment" 
                 className="rounded-lg w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
           </motion.div>
@@ -476,6 +493,8 @@ export default function About() {
                 src={officePhoto6} 
                 alt="Dental office equipment and workspace" 
                 className="rounded-lg w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
             <motion.div 
@@ -487,6 +506,8 @@ export default function About() {
                 src={officePhoto7} 
                 alt="Professional dental workspace setup" 
                 className="rounded-lg w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
             <motion.div 
@@ -498,6 +519,8 @@ export default function About() {
                 src={officePhoto8} 
                 alt="Modern dental facility interior" 
                 className="rounded-lg w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
             <motion.div 
@@ -509,6 +532,8 @@ export default function About() {
                 src={officePhoto9} 
                 alt="Additional office space and amenities" 
                 className="rounded-lg w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
             <motion.div 
@@ -520,6 +545,8 @@ export default function About() {
                 src={officePhoto10} 
                 alt="Complete view of dental practice facilities" 
                 className="rounded-lg w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
           </motion.div>

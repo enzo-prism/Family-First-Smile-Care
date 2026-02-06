@@ -130,22 +130,23 @@ export default function BabysFirstVisit() {
                 We make first visits simple, calm, and fun so babies and parents feel at ease.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href={APPOINTMENT_FORM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={handleAppointmentClick}
-                  className="w-full sm:w-auto"
-                >
-                  <Button className="w-full sm:w-auto bg-primary text-white hover:bg-blue-700">
+                <Button asChild className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90">
+                  <a
+                    href={APPOINTMENT_FORM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handleAppointmentClick}
+                  >
                     Schedule Baby&apos;s First Visit
-                  </Button>
-                </a>
-                <Link href="/patient-info" className="w-full sm:w-auto">
-                  <Button variant="outline" className="w-full sm:w-auto border-primary text-primary hover:bg-primary/5">
-                    First Visit Checklist
-                  </Button>
-                </Link>
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="w-full sm:w-auto border-primary text-primary hover:bg-primary/5"
+                >
+                  <Link href="/patient-info">First Visit Checklist</Link>
+                </Button>
               </div>
               <div className="flex flex-wrap gap-4 mt-6 text-sm text-gray-600">
                 <div className="flex items-center">
@@ -645,32 +646,36 @@ export default function BabysFirstVisit() {
                 Give your child the best start to lifelong oral health. We&apos;re honored to help your family smile with confidence.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href={APPOINTMENT_FORM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={handleAppointmentClick}
-                  className="w-full sm:w-auto"
-                >
-                  <Button className="w-full sm:w-auto bg-white text-primary hover:bg-gray-100 shadow-lg">
+                <Button asChild className="w-full sm:w-auto bg-white text-primary hover:bg-gray-100 shadow-lg">
+                  <a
+                    href={APPOINTMENT_FORM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handleAppointmentClick}
+                  >
                     Schedule Now
-                  </Button>
-                </a>
-                <a href="tel:+14083588100" className="w-full sm:w-auto">
-                  <Button variant="outline" className="w-full sm:w-auto bg-white/5 border-white/25 text-white hover:bg-white hover:text-primary">
-                    Call Us
-                  </Button>
-                </a>
-                <a
-                  href="https://maps.google.com/?q=Family+First+Smile+Care+Los+Gatos"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto"
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="w-full sm:w-auto bg-white/5 border-white/25 text-white hover:bg-white hover:text-primary"
                 >
-                  <Button variant="outline" className="w-full sm:w-auto bg-white/5 border-white/25 text-white hover:bg-white hover:text-primary">
+                  <a href="tel:+14083588100">Call Us</a>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="w-full sm:w-auto bg-white/5 border-white/25 text-white hover:bg-white hover:text-primary"
+                >
+                  <a
+                    href="https://maps.google.com/?q=Family+First+Smile+Care+Los+Gatos"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Location - Los Gatos, CA
-                  </Button>
-                </a>
+                  </a>
+                </Button>
               </div>
             </div>
             <div className="bg-white/5 border border-white/25 rounded-2xl p-6 backdrop-blur">

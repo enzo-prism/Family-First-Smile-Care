@@ -23,7 +23,11 @@ export default function Footer() {
               <img 
                 src={familyFirstLogo} 
                 alt="Family First Smile Care Logo" 
+                width={32}
+                height={32}
                 className="h-8 w-8 mr-3"
+                loading="lazy"
+                decoding="async"
               />
               <span className="text-xl font-bold">Family First Smile Care</span>
             </div>

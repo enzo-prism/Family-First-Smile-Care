@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { Instagram, BookOpen } from 'lucide-react';
 
 const fadeInUp = {
@@ -30,36 +30,89 @@ const instagramPosts = [
   "https://www.instagram.com/p/DNOvY7ny3ey/"
 ];
 
-export default function SocialMediaSection() {
-  useEffect(() => {
-    // Load Instagram embed script
-    const script = document.createElement('script');
-    script.src = '//www.instagram.com/embed.js';
+const INSTAGRAM_SCRIPT_ID = "instagram-embed-script";
+
+const waitForInstagramGlobal = (timeoutMs = 15000) =>
+  new Promise<void>((resolve, reject) => {
+    const start = Date.now();
+    const tick = () => {
+      if ((window as any).instgrm?.Embeds?.process) {
+        resolve();
+        return;
+      }
+
+      if (Date.now() - start > timeoutMs) {
+        reject(new Error("Instagram embed script did not initialize in time"));
+        return;
+      }
+
+      window.setTimeout(tick, 50);
+    };
+
+    tick();
+  });
+
+const ensureInstagramScriptLoaded = () => {
+  if (typeof window === "undefined") return Promise.resolve();
+  if ((window as any).instgrm?.Embeds?.process) return Promise.resolve();
+
+  const existing = document.getElementById(INSTAGRAM_SCRIPT_ID);
+  if (!existing) {
+    const script = document.createElement("script");
+    script.id = INSTAGRAM_SCRIPT_ID;
+    script.src = "https://www.instagram.com/embed.js";
     script.async = true;
     document.body.appendChild(script);
+  }
 
-    // Re-render Instagram embeds when script loads
-    script.onload = () => {
-      if ((window as any).instgrm) {
-        (window as any).instgrm.Embeds.process();
-      }
-    };
+  return waitForInstagramGlobal();
+};
 
-    // Also trigger process if instgrm is already loaded
-    if ((window as any).instgrm) {
-      (window as any).instgrm.Embeds.process();
-    }
+export default function SocialMediaSection() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [shouldLoadEmbeds, setShouldLoadEmbeds] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el || typeof window === "undefined") return;
+
+    // Lazy-load the Instagram embed script only when this section is near the viewport.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setShouldLoadEmbeds(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "250px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!shouldLoadEmbeds) return;
+
+    let cancelled = false;
+    ensureInstagramScriptLoaded()
+      .then(() => {
+        if (cancelled) return;
+        (window as any).instgrm?.Embeds?.process?.();
+      })
+      .catch((error) => {
+        // If the script fails to load, we still show the plain links as a fallback.
+        console.warn("Failed to load Instagram embeds:", error);
+      });
 
     return () => {
-      // Cleanup script on unmount
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
+      cancelled = true;
     };
-  }, []);
+  }, [shouldLoadEmbeds]);
 
   return (
     <motion.section 
+      ref={sectionRef}
       className="py-16 lg:py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50"
       initial="hidden"
       whileInView="visible"
@@ -140,7 +193,7 @@ export default function SocialMediaSection() {
               href="https://www.instagram.com/famfirstsmilecare/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-pink-600 to-purple-700 text-white font-medium rounded-full hover:from-pink-700 hover:to-purple-800 transition-all transform hover:scale-105"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-pink-600 to-purple-700 text-white font-medium rounded-full hover:from-pink-700 hover:to-purple-800 transition duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:hover:scale-100 motion-reduce:transition-none"
               data-testid="button-follow-instagram"
             >
               <Instagram className="w-5 h-5" />
@@ -150,7 +203,7 @@ export default function SocialMediaSection() {
               href="https://www.xiaohongshu.com/user/profile/6787d0fa000000000801e7e7"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white font-medium rounded-full hover:from-red-700 hover:to-red-800 transition-all transform hover:scale-105"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white font-medium rounded-full hover:from-red-700 hover:to-red-800 transition duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:hover:scale-100 motion-reduce:transition-none"
               data-testid="button-follow-xiaohongshu"
             >
               <BookOpen className="w-5 h-5" />

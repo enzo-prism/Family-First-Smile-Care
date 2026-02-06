@@ -11,8 +11,15 @@ export default function HeadingMark({ className }: HeadingMarkProps) {
       aria-hidden="true"
       className={cn("hidden lg:inline-flex items-center justify-center", className)}
     >
-      <img src={mark} alt="" className="h-8 w-8" loading="lazy" decoding="async" />
+      <img
+        src={mark}
+        alt=""
+        width={32}
+        height={32}
+        className="h-8 w-8"
+        loading="lazy"
+        decoding="async"
+      />
     </span>
   );
 }
-
