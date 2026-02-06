@@ -55,7 +55,7 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <div className="h-10 w-10 mr-3 rounded-xl overflow-hidden bg-black shadow-sm ring-1 ring-black/5">
+            <div className="h-10 w-10 mr-3 rounded-xl overflow-hidden bg-white shadow-sm ring-1 ring-black/5">
               <img
                 src={familyFirstLogo}
                 alt="Family First Smile Care Logo"
