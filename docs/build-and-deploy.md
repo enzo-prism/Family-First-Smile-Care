@@ -18,17 +18,14 @@ npx update-browserslist-db@latest --no-update-notifier --no-fund  # silences the
    ```bash
    rm -rf dist
    ```
-2. **Type check (optional for now)** – run `npm run check`. The command currently surfaces known nullability warnings in `client/src/pages/contact.tsx`, but catching other regressions early is still useful.
+2. **Type check (recommended)** – run `npm run check` to catch TypeScript regressions before building.
 3. **Build client + server bundles**
    ```bash
    npm run build
    # Runs: vite build (client) && esbuild server/index.ts (server)
    ```
    The command emits `dist/public` for the SPA and `dist/index.js` for the Express entry point.
-4. **Copy static marketing files** – the helper copies `client/robots.txt` and `client/sitemap.xml` into the production payload.
-   ```bash
-   node scripts/post-build.js
-   ```
+4. **Post-build tasks** – `npm run build` also copies `client/robots.txt`, `client/sitemap.xml`, and `client/llms.txt` into `dist/public/`, and generates `dist/public/admin-changelog.json` for the admin dashboard.
 5. **Smoke test the production build**
    ```bash
    DATABASE_URL="postgres://..." npm start   # uses dist/index.js
@@ -39,6 +36,23 @@ npx update-browserslist-db@latest --no-update-notifier --no-fund  # silences the
 - Upload **`dist/index.js`**, **`dist/public/`**, and **`attached_assets/`** to your hosting environment. `attached_assets/` holds marketing downloads that are not part of the Vite bundle.
 - Provide the same environment variables used locally (`DATABASE_URL`, `VITE_GA_MEASUREMENT_ID`, `CANONICAL_HOST`, `VITE_CANONICAL_HOST`, analytics keys, etc.).
 - Run `npm run db:push` against Neon whenever the schema in `shared/schema.ts` changes.
+
+## Admin Dashboard (Optional)
+The site includes a password-protected `/admin` dashboard (HTTP Basic Auth). Default password is `"tim"` but you should override it in production.
+
+Environment variables:
+- `ADMIN_PASSWORD` – overrides the default admin password.
+- `GA4_PROPERTY_ID` – required for the Google Analytics (GA4) tab.
+- `GSC_SITE_URL` – required for the Search Console tab. Use either `sc-domain:famfirstsmile.com` or `https://famfirstsmile.com/`.
+- One of:
+  - `GOOGLE_SERVICE_ACCOUNT_JSON` – raw service account JSON (string).
+  - `GOOGLE_SERVICE_ACCOUNT_JSON_BASE64` – base64-encoded service account JSON.
+
+Google Cloud / Google products setup:
+- Enable **Google Analytics Data API** and **Google Search Console API** in a Google Cloud project.
+- Create a **service account** and download its JSON key.
+- Grant the service account email **Viewer** access to the GA4 property.
+- Add the service account email as a user on the Search Console property.
 
 ## Troubleshooting
 - **Browserslist warning during build** – run `npx update-browserslist-db@latest --no-update-notifier --no-fund` to refresh `caniuse-lite`.

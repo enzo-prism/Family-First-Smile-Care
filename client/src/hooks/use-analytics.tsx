@@ -6,6 +6,7 @@ export const useAnalytics = () => {
   const [location] = useLocation();
 
   useEffect(() => {
+    if (location.startsWith("/admin")) return;
     trackPageView(location);
   }, [location]);
 };

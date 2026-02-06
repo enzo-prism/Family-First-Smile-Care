@@ -24,6 +24,7 @@ import Invisalign from "@/pages/invisalign";
 import IteroDigitalScanner from "@/pages/itero-digital-scanner";
 import ServiceDetail from "@/pages/service-detail";
 import FontTest from "@/pages/font-test";
+import Admin from "@/pages/admin";
 import NotFound from "@/pages/not-found";
 
 function ScrollToTop() {
@@ -60,6 +61,7 @@ function Router() {
         <Route path="/contact" component={Contact} />
         <Route path="/tmj" component={TMJ} />
         <Route path="/font-test" component={FontTest} />
+        <Route path="/admin" component={Admin} />
         <Route component={NotFound} />
       </Switch>
     </>

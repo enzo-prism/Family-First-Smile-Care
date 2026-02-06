@@ -69,6 +69,10 @@ const staticMeta: Record<string, PageMeta> = {
     title: "Font Test - Family First Smile Care",
     description: "Internal typography preview for Family First Smile Care.",
   },
+  "/admin": {
+    title: "Admin - Family First Smile Care",
+    description: "Private admin dashboard for Family First Smile Care.",
+  },
 };
 
 const fallbackMeta: PageMeta = {

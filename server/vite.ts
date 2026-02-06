@@ -25,6 +25,7 @@ const ogUrlRegex = /<meta\s+[^>]*property=["']og:url["'][^>]*>\s*/gi;
 const twitterTitleRegex = /<meta\s+[^>]*name=["']twitter:title["'][^>]*>\s*/gi;
 const twitterDescriptionRegex = /<meta\s+[^>]*name=["']twitter:description["'][^>]*>\s*/gi;
 const twitterCardRegex = /<meta\s+[^>]*name=["']twitter:card["'][^>]*>\s*/gi;
+const robotsMetaRegex = /<meta\s+[^>]*name=["']robots["'][^>]*>\s*/gi;
 const preloadSlot = "<!--preload-content-->";
 
 export function log(message: string, source = "express") {
@@ -105,7 +106,9 @@ const injectSeo = (
   canonicalUrl: string,
   meta: { title: string; description: string },
   schemaTags: string[],
+  requestPath: string,
 ) => {
+  const normalizedPath = normalizePath(requestPath);
   const cleaned = html
     .replace(canonicalTagRegex, "")
     .replace(metaDescriptionRegex, "")
@@ -115,7 +118,13 @@ const injectSeo = (
     .replace(ogUrlRegex, "")
     .replace(twitterTitleRegex, "")
     .replace(twitterDescriptionRegex, "")
-    .replace(twitterCardRegex, "");
+    .replace(twitterCardRegex, "")
+    .replace(robotsMetaRegex, "");
+
+  const robotsTag = normalizedPath.startsWith("/admin")
+    ? `<meta name="robots" content="noindex,nofollow" data-react-helmet="true" />`
+    : "";
+
   const tags = [
     `<title data-react-helmet="true">${escapeHtml(meta.title)}</title>`,
     `<meta name="description" content="${escapeHtml(meta.description)}" data-react-helmet="true" />`,
@@ -125,6 +134,7 @@ const injectSeo = (
     `<meta name="twitter:card" content="summary_large_image" data-react-helmet="true" />`,
     `<meta name="twitter:title" content="${escapeHtml(meta.title)}" data-react-helmet="true" />`,
     `<meta name="twitter:description" content="${escapeHtml(meta.description)}" data-react-helmet="true" />`,
+    ...(robotsTag ? [robotsTag] : []),
     `<link rel="canonical" href="${canonicalUrl}" data-react-helmet="true" />`,
     ...schemaTags,
   ];
@@ -179,6 +189,7 @@ export async function setupVite(app: Express, server: Server) {
         buildCanonicalUrl(req),
         resolvePageMeta(url),
         buildSchemaTags(url),
+        url,
       );
       res.status(200).set({ "Content-Type": "text/html" }).end(html);
     } catch (e) {
@@ -216,6 +227,7 @@ export function serveStatic(app: Express) {
       buildCanonicalUrl(req),
       resolvePageMeta(req.originalUrl),
       buildSchemaTags(req.originalUrl),
+      req.originalUrl,
     );
     res.status(200).set({ "Content-Type": "text/html" }).end(html);
   });

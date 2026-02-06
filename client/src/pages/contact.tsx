@@ -32,10 +32,7 @@ export default function Contact() {
 
   const contactMutation = useMutation({
     mutationFn: async (values: ContactFormValues) => {
-      return apiRequest('/api/contacts', {
-        method: 'POST',
-        body: JSON.stringify(values),
-      });
+      return apiRequest("POST", "/api/contacts", values);
     },
     onSuccess: () => {
       toast({
@@ -212,7 +209,7 @@ export default function Contact() {
                       <FormItem>
                         <FormLabel>Phone Number</FormLabel>
                         <FormControl>
-                          <Input type="tel" {...field} />
+                          <Input type="tel" {...field} value={field.value ?? ""} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -225,7 +222,10 @@ export default function Contact() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Service Interested In</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <Select
+                          onValueChange={field.onChange}
+                          value={(field.value || undefined) as string | undefined}
+                        >
                           <FormControl>
                             <SelectTrigger>
                               <SelectValue placeholder="Select a service" />
@@ -254,7 +254,8 @@ export default function Contact() {
                           <Textarea 
                             rows={4} 
                             placeholder="Tell us about your dental concerns or questions..."
-                            {...field} 
+                            {...field}
+                            value={field.value ?? ""}
                           />
                         </FormControl>
                         <FormMessage />

@@ -17,6 +17,7 @@ const GA_MEASUREMENT_ID = "G-L7MH47XYXL";
 export const APPOINTMENT_FORM_URL = "https://fxuqp40sseh.typeform.com/to/CiLYdxSU";
 
 let gtagInitialized = false;
+let hotjarInitialized = false;
 
 const ensureGtag = () => {
   if (typeof window === "undefined") {
@@ -88,6 +89,10 @@ export const initGA = () => {
 
 // Initialize Hotjar
 export const initHotjar = () => {
+  if (typeof window === "undefined") return;
+  if (hotjarInitialized) return;
+  if (window.location.pathname.startsWith("/admin")) return;
+
   // Hotjar Tracking Code for Family First Smile Care
   const script = document.createElement('script');
   script.textContent = `
@@ -101,6 +106,7 @@ export const initHotjar = () => {
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
   `;
   document.head.appendChild(script);
+  hotjarInitialized = true;
 };
 
 // Track page views - useful for single-page applications
