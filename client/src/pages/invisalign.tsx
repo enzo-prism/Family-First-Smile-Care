@@ -13,6 +13,9 @@ import { buildFaqSchema, buildServiceSchema } from "@shared/structured-data";
 import HeadingMark from "@/components/brand/HeadingMark";
 import HeroBackdrop from "@/components/brand/HeroBackdrop";
 import illustrationAligners from "@assets/brand/illustration-aligners.webp";
+import PageBreadcrumbs from "@/components/navigation/PageBreadcrumbs";
+import RelatedLinksSection from "@/components/navigation/RelatedLinksSection";
+import type { RelatedLink } from "@/lib/internal-links";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -76,6 +79,38 @@ export default function Invisalign() {
   );
   const processSteps = service.process ?? [];
   const benefits = service.benefits ?? [];
+  const relatedLinks: RelatedLink[] = [
+    {
+      href: "/technology/itero-digital-scanner",
+      title: "iTero Digital Scanner",
+      description: "Comfortable 3D digital scans that support Invisalign planning and smile previews.",
+    },
+    {
+      href: "/services/restorative-dentistry",
+      title: "Restorative Dentistry",
+      description: "Repair and restore damaged teeth with durable, natural-looking solutions.",
+    },
+    {
+      href: "/services/teeth-whitening",
+      title: "Teeth Whitening",
+      description: "Professional whitening options for a brighter, more confident smile.",
+    },
+    {
+      href: "/services",
+      title: "All Dental Services",
+      description: "Explore preventive, restorative, and family care options.",
+    },
+    {
+      href: "/patient-info",
+      title: "Patient Information",
+      description: "FAQs, what to expect, and helpful resources for your visit.",
+    },
+    {
+      href: "/contact",
+      title: "Contact & Scheduling",
+      description: "Book a consultation, ask a question, or get directions to our office.",
+    },
+  ];
 
   return (
     <div className="pt-16 pb-20 bg-white">
@@ -132,6 +167,16 @@ export default function Invisalign() {
           </div>
         </div>
       </motion.section>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+        <PageBreadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Services", href: "/services" },
+            { label: "Invisalign" },
+          ]}
+        />
+      </div>
 
       <motion.section
         className="py-16"
@@ -359,6 +404,8 @@ export default function Invisalign() {
             ))}
           </div>
         </motion.section>
+
+        <RelatedLinksSection title="Related Services & Resources" links={relatedLinks} />
 
         <motion.div
           className="bg-gradient-to-r from-primary to-secondary rounded-3xl p-8 lg:p-12 text-center text-white"
