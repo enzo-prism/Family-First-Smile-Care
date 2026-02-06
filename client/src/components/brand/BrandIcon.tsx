@@ -26,7 +26,7 @@ export default function BrandIcon({ name, className }: BrandIconProps) {
       src={ICONS[name]}
       alt=""
       aria-hidden="true"
-      className={cn("inline-block", className)}
+      className={cn("inline-block brightness-0 invert", className)}
       loading="lazy"
       decoding="async"
     />

@@ -140,7 +140,7 @@ export default function SocialMediaSection() {
               href="https://www.instagram.com/famfirstsmilecare/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-medium rounded-full hover:from-pink-600 hover:to-purple-700 transition-all transform hover:scale-105"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-pink-600 to-purple-700 text-white font-medium rounded-full hover:from-pink-700 hover:to-purple-800 transition-all transform hover:scale-105"
               data-testid="button-follow-instagram"
             >
               <Instagram className="w-5 h-5" />
@@ -150,7 +150,7 @@ export default function SocialMediaSection() {
               href="https://www.xiaohongshu.com/user/profile/6787d0fa000000000801e7e7"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white font-medium rounded-full hover:from-red-600 hover:to-red-700 transition-all transform hover:scale-105"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white font-medium rounded-full hover:from-red-700 hover:to-red-800 transition-all transform hover:scale-105"
               data-testid="button-follow-xiaohongshu"
             >
               <BookOpen className="w-5 h-5" />

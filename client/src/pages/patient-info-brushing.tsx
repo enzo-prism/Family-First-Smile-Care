@@ -122,7 +122,7 @@ export default function PatientInfoBrushing() {
 
         <section className="bg-gradient-to-r from-primary to-secondary rounded-2xl p-8 text-white">
           <h2 className="text-2xl font-bold mb-3">Need Personalized Guidance?</h2>
-          <p className="text-white/90 mb-6">
+          <p className="text-white/95 mb-6">
             If brushing causes sensitivity or bleeding, we can help. Schedule a visit to review technique and
             oral health needs.
           </p>
@@ -133,7 +133,7 @@ export default function PatientInfoBrushing() {
               </Button>
             </Link>
             <Link href="/services/dental-exams">
-              <Button variant="outline" className="border-white text-white hover:bg-white/10 font-semibold px-6 py-3">
+              <Button variant="outline" className="bg-white/5 border-white/25 text-white hover:bg-white hover:text-primary font-semibold px-6 py-3">
                 Learn About Exams
               </Button>
             </Link>

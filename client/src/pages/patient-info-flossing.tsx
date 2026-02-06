@@ -114,7 +114,7 @@ export default function PatientInfoFlossing() {
 
         <section className="bg-gradient-to-r from-primary to-secondary rounded-2xl p-8 text-white">
           <h2 className="text-2xl font-bold mb-3">Need Help With Technique?</h2>
-          <p className="text-white/90 mb-6">
+          <p className="text-white/95 mb-6">
             We can demonstrate flossing during your cleaning and recommend the best tools for your needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
@@ -124,7 +124,7 @@ export default function PatientInfoFlossing() {
               </Button>
             </Link>
             <Link href="/services/dental-hygiene">
-              <Button variant="outline" className="border-white text-white hover:bg-white/10 font-semibold px-6 py-3">
+              <Button variant="outline" className="bg-white/5 border-white/25 text-white hover:bg-white hover:text-primary font-semibold px-6 py-3">
                 Learn About Hygiene Visits
               </Button>
             </Link>

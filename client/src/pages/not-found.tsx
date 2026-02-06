@@ -13,7 +13,7 @@ export default function NotFound() {
       <div className="flex items-center justify-center min-h-[calc(100vh-64px)] px-4">
         <div className="text-center max-w-2xl mx-auto">
           {/* Error Code */}
-          <h1 className="text-9xl font-bold text-primary/20 mb-4">404</h1>
+          <h1 className="text-9xl font-bold text-primary/70 mb-4">404</h1>
           
           {/* Main Message */}
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">

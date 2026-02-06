@@ -575,7 +575,7 @@ export default function Home() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Button className="bg-orange-500 text-white hover:bg-orange-600 text-lg font-semibold px-8 py-3 transform transition-transform">
+            <Button className="bg-orange-700 text-white hover:bg-orange-800 text-lg font-semibold px-8 py-3 transform transition-transform">
               <Star className="h-5 w-5 mr-2" />
               Leave a Google Review
             </Button>
@@ -599,7 +599,7 @@ export default function Home() {
             Ready for Your Best Smile?
           </motion.h2>
           <motion.p 
-            className="text-xl mb-8 opacity-90"
+            className="text-xl mb-8 text-white/95"
             variants={fadeInUp}
           >
             Schedule your free Invisalign consultation today and take the first step towards a healthier, more confident smile.

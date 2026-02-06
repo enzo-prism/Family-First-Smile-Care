@@ -594,7 +594,7 @@ export default function BabysFirstVisit() {
           <div className="grid lg:grid-cols-[2fr,1fr] gap-8 items-center">
             <div>
               <h2 className="text-3xl font-bold mb-4">Schedule Your Baby&apos;s First Visit</h2>
-              <p className="text-lg opacity-90 mb-6">
+              <p className="text-lg text-white/95 mb-6">
                 Give your child the best start to lifelong oral health. We&apos;re honored to help your family smile with confidence.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -610,7 +610,7 @@ export default function BabysFirstVisit() {
                   </Button>
                 </a>
                 <a href="tel:+14083588100" className="w-full sm:w-auto">
-                  <Button variant="outline" className="w-full sm:w-auto border-white text-white hover:bg-white/10 bg-white/15">
+                  <Button variant="outline" className="w-full sm:w-auto bg-white/5 border-white/25 text-white hover:bg-white hover:text-primary">
                     Call Us
                   </Button>
                 </a>
@@ -620,13 +620,13 @@ export default function BabysFirstVisit() {
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto"
                 >
-                  <Button variant="outline" className="w-full sm:w-auto border-white text-white hover:bg-white/10 bg-white/15">
+                  <Button variant="outline" className="w-full sm:w-auto bg-white/5 border-white/25 text-white hover:bg-white hover:text-primary">
                     Location - Los Gatos, CA
                   </Button>
                 </a>
               </div>
             </div>
-            <div className="bg-white/15 border border-white/25 rounded-2xl p-6 backdrop-blur">
+            <div className="bg-white/5 border border-white/25 rounded-2xl p-6 backdrop-blur">
               <div className="flex items-center mb-3">
                 <Baby className="w-6 h-6 text-white mr-3" />
                 <p className="text-sm font-semibold">Ages 0-3 welcome</p>

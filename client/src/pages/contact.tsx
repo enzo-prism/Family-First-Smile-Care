@@ -301,7 +301,7 @@ export default function Contact() {
               <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                 <div className="text-white text-center md:text-left">
                   <h3 className="font-semibold text-lg mb-1">Family First Smile Care</h3>
-                  <p className="text-white/90">15251 National Ave, Suite 102, Los Gatos, CA 95032</p>
+                  <p className="text-white">15251 National Ave, Suite 102, Los Gatos, CA 95032</p>
                 </div>
                 <div className="flex gap-3">
                   <a 
@@ -315,7 +315,7 @@ export default function Contact() {
                   </a>
                   <a 
                     href="tel:4083588100"
-                    className="bg-white/20 backdrop-blur text-white px-6 py-2 rounded-lg hover:bg-white/30 transition-colors font-semibold flex items-center gap-2 border border-white/30"
+                    className="bg-white/5 backdrop-blur text-white px-6 py-2 rounded-lg hover:bg-white hover:text-primary transition-colors font-semibold flex items-center gap-2 border border-white/25"
                   >
                     <Phone className="h-4 w-4" />
                     Call Now

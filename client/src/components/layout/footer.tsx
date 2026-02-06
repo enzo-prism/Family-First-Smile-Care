@@ -37,20 +37,20 @@ export default function Footer() {
                   href="https://www.google.com/maps/search/?api=1&query=15251+National+Ave+Suite+102+Los+Gatos+CA+95032"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-primary transition-colors"
+                  className="hover:text-blue-300 transition-colors"
                 >
                   15251 National Ave, Suite 102, Los Gatos, CA 95032
                 </a>
               </div>
               <div className="flex items-center">
                 <Phone className="mr-3 h-4 w-4" />
-                <a href="tel:4083588100" className="hover:text-primary transition-colors">
+                <a href="tel:4083588100" className="hover:text-blue-300 transition-colors">
                   (408) 358-8100
                 </a>
               </div>
               <div className="flex items-center">
                 <Mail className="mr-3 h-4 w-4" />
-                <a href="mailto:hello@famfirstsmile.com" className="hover:text-primary transition-colors">
+                <a href="mailto:hello@famfirstsmile.com" className="hover:text-blue-300 transition-colors">
                   hello@famfirstsmile.com
                 </a>
               </div>
@@ -61,12 +61,12 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-gray-300">
-              <li><Link href="/" className="hover:text-primary transition-colors">Home</Link></li>
-              <li><Link href="/about" className="hover:text-primary transition-colors">About Us</Link></li>
-              <li><Link href="/services" className="hover:text-primary transition-colors">Services</Link></li>
-              <li><Link href="/team" className="hover:text-primary transition-colors">Our Team</Link></li>
-              <li><Link href="/patient-info" className="hover:text-primary transition-colors">Patient Info</Link></li>
-              <li><Link href="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
+              <li><Link href="/" className="hover:text-blue-300 transition-colors">Home</Link></li>
+              <li><Link href="/about" className="hover:text-blue-300 transition-colors">About Us</Link></li>
+              <li><Link href="/services" className="hover:text-blue-300 transition-colors">Services</Link></li>
+              <li><Link href="/team" className="hover:text-blue-300 transition-colors">Our Team</Link></li>
+              <li><Link href="/patient-info" className="hover:text-blue-300 transition-colors">Patient Info</Link></li>
+              <li><Link href="/contact" className="hover:text-blue-300 transition-colors">Contact</Link></li>
               <li>
                 <a 
                   href="https://g.page/r/Cej0Xl18KcCyEAE/review" 
@@ -83,7 +83,7 @@ export default function Footer() {
                   href="https://swipesimple.com/links/lnk_67505de480da165de07d5bd3f42fbcce" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="hover:text-primary transition-colors flex items-center"
+                  className="hover:text-blue-300 transition-colors flex items-center"
                 >
                   <CreditCard className="h-4 w-4 mr-2" />
                   Pay Bill Online
@@ -107,7 +107,7 @@ export default function Footer() {
                 href="https://www.facebook.com/famfirstsmile/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-primary transition-colors" 
+                className="text-gray-300 hover:text-blue-300 transition-colors" 
                 aria-label="Facebook"
               >
                 <Facebook className="h-6 w-6" />
@@ -116,7 +116,7 @@ export default function Footer() {
                 href="https://www.instagram.com/famfirstsmile/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-primary transition-colors" 
+                className="text-gray-300 hover:text-blue-300 transition-colors" 
                 aria-label="Instagram"
               >
                 <Instagram className="h-6 w-6" />
@@ -127,7 +127,7 @@ export default function Footer() {
         
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
           <p>&copy; 2024 Family First Smile Care. All rights reserved. | 
-            <a href="#" className="hover:text-primary transition-colors ml-1">Privacy Policy</a>
+            <a href="#" className="hover:text-blue-300 transition-colors ml-1">Privacy Policy</a>
           </p>
         </div>
       </div>

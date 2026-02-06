@@ -220,7 +220,7 @@ export default function TMJ() {
         {/* Call to Action */}
         <div className="bg-gradient-to-r from-primary to-secondary rounded-2xl p-8 lg:p-12 text-center text-white">
           <h2 className="text-3xl font-bold mb-4">Schedule Your TMJ Consultation Today</h2>
-          <p className="text-xl mb-8 opacity-90">
+          <p className="text-xl mb-8 text-white/95">
             Don't let TMJ pain interfere with your daily life. Take the first step toward a healthy, pain-free smile.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -235,7 +235,7 @@ export default function TMJ() {
               </Button>
             </a>
             <Link href="/contact">
-              <Button className="bg-white/20 text-white border border-white/30 hover:bg-white hover:text-primary font-semibold px-8 py-3 backdrop-blur-sm">
+              <Button className="bg-white/5 text-white border border-white/25 hover:bg-white hover:text-primary font-semibold px-8 py-3 backdrop-blur-sm">
                 Contact Us
               </Button>
             </Link>

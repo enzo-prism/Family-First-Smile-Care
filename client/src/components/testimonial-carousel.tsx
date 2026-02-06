@@ -149,19 +149,29 @@ export default function TestimonialCarousel() {
       </Button>
       
       {/* Carousel Indicators */}
-      <div className="flex justify-center mt-8 space-x-2">
-        {testimonials.map((_, index) => (
-          <Button
-            key={index}
-            variant="ghost"
-            size="sm"
-            className={`w-3 h-3 rounded-full p-0 ${
-              index === currentIndex ? "bg-primary" : "bg-gray-300"
-            }`}
-            onClick={() => goToTestimonial(index)}
-            aria-label={`Go to testimonial ${index + 1}`}
-          />
-        ))}
+      <div className="flex justify-center mt-8 gap-1">
+        {testimonials.map((_, index) => {
+          const isActive = index === currentIndex;
+          return (
+            <Button
+              key={index}
+              type="button"
+              variant="ghost"
+              size="icon"
+              className="h-9 w-9 rounded-full hover:bg-gray-100"
+              onClick={() => goToTestimonial(index)}
+              aria-label={`Go to testimonial ${index + 1}`}
+              aria-current={isActive}
+            >
+              <span
+                aria-hidden="true"
+                className={`h-2.5 w-2.5 rounded-full transition-colors ${
+                  isActive ? "bg-primary" : "bg-gray-500"
+                }`}
+              />
+            </Button>
+          );
+        })}
       </div>
     </div>
   );

@@ -129,7 +129,7 @@ export default function Services() {
               Ready to Start Your Dental Journey?
             </motion.h2>
             <motion.p 
-              className="text-lg sm:text-xl mb-8 opacity-90 max-w-2xl mx-auto"
+              className="text-lg sm:text-xl mb-8 text-white/95 max-w-2xl mx-auto"
               variants={fadeInUp}
             >
               Schedule your consultation today and discover how our comprehensive dental services can transform your smile and oral health.
@@ -153,7 +153,7 @@ export default function Services() {
                   Book Your Appointment
                 </motion.button>
               </a>
-              <span className="text-white/80 text-sm">or call (408) 358-8100</span>
+              <span className="text-white text-sm">or call (408) 358-8100</span>
             </motion.div>
           </div>
         </div>

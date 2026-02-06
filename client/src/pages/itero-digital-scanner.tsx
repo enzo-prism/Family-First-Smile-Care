@@ -197,7 +197,7 @@ export default function IteroDigitalScanner() {
             Book Your Appointment
           </motion.h2>
           <motion.p
-            className="text-lg sm:text-xl mb-8 opacity-90 max-w-2xl mx-auto"
+            className="text-lg sm:text-xl mb-8 text-white/95 max-w-2xl mx-auto"
             variants={fadeInUp}
           >
             Schedule your visit to experience comfortable, precise digital impressions.
@@ -221,7 +221,7 @@ export default function IteroDigitalScanner() {
                 Book Your Appointment
               </motion.button>
             </a>
-            <span className="text-white/80 text-sm">or call (408) 358-8100</span>
+            <span className="text-white text-sm">or call (408) 358-8100</span>
           </motion.div>
         </motion.section>
 
