@@ -5,6 +5,7 @@ import { Link } from "wouter";
 import type { Service } from "@/lib/types";
 import BrandIcon, { type BrandIconName } from "@/components/brand/BrandIcon";
 import { APPOINTMENT_FORM_URL, triggerGoogleAdsConversion } from "@/lib/analytics";
+import { getServiceHref } from "@/lib/routes";
 
 interface ServiceCardProps {
   service: Service;
@@ -56,7 +57,7 @@ export default function ServiceCard({ service, featured = false }: ServiceCardPr
       <div className="p-6 sm:p-8">
         <div className="flex flex-col sm:flex-row sm:items-center mb-6 space-y-4 sm:space-y-0">
           <div className={`${getIconColor(service.icon)} text-white w-16 h-16 rounded-2xl flex items-center justify-center sm:mr-6 shadow-lg flex-shrink-0 mx-auto sm:mx-0`}>
-            <BrandIcon name={normalizeIconName(service.icon)} className="h-6 w-6" />
+            <BrandIcon name={normalizeIconName(service.icon)} className="h-10 w-10" />
           </div>
           <div className="text-center sm:text-left">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">{service.title}</h2>
@@ -86,10 +87,10 @@ export default function ServiceCard({ service, featured = false }: ServiceCardPr
                     <div key={subService.id} className="bg-gradient-to-r from-gray-50 to-gray-50/50 rounded-xl p-3 border border-gray-100">
                       <div className="flex items-center">
                         <div className={`${getIconColor(subService.icon)} text-white w-8 h-8 rounded-lg flex items-center justify-center mr-3 shadow-sm`}>
-                          <BrandIcon name={normalizeIconName(subService.icon)} className="h-4 w-4" />
+                          <BrandIcon name={normalizeIconName(subService.icon)} className="h-5 w-5" />
                         </div>
                         <div className="flex-1">
-                          <Link href={`/services/${subService.id}`}>
+                          <Link href={getServiceHref(subService.id)}>
                             <h5 className="font-semibold text-gray-800 text-sm hover:text-primary transition-colors cursor-pointer">{subService.title}</h5>
                             <p className="text-xs text-gray-600">{subService.description}</p>
                           </Link>
@@ -103,7 +104,7 @@ export default function ServiceCard({ service, featured = false }: ServiceCardPr
           </div>
           
           <div className="flex flex-col gap-3 mt-6">
-            <Link href={service.id === "tmj" ? "/tmj" : `/services/${service.id}`}>
+            <Link href={getServiceHref(service.id)}>
               <Button className="w-full bg-gradient-to-r from-primary to-blue-600 text-white hover:from-blue-600 hover:to-primary font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-[1.02]">
                 Learn More About {service.title}
               </Button>

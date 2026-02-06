@@ -350,7 +350,7 @@ export default function Home() {
             >
               <motion.div className="mb-4" whileHover={{ scale: 1.05, rotate: 4 }}>
                 <div className="h-14 w-14 rounded-2xl bg-primary flex items-center justify-center shadow-md">
-                  <BrandIcon name="tooth" className="h-7 w-7" />
+                  <BrandIcon name="tooth" className="h-9 w-9" />
                 </div>
               </motion.div>
               <h3 className="text-lg font-semibold mb-2">Family Dentistry</h3>
@@ -367,7 +367,7 @@ export default function Home() {
             >
               <motion.div className="mb-4" whileHover={{ scale: 1.05, rotate: 4 }}>
                 <div className="h-14 w-14 rounded-2xl bg-secondary flex items-center justify-center shadow-md">
-                  <BrandIcon name="child" className="h-7 w-7" />
+                  <BrandIcon name="child" className="h-9 w-9" />
                 </div>
               </motion.div>
               <h3 className="text-lg font-semibold mb-2">Children's Dentistry</h3>
@@ -384,7 +384,7 @@ export default function Home() {
             >
               <motion.div className="mb-4" whileHover={{ scale: 1.05, rotate: 4 }}>
                 <div className="h-14 w-14 rounded-2xl bg-accent flex items-center justify-center shadow-md">
-                  <BrandIcon name="sparkles" className="h-7 w-7" />
+                  <BrandIcon name="sparkles" className="h-9 w-9" />
                 </div>
               </motion.div>
               <h3 className="text-lg font-semibold mb-2">Dental Hygiene</h3>
@@ -401,7 +401,7 @@ export default function Home() {
             >
               <motion.div className="mb-4" whileHover={{ scale: 1.05, rotate: 4 }}>
                 <div className="h-14 w-14 rounded-2xl bg-primary flex items-center justify-center shadow-md">
-                  <BrandIcon name="smile" className="h-7 w-7" />
+                  <BrandIcon name="smile" className="h-9 w-9" />
                 </div>
               </motion.div>
               <h3 className="text-lg font-semibold mb-2">Invisalign</h3>

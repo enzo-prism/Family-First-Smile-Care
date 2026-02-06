@@ -5,6 +5,8 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -12,6 +14,7 @@ import { ChevronDown, CreditCard, Menu } from "lucide-react";
 import familyFirstLogo from "@assets/Logo_1753972987510.png";
 import { services } from "@/data/services";
 import { APPOINTMENT_FORM_URL, triggerGoogleAdsConversion } from "@/lib/analytics";
+import { getServiceHref } from "@/lib/routes";
 
 const navigation: Array<{ name: string; href: string; dropdown?: boolean }> = [
   { name: "Home", href: "/" },
@@ -21,9 +24,6 @@ const navigation: Array<{ name: string; href: string; dropdown?: boolean }> = [
   { name: "Patient Info", href: "/patient-info" },
   { name: "Contact", href: "/contact" },
 ];
-
-const getServiceHref = (serviceId: string) =>
-  serviceId === "tmj" ? "/tmj" : `/services/${serviceId}`;
 
 const serviceMenuItems = services.flatMap((service) => [
   { title: service.title, href: getServiceHref(service.id) },
@@ -43,6 +43,7 @@ export default function Header() {
   const isServicesActive =
     location === "/services" ||
     location.startsWith("/services/") ||
+    location.startsWith("/technology/") ||
     location === "/tmj";
   return (
     <nav
@@ -91,6 +92,9 @@ export default function Header() {
                     </button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="start" className="w-80 p-3">
+                    <DropdownMenuLabel className="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                      Services
+                    </DropdownMenuLabel>
                     <DropdownMenuItem
                       asChild
                       className="cursor-pointer rounded-md px-3 py-2 text-sm font-semibold text-gray-900 focus:bg-primary/10 focus:text-primary"
@@ -108,6 +112,16 @@ export default function Header() {
                         </DropdownMenuItem>
                       ))}
                     </div>
+                    <DropdownMenuSeparator className="my-2" />
+                    <DropdownMenuLabel className="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                      Technology
+                    </DropdownMenuLabel>
+                    <DropdownMenuItem
+                      asChild
+                      className="cursor-pointer rounded-md px-3 py-2 text-sm font-semibold text-gray-900 focus:bg-primary/10 focus:text-primary"
+                    >
+                      <Link href="/technology/itero-digital-scanner">iTero Digital Scanner</Link>
+                    </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
@@ -191,6 +205,18 @@ export default function Header() {
                           {service.title}
                         </Link>
                       ))}
+                    </div>
+                    <div className="mt-6 border-t border-gray-200 pt-4">
+                      <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide">Technology</p>
+                      <div className="mt-3 flex flex-col space-y-4">
+                        <Link
+                          href="/technology/itero-digital-scanner"
+                          className="text-gray-800 font-semibold hover:text-primary"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          iTero Digital Scanner
+                        </Link>
+                      </div>
                     </div>
                   </div>
                   <a 

@@ -10,6 +10,10 @@ import { serviceReviews } from "@/data/reviews";
 import { APPOINTMENT_FORM_URL, triggerGoogleAdsConversion } from "@/lib/analytics";
 import BrandIcon, { type BrandIconName } from "@/components/brand/BrandIcon";
 import HeroBackdrop from "@/components/brand/HeroBackdrop";
+import PageBreadcrumbs from "@/components/navigation/PageBreadcrumbs";
+import RelatedLinksSection from "@/components/navigation/RelatedLinksSection";
+import { getRelatedLinksForService } from "@/lib/internal-links";
+import { getServiceHref } from "@/lib/routes";
 
 // Animation variants
 const fadeInUp = {
@@ -93,9 +97,7 @@ export default function ServiceDetail() {
   };
 
   const serviceUrl =
-    service.id === "tmj"
-      ? "https://famfirstsmile.com/tmj"
-      : `https://famfirstsmile.com/services/${service.id}`;
+    `https://famfirstsmile.com${getServiceHref(service.id)}`;
 
   const serviceSchema = {
     "@context": "https://schema.org",
@@ -149,6 +151,7 @@ export default function ServiceDetail() {
   };
 
   const reviewData = findReviewData();
+  const relatedLinks = getRelatedLinksForService(service.id);
 
   return (
     <div className="pt-16 pb-20 bg-white">
@@ -172,7 +175,7 @@ export default function ServiceDetail() {
               className={`${getIconColor(service.icon)} text-white w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg`}
               variants={scaleIn}
             >
-              <BrandIcon name={normalizeIconName(service.icon)} className="h-8 w-8" />
+              <BrandIcon name={normalizeIconName(service.icon)} className="h-12 w-12" />
             </motion.div>
             <motion.h1 
               className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6"
@@ -191,6 +194,14 @@ export default function ServiceDetail() {
       </motion.section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <PageBreadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Services", href: "/services" },
+            { label: service.title },
+          ]}
+        />
+
         {reviewData && reviewData.reviews.length > 0 && (
           <motion.div
             className="mb-12"
@@ -330,6 +341,8 @@ export default function ServiceDetail() {
             </motion.div>
           </motion.div>
         )}
+
+        <RelatedLinksSection title="Related Services & Resources" links={relatedLinks} />
 
         {/* Call to Action */}
         <motion.div 
