@@ -1,5 +1,5 @@
 import { randomUUID } from "crypto";
-import { eq } from "drizzle-orm";
+import { desc, eq, ilike, or, sql } from "drizzle-orm";
 import {
   contacts,
   users,
@@ -10,11 +10,23 @@ import {
 } from "@shared/schema";
 import { db } from "./db";
 
+type ListContactsOptions = {
+  limit: number;
+  offset: number;
+  q?: string;
+};
+
+export type ListContactsResult = {
+  total: number;
+  items: Contact[];
+};
+
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
   createContact(contact: InsertContact): Promise<Contact>;
+  listContacts(options: ListContactsOptions): Promise<ListContactsResult>;
 }
 
 type DrizzleDatabase = NonNullable<typeof db>;
@@ -49,6 +61,39 @@ export class DatabaseStorage implements IStorage {
       .values(insertContact)
       .returning();
     return contact;
+  }
+
+  async listContacts(options: ListContactsOptions): Promise<ListContactsResult> {
+    const q = options.q?.trim();
+    const pattern = q ? `%${q}%` : null;
+    const where = pattern
+      ? or(
+          ilike(contacts.firstName, pattern),
+          ilike(contacts.lastName, pattern),
+          ilike(contacts.email, pattern),
+          ilike(contacts.phone, pattern),
+          ilike(contacts.service, pattern),
+          ilike(contacts.message, pattern),
+        )
+      : undefined;
+
+    const [countRow] = await this.database
+      .select({ count: sql<number>`count(*)` })
+      .from(contacts)
+      .where(where);
+
+    const items = await this.database
+      .select()
+      .from(contacts)
+      .where(where)
+      .orderBy(desc(contacts.createdAt))
+      .limit(options.limit)
+      .offset(options.offset);
+
+    return {
+      total: Number(countRow?.count ?? 0),
+      items,
+    };
   }
 }
 
@@ -88,6 +133,32 @@ class InMemoryStorage implements IStorage {
     };
     this.contacts.set(contact.id, contact);
     return contact;
+  }
+
+  async listContacts(options: ListContactsOptions): Promise<ListContactsResult> {
+    const q = options.q?.trim().toLowerCase() || "";
+    const matches = (contact: Contact) => {
+      if (!q) return true;
+      const haystack = [
+        contact.firstName,
+        contact.lastName,
+        contact.email,
+        contact.phone,
+        contact.service,
+        contact.message,
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+      return haystack.includes(q);
+    };
+
+    const all = Array.from(this.contacts.values())
+      .filter(matches)
+      .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+
+    const items = all.slice(options.offset, options.offset + options.limit);
+    return { total: all.length, items };
   }
 }
 

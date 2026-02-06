@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { execFileSync } from "node:child_process";
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
@@ -78,11 +79,89 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const changelogPath = path.join(publicDir, "admin-changelog.json");
 
     if (!fs.existsSync(changelogPath)) {
-      return res.status(503).json({
-        ok: false,
-        error: "missing_changelog",
-        message: "Changelog not generated. Run `npm run build`.",
-      });
+      // Fallback: generate on the fly if git is available. This makes the admin
+      // dashboard usable in dev environments without requiring a build.
+      try {
+        const logOutput = execFileSync(
+          "git",
+          [
+            "log",
+            "-n",
+            "50",
+            "--no-merges",
+            "--date=short",
+            "--pretty=format:%H\t%ad\t%s",
+          ],
+          {
+            cwd: process.cwd(),
+            encoding: "utf8",
+            stdio: ["ignore", "pipe", "ignore"],
+          },
+        );
+
+        let repoUrl: string | null = null;
+        try {
+          const remote = execFileSync(
+            "git",
+            ["config", "--get", "remote.origin.url"],
+            {
+              cwd: process.cwd(),
+              encoding: "utf8",
+              stdio: ["ignore", "pipe", "ignore"],
+            },
+          ).trim();
+
+          const trimmed = remote.trim().replace(/\.git$/, "");
+          const httpsMatch = trimmed.match(
+            /^https?:\/\/github\.com\/([^/]+)\/([^/]+)$/i,
+          );
+          if (httpsMatch) {
+            const [, owner, repo] = httpsMatch;
+            repoUrl = `https://github.com/${owner}/${repo}`;
+          } else {
+            const sshMatch =
+              trimmed.match(/^git@github\.com:([^/]+)\/([^/]+)$/i) ||
+              trimmed.match(/^ssh:\/\/git@github\.com\/([^/]+)\/([^/]+)$/i);
+            if (sshMatch) {
+              const [, owner, repo] = sshMatch;
+              repoUrl = `https://github.com/${owner}/${repo}`;
+            }
+          }
+        } catch {
+          // ignore
+        }
+
+        const entries = logOutput
+          .split("\n")
+          .map((line) => line.trim())
+          .filter(Boolean)
+          .map((line) => {
+            const [hash, date, ...subjectParts] = line.split("\t");
+            const subject = subjectParts.join("\t").trim();
+            return {
+              hash,
+              shortHash: hash.slice(0, 7),
+              date,
+              subject,
+              url: repoUrl ? `${repoUrl}/commit/${hash}` : null,
+            };
+          });
+
+        const payload = {
+          generatedAt: new Date().toISOString(),
+          entries,
+        };
+
+        changelogCache.payload = payload;
+        changelogCache.expiresAt = now + 60_000;
+        return res.json(payload);
+      } catch {
+        return res.status(503).json({
+          ok: false,
+          error: "missing_changelog",
+          message: "Changelog not generated. Run `npm run build`.",
+        });
+      }
     }
 
     try {
@@ -97,6 +176,36 @@ export async function registerRoutes(app: Express): Promise<Server> {
         ok: false,
         error: "server_error",
         message: "Failed to load changelog.",
+      });
+    }
+  });
+
+  app.get("/api/admin/contacts", async (req, res) => {
+    const parseIntQuery = (value: unknown, fallback: number) => {
+      if (typeof value !== "string") return fallback;
+      const parsed = Number.parseInt(value, 10);
+      return Number.isFinite(parsed) ? parsed : fallback;
+    };
+
+    const limitRaw = parseIntQuery(req.query.limit, 50);
+    const offsetRaw = parseIntQuery(req.query.offset, 0);
+    const limit = Math.min(Math.max(limitRaw, 1), 200);
+    const offset = Math.max(offsetRaw, 0);
+    const q = typeof req.query.q === "string" ? req.query.q.trim().slice(0, 200) : undefined;
+
+    try {
+      const payload = await storage.listContacts({ limit, offset, q });
+      return res.json(payload);
+    } catch (error: any) {
+      console.error("Admin contacts error:", error);
+      const message =
+        typeof error?.message === "string" && error.message
+          ? `Contacts API error: ${error.message}`
+          : "Failed to load contacts.";
+      return res.status(500).json({
+        ok: false,
+        error: "server_error",
+        message,
       });
     }
   });
@@ -127,9 +236,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
   };
 
   app.get("/api/admin/ga4/overview", async (req, res) => {
-    const propertyId = process.env.GA4_PROPERTY_ID;
+    const propertyIdRaw =
+      process.env.GA4_PROPERTY_ID ?? process.env.GA_PROPERTY_ID ?? process.env.GA_PROPERTY;
+    const propertyId = propertyIdRaw?.trim().replace(/^properties\//i, "");
     if (!propertyId) {
-      return res.status(503).json(buildMissingConfigPayload(["GA4_PROPERTY_ID"]));
+      return res
+        .status(503)
+        .json(
+          buildMissingConfigPayload(
+            ["GA4_PROPERTY_ID"],
+            "Set GA4_PROPERTY_ID to your GA4 Property ID (for this site: 518867337).",
+          ),
+        );
     }
 
     const authResult = getGoogleAuth();
@@ -149,7 +267,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
 
       const property = `properties/${propertyId}`;
-      const [seriesReport, totalsReport, topPagesReport] = await Promise.all([
+      const [seriesReport, totalsReport] = await Promise.all([
         analyticsdata.properties.runReport({
           property,
           requestBody: {
@@ -172,21 +290,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
               { name: "sessions" },
               { name: "screenPageViews" },
             ],
-          },
-        }),
-        analyticsdata.properties.runReport({
-          property,
-          requestBody: {
-            dateRanges: [{ startDate: range.startDate, endDate: range.endDate }],
-            dimensions: [{ name: "pagePath" }],
-            metrics: [{ name: "screenPageViews" }],
-            orderBys: [
-              {
-                metric: { metricName: "screenPageViews" },
-                desc: true,
-              },
-            ],
-            limit: "10",
           },
         }),
       ]);
@@ -220,11 +323,64 @@ export async function registerRoutes(app: Express): Promise<Server> {
             { activeUsers: 0, sessions: 0, screenPageViews: 0 },
           );
 
-      const topPages = (topPagesReport.data.rows ?? []).map((row) => {
-        const pagePath = row.dimensionValues?.[0]?.value ?? "";
-        const screenPageViews = Number.parseInt(row.metricValues?.[0]?.value ?? "0", 10);
-        return { pagePath, screenPageViews };
-      });
+      const fetchTopPages = async () => {
+        const dimensionCandidates = [
+          // Best effort: works for both web + app properties.
+          "unifiedPagePathScreen",
+          // Web-only fallback.
+          "pagePathPlusQueryString",
+          // Legacy fallback.
+          "pagePath",
+        ];
+
+        let lastError: unknown = null;
+
+        for (const dimensionName of dimensionCandidates) {
+          try {
+            const report = await analyticsdata.properties.runReport({
+              property,
+              requestBody: {
+                dateRanges: [{ startDate: range.startDate, endDate: range.endDate }],
+                dimensions: [{ name: dimensionName }],
+                metrics: [{ name: "screenPageViews" }],
+                orderBys: [
+                  {
+                    metric: { metricName: "screenPageViews" },
+                    desc: true,
+                  },
+                ],
+                limit: "10",
+              },
+            });
+
+            return (report.data.rows ?? []).map((row) => {
+              const pagePath = row.dimensionValues?.[0]?.value ?? "";
+              const screenPageViews = Number.parseInt(
+                row.metricValues?.[0]?.value ?? "0",
+                10,
+              );
+              return { pagePath, screenPageViews };
+            });
+          } catch (error: any) {
+            // Try the next dimension name if this one is unsupported.
+            lastError = error;
+            const message = String(error?.message || "");
+            const isInvalidDimension =
+              message.includes("Unknown dimension") ||
+              message.includes("unknown dimension") ||
+              message.includes("dimensions") ||
+              message.includes("dimension");
+            if (!isInvalidDimension) break;
+          }
+        }
+
+        if (lastError) {
+          console.warn("GA4 top pages query failed; continuing without it.");
+        }
+        return [] as Array<{ pagePath: string; screenPageViews: number }>;
+      };
+
+      const topPages = await fetchTopPages();
 
       const payload = {
         range,
@@ -237,18 +393,40 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return res.json(payload);
     } catch (error: any) {
       console.error("GA4 overview error:", error);
+      const message =
+        typeof error?.message === "string" && error.message
+          ? `GA4 API error: ${error.message}`
+          : "Failed to fetch GA4 data.";
       return res.status(500).json({
         ok: false,
         error: "server_error",
-        message: "Failed to fetch GA4 data.",
+        message,
       });
     }
   });
 
   app.get("/api/admin/gsc/overview", async (req, res) => {
-    const siteUrl = process.env.GSC_SITE_URL;
+    const rawSiteUrl = process.env.GSC_SITE_URL?.trim();
+    const normalizeGscSiteUrl = (value: string) => {
+      if (!value) return value;
+      if (value.startsWith("sc-domain:")) return value;
+      if (value.startsWith("http://") || value.startsWith("https://")) {
+        return value.endsWith("/") ? value : `${value}/`;
+      }
+      // If it's a bare domain like "famfirstsmile.com", treat it as a domain property.
+      return `sc-domain:${value.replace(/\/+$/, "")}`;
+    };
+
+    const siteUrl = rawSiteUrl ? normalizeGscSiteUrl(rawSiteUrl) : "";
     if (!siteUrl) {
-      return res.status(503).json(buildMissingConfigPayload(["GSC_SITE_URL"]));
+      return res
+        .status(503)
+        .json(
+          buildMissingConfigPayload(
+            ["GSC_SITE_URL"],
+            "Set GSC_SITE_URL to sc-domain:famfirstsmile.com (domain property) or https://famfirstsmile.com/ (URL-prefix property).",
+          ),
+        );
     }
 
     const authResult = getGoogleAuth();
@@ -273,19 +451,30 @@ export async function registerRoutes(app: Express): Promise<Server> {
         searchType: "web",
       } as const;
 
-      const [seriesRes, queriesRes, pagesRes] = await Promise.all([
-        searchconsole.searchanalytics.query({
-          siteUrl,
-          requestBody: { ...requestBase, dimensions: ["date"], rowLimit: 1000 },
-        }),
-        searchconsole.searchanalytics.query({
-          siteUrl,
-          requestBody: { ...requestBase, dimensions: ["query"], rowLimit: 10 },
-        }),
-        searchconsole.searchanalytics.query({
-          siteUrl,
-          requestBody: { ...requestBase, dimensions: ["page"], rowLimit: 10 },
-        }),
+      const seriesRes = await searchconsole.searchanalytics.query({
+        siteUrl,
+        requestBody: { ...requestBase, dimensions: ["date"], rowLimit: 1000 },
+      });
+
+      const [queriesRes, pagesRes] = await Promise.all([
+        searchconsole.searchanalytics
+          .query({
+            siteUrl,
+            requestBody: { ...requestBase, dimensions: ["query"], rowLimit: 10 },
+          })
+          .catch((error: any) => {
+            console.warn("GSC top queries query failed; continuing without it.", error?.message);
+            return null;
+          }),
+        searchconsole.searchanalytics
+          .query({
+            siteUrl,
+            requestBody: { ...requestBase, dimensions: ["page"], rowLimit: 10 },
+          })
+          .catch((error: any) => {
+            console.warn("GSC top pages query failed; continuing without it.", error?.message);
+            return null;
+          }),
       ]);
 
       const series = (seriesRes.data.rows ?? []).map((row) => {
@@ -316,7 +505,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
             : 0,
       };
 
-      const topQueries = (queriesRes.data.rows ?? []).map((row) => ({
+      const topQueries = (queriesRes?.data?.rows ?? []).map((row) => ({
         query: row.keys?.[0] ?? "",
         clicks: row.clicks ?? 0,
         impressions: row.impressions ?? 0,
@@ -324,7 +513,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         position: row.position ?? 0,
       }));
 
-      const topPages = (pagesRes.data.rows ?? []).map((row) => ({
+      const topPages = (pagesRes?.data?.rows ?? []).map((row) => ({
         page: row.keys?.[0] ?? "",
         clicks: row.clicks ?? 0,
         impressions: row.impressions ?? 0,
@@ -344,10 +533,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return res.json(payload);
     } catch (error: any) {
       console.error("GSC overview error:", error);
+      const message =
+        typeof error?.message === "string" && error.message
+          ? `Search Console API error: ${error.message}`
+          : "Failed to fetch Search Console data.";
       return res.status(500).json({
         ok: false,
         error: "server_error",
-        message: "Failed to fetch Search Console data.",
+        message,
       });
     }
   });

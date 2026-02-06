@@ -40,13 +40,18 @@ npx update-browserslist-db@latest --no-update-notifier --no-fund  # silences the
 ## Admin Dashboard (Optional)
 The site includes a password-protected `/admin` dashboard (HTTP Basic Auth). Default password is `"tim"` but you should override it in production.
 
+Notes:
+- The **Contacts** tab reads from the `contacts` table. For real persistence set `DATABASE_URL` and run `npm run db:push` at least once.
+- For a deeper setup guide (including Replit + service account/base64 notes), see `docs/admin-dashboard.md`.
+
 Environment variables:
 - `ADMIN_PASSWORD` – overrides the default admin password.
-- `GA4_PROPERTY_ID` – required for the Google Analytics (GA4) tab.
-- `GSC_SITE_URL` – required for the Search Console tab. Use either `sc-domain:famfirstsmile.com` or `https://famfirstsmile.com/`.
+- `GA4_PROPERTY_ID` – required for the Google Analytics (GA4) tab (for this site: `518867337`).
+- `GSC_SITE_URL` – required for the Search Console tab. Use either `sc-domain:famfirstsmile.com` (recommended for domain properties) or `https://famfirstsmile.com/`.
 - One of:
   - `GOOGLE_SERVICE_ACCOUNT_JSON` – raw service account JSON (string).
   - `GOOGLE_SERVICE_ACCOUNT_JSON_BASE64` – base64-encoded service account JSON.
+  - `GOOGLE_APPLICATION_CREDENTIALS` – path to a service account JSON file (standard Google ADC env var).
 
 Google Cloud / Google products setup:
 - Enable **Google Analytics Data API** and **Google Search Console API** in a Google Cloud project.

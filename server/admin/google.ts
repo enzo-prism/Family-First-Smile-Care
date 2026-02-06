@@ -1,4 +1,5 @@
 import { google } from "googleapis";
+import fs from "node:fs";
 
 const GOOGLE_SCOPES = [
   "https://www.googleapis.com/auth/analytics.readonly",
@@ -24,19 +25,55 @@ export const buildMissingConfigPayload = (missing: string[], message?: string): 
   missing,
 });
 
+const readCredentialsFile = (filePath: string): { text: string } | { error: MissingConfigPayload } => {
+  try {
+    const text = fs.readFileSync(filePath, "utf8");
+    if (!text.trim()) {
+      return {
+        error: buildMissingConfigPayload(
+          ["GOOGLE_APPLICATION_CREDENTIALS"],
+          `Credentials file is empty: ${filePath}`,
+        ),
+      };
+    }
+    return { text };
+  } catch {
+    return {
+      error: buildMissingConfigPayload(
+        ["GOOGLE_APPLICATION_CREDENTIALS"],
+        `Failed to read credentials file: ${filePath}`,
+      ),
+    };
+  }
+};
+
 const parseServiceAccountCredentials = (): { credentials: CredentialsJson } | { error: MissingConfigPayload } => {
   const rawJson = process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
   const rawBase64 = process.env.GOOGLE_SERVICE_ACCOUNT_JSON_BASE64;
 
-  if (!rawJson && !rawBase64) {
+  // Fall back to the standard ADC file env var if present.
+  // This supports local dev via a downloaded JSON key without having to inline it into env vars.
+  const credentialsFile = process.env.GOOGLE_APPLICATION_CREDENTIALS;
+
+  if (!rawJson && !rawBase64 && !credentialsFile) {
     return {
-      error: buildMissingConfigPayload([
-        "GOOGLE_SERVICE_ACCOUNT_JSON or GOOGLE_SERVICE_ACCOUNT_JSON_BASE64",
-      ]),
+      error: buildMissingConfigPayload(
+        [
+          "GOOGLE_SERVICE_ACCOUNT_JSON",
+          "GOOGLE_SERVICE_ACCOUNT_JSON_BASE64",
+          "GOOGLE_APPLICATION_CREDENTIALS",
+        ],
+        "Missing Google service account credentials. Provide GOOGLE_SERVICE_ACCOUNT_JSON(_BASE64) or set GOOGLE_APPLICATION_CREDENTIALS to a JSON key file path.",
+      ),
     };
   }
 
   let text = rawJson;
+  if (!text && !rawBase64 && credentialsFile) {
+    const readResult = readCredentialsFile(credentialsFile);
+    if ("error" in readResult) return readResult;
+    text = readResult.text;
+  }
   if (!text && rawBase64) {
     try {
       text = Buffer.from(rawBase64, "base64").toString("utf8");
@@ -52,9 +89,14 @@ const parseServiceAccountCredentials = (): { credentials: CredentialsJson } | { 
 
   if (!text) {
     return {
-      error: buildMissingConfigPayload([
-        "GOOGLE_SERVICE_ACCOUNT_JSON or GOOGLE_SERVICE_ACCOUNT_JSON_BASE64",
-      ]),
+      error: buildMissingConfigPayload(
+        [
+          "GOOGLE_SERVICE_ACCOUNT_JSON",
+          "GOOGLE_SERVICE_ACCOUNT_JSON_BASE64",
+          "GOOGLE_APPLICATION_CREDENTIALS",
+        ],
+        "Missing Google service account credentials. Provide GOOGLE_SERVICE_ACCOUNT_JSON(_BASE64) or set GOOGLE_APPLICATION_CREDENTIALS to a JSON key file path.",
+      ),
     };
   }
 
@@ -87,6 +129,11 @@ const parseServiceAccountCredentials = (): { credentials: CredentialsJson } | { 
         "Service account JSON is missing client_email/private_key.",
       ),
     };
+  }
+
+  // Some environments double-escape newlines. Google expects literal newlines.
+  if (typeof credentials.private_key === "string") {
+    credentials.private_key = credentials.private_key.replace(/\\n/g, "\n");
   }
 
   return { credentials };

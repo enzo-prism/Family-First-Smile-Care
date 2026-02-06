@@ -35,6 +35,7 @@ Key files of note:
    - `VITE_GA_MEASUREMENT_ID` – Google Analytics ID (optional but recommended).
    - `CANONICAL_HOST` – Base URL used for server-rendered canonical tags (optional).
    - `VITE_CANONICAL_HOST` – Base URL used for client-side canonical updates (optional).
+   - Optional admin dashboard vars live in `.env.example`.
 
    During development you can export them in your shell:
    ```bash
@@ -56,9 +57,9 @@ Key files of note:
 
 ## Build & Deploy
 - `npm run build` – Produces the static client bundle and the bundled Express server (outputs to `dist/`).
-- `node scripts/post-build.js` – Copies `client/robots.txt` and `client/sitemap.xml` into `dist/public/` so they ship with the release.
+- `node scripts/post-build.js` – Copies `client/robots.txt`, `client/sitemap.xml`, and `client/llms.txt` into `dist/public/`. (This is already run by `npm run build`.)
 - `npm start` – Runs the bundled server in production mode; ensure `DATABASE_URL` is set.
-- `npm run check` – TypeScript project check. (Currently surfaces known form-typing errors in `client/src/pages/contact.tsx`; address before enforcing in CI.)
+- `npm run check` – TypeScript project check.
 - `npm run db:push` – Applies Drizzle schema changes to the configured database.
 - See `docs/build-and-deploy.md` for a step-by-step cookbook covering prerequisites, smoke tests, and automation tips.
 
@@ -82,9 +83,9 @@ Deployment checklist:
 
 ## Troubleshooting
 - **Port conflicts:** If `EADDRINUSE` appears on startup, stop the process occupying the port (`lsof -i :5000`) or set `PORT` to an open value.
-- **TypeScript errors:** `npm run check` currently flags `client/src/pages/contact.tsx` for nullable form values. Resolve or cast before turning the check into a blocking gate.
 - **Legacy URLs returning 404:** Add mappings to the `legacyRedirects` map in `server/index.ts` so old WordPress slugs continue to redirect with 301 status codes.
 
 ## Further Reading
 - `AGENTS.md` – Project conventions and team workflows.
 - `replit.md` – Environment-specific notes targeting Replit deployments.
+- `docs/admin-dashboard.md` – `/admin` dashboard setup (GA4 + GSC + contacts + Replit secrets).

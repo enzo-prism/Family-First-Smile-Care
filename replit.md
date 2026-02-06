@@ -144,6 +144,27 @@ Currently implements a basic user system with:
 - **Database Management**: `npm run db:push` for schema changes
 - **Type Checking**: `npm run check` for TypeScript validation
 
+## Admin Dashboard (/admin)
+
+The site includes a private `/admin` dashboard protected by HTTP Basic Auth (username ignored; password from `ADMIN_PASSWORD`).
+
+To enable GA4 + GSC data on **Replit deployments** (Autoscale), set these environment variables in the deployment settings and republish:
+- `ADMIN_PASSWORD` (pick a strong password; default is `"tim"` if unset)
+- `GA4_PROPERTY_ID=518867337`
+- `GSC_SITE_URL=sc-domain:famfirstsmile.com`
+- `GOOGLE_SERVICE_ACCOUNT_JSON_BASE64` (base64 of a **service account key** JSON)
+
+Important:
+- The OAuth JSON file named like `client_secret_*.apps.googleusercontent.com.json` is **not** used for `/admin`.
+- You must use a JSON key with `"type": "service_account"`.
+
+Validate the base64 secret inside Replit Shell:
+```bash
+node -e "const j=JSON.parse(Buffer.from(process.env.GOOGLE_SERVICE_ACCOUNT_JSON_BASE64,'base64').toString('utf8')); console.log('type=', j.type); console.log('client_email=', j.client_email)"
+```
+
+More details + smoke-test curl commands live in `docs/admin-dashboard.md`.
+
 ### Production Build Process
 1. **Frontend Build**: Vite builds React app to `dist/public`
 2. **Backend Build**: ESBuild bundles server code to `dist/index.js`
