@@ -1,3 +1,4 @@
+import { blogPostMap } from "./blog-posts";
 import { services, type Service } from "./services";
 
 const canonicalOverrides: Record<string, string> = {
@@ -40,6 +41,10 @@ const staticMeta: Record<string, PageMeta> = {
   "/patient-info": {
     title: "Patient Info | Los Gatos, CA Dentist",
     description: "Patient information for Family First Smile Care in Los Gatos, CA including insurance, FAQs, and visit preparation.",
+  },
+  "/blog": {
+    title: "Family First Smile Care Blog | Los Gatos Dental Articles",
+    description: "Browse family dentistry articles, preventive care guides, kids dental tips, and local oral health answers from Family First Smile Care in Los Gatos.",
   },
   "/contact": {
     title: "Contact Family First Smile Care | Los Gatos, CA Dentist",
@@ -117,6 +122,17 @@ export const resolvePageMeta = (path: string): PageMeta => {
     const slug = canonicalPath.replace("/services/", "");
     const service = serviceById.get(slug);
     if (service) return buildServiceMeta(service);
+  }
+
+  if (canonicalPath.startsWith("/blog/")) {
+    const slug = canonicalPath.replace("/blog/", "");
+    const post = blogPostMap.get(slug);
+    if (post) {
+      return {
+        title: post.metaTitle,
+        description: post.metaDescription,
+      };
+    }
   }
 
   return fallbackMeta;

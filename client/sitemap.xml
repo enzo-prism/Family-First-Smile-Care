@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://famfirstsmile.com/</loc>
-    <lastmod>2026-02-06</lastmod>
+    <lastmod>2026-04-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -49,6 +49,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://famfirstsmile.com/blog</loc>
+    <lastmod>2026-04-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://famfirstsmile.com/contact</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
@@ -62,7 +68,7 @@
   </url>
   <url>
     <loc>https://famfirstsmile.com/sitemap</loc>
-    <lastmod>2026-02-06</lastmod>
+    <lastmod>2026-04-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
@@ -137,5 +143,107 @@
     <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://famfirstsmile.com/blog/when-should-your-child-switch-from-pediatric-to-family-dentist-los-gatos</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://famfirstsmile.com/blog/what-happens-at-a-free-invisalign-consultation-los-gatos</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://famfirstsmile.com/blog/when-should-kids-get-first-orthodontic-evaluation-los-gatos</loc>
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://famfirstsmile.com/blog/adult-tooth-coming-in-behind-baby-tooth-los-gatos</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://famfirstsmile.com/blog/do-kids-need-dental-x-rays-los-gatos</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://famfirstsmile.com/blog/when-should-kids-get-dental-sealants-los-gatos</loc>
+    <lastmod>2026-03-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://famfirstsmile.com/blog/bleeding-gums-when-flossing-los-gatos</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://famfirstsmile.com/blog/kids-sports-mouthguard-los-gatos</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://famfirstsmile.com/blog/dental-sedation-for-kids-los-gatos</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://famfirstsmile.com/blog/do-baby-teeth-need-fillings-los-gatos</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://famfirstsmile.com/blog/why-does-my-child-have-bad-breath-even-after-brushing-los-gatos</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://famfirstsmile.com/blog/white-spots-on-child-teeth-los-gatos</loc>
+    <lastmod>2026-03-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://famfirstsmile.com/blog/child-knocked-out-tooth-los-gatos</loc>
+    <lastmod>2026-03-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://famfirstsmile.com/blog/why-does-my-child-keep-getting-cavities-los-gatos</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://famfirstsmile.com/blog/how-often-dental-cleaning-los-gatos</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://famfirstsmile.com/blog/jaw-pain-when-you-wake-up-los-gatos</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://famfirstsmile.com/blog/when-should-kids-first-see-a-dentist-los-gatos</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

@@ -2,7 +2,9 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "wouter";
 import PageBreadcrumbs from "@/components/navigation/PageBreadcrumbs";
 import { services } from "@/data/services";
+import { getBlogPostHref } from "@/lib/blog";
 import { getServiceHref } from "@/lib/routes";
+import { blogPosts } from "@shared/blog-posts";
 
 export default function SiteMap() {
   return (
@@ -30,6 +32,7 @@ export default function SiteMap() {
               <li><Link href="/services" className="hover:text-primary transition-colors">Services</Link></li>
               <li><Link href="/team" className="hover:text-primary transition-colors">Our Team</Link></li>
               <li><Link href="/patient-info" className="hover:text-primary transition-colors">Patient Info</Link></li>
+              <li><Link href="/blog" className="hover:text-primary transition-colors">Blog</Link></li>
               <li><Link href="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
               <li><Link href="/tmj" className="hover:text-primary transition-colors">TMJ Treatment</Link></li>
               <li>
@@ -62,6 +65,23 @@ export default function SiteMap() {
             </ul>
           </section>
         </div>
+
+        <section className="mt-14">
+          <h2 className="text-2xl font-bold mb-4">Latest Blog Articles</h2>
+          <div className="grid gap-4 md:grid-cols-2">
+            {blogPosts.map((post) => (
+              <div key={post.slug} className="rounded-2xl border border-gray-200 bg-white p-6">
+                <Link
+                  href={getBlogPostHref(post.slug)}
+                  className="text-lg font-semibold text-gray-900 hover:text-primary transition-colors"
+                >
+                  {post.title}
+                </Link>
+                <p className="mt-2 text-gray-600">{post.metaDescription}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
         <section className="mt-14">
           <h2 className="text-2xl font-bold mb-4">All Services</h2>

@@ -70,6 +70,7 @@ export default function Footer() {
               <li><Link href="/services" className="hover:text-blue-300 transition-colors">Services</Link></li>
               <li><Link href="/team" className="hover:text-blue-300 transition-colors">Our Team</Link></li>
               <li><Link href="/patient-info" className="hover:text-blue-300 transition-colors">Patient Info</Link></li>
+              <li><Link href="/blog" className="hover:text-blue-300 transition-colors">Blog</Link></li>
               <li><Link href="/contact" className="hover:text-blue-300 transition-colors">Contact</Link></li>
               <li>
                 <a 
