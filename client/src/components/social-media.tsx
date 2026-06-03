@@ -190,14 +190,14 @@ export default function SocialMediaSection() {
         >
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a 
-              href="https://www.instagram.com/famfirstsmilecare/"
+              href="https://www.instagram.com/famfirstsmile/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-pink-600 to-purple-700 text-white font-medium rounded-full hover:from-pink-700 hover:to-purple-800 transition duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:hover:scale-100 motion-reduce:transition-none"
               data-testid="button-follow-instagram"
             >
               <Instagram className="w-5 h-5" />
-              Follow @famfirstsmilecare
+              Follow @famfirstsmile
             </a>
             <a 
               href="https://www.xiaohongshu.com/user/profile/6787d0fa000000000801e7e7"
