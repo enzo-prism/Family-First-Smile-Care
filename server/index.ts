@@ -37,6 +37,17 @@ app.use(compression({
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Baseline security response headers. No Content-Security-Policy is set here on
+// purpose: the site embeds Vimeo, Instagram, Google Maps, and gtag, which a
+// strict CSP would break without careful per-source allow-listing.
+app.use((_req, res, next) => {
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("X-Frame-Options", "SAMEORIGIN");
+  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  res.setHeader("Permissions-Policy", "camera=(), microphone=()");
+  next();
+});
+
 app.use((req, res, next) => {
   if (req.path === "/" && req.query.page_id === "1073") {
     return res.redirect(301, "/patient-info");
@@ -100,8 +111,17 @@ app.use((req, res, next) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
 
-    res.status(status).json({ message });
-    throw err;
+    // Log the error server-side, but do NOT re-throw: the response has already
+    // been sent, and throwing here surfaces as an unhandled exception after the
+    // headers are committed (noisy logs / potential process instability).
+    log(`error handling ${_req.method} ${_req.path}: ${message}`, "express");
+    if (status >= 500 && err?.stack) {
+      console.error(err.stack);
+    }
+
+    if (!res.headersSent) {
+      res.status(status).json({ message });
+    }
   });
 
   // Serve attached assets statically

@@ -3,9 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import { Link } from "wouter";
 import type { Service } from "@/lib/types";
-import BrandIcon, { type BrandIconName } from "@/components/brand/BrandIcon";
+import BrandIcon from "@/components/brand/BrandIcon";
 import { APPOINTMENT_FORM_URL, triggerGoogleAdsConversion } from "@/lib/analytics";
 import { getServiceHref } from "@/lib/routes";
+import { normalizeIconName, getIconColor } from "@/lib/service-icons";
 
 interface ServiceCardProps {
   service: Service;
@@ -16,31 +17,6 @@ export default function ServiceCard({ service, featured = false }: ServiceCardPr
   const handleAppointmentClick = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     triggerGoogleAdsConversion(APPOINTMENT_FORM_URL, "_blank");
-  };
-
-  const normalizeIconName = (iconName: string): BrandIconName => {
-    if (
-      iconName === "tooth" ||
-      iconName === "child" ||
-      iconName === "sparkles" ||
-      iconName === "smile" ||
-      iconName === "activity"
-    ) {
-      return iconName;
-    }
-    return "tooth";
-  };
-
-  const getIconColor = (iconName: string) => {
-    const colorMap: { [key: string]: string } = {
-      tooth: "bg-primary",
-      child: "bg-secondary", 
-      sparkles: "bg-accent",
-      smile: "bg-primary",
-      activity: "bg-secondary",
-    };
-    
-    return colorMap[iconName] || "bg-primary";
   };
 
   return (
