@@ -8,12 +8,13 @@ import { services } from "@/data/services";
 import { ReviewsSection } from "@/components/review";
 import { serviceReviews } from "@/data/reviews";
 import { APPOINTMENT_FORM_URL, triggerGoogleAdsConversion } from "@/lib/analytics";
-import BrandIcon, { type BrandIconName } from "@/components/brand/BrandIcon";
+import BrandIcon from "@/components/brand/BrandIcon";
 import HeroBackdrop from "@/components/brand/HeroBackdrop";
 import PageBreadcrumbs from "@/components/navigation/PageBreadcrumbs";
 import RelatedLinksSection from "@/components/navigation/RelatedLinksSection";
 import { getRelatedLinksForService } from "@/lib/internal-links";
 import { getServiceHref } from "@/lib/routes";
+import { normalizeIconName, getIconColor } from "@/lib/service-icons";
 
 // Animation variants
 const fadeInUp = {
@@ -69,31 +70,6 @@ export default function ServiceDetail() {
   const handleAppointmentClick = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     triggerGoogleAdsConversion(APPOINTMENT_FORM_URL, "_blank");
-  };
-
-  const normalizeIconName = (iconName: string): BrandIconName => {
-    if (
-      iconName === "tooth" ||
-      iconName === "child" ||
-      iconName === "sparkles" ||
-      iconName === "smile" ||
-      iconName === "activity"
-    ) {
-      return iconName;
-    }
-    return "tooth";
-  };
-
-  const getIconColor = (iconName: string) => {
-    const colorMap: { [key: string]: string } = {
-      tooth: "bg-primary",
-      child: "bg-secondary", 
-      sparkles: "bg-accent",
-      smile: "bg-primary",
-      activity: "bg-secondary",
-    };
-    
-    return colorMap[iconName] || "bg-primary";
   };
 
   const serviceUrl =

@@ -8,9 +8,17 @@ neonConfig.webSocketConstructor = ws;
 const connectionString = process.env.DATABASE_URL;
 
 if (!connectionString) {
-  console.warn(
-    "DATABASE_URL not set. Falling back to in-memory storage for development.",
-  );
+  if (process.env.NODE_ENV === "production") {
+    console.error(
+      "[db] CRITICAL: DATABASE_URL is not set in production. Contact form " +
+        "submissions will be stored in ephemeral in-memory storage and LOST on " +
+        "restart. Set DATABASE_URL to persist leads.",
+    );
+  } else {
+    console.warn(
+      "DATABASE_URL not set. Falling back to in-memory storage for development.",
+    );
+  }
 }
 
 export const pool = connectionString

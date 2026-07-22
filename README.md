@@ -21,8 +21,8 @@ Key files of note:
 - `server/index.ts` handles middleware, legacy redirects, sitemap/robots delivery, and serving built assets.
 - `server/storage.ts` switches between Neon-backed storage and an in-memory fallback when `DATABASE_URL` is absent.
 - `client/index.html` now ships meaningful pre-rendered HTML to aid non-JS crawlers and link unfurling.
-- `client/src/pages/home.tsx`, `patient-info.tsx`, and `service-detail.tsx` embed JSON-LD structured data for organization info, FAQs, and service pages.
-- `client/sitemap.xml` advertises canonical marketing routes—keep slugs aligned with `client/src/data/services.ts`.
+- LocalBusiness/Dentist JSON-LD is injected server-side for every route in `server/vite.ts` (via `buildLocalBusinessSchema` in `shared/structured-data.ts`); `patient-info.tsx`, `blog-post.tsx`, and `service-detail.tsx` add page-specific FAQ/Article/Service schema.
+- `client/sitemap.xml` advertises canonical marketing routes—keep slugs aligned with `shared/services.ts`.
 
 ## Getting Started
 1. **Install dependencies**
@@ -70,8 +70,8 @@ Deployment checklist:
 4. Deploy both `dist/index.js` and `dist/public` along with `attached_assets`.
 
 ## Authoring Content & SEO
-- **Services:** Update `client/src/data/services.ts` for new offerings. Keep `id` slugs in sync with sitemap entries and any legacy redirects defined in `server/index.ts`.
-- **Structured Data:** Organization info lives in `client/src/pages/home.tsx` JSON-LD; FAQs pull from the `faqs` array in `patient-info.tsx`; service schema is generated per route in `service-detail.tsx`.
+- **Services:** Update `shared/services.ts` for new offerings (`client/src/data/services.ts` just re-exports it). Keep `id` slugs in sync with sitemap entries and any legacy redirects defined in `server/index.ts`.
+- **Structured Data:** LocalBusiness/Dentist schema is built in `shared/structured-data.ts` and injected server-side on every route by `server/vite.ts`; page-specific FAQ/Service schema is added per route (e.g. `patient-info.tsx`, `service-detail.tsx`, `invisalign.tsx`, `itero-digital-scanner.tsx`).
 - **Sitemap:** Manual XML at `client/sitemap.xml`. Update `<lastmod>` when content changes to avoid conveying stale dates.
 - **Pre-rendered HTML:** `client/index.html` contains crawler-friendly fallback content—refresh it if branding, address, or top-tier services change.
 - **Analytics:** `client/src/lib/analytics.ts` bootstraps Google Analytics/Ads and Hotjar. Mirror any new tracking IDs in environment configuration and documentation.
