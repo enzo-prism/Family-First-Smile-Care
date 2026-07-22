@@ -160,6 +160,8 @@ export default function Invisalign() {
                 src={illustrationAligners}
                 alt="Clear aligner trays illustration"
                 className="w-full max-w-xl rounded-2xl bg-white/60 p-6 shadow-2xl"
+                width={1536}
+                height={1024}
                 loading="eager"
                 decoding="async"
               />

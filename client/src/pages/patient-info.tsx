@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { Helmet } from "react-helmet-async";
+import JsonLd from "@/components/seo/json-ld";
 import { Button } from "@/components/ui/button";
 import { Shield, Clock, ChevronDown, Stethoscope, Scissors, Apple } from "lucide-react";
 import type { FAQItem } from "@/lib/types";
@@ -89,11 +89,7 @@ export default function PatientInfo() {
 
   return (
     <div className="pt-16 pb-20 bg-gray-50">
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify(faqSchema)}
-        </script>
-      </Helmet>
+      <JsonLd data={faqSchema} />
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-primary/5 to-secondary/5 py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

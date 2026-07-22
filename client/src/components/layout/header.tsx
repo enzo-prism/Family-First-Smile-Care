@@ -9,7 +9,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { ChevronDown, CreditCard, Menu } from "lucide-react";
 import familyFirstLogo from "@assets/Logo_1753972987510.png";
 import { services } from "@/data/services";
@@ -178,6 +178,7 @@ export default function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <SheetTitle className="sr-only">Navigation menu</SheetTitle>
                 <nav className="flex flex-col space-y-4 mt-8">
                   {navigation.filter((item) => !item.dropdown).map((item) => (
                     <Link

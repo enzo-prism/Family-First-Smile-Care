@@ -1,5 +1,5 @@
 import type { MouseEvent } from "react";
-import { Helmet } from "react-helmet-async";
+import JsonLd from "@/components/seo/json-ld";
 import { Button } from "@/components/ui/button";
 import { Link, useParams } from "wouter";
 import { CheckCircle, ArrowLeft } from "lucide-react";
@@ -131,11 +131,7 @@ export default function ServiceDetail() {
 
   return (
     <div className="pt-16 pb-20 bg-white">
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify(serviceSchema)}
-        </script>
-      </Helmet>
+      <JsonLd data={serviceSchema} />
       
       {/* Hero Section */}
       <motion.section 

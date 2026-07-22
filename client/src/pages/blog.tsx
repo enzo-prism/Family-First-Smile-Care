@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import JsonLd from "@/components/seo/json-ld";
 import { Link } from "wouter";
 import { ArrowRight, CalendarDays, Clock3, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -33,9 +33,7 @@ export default function Blog() {
 
   return (
     <div className="pt-16 pb-20 bg-white">
-      <Helmet>
-        <script type="application/ld+json">{JSON.stringify(itemListSchema)}</script>
-      </Helmet>
+      <JsonLd data={itemListSchema} />
 
       <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-white to-secondary/10 py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

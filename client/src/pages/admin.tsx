@@ -676,6 +676,7 @@ export default function Admin() {
                       Search
                     </div>
                     <Input
+                      aria-label="Search contact submissions"
                       value={contactsSearch}
                       onChange={(e) => {
                         setContactsSearch(e.target.value);
