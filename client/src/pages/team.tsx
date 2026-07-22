@@ -63,6 +63,8 @@ export default function Team() {
                 src={drChuangPhoto} 
                 alt="Dr. Tim J. Chuang professional headshot" 
                 className="rounded-2xl shadow-lg w-full max-w-md mx-auto"
+                width={1034}
+                height={1448}
                 loading="lazy"
                 decoding="async"
               />

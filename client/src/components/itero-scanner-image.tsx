@@ -26,6 +26,7 @@ export default function IteroScannerImage({
       alt="Digital dental scan illustration (3D wireframe)"
       className={`h-full w-full rounded-2xl object-contain bg-white/70 p-4 shadow-lg ${className}`}
       loading="lazy"
+      decoding="async"
       onError={() => setHasError(true)}
     />
   );

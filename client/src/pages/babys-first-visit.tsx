@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Baby, Shield, Sparkles, Heart, NotebookPen, PhoneCall, Smile, Star, MapPin, Phone, BookOpen, Expand } from "lucide-react";
 import { APPOINTMENT_FORM_URL, triggerGoogleAdsConversion } from "@/lib/analytics";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
@@ -177,7 +177,7 @@ export default function BabysFirstVisit() {
                       <Smile className="w-6 h-6" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-800">A calm, playful start</h3>
+                      <h2 className="font-semibold text-gray-800">A calm, playful start</h2>
                       <p className="text-sm text-gray-600">Short, age-tailored appointments</p>
                     </div>
                   </div>
@@ -357,11 +357,14 @@ export default function BabysFirstVisit() {
               </div>
             </div>
             <DialogContent className="max-w-6xl w-[95vw] max-h-[90vh] p-0 bg-transparent border-none shadow-none">
+              <DialogTitle className="sr-only">Baby&apos;s first dental visit infographic</DialogTitle>
               <div className="w-full h-full flex items-center justify-center">
                 <img
                   src={infographicUrl}
                   alt="Baby&apos;s first dental visit infographic full view"
                   className="max-h-[85vh] w-auto max-w-full rounded-2xl shadow-2xl"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </DialogContent>
